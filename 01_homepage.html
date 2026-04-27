@@ -1,0 +1,645 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+<title>Packman — E-commerce infrastructure for Gulf brands</title>
+<meta name="description" content="Run your brand, not your back-end. Orders, inventory, shipping, and AI content in one dashboard. UAE · KSA · Oman. Start free, ship in 48 hours." />
+
+<!-- Fonts: Avenir Next LT Pro (brand primary) + Avenir Arabic (RTL) + JetBrains Mono -->
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Nunito+Sans:ital,wght@0,300;0,400;0,600;0,700;0,800;0,900;1,400;1,700;1,900&family=JetBrains+Mono:wght@400;500&family=IBM+Plex+Sans+Arabic:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+
+<script src="https://cdn.tailwindcss.com"></script>
+<script>
+  tailwind.config = {
+    theme: {
+      extend: {
+        colors: { navy: '#2C2A59', ink: '#2C2A59', cream: '#F3F1E8', paper: '#FFFFFF', volt: '#D2F801', coral: '#D2F801', grape: '#5B22C7', teal: '#5B22C7', lilac: '#C8C6E7', muted: '#6B6B85', line: '#E2E0E8', sand: '#EBE4D4' },
+        fontFamily: { sans: ['"Avenir Next LT Pro"','"Avenir Next"','"Nunito Sans"','system-ui','sans-serif'], serif: ['"Avenir Next LT Pro"','"Avenir Next"','"Nunito Sans"','system-ui','sans-serif'], mono: ['"JetBrains Mono"','"Geist Mono"','ui-monospace','monospace'], ar: ['"Avenir Arabic"','"IBM Plex Sans Arabic"','system-ui','sans-serif'], arserif: ['"Avenir Arabic"','"IBM Plex Sans Arabic"','system-ui','sans-serif'] },
+      },
+    },
+  };
+</script>
+
+<style>
+  @font-face {
+    font-family: 'Avenir Arabic';
+    src: url('./assets/avenir-arabic-book.otf') format('opentype');
+    font-weight: 400; font-style: normal; font-display: swap;
+  }
+  @font-face {
+    font-family: 'Avenir Arabic';
+    src: url('./assets/avenir-arabic-black.otf') format('opentype');
+    font-weight: 900; font-style: normal; font-display: swap;
+  }
+  html { scroll-behavior: smooth; }
+  body {
+    background: #F3F1E8; color: #2C2A59;
+    font-family: 'Avenir Next LT Pro', 'Avenir Next', 'Nunito Sans', system-ui, sans-serif;
+    font-weight: 400;
+  }
+  /* .serif kept as a class name for minimal diffs, but now renders as heavy geometric sans matching brand wordmark */
+  .serif {
+    font-family: 'Avenir Next LT Pro', 'Avenir Next', 'Nunito Sans', system-ui, sans-serif;
+    font-weight: 900; letter-spacing: -0.035em; line-height: 1.02;
+  }
+  .serif.italic, .italic { font-style: italic; }
+  .mono { font-family: 'JetBrains Mono', 'Geist Mono', ui-monospace, monospace; letter-spacing: 0.02em; font-weight: 500; }
+  .eyebrow { font-family: 'JetBrains Mono', 'Geist Mono', monospace; font-size: 11px; letter-spacing: 0.18em; text-transform: uppercase; font-weight: 500; }
+
+  /* Arabic */
+  .ar, [lang="ar"].ar, [dir="rtl"] .ar { font-family: 'Avenir Arabic', 'IBM Plex Sans Arabic', system-ui, sans-serif; font-weight: 400; }
+  .ar-serif, [lang="ar"].ar-serif { font-family: 'Avenir Arabic', 'IBM Plex Sans Arabic', system-ui, sans-serif; font-weight: 900; letter-spacing: -0.01em; }
+
+  /* Brand CTA — volt green fill, navy text, hardware-style offset shadow */
+  .btn-primary {
+    background: #D2F801; color: #2C2A59; font-weight: 700;
+    padding: 14px 24px; border-radius: 2px;
+    transition: all 0.15s; box-shadow: 0 1px 0 #2C2A59;
+    display: inline-flex; align-items: center; gap: 8px;
+  }
+  .btn-primary:hover { transform: translate(-1px,-1px); box-shadow: 3px 3px 0 #2C2A59; }
+  .btn-ghost { border: 1px solid #2C2A59; padding: 13px 23px; border-radius: 2px; color: #2C2A59; font-weight: 600; transition: all 0.15s; display: inline-flex; align-items: center; gap: 8px; }
+  .btn-ghost:hover { background: #2C2A59; color: #D2F801; }
+
+  @keyframes pulse-volt { 0%,100% { box-shadow: 0 0 0 0 rgba(210,248,1,0.65); } 50% { box-shadow: 0 0 0 18px rgba(210,248,1,0); } }
+  .play-btn { animation: pulse-volt 2.4s ease-in-out infinite; }
+  /* Legacy compat */
+  @keyframes pulse-coral { 0%,100% { box-shadow: 0 0 0 0 rgba(210,248,1,0.65); } 50% { box-shadow: 0 0 0 18px rgba(210,248,1,0); } }
+
+  /* Marquee */
+  @keyframes scroll-x {
+    from { transform: translateX(0); }
+    to { transform: translateX(-50%); }
+  }
+  .marquee-track { animation: scroll-x 32s linear infinite; }
+
+  /* Reveal on load (hero) */
+  @keyframes rise {
+    from { opacity: 0; transform: translateY(16px); }
+    to { opacity: 1; transform: translateY(0); }
+  }
+  .rise { animation: rise 0.8s cubic-bezier(0.16, 1, 0.3, 1) both; }
+  .rise-1 { animation-delay: 0.05s; }
+  .rise-2 { animation-delay: 0.15s; }
+  .rise-3 { animation-delay: 0.25s; }
+  .rise-4 { animation-delay: 0.35s; }
+
+  /* Dashboard mockup */
+  .mock-dashboard {
+    background: #FFFFFF; border: 1px solid #E2E0E8; border-radius: 6px;
+    box-shadow: 12px 12px 0 #2C2A59;
+  }
+
+  /* Context-aware accents — readable grape on light surfaces, vibrant volt on dark */
+  .text-coral { color: #5B22C7 !important; }
+  .hover\:text-coral:hover { color: #5B22C7 !important; }
+  .bg-ink .text-coral, .bg-navy .text-coral,
+  section.bg-ink .text-coral, section.bg-navy .text-coral,
+  .bg-ink .hover\:text-coral:hover, .bg-navy .hover\:text-coral:hover,
+  footer.bg-ink .text-coral, footer.bg-navy .text-coral { color: #D2F801 !important; }
+
+  /* Nav links: use grape as hover on cream nav */
+  nav.bg-cream\/85 a.hover\:text-coral:hover { color: #5B22C7 !important; }
+
+  /* Paper/grain texture on body for editorial warmth */
+  body::before {
+    content: ''; position: fixed; inset: 0; pointer-events: none; z-index: 0; opacity: 0.035;
+    background-image: radial-gradient(circle at 1px 1px, #2C2A59 1px, transparent 0);
+    background-size: 3px 3px;
+  }
+  main, section, nav, footer { position: relative; z-index: 1; }
+
+</style>
+</head>
+
+<body class="antialiased">
+
+<!-- ============================================== -->
+<!-- GLOBAL NAV — sticky, translucent blur on scroll -->
+<!-- ============================================== -->
+<nav class="sticky top-0 z-50 bg-cream/85 backdrop-blur-md border-b border-line">
+  <div class="max-w-7xl mx-auto px-6 lg:px-10 h-18 flex items-center justify-between py-4">
+    <a href="/" class="flex items-center gap-2">
+      <img src="./assets/wordmark-navy.png" alt="packman · e-commerce for entrepreneurs" class="h-7 sm:h-8 w-auto" />
+    </a>
+    <div class="hidden md:flex items-center gap-8 text-sm">
+      <a href="#platform" class="hover:text-coral transition">Platform</a>
+      <a href="/pricing" class="hover:text-coral transition">Pricing</a>
+      <a href="#" class="hover:text-coral transition">For brands</a>
+      <a href="#" class="hover:text-coral transition">Learn</a>
+    </div>
+    <div class="flex items-center gap-3">
+      <a href="#" class="hidden sm:inline text-sm">Log in</a>
+      <a href="#cta" class="btn-primary text-sm">Start Free →</a>
+    </div>
+  </div>
+</nav>
+
+<!-- ============================================== -->
+<!-- HERO — VSL #8 (90-sec Hook) above the fold     -->
+<!-- ============================================== -->
+<section class="relative z-10 max-w-7xl mx-auto px-6 lg:px-10 pt-16 lg:pt-24 pb-24">
+  <div class="grid lg:grid-cols-12 gap-12 lg:gap-16 items-center">
+
+    <!-- Left: Headline + CTAs -->
+    <div class="lg:col-span-7">
+      <div class="eyebrow text-teal mb-6 rise rise-1">
+        <span class="inline-block w-8 h-px bg-teal align-middle mr-2"></span>
+        E-commerce infrastructure · UAE · KSA · Oman
+      </div>
+
+      <h1 class="serif text-6xl md:text-7xl lg:text-8xl leading-[0.95] mb-8 rise rise-2">
+        Run your brand.<br>
+        Not your <em>back-end.</em>
+      </h1>
+
+      <p class="text-lg md:text-xl text-ink/75 max-w-xl mb-10 leading-relaxed rise rise-3">
+        Orders, inventory, shipping, and AI content — one dashboard. Ship to UAE, Saudi, and Oman from day one. No warehouse lease, no dev team, no spreadsheet graveyard.
+      </p>
+
+      <div class="flex flex-wrap items-center gap-4 rise rise-4">
+        <a href="#cta" class="btn-primary">Start Free →</a>
+        <a href="#vsl" class="btn-ghost inline-flex items-center gap-2">
+          <svg width="14" height="14" viewBox="0 0 24 24" fill="currentColor"><path d="M8 5v14l11-7z"/></svg>
+          Watch 90-sec demo
+        </a>
+      </div>
+
+      <p class="mono text-xs text-muted mt-8 rise rise-4">
+        No credit card · No trade licence needed to start · First order ships in 48 hrs
+      </p>
+    </div>
+
+    <!-- Right: VSL #8 player -->
+    <div class="lg:col-span-5 rise rise-3" id="vsl">
+      <!-- VSL player: 16:9 aspect, coral play button, timestamp badge -->
+      <div class="relative aspect-video bg-ink rounded-sm overflow-hidden group cursor-pointer" style="box-shadow: 16px 16px 0 #5B22C7;">
+        <!-- Placeholder VSL thumbnail gradient -->
+        <div class="absolute inset-0 bg-gradient-to-br from-ink via-ink to-teal/40"></div>
+        <!-- Abstract dashboard glimpse in thumbnail -->
+        <div class="absolute inset-6 border border-cream/20 rounded opacity-40">
+          <div class="p-4 space-y-3">
+            <div class="h-2 bg-cream/30 rounded w-24"></div>
+            <div class="h-8 bg-coral/40 rounded w-40"></div>
+            <div class="grid grid-cols-3 gap-2 mt-4">
+              <div class="h-12 bg-cream/10 rounded"></div>
+              <div class="h-12 bg-cream/10 rounded"></div>
+              <div class="h-12 bg-cream/10 rounded"></div>
+            </div>
+          </div>
+        </div>
+        <!-- Play button -->
+        <div class="absolute inset-0 flex items-center justify-center">
+          <div class="play-btn w-20 h-20 bg-coral rounded-full flex items-center justify-center group-hover:scale-110 transition">
+            <svg width="28" height="28" viewBox="0 0 24 24" fill="#2C2A59" class="ml-1"><path d="M8 5v14l11-7z"/></svg>
+          </div>
+        </div>
+        <!-- Timestamp badge -->
+        <div class="absolute bottom-4 right-4 mono text-xs text-cream bg-ink/70 px-2 py-1 rounded">
+          01:30
+        </div>
+        <!-- Caption overlay -->
+        <div class="absolute top-4 left-4 eyebrow text-cream/80">VSL · The 90-sec hook</div>
+      </div>
+      <p class="mono text-xs text-muted mt-4 flex items-center gap-2">
+        <span class="inline-block w-2 h-2 bg-coral rounded-full"></span>
+        AED 5,777 earned in month one →
+      </p>
+    </div>
+  </div>
+</section>
+
+<!-- ============================================== -->
+<!-- TRUST MARQUEE — country flags                  -->
+<!-- ============================================== -->
+<section class="relative z-10 overflow-hidden border-y border-line bg-paper py-6">
+  <div class="flex items-center gap-4 max-w-7xl mx-auto px-6 lg:px-10">
+    <div class="eyebrow text-muted whitespace-nowrap">Shipping to</div>
+    <div class="overflow-hidden flex-1">
+      <div class="flex gap-16 marquee-track whitespace-nowrap">
+        <!-- Repeated 2x for seamless loop -->
+        <span class="flex items-center gap-2 text-ink/60"><span class="text-2xl">🇦🇪</span> United Arab Emirates</span>
+        <span class="flex items-center gap-2 text-ink/60"><span class="text-2xl">🇸🇦</span> Saudi Arabia</span>
+        <span class="flex items-center gap-2 text-ink/60"><span class="text-2xl">🇴🇲</span> Oman</span>
+        <span class="flex items-center gap-2 text-ink/60"><span class="text-2xl">🇰🇼</span> Kuwait</span>
+        <span class="flex items-center gap-2 text-ink/60"><span class="text-2xl">🇧🇭</span> Bahrain</span>
+        <span class="flex items-center gap-2 text-ink/60"><span class="text-2xl">🇶🇦</span> Qatar</span>
+        <span class="flex items-center gap-2 text-ink/60"><span class="text-2xl">🇦🇪</span> United Arab Emirates</span>
+        <span class="flex items-center gap-2 text-ink/60"><span class="text-2xl">🇸🇦</span> Saudi Arabia</span>
+        <span class="flex items-center gap-2 text-ink/60"><span class="text-2xl">🇴🇲</span> Oman</span>
+        <span class="flex items-center gap-2 text-ink/60"><span class="text-2xl">🇰🇼</span> Kuwait</span>
+        <span class="flex items-center gap-2 text-ink/60"><span class="text-2xl">🇧🇭</span> Bahrain</span>
+        <span class="flex items-center gap-2 text-ink/60"><span class="text-2xl">🇶🇦</span> Qatar</span>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ============================================== -->
+<!-- PROBLEM STATS — 4 friction points from VSL #8  -->
+<!-- ============================================== -->
+<section class="relative z-10 max-w-7xl mx-auto px-6 lg:px-10 py-24 lg:py-32">
+  <div class="max-w-3xl mb-20">
+    <div class="eyebrow text-coral mb-4">The mess behind the scenes</div>
+    <h2 class="serif text-5xl md:text-6xl leading-[1.02]">
+      What kills most brands isn't competition. <em>It's the chaos.</em>
+    </h2>
+  </div>
+
+  <div class="grid grid-cols-1 md:grid-cols-2 gap-0 border border-line bg-paper">
+    <!-- Tile 1 -->
+    <div class="p-10 border-b md:border-r border-line">
+      <div class="serif text-7xl text-coral mb-4">12</div>
+      <div class="text-lg font-medium mb-2">products out of stock —</div>
+      <div class="text-muted">still showing as available on your store.</div>
+    </div>
+    <!-- Tile 2 -->
+    <div class="p-10 border-b border-line">
+      <div class="serif text-7xl text-coral mb-4">40</div>
+      <div class="text-lg font-medium mb-2">abandoned carts —</div>
+      <div class="text-muted">AED 7,960 in revenue that nobody followed up on.</div>
+    </div>
+    <!-- Tile 3 -->
+    <div class="p-10 md:border-r border-line border-b md:border-b-0">
+      <div class="serif text-7xl text-coral mb-4">3 <span class="text-3xl align-middle text-muted">hrs</span></div>
+      <div class="text-lg font-medium mb-2">per day on logistics admin —</div>
+      <div class="text-muted">time that should go into product, not packaging.</div>
+    </div>
+    <!-- Tile 4 -->
+    <div class="p-10">
+      <div class="serif text-7xl text-coral mb-4">5</div>
+      <div class="text-lg font-medium mb-2">tabs open just to ship one order —</div>
+      <div class="text-muted">courier app, WhatsApp, Notes, Excel, and your store.</div>
+    </div>
+  </div>
+</section>
+
+<!-- ============================================== -->
+<!-- PLATFORM WALKTHROUGH — 4 alternating rows      -->
+<!-- ============================================== -->
+<section id="platform" class="relative z-10 bg-ink text-cream py-24 lg:py-32">
+  <div class="max-w-7xl mx-auto px-6 lg:px-10">
+
+    <div class="max-w-3xl mb-20">
+      <div class="eyebrow text-coral mb-4">The platform</div>
+      <h2 class="serif text-5xl md:text-6xl leading-[1.02]">
+        Everything your ops team does.<br><em>In one dashboard.</em>
+      </h2>
+    </div>
+
+    <!-- Row 1: Orders -->
+    <div class="grid lg:grid-cols-2 gap-16 items-center mb-32">
+      <div>
+        <div class="eyebrow text-coral mb-4">01 · Orders</div>
+        <h3 class="serif text-4xl md:text-5xl mb-6 leading-tight">Every order. Every market. One view.</h3>
+        <p class="text-cream/70 text-lg leading-relaxed mb-6">
+          Orders from UAE, Saudi, and Oman land in a single view. Filter by status, payment, country, or courier. Open an order, see the full timeline, confirm, process, ship. Done.
+        </p>
+        <ul class="space-y-3 text-cream/80">
+          <li class="flex gap-3"><span class="text-coral">→</span> Buraq for UAE. Aramex for international. Automatic.</li>
+          <li class="flex gap-3"><span class="text-coral">→</span> Cash, card, Tabby, Tamara — all at checkout.</li>
+          <li class="flex gap-3"><span class="text-coral">→</span> WhatsApp notification the moment an order lands.</li>
+        </ul>
+      </div>
+      <!-- Mock: Orders table -->
+      <div class="mock-dashboard p-0 overflow-hidden text-ink">
+        <div class="flex items-center justify-between px-4 py-3 border-b border-line bg-cream">
+          <div class="flex gap-2">
+            <div class="w-2.5 h-2.5 rounded-full bg-ink/20"></div>
+            <div class="w-2.5 h-2.5 rounded-full bg-ink/20"></div>
+            <div class="w-2.5 h-2.5 rounded-full bg-ink/20"></div>
+          </div>
+          <div class="mono text-[10px] text-muted">packman.ai / orders</div>
+          <div class="w-10"></div>
+        </div>
+        <div class="p-5">
+          <div class="flex items-center justify-between mb-4">
+            <div>
+              <div class="mono text-[10px] text-muted">ORDERS</div>
+              <div class="serif text-3xl">58 <span class="text-base text-muted mono">pending</span></div>
+            </div>
+            <div class="flex gap-2">
+              <div class="px-3 py-1 border border-line text-xs">All</div>
+              <div class="px-3 py-1 bg-ink text-cream text-xs">Pending</div>
+            </div>
+          </div>
+          <div class="space-y-0 border-t border-line">
+            <div class="flex justify-between items-center py-3 border-b border-line text-sm">
+              <div>
+                <div class="mono text-xs">51MJI-UL99N1</div>
+                <div class="text-muted text-xs">Sarah A. · 🇦🇪</div>
+              </div>
+              <div class="mono">AED 239.65</div>
+              <div class="text-xs px-2 py-1 bg-coral/20 text-coral">Pending</div>
+            </div>
+            <div class="flex justify-between items-center py-3 border-b border-line text-sm">
+              <div>
+                <div class="mono text-xs">51MJI-UL89KW</div>
+                <div class="text-muted text-xs">Ahmed H. · 🇸🇦</div>
+              </div>
+              <div class="mono">AED 180.95</div>
+              <div class="text-xs px-2 py-1 bg-teal/20 text-teal">Shipped</div>
+            </div>
+            <div class="flex justify-between items-center py-3 border-b border-line text-sm">
+              <div>
+                <div class="mono text-xs">51MJI-UL79FR</div>
+                <div class="text-muted text-xs">Maya K. · 🇴🇲</div>
+              </div>
+              <div class="mono">AED 418.50</div>
+              <div class="text-xs px-2 py-1 bg-teal/20 text-teal">Shipped</div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <!-- Row 2: Inventory -->
+    <div class="grid lg:grid-cols-2 gap-16 items-center mb-32">
+      <!-- Mock: Inventory widget -->
+      <div class="mock-dashboard p-6 text-ink order-2 lg:order-1">
+        <div class="mono text-[10px] text-muted mb-1">INVENTORY · REAL-TIME</div>
+        <div class="serif text-3xl mb-6">19 <span class="text-base text-muted mono">SKUs tracked</span></div>
+        <div class="space-y-3">
+          <div class="flex items-center gap-4">
+            <div class="w-10 h-10 bg-cream border border-line"></div>
+            <div class="flex-1">
+              <div class="text-sm font-medium">Linen shirt · natural</div>
+              <div class="mono text-xs text-muted">Packman WH · AE</div>
+            </div>
+            <div class="text-right">
+              <div class="mono text-sm">24</div>
+              <div class="mono text-[10px] text-muted">avl</div>
+            </div>
+          </div>
+          <div class="flex items-center gap-4">
+            <div class="w-10 h-10 bg-cream border border-line"></div>
+            <div class="flex-1">
+              <div class="text-sm font-medium">Oud 50ml</div>
+              <div class="mono text-xs text-coral">Low stock</div>
+            </div>
+            <div class="text-right">
+              <div class="mono text-sm text-coral">3</div>
+              <div class="mono text-[10px] text-muted">avl</div>
+            </div>
+          </div>
+          <div class="flex items-center gap-4">
+            <div class="w-10 h-10 bg-cream border border-line"></div>
+            <div class="flex-1">
+              <div class="text-sm font-medium">Prayer mat · sage</div>
+              <div class="mono text-xs text-muted">Own location</div>
+            </div>
+            <div class="text-right">
+              <div class="mono text-sm">87</div>
+              <div class="mono text-[10px] text-muted">avl</div>
+            </div>
+          </div>
+        </div>
+      </div>
+      <div class="order-1 lg:order-2">
+        <div class="eyebrow text-coral mb-4">02 · Inventory</div>
+        <h3 class="serif text-4xl md:text-5xl mb-6 leading-tight">Stock syncs itself.</h3>
+        <p class="text-cream/70 text-lg leading-relaxed mb-6">
+          When an order is placed, stock is reserved. When it ships, it's deducted. See Packman warehouse stock and your own location — both in real time. Never oversell again.
+        </p>
+        <ul class="space-y-3 text-cream/80">
+          <li class="flex gap-3"><span class="text-coral">→</span> Low-stock alerts before it's a crisis.</li>
+          <li class="flex gap-3"><span class="text-coral">→</span> Bulk-edit stock from Excel in 60 seconds.</li>
+          <li class="flex gap-3"><span class="text-coral">→</span> Reserved vs available — always transparent.</li>
+        </ul>
+      </div>
+    </div>
+
+    <!-- Row 3: Shipping -->
+    <div class="grid lg:grid-cols-2 gap-16 items-center mb-32">
+      <div>
+        <div class="eyebrow text-coral mb-4">03 · Shipping</div>
+        <h3 class="serif text-4xl md:text-5xl mb-6 leading-tight">Buraq handles the city. Aramex handles the region.</h3>
+        <p class="text-cream/70 text-lg leading-relaxed mb-6">
+          Domestic UAE orders ship via Buraq. International — KSA, Oman, GCC — ship via Aramex. You set the rules once. Packman routes every order automatically. Your customer gets the tracking link.
+        </p>
+        <div class="flex flex-wrap gap-3">
+          <div class="px-4 py-2 border border-cream/20 mono text-xs">🇦🇪 BURAQ · AED 9 standard</div>
+          <div class="px-4 py-2 border border-cream/20 mono text-xs">🌍 ARAMEX · AED 25 standard</div>
+        </div>
+      </div>
+      <!-- Mock: Shipping map -->
+      <div class="mock-dashboard p-6 text-ink">
+        <div class="mono text-[10px] text-muted mb-4">ACTIVE ROUTES · TODAY</div>
+        <div class="space-y-4">
+          <div class="flex items-center gap-3 text-sm">
+            <div class="w-3 h-3 rounded-full bg-teal"></div>
+            <div class="flex-1">Dubai → Abu Dhabi</div>
+            <div class="mono text-xs text-muted">Buraq · 4h</div>
+          </div>
+          <div class="flex items-center gap-3 text-sm">
+            <div class="w-3 h-3 rounded-full bg-teal"></div>
+            <div class="flex-1">Dubai → Riyadh</div>
+            <div class="mono text-xs text-muted">Aramex · 3d</div>
+          </div>
+          <div class="flex items-center gap-3 text-sm">
+            <div class="w-3 h-3 rounded-full bg-coral"></div>
+            <div class="flex-1">Dubai → Muscat</div>
+            <div class="mono text-xs text-muted">Aramex · 2d</div>
+          </div>
+          <div class="flex items-center gap-3 text-sm">
+            <div class="w-3 h-3 rounded-full bg-teal"></div>
+            <div class="flex-1">Dubai → Kuwait City</div>
+            <div class="mono text-xs text-muted">Aramex · 4d</div>
+          </div>
+        </div>
+        <div class="mt-6 pt-4 border-t border-line mono text-xs text-muted flex justify-between">
+          <span>26 in transit</span>
+          <span>32 delivered today</span>
+        </div>
+      </div>
+    </div>
+
+    <!-- Row 4: AI Media Generator -->
+    <div class="grid lg:grid-cols-2 gap-16 items-center">
+      <!-- Mock: AI Generator -->
+      <div class="mock-dashboard p-6 text-ink order-2 lg:order-1">
+        <div class="mono text-[10px] text-muted mb-4">AI MEDIA GENERATOR · 10 CREDITS</div>
+        <div class="grid grid-cols-2 gap-3">
+          <div>
+            <div class="aspect-square bg-cream border border-line flex items-center justify-center text-xs text-muted mb-2">
+              Raw upload
+            </div>
+            <div class="mono text-[10px] text-muted">Before</div>
+          </div>
+          <div>
+            <div class="aspect-square bg-gradient-to-br from-paper via-cream to-teal/20 border border-line flex items-center justify-center relative">
+              <div class="w-10 h-14 bg-coral/60 rounded-sm"></div>
+            </div>
+            <div class="mono text-[10px] text-coral">After · packshot</div>
+          </div>
+        </div>
+        <div class="flex gap-2 mt-4 mono text-xs">
+          <div class="px-2 py-1 bg-ink text-cream">VFX scene</div>
+          <div class="px-2 py-1 border border-line">Packshot</div>
+          <div class="px-2 py-1 border border-line">Mockup</div>
+        </div>
+      </div>
+      <div class="order-1 lg:order-2">
+        <div class="eyebrow text-coral mb-4">04 · AI content</div>
+        <h3 class="serif text-4xl md:text-5xl mb-6 leading-tight">Product photos that don't look like they were shot in a car park.</h3>
+        <p class="text-cream/70 text-lg leading-relaxed mb-6">
+          Upload a raw product photo. Pick a template — VFX scene, packshot, mockup. Get a professional result in 30 seconds. Good enough for your ads. Good enough for your store.
+        </p>
+        <ul class="space-y-3 text-cream/80">
+          <li class="flex gap-3"><span class="text-coral">→</span> Product media · 10 credits each</li>
+          <li class="flex gap-3"><span class="text-coral">→</span> Social-ready content · 15 credits</li>
+          <li class="flex gap-3"><span class="text-coral">→</span> 3D models for product pages · 20 credits</li>
+        </ul>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ============================================== -->
+<!-- PRICING TEASER — 3-card row                    -->
+<!-- ============================================== -->
+<section class="relative z-10 max-w-7xl mx-auto px-6 lg:px-10 py-24 lg:py-32">
+  <div class="flex flex-col md:flex-row md:items-end md:justify-between mb-16 gap-6">
+    <div class="max-w-2xl">
+      <div class="eyebrow text-teal mb-4">Pricing</div>
+      <h2 class="serif text-5xl md:text-6xl leading-[1.02]">Less than your mobile plan.</h2>
+    </div>
+    <a href="/pricing" class="mono text-sm underline underline-offset-4 hover:text-coral transition">See full pricing →</a>
+  </div>
+
+  <div class="grid md:grid-cols-3 gap-0 border border-line">
+    <!-- Monthly -->
+    <div class="bg-paper p-8 border-b md:border-b-0 md:border-r border-line">
+      <div class="mono text-xs text-muted mb-2">MONTHLY</div>
+      <div class="flex items-baseline gap-2 mb-6">
+        <span class="serif text-6xl">AED 400</span>
+        <span class="text-muted">/mo</span>
+      </div>
+      <p class="text-sm text-muted mb-6">Cancel anytime. Rolling month-to-month.</p>
+      <a href="#cta" class="block text-center py-3 border border-ink text-sm hover:bg-ink hover:text-cream transition">Start monthly</a>
+    </div>
+    <!-- 6-month (featured) -->
+    <div class="bg-ink text-cream p-8 border-b md:border-b-0 md:border-r border-line relative">
+      <div class="absolute top-0 right-0 bg-coral text-ink mono text-[10px] px-3 py-1">MOST POPULAR</div>
+      <div class="mono text-xs text-coral mb-2">6-MONTH</div>
+      <div class="flex items-baseline gap-2 mb-6">
+        <span class="serif text-6xl">AED 2,100</span>
+      </div>
+      <p class="text-sm text-cream/70 mb-6">AED 350/mo effective · Save AED 300.</p>
+      <a href="#cta" class="block text-center py-3 bg-coral text-ink text-sm font-medium hover:bg-coral/90 transition">Choose 6-month</a>
+    </div>
+    <!-- Yearly -->
+    <div class="bg-paper p-8">
+      <div class="mono text-xs text-muted mb-2">12-MONTH · BEST VALUE</div>
+      <div class="flex items-baseline gap-2 mb-6">
+        <span class="serif text-6xl">AED 3,900</span>
+      </div>
+      <p class="text-sm text-muted mb-6">AED 325/mo effective · Save AED 900.</p>
+      <a href="#cta" class="block text-center py-3 border border-ink text-sm hover:bg-ink hover:text-cream transition">Go yearly</a>
+    </div>
+  </div>
+</section>
+
+<!-- ============================================== -->
+<!-- SOCIAL PROOF — rotating testimonial strip      -->
+<!-- ============================================== -->
+<section class="relative z-10 bg-paper border-y border-line py-24">
+  <div class="max-w-7xl mx-auto px-6 lg:px-10">
+    <div class="grid lg:grid-cols-3 gap-12">
+      <figure class="border-l-2 border-coral pl-6">
+        <blockquote class="serif text-2xl leading-tight mb-4">The first week I switched, everything just appeared. My inventory, my orders, my analytics — all in one screen. Like turning the lights on.</blockquote>
+        <figcaption class="mono text-xs text-muted">Fashion brand founder · UAE</figcaption>
+      </figure>
+      <figure class="border-l-2 border-teal pl-6">
+        <blockquote class="serif text-2xl leading-tight mb-4">Revenue up 56% month-on-month. AOV at AED 199. I haven't packed a box myself since February.</blockquote>
+        <figcaption class="mono text-xs text-muted">DTC skincare brand · Dubai</figcaption>
+      </figure>
+      <figure class="border-l-2 border-ink pl-6">
+        <blockquote class="serif text-2xl leading-tight mb-4">Went from managing three tools to managing one. Saved maybe ten hours a week. More importantly, stopped losing orders.</blockquote>
+        <figcaption class="mono text-xs text-muted">Streetwear founder · Riyadh</figcaption>
+      </figure>
+    </div>
+  </div>
+</section>
+
+<!-- ============================================== -->
+<!-- FINAL CTA BAND — coral, full width             -->
+<!-- ============================================== -->
+<section id="cta" class="relative z-10 bg-coral py-24 lg:py-32">
+  <div class="max-w-5xl mx-auto px-6 lg:px-10 text-center">
+    <h2 class="serif text-5xl md:text-7xl lg:text-8xl leading-[0.95] mb-8 text-ink">
+      Your first order ships<br><em>in 48 hours.</em>
+    </h2>
+    <p class="text-lg text-ink/80 max-w-xl mx-auto mb-10">
+      Start free. No credit card. You pay when you're ready to go live.
+    </p>
+    <a href="#" class="inline-block bg-ink text-cream px-10 py-5 text-lg font-medium hover:bg-ink/90 transition">
+      Start Free →
+    </a>
+    <p class="mono text-xs text-ink/60 mt-6">
+      Sign up in 60 seconds · Trade licence needed only to go live
+    </p>
+  </div>
+</section>
+
+<!-- ============================================== -->
+<!-- FOOTER                                         -->
+<!-- ============================================== -->
+<footer class="relative z-10 bg-ink text-cream/70 py-16">
+  <div class="max-w-7xl mx-auto px-6 lg:px-10">
+    <div class="grid md:grid-cols-5 gap-10 pb-12 border-b border-cream/10">
+      <div class="md:col-span-2">
+        <div class="flex items-center gap-2 mb-4">
+          <div class="w-8 h-8 bg-cream flex items-center justify-center">
+            <span class="serif text-ink text-xl leading-none">p</span>
+          </div>
+          <span class="serif text-2xl text-cream">packman</span>
+        </div>
+        <p class="text-sm max-w-xs mb-6">E-commerce infrastructure for Gulf brands. UAE · KSA · Oman.</p>
+        <div class="flex gap-3">
+          <input type="email" placeholder="you@brand.com" class="bg-cream/5 border border-cream/20 px-3 py-2 text-sm flex-1 min-w-0" />
+          <button class="px-4 bg-coral text-ink text-sm">Subscribe</button>
+        </div>
+      </div>
+      <div>
+        <div class="eyebrow text-coral mb-4">Product</div>
+        <ul class="space-y-2 text-sm">
+          <li><a href="#" class="hover:text-cream">Platform</a></li>
+          <li><a href="/pricing" class="hover:text-cream">Pricing</a></li>
+          <li><a href="#" class="hover:text-cream">AI Media</a></li>
+          <li><a href="#" class="hover:text-cream">API</a></li>
+        </ul>
+      </div>
+      <div>
+        <div class="eyebrow text-coral mb-4">Company</div>
+        <ul class="space-y-2 text-sm">
+          <li><a href="#" class="hover:text-cream">About</a></li>
+          <li><a href="#" class="hover:text-cream">Careers</a></li>
+          <li><a href="#" class="hover:text-cream">Contact</a></li>
+        </ul>
+      </div>
+      <div>
+        <div class="eyebrow text-coral mb-4">Regions</div>
+        <ul class="space-y-2 text-sm">
+          <li>🇦🇪 UAE</li>
+          <li>🇸🇦 Saudi Arabia</li>
+          <li>🇴🇲 Oman</li>
+        </ul>
+      </div>
+    </div>
+    <div class="flex flex-col md:flex-row justify-between pt-8 mono text-xs text-cream/50 gap-3">
+      <div>© 2026 Packman.ai · Al Quoz, Dubai, UAE</div>
+      <div class="flex gap-6">
+        <a href="#" class="hover:text-cream">Privacy</a>
+        <a href="#" class="hover:text-cream">Terms</a>
+        <a href="#" class="hover:text-cream">Cookies</a>
+      </div>
+    </div>
+  </div>
+</footer>
+
+</body>
+</html>

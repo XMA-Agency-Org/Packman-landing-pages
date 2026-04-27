@@ -1,0 +1,691 @@
+<!DOCTYPE html>
+<html lang="en" dir="ltr">
+<head>
+<meta charset="UTF-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+<title>Packman — One platform. UAE & Oman. منصة واحدة · الإمارات وعُمان</title>
+<meta name="description" content="Sell, store, and ship across UAE and Oman from one dashboard. Bilingual. VAT-ready. Aramex + Buraq integrated." />
+
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Nunito+Sans:ital,wght@0,300;0,400;0,600;0,700;0,800;0,900;1,400;1,700;1,900&family=JetBrains+Mono:wght@400;500&family=IBM+Plex+Sans+Arabic:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+<script src="https://cdn.tailwindcss.com"></script>
+<script>
+  tailwind.config = { theme: { extend: {
+    colors: { navy: '#2C2A59', ink: '#2C2A59', cream: '#F3F1E8', paper: '#FFFFFF', volt: '#D2F801', coral: '#D2F801', grape: '#5B22C7', teal: '#5B22C7', lilac: '#C8C6E7', muted: '#6B6B85', line: '#E2E0E8', sand: '#EBE4D4' },
+    fontFamily: { sans: ['"Avenir Next LT Pro"','"Avenir Next"','"Nunito Sans"','system-ui','sans-serif'], serif: ['"Avenir Next LT Pro"','"Avenir Next"','"Nunito Sans"','system-ui','sans-serif'], mono: ['"JetBrains Mono"','"Geist Mono"','ui-monospace','monospace'], ar: ['"Avenir Arabic"','"IBM Plex Sans Arabic"','system-ui','sans-serif'], arserif: ['"Avenir Arabic"','"IBM Plex Sans Arabic"','system-ui','sans-serif'] }
+  }}};
+</script>
+<style>
+  @font-face {
+    font-family: 'Avenir Arabic';
+    src: url('./assets/avenir-arabic-book.otf') format('opentype');
+    font-weight: 400; font-style: normal; font-display: swap;
+  }
+  @font-face {
+    font-family: 'Avenir Arabic';
+    src: url('./assets/avenir-arabic-black.otf') format('opentype');
+    font-weight: 900; font-style: normal; font-display: swap;
+  }
+  html { scroll-behavior: smooth; }
+  body {
+    background: #F3F1E8; color: #2C2A59;
+    font-family: 'Avenir Next LT Pro', 'Avenir Next', 'Nunito Sans', system-ui, sans-serif;
+    font-weight: 400;
+  }
+  /* .serif kept as a class name for minimal diffs, but now renders as heavy geometric sans matching brand wordmark */
+  .serif {
+    font-family: 'Avenir Next LT Pro', 'Avenir Next', 'Nunito Sans', system-ui, sans-serif;
+    font-weight: 900; letter-spacing: -0.035em; line-height: 1.02;
+  }
+  .serif.italic, .italic { font-style: italic; }
+  .mono { font-family: 'JetBrains Mono', 'Geist Mono', ui-monospace, monospace; letter-spacing: 0.02em; font-weight: 500; }
+  .eyebrow { font-family: 'JetBrains Mono', 'Geist Mono', monospace; font-size: 11px; letter-spacing: 0.18em; text-transform: uppercase; font-weight: 500; }
+
+  /* Arabic */
+  .ar, [lang="ar"].ar, [dir="rtl"] .ar { font-family: 'Avenir Arabic', 'IBM Plex Sans Arabic', system-ui, sans-serif; font-weight: 400; }
+  .ar-serif, [lang="ar"].ar-serif { font-family: 'Avenir Arabic', 'IBM Plex Sans Arabic', system-ui, sans-serif; font-weight: 900; letter-spacing: -0.01em; }
+
+  /* Brand CTA — volt green fill, navy text, hardware-style offset shadow */
+  .btn-primary {
+    background: #D2F801; color: #2C2A59; font-weight: 700;
+    padding: 14px 24px; border-radius: 2px;
+    transition: all 0.15s; box-shadow: 0 1px 0 #2C2A59;
+    display: inline-flex; align-items: center; gap: 8px;
+  }
+  .btn-primary:hover { transform: translate(-1px,-1px); box-shadow: 3px 3px 0 #2C2A59; }
+  .btn-ghost { border: 1px solid #2C2A59; padding: 13px 23px; border-radius: 2px; color: #2C2A59; font-weight: 600; transition: all 0.15s; display: inline-flex; align-items: center; gap: 8px; }
+  .btn-ghost:hover { background: #2C2A59; color: #D2F801; }
+
+  @keyframes pulse-volt { 0%,100% { box-shadow: 0 0 0 0 rgba(210,248,1,0.65); } 50% { box-shadow: 0 0 0 18px rgba(210,248,1,0); } }
+  .play-btn { animation: pulse-volt 2.4s ease-in-out infinite; }
+  /* Legacy compat */
+  @keyframes pulse-coral { 0%,100% { box-shadow: 0 0 0 0 rgba(210,248,1,0.65); } 50% { box-shadow: 0 0 0 18px rgba(210,248,1,0); } }
+
+  .divider-v { border-left: 1px solid #E2E0E8; }
+  @media (max-width: 768px) { .divider-v { border-left: none; border-top: 1px solid #E2E0E8; } }
+
+  /* Language pill toggle visual */
+  .lang-pill { border: 1px solid #2C2A59; border-radius: 999px; padding: 2px; display: inline-flex; font-size: 12px; }
+  .lang-pill button { padding: 4px 14px; border-radius: 999px; transition: all 0.15s; }
+  .lang-pill .on { background: #2C2A59; color: #F3F1E8; }
+
+  details summary { list-style: none; cursor: pointer; }
+  details summary::-webkit-details-marker { display: none; }
+
+  /* Context-aware accents — readable grape on light surfaces, vibrant volt on dark */
+  .text-coral { color: #5B22C7 !important; }
+  .hover\:text-coral:hover { color: #5B22C7 !important; }
+  .bg-ink .text-coral, .bg-navy .text-coral,
+  section.bg-ink .text-coral, section.bg-navy .text-coral,
+  .bg-ink .hover\:text-coral:hover, .bg-navy .hover\:text-coral:hover,
+  footer.bg-ink .text-coral, footer.bg-navy .text-coral { color: #D2F801 !important; }
+
+  /* Nav links: use grape as hover on cream nav */
+  nav.bg-cream\/85 a.hover\:text-coral:hover { color: #5B22C7 !important; }
+
+  /* Paper/grain texture on body for editorial warmth */
+  body::before {
+    content: ''; position: fixed; inset: 0; pointer-events: none; z-index: 0; opacity: 0.035;
+    background-image: radial-gradient(circle at 1px 1px, #2C2A59 1px, transparent 0);
+    background-size: 3px 3px;
+  }
+  main, section, nav, footer { position: relative; z-index: 1; }
+
+</style>
+</head>
+
+<body class="antialiased">
+
+<!-- NAV — bilingual: EN primary, AR lang pill -->
+<nav class="sticky top-0 z-50 bg-cream/85 backdrop-blur-md border-b border-line">
+  <div class="max-w-7xl mx-auto px-6 lg:px-10 h-18 flex items-center justify-between py-4">
+    <a href="/" class="flex items-center gap-2">
+      <img src="./assets/wordmark-navy.png" alt="packman" class="h-7 sm:h-8 w-auto" />
+    </a>
+    <div class="hidden md:flex items-center gap-8 text-sm">
+      <a href="/" class="hover:text-coral">Platform</a>
+      <a href="/pricing" class="hover:text-coral">Pricing</a>
+      <a href="#" class="text-coral">UAE · Oman</a>
+      <a href="#" class="hover:text-coral">Learn</a>
+    </div>
+    <div class="flex items-center gap-3">
+      <!-- Language toggle pill — visual only -->
+      <div class="lang-pill hidden sm:inline-flex mono">
+        <button class="on">EN</button>
+        <button class="ar">عربي</button>
+      </div>
+      <a href="#" class="text-sm hidden md:inline hover:text-coral">Log in</a>
+      <a href="#cta" class="btn-primary text-sm">Start free</a>
+    </div>
+  </div>
+</nav>
+
+<!-- ============================================= -->
+<!-- HERO — bilingual split: EN headline + AR stacked -->
+<!-- ============================================= -->
+<section class="relative overflow-hidden">
+  <div class="max-w-7xl mx-auto px-6 lg:px-10 pt-16 pb-20">
+    <div class="grid lg:grid-cols-12 gap-10 items-center">
+
+      <div class="lg:col-span-6">
+        <div class="flex items-center gap-3 mb-8">
+          <span class="eyebrow text-muted">UAE · Oman</span>
+          <span class="w-8 h-px bg-muted"></span>
+          <span class="eyebrow text-muted">bilingual · VAT-ready</span>
+        </div>
+
+        <!-- English headline -->
+        <h1 class="serif text-5xl md:text-6xl lg:text-7xl leading-[1.02] tracking-tight">
+          One platform.<br>
+          <span class="italic text-grape">Two markets.</span><br>
+          One dashboard.
+        </h1>
+
+        <!-- Arabic stacked subhead — inline dir flip -->
+        <div class="mt-8 pb-8 border-b border-line">
+          <p dir="rtl" lang="ar" class="ar-serif text-3xl md:text-4xl text-ink leading-snug">
+            منصّة واحدة <span class="text-coral">·</span> سوقين <span class="text-coral">·</span> داشبورد واحد
+          </p>
+        </div>
+
+        <!-- Dual language body -->
+        <div class="mt-8 grid sm:grid-cols-2 gap-6 max-w-2xl">
+          <p class="text-base text-ink/80 leading-relaxed">
+            Sell, store, and ship across the UAE and Oman from a single screen. Buraq for domestic. Aramex for cross-border. Arabic and English side by side. VAT-ready out of the box.
+          </p>
+          <p dir="rtl" lang="ar" class="ar text-base text-ink/80 leading-relaxed">
+            بِع، خزّن، واشحن بين الإمارات وسلطنة عُمان من شاشة وحدة. بُراق للداخلي، أرامكس للدولي. عربي وإنجليزي جنب بعض. جاهز للضريبة من أول يوم.
+          </p>
+        </div>
+
+        <!-- Dual CTA -->
+        <div class="mt-10 flex flex-wrap items-center gap-4">
+          <a href="#cta" class="btn-primary">
+            Start free
+            <span class="text-ink/60">·</span>
+            <span dir="rtl" lang="ar" class="ar">ابدأ مجاناً</span>
+            <svg class="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M17 8l4 4m0 0l-4 4m4-4H3"/></svg>
+          </a>
+          <a href="#demo" class="btn-ghost text-sm">
+            <svg class="w-4 h-4" fill="currentColor" viewBox="0 0 24 24"><path d="M8 5v14l11-7z"/></svg>
+            Watch 60-sec demo
+          </a>
+        </div>
+
+        <p class="mt-6 text-xs text-muted mono">NO CREDIT CARD · FIRST ORDER IN 48H · <span dir="rtl" lang="ar" class="ar" style="font-size:13px">بدون بطاقة ائتمان</span></p>
+      </div>
+
+      <!-- VSL #7 player -->
+      <div class="lg:col-span-6" id="demo">
+        <div class="relative aspect-video bg-ink overflow-hidden" style="box-shadow: 8px 8px 0 #2C2A59;">
+          <!-- Dual-market backdrop: UAE left / Oman right -->
+          <div class="absolute inset-0 grid grid-cols-2">
+            <!-- UAE side — skyline abstraction -->
+            <div class="relative bg-gradient-to-b from-[#142438] to-[#2C2A59] border-r border-coral/20">
+              <div class="absolute bottom-0 left-0 right-0 h-32 flex items-end justify-around px-4 opacity-60">
+                <div class="w-3 bg-coral/40" style="height: 40%"></div>
+                <div class="w-4 bg-coral/60" style="height: 90%"></div>
+                <div class="w-2 bg-coral/30" style="height: 55%"></div>
+                <div class="w-5 bg-coral/50" style="height: 75%"></div>
+                <div class="w-3 bg-coral/40" style="height: 60%"></div>
+              </div>
+              <div class="absolute top-5 left-5">
+                <div class="mono text-[10px] text-coral/80 tracking-widest">UAE</div>
+                <div class="mono text-[10px] text-cream/50 tracking-widest">DUBAI · 18:42</div>
+              </div>
+            </div>
+            <!-- Oman side — harbor abstraction -->
+            <div class="relative bg-gradient-to-b from-[#1a2a3e] to-[#2C2A59]">
+              <div class="absolute bottom-0 left-0 right-0 h-24 flex items-end justify-around px-4 opacity-50">
+                <div class="w-6 bg-teal/60" style="height: 50%"></div>
+                <div class="w-4 bg-teal/40" style="height: 35%"></div>
+                <div class="w-8 bg-teal/70" style="height: 65%"></div>
+                <div class="w-3 bg-teal/50" style="height: 30%"></div>
+              </div>
+              <div class="absolute top-5 right-5 text-right">
+                <div class="mono text-[10px] text-teal tracking-widest">OMAN</div>
+                <div class="mono text-[10px] text-cream/50 tracking-widest">MUSCAT · 18:42</div>
+              </div>
+            </div>
+          </div>
+
+          <!-- Center play -->
+          <div class="absolute inset-0 flex items-center justify-center">
+            <button class="play-btn w-20 h-20 rounded-full bg-coral flex items-center justify-center">
+              <svg class="w-7 h-7 text-ink ml-1" fill="currentColor" viewBox="0 0 24 24"><path d="M8 5v14l11-7z"/></svg>
+            </button>
+          </div>
+
+          <!-- Caption bar -->
+          <div class="absolute bottom-0 left-0 right-0 bg-ink/80 backdrop-blur px-4 py-3 flex items-center justify-between">
+            <div>
+              <div class="mono text-[10px] text-cream/60 tracking-widest">VSL · BILINGUAL</div>
+              <div class="text-cream text-sm">Your brand. Your warehouse. Your rules. · <span dir="rtl" lang="ar" class="ar text-xs">براندك · مستودعك · قواعدك</span></div>
+            </div>
+            <span class="mono text-[11px] text-cream/80">0:52</span>
+          </div>
+        </div>
+
+        <!-- Trust row under player -->
+        <div class="mt-6 flex items-center justify-between text-xs text-muted mono">
+          <span>BURAQ · DOMESTIC UAE</span>
+          <span>·</span>
+          <span>ARAMEX · CROSS-BORDER</span>
+          <span>·</span>
+          <span>VAT 5%</span>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ============================================= -->
+<!-- DUAL PROOF STRIP — UAE left · Oman right -->
+<!-- ============================================= -->
+<section class="border-y border-line bg-paper">
+  <div class="max-w-7xl mx-auto px-6 lg:px-10 py-14">
+    <div class="grid md:grid-cols-2 gap-0">
+
+      <!-- UAE column -->
+      <div class="pr-0 md:pr-10 pb-10 md:pb-0">
+        <div class="flex items-center gap-3 mb-6">
+          <div class="w-10 h-7 bg-ink flex items-center justify-center">
+            <div class="w-8 h-5 flex flex-col">
+              <div class="flex-1 bg-[#009736]"></div>
+              <div class="flex-1 bg-white"></div>
+              <div class="flex-1 bg-black"></div>
+            </div>
+          </div>
+          <span class="eyebrow text-muted">UAE · United Arab Emirates</span>
+        </div>
+        <h3 class="serif text-3xl mb-3">Built for Dubai merchants from day one.</h3>
+        <p dir="rtl" lang="ar" class="ar text-base text-ink/70 mb-6">مبني لتجّار الإمارات من أول يوم.</p>
+        <ul class="space-y-3 text-sm">
+          <li class="flex gap-3"><span class="text-coral mono">→</span> Buraq domestic at AED 9 per shipment</li>
+          <li class="flex gap-3"><span class="text-coral mono">→</span> AED base currency · VAT 5% auto-applied at AED 375K threshold</li>
+          <li class="flex gap-3"><span class="text-coral mono">→</span> Warehousing in Al Quoz · pick, pack, ship handled by Packman</li>
+          <li class="flex gap-3"><span class="text-coral mono">→</span> Trade licence verification inside the dashboard</li>
+        </ul>
+      </div>
+
+      <!-- Oman column -->
+      <div class="pl-0 md:pl-10 divider-v pt-10 md:pt-0">
+        <div class="flex items-center gap-3 mb-6">
+          <div class="w-10 h-7 bg-ink flex items-center justify-center">
+            <div class="w-8 h-5 flex">
+              <div class="w-2 bg-[#ed2024]"></div>
+              <div class="flex-1 flex flex-col">
+                <div class="flex-1 bg-white"></div>
+                <div class="flex-1 bg-[#ed2024]"></div>
+                <div class="flex-1 bg-[#008000]"></div>
+              </div>
+            </div>
+          </div>
+          <span class="eyebrow text-muted">OMAN · Sultanate</span>
+        </div>
+        <h3 class="serif text-3xl mb-3">Ship to Muscat, Salalah, Sohar — same dashboard.</h3>
+        <p dir="rtl" lang="ar" class="ar text-base text-ink/70 mb-6">شحن لمسقط، صلالة، وصحار — من نفس الداشبورد.</p>
+        <ul class="space-y-3 text-sm">
+          <li class="flex gap-3"><span class="text-teal mono">→</span> Aramex cross-border from UAE warehouse to OM addresses</li>
+          <li class="flex gap-3"><span class="text-teal mono">→</span> OMR pricing display at checkout · AED settlement to you</li>
+          <li class="flex gap-3"><span class="text-teal mono">→</span> Arabic storefront toggle · one click per market</li>
+          <li class="flex gap-3"><span class="text-teal mono">→</span> Cash on Delivery supported for Omani buyers</li>
+        </ul>
+      </div>
+
+    </div>
+  </div>
+</section>
+
+<!-- ============================================= -->
+<!-- FEATURE LIST — bilingual stacked labels -->
+<!-- ============================================= -->
+<section class="py-24 bg-cream">
+  <div class="max-w-7xl mx-auto px-6 lg:px-10">
+    <div class="max-w-3xl mb-16">
+      <span class="eyebrow text-muted">THE PLATFORM · <span dir="rtl" lang="ar" class="ar text-xs">المنصّة</span></span>
+      <h2 class="serif text-4xl md:text-5xl leading-[1.05] mt-5">
+        Everything you need to sell across the Gulf.<br>
+        <span dir="rtl" lang="ar" class="ar-serif italic text-grape text-3xl md:text-4xl block mt-3">كل اللي تحتاجه عشان تبيع في الخليج.</span>
+      </h2>
+    </div>
+
+    <div class="grid md:grid-cols-2 lg:grid-cols-3 gap-px bg-line" style="border: 1px solid #E2E0E8;">
+
+      <div class="bg-cream p-8">
+        <div class="mono text-xs text-coral mb-4">01</div>
+        <h4 class="serif text-2xl mb-1">Orders, one screen</h4>
+        <p dir="rtl" lang="ar" class="ar text-sm text-muted mb-4">الطلبات في شاشة وحدة</p>
+        <p class="text-sm text-ink/70 leading-relaxed">UAE and Oman orders land in the same inbox. Filter by country, status, courier. Act on them without switching tabs.</p>
+      </div>
+
+      <div class="bg-cream p-8">
+        <div class="mono text-xs text-coral mb-4">02</div>
+        <h4 class="serif text-2xl mb-1">Inventory, synced</h4>
+        <p dir="rtl" lang="ar" class="ar text-sm text-muted mb-4">المخزون متزامن</p>
+        <p class="text-sm text-ink/70 leading-relaxed">Stock moves are reserved the moment a customer checks out — in either market. No overselling. No manual reconciliation.</p>
+      </div>
+
+      <div class="bg-cream p-8">
+        <div class="mono text-xs text-coral mb-4">03</div>
+        <h4 class="serif text-2xl mb-1">Courier rules</h4>
+        <p dir="rtl" lang="ar" class="ar text-sm text-muted mb-4">قواعد الشحن</p>
+        <p class="text-sm text-ink/70 leading-relaxed">Set Buraq for UAE domestic, Aramex for cross-border to Oman. Rate tiers by weight, zone, method. Once. Then it just runs.</p>
+      </div>
+
+      <div class="bg-cream p-8">
+        <div class="mono text-xs text-coral mb-4">04</div>
+        <h4 class="serif text-2xl mb-1">Bilingual storefront</h4>
+        <p dir="rtl" lang="ar" class="ar text-sm text-muted mb-4">واجهة ثنائية اللغة</p>
+        <p class="text-sm text-ink/70 leading-relaxed">Arabic and English side by side. Customers pick. Product pages, checkout, notifications — all localised.</p>
+      </div>
+
+      <div class="bg-cream p-8">
+        <div class="mono text-xs text-coral mb-4">05</div>
+        <h4 class="serif text-2xl mb-1">VAT &amp; compliance</h4>
+        <p dir="rtl" lang="ar" class="ar text-sm text-muted mb-4">الضريبة والامتثال</p>
+        <p class="text-sm text-ink/70 leading-relaxed">5% UAE VAT auto-calculated above threshold. TRN field. Tax certificate upload. Ready when the FTA asks.</p>
+      </div>
+
+      <div class="bg-cream p-8">
+        <div class="mono text-xs text-coral mb-4">06</div>
+        <h4 class="serif text-2xl mb-1">API + integrations</h4>
+        <p dir="rtl" lang="ar" class="ar text-sm text-muted mb-4">واجهات برمجة التطبيقات</p>
+        <p class="text-sm text-ink/70 leading-relaxed">Scoped tokens. Orders, inventory, customers endpoints. Plug into your existing ERP or accounting stack in an afternoon.</p>
+      </div>
+
+    </div>
+  </div>
+</section>
+
+<!-- ============================================= -->
+<!-- BILINGUAL DASHBOARD MOCK — scene of the product in use -->
+<!-- ============================================= -->
+<section class="py-24 bg-ink text-cream">
+  <div class="max-w-7xl mx-auto px-6 lg:px-10">
+    <div class="grid lg:grid-cols-12 gap-12 items-center">
+
+      <div class="lg:col-span-5">
+        <span class="eyebrow text-cream/60">ONE DASHBOARD · <span dir="rtl" lang="ar" class="ar text-xs">داشبورد واحد</span></span>
+        <h2 class="serif text-4xl md:text-5xl leading-tight mt-5 mb-6">
+          UAE orders on the left. Oman orders on the right. Same screen.
+        </h2>
+        <p dir="rtl" lang="ar" class="ar-serif italic text-2xl text-cream/80 mb-8">طلبات الإمارات وطلبات عُمان في نفس الشاشة.</p>
+        <p class="text-cream/70 leading-relaxed mb-4">No more juggling two accounts, two logins, two sets of reports. Flip the country filter, and you see what you need to see.</p>
+        <p dir="rtl" lang="ar" class="ar text-cream/70 leading-relaxed">ما فيش حاجة تدير حسابين وتسجّلين دخول. غيّر فلتر الدولة، وتشوف اللي تبيه.</p>
+      </div>
+
+      <!-- Inline SVG dashboard mock -->
+      <div class="lg:col-span-7">
+        <div class="bg-cream text-ink rounded-sm overflow-hidden" style="box-shadow: 10px 10px 0 #5B22C7;">
+          <!-- top bar -->
+          <div class="flex items-center justify-between px-5 py-3 border-b border-line bg-paper">
+            <div class="flex items-center gap-2">
+              <img src="./assets/logo-icon-navy.png" alt="" class="w-6 h-6" />
+              <span class="mono text-xs">packman / orders</span>
+            </div>
+            <div class="flex items-center gap-2 mono text-[10px]">
+              <span class="px-2 py-1 bg-ink text-cream">EN</span>
+              <span class="px-2 py-1 border border-line">عربي</span>
+            </div>
+          </div>
+          <!-- split inbox -->
+          <div class="grid grid-cols-2 divide-x divide-line text-xs">
+            <!-- UAE side -->
+            <div class="p-4">
+              <div class="flex items-center justify-between mb-3">
+                <span class="mono text-[10px] text-muted">UAE · AED</span>
+                <span class="mono text-[10px] text-teal">●  LIVE</span>
+              </div>
+              <div class="space-y-2">
+                <div class="flex items-center justify-between py-2 border-b border-line">
+                  <span>51MJI-UL99</span>
+                  <span class="text-coral mono">AED 239.65</span>
+                </div>
+                <div class="flex items-center justify-between py-2 border-b border-line">
+                  <span>51MJI-K2X4</span>
+                  <span class="text-coral mono">AED 180.95</span>
+                </div>
+                <div class="flex items-center justify-between py-2 border-b border-line">
+                  <span>51MJI-77AB</span>
+                  <span class="text-coral mono">AED 412.00</span>
+                </div>
+                <div class="flex items-center justify-between py-2 text-muted">
+                  <span>+ 55 more</span>
+                  <span class="mono">Buraq</span>
+                </div>
+              </div>
+            </div>
+            <!-- Oman side -->
+            <div class="p-4">
+              <div class="flex items-center justify-between mb-3">
+                <span class="mono text-[10px] text-muted">OMAN · OMR</span>
+                <span class="mono text-[10px] text-teal">●  LIVE</span>
+              </div>
+              <div class="space-y-2">
+                <div class="flex items-center justify-between py-2 border-b border-line">
+                  <span>51MJI-OM31</span>
+                  <span class="text-teal mono">OMR 22.40</span>
+                </div>
+                <div class="flex items-center justify-between py-2 border-b border-line">
+                  <span>51MJI-MC88</span>
+                  <span class="text-teal mono">OMR 17.90</span>
+                </div>
+                <div class="flex items-center justify-between py-2 border-b border-line">
+                  <span>51MJI-SL12</span>
+                  <span class="text-teal mono">OMR 38.75</span>
+                </div>
+                <div class="flex items-center justify-between py-2 text-muted">
+                  <span>+ 12 more</span>
+                  <span class="mono">Aramex</span>
+                </div>
+              </div>
+            </div>
+          </div>
+          <!-- footer summary -->
+          <div class="grid grid-cols-3 divide-x divide-line border-t border-line bg-paper">
+            <div class="p-4">
+              <div class="mono text-[10px] text-muted mb-1">TOTAL TODAY</div>
+              <div class="serif text-2xl">AED 5,777</div>
+            </div>
+            <div class="p-4">
+              <div class="mono text-[10px] text-muted mb-1">PENDING · <span class="ar">قيد التنفيذ</span></div>
+              <div class="serif text-2xl">58</div>
+            </div>
+            <div class="p-4">
+              <div class="mono text-[10px] text-muted mb-1">CARTS LEFT</div>
+              <div class="serif text-2xl text-coral">40</div>
+            </div>
+          </div>
+        </div>
+      </div>
+
+    </div>
+  </div>
+</section>
+
+<!-- ============================================= -->
+<!-- PRICING — bilingual single-plan card -->
+<!-- ============================================= -->
+<section class="py-24 bg-cream">
+  <div class="max-w-5xl mx-auto px-6 lg:px-10 text-center">
+    <span class="eyebrow text-muted">PRICING · <span dir="rtl" lang="ar" class="ar text-xs">التسعير</span></span>
+    <h2 class="serif text-4xl md:text-5xl mt-5 mb-3">
+      One price. Both markets. No surprises.
+    </h2>
+    <p dir="rtl" lang="ar" class="ar-serif text-2xl text-ink/70 mb-14">سعر واحد · سوقين · بدون مفاجآت.</p>
+
+    <div class="grid md:grid-cols-3 gap-6 text-left">
+
+      <div class="bg-paper border border-line p-8">
+        <div class="mono text-xs text-muted mb-3">MONTHLY · <span class="ar text-xs">شهري</span></div>
+        <div class="serif text-5xl mb-1">AED 400</div>
+        <div class="text-sm text-muted mb-6">per month · شهرياً</div>
+        <ul class="text-sm space-y-2 text-ink/80">
+          <li>→ Both markets live</li>
+          <li>→ Cancel anytime</li>
+          <li>→ No commitment</li>
+        </ul>
+      </div>
+
+      <div class="bg-ink text-cream p-8 relative" style="box-shadow: 6px 6px 0 #5B22C7;">
+        <div class="absolute -top-3 left-6 bg-coral text-ink mono text-[10px] px-3 py-1">BEST VALUE · أفضل قيمة</div>
+        <div class="mono text-xs text-cream/60 mb-3">6-MONTH · <span class="ar text-xs">٦ شهور</span></div>
+        <div class="serif text-5xl mb-1">AED 2,100</div>
+        <div class="text-sm text-cream/70 mb-6">AED 350/mo · save AED 300</div>
+        <ul class="text-sm space-y-2 text-cream/90">
+          <li>→ Best balance</li>
+          <li>→ Priority onboarding</li>
+          <li>→ Both markets · both languages</li>
+        </ul>
+      </div>
+
+      <div class="bg-paper border border-line p-8">
+        <div class="mono text-xs text-muted mb-3">YEARLY · <span class="ar text-xs">سنوي</span></div>
+        <div class="serif text-5xl mb-1">AED 3,900</div>
+        <div class="text-sm text-muted mb-6">AED 325/mo · save AED 900</div>
+        <ul class="text-sm space-y-2 text-ink/80">
+          <li>→ Maximum savings</li>
+          <li>→ Free account review</li>
+          <li>→ Locked rate 12 months</li>
+        </ul>
+      </div>
+
+    </div>
+
+    <p class="mt-10 text-sm text-muted">Or start completely free. No credit card. <span dir="rtl" lang="ar" class="ar">أو ابدأ مجاناً. بدون بطاقة ائتمان.</span></p>
+  </div>
+</section>
+
+<!-- ============================================= -->
+<!-- FAQ — bilingual Q pairs -->
+<!-- ============================================= -->
+<section class="py-24 bg-paper border-y border-line">
+  <div class="max-w-4xl mx-auto px-6 lg:px-10">
+    <span class="eyebrow text-muted">FAQ · <span dir="rtl" lang="ar" class="ar text-xs">أسئلة شائعة</span></span>
+    <h2 class="serif text-4xl mt-5 mb-12">Common questions. Straight answers.</h2>
+
+    <div class="divide-y divide-line border-t border-b border-line">
+
+      <details class="py-5 group">
+        <summary class="flex items-center justify-between">
+          <span class="serif text-xl pr-8">Do I need a separate account for Oman?</span>
+          <span class="mono text-coral text-xl group-open:rotate-45 transition">+</span>
+        </summary>
+        <div class="mt-4 text-sm text-ink/70 leading-relaxed">
+          <p>No. One Packman account covers both UAE and Oman. You toggle supported countries in settings, connect Aramex for cross-border, and the same inventory serves both markets.</p>
+          <p dir="rtl" lang="ar" class="ar mt-3">لا. حساب واحد يكفي للإمارات وعُمان. تفعّل الدول المدعومة في الإعدادات، وتربط أرامكس، ونفس المخزون يخدم السوقين.</p>
+        </div>
+      </details>
+
+      <details class="py-5 group">
+        <summary class="flex items-center justify-between">
+          <span class="serif text-xl pr-8">What currency do I get paid in?</span>
+          <span class="mono text-coral text-xl group-open:rotate-45 transition">+</span>
+        </summary>
+        <div class="mt-4 text-sm text-ink/70 leading-relaxed">
+          <p>Settlement is in AED. Omani customers see OMR prices at checkout (converted at the live rate within 1% of the system base). You get one consolidated payout.</p>
+          <p dir="rtl" lang="ar" class="ar mt-3">التحويل بالدرهم الإماراتي. الزبون العُماني يشوف السعر بالريال العُماني عند الدفع. وأنت تستلم دفعة واحدة موحّدة.</p>
+        </div>
+      </details>
+
+      <details class="py-5 group">
+        <summary class="flex items-center justify-between">
+          <span class="serif text-xl pr-8">Do I need to be VAT-registered to start?</span>
+          <span class="mono text-coral text-xl group-open:rotate-45 transition">+</span>
+        </summary>
+        <div class="mt-4 text-sm text-ink/70 leading-relaxed">
+          <p>No. VAT only applies above AED 375,000 in rolling 12-month sales. Below that, the system tracks your sales so you know when the threshold is coming. When it is, upload your TRN and enable the VAT toggle.</p>
+          <p dir="rtl" lang="ar" class="ar mt-3">لا. الضريبة تنطبق فوق ٣٧٥,٠٠٠ درهم مبيعات سنوية. تحتها، النظام يتابع مبيعاتك ويعلمك قبل الوصول للحد.</p>
+        </div>
+      </details>
+
+      <details class="py-5 group">
+        <summary class="flex items-center justify-between">
+          <span class="serif text-xl pr-8">Can my Arabic-speaking team run the backend?</span>
+          <span class="mono text-coral text-xl group-open:rotate-45 transition">+</span>
+        </summary>
+        <div class="mt-4 text-sm text-ink/70 leading-relaxed">
+          <p>Yes. The dashboard itself is bilingual. Each team member picks their language under user settings. Orders, catalog, analytics — all mirror in Arabic with right-to-left layout.</p>
+          <p dir="rtl" lang="ar" class="ar mt-3">نعم. الداشبورد نفسه ثنائي اللغة. كل عضو بالفريق يختار لغته. الطلبات، الكتالوج، التحليلات — كلها تظهر بالعربي مع تنسيق من اليمين لليسار.</p>
+        </div>
+      </details>
+
+      <details class="py-5 group">
+        <summary class="flex items-center justify-between">
+          <span class="serif text-xl pr-8">How long to go live in Oman?</span>
+          <span class="mono text-coral text-xl group-open:rotate-45 transition">+</span>
+        </summary>
+        <div class="mt-4 text-sm text-ink/70 leading-relaxed">
+          <p>If your UAE store is already live, Oman takes an afternoon: enable OM in supported countries, map Aramex as the cross-border method, add Arabic translations for any UAE-only product copy, and publish. First Oman order typically ships within 48 hours.</p>
+          <p dir="rtl" lang="ar" class="ar mt-3">لو متجر الإمارات شغّال، فتح عُمان ياخذ ساعات. أول شحنة خلال ٤٨ ساعة.</p>
+        </div>
+      </details>
+
+    </div>
+  </div>
+</section>
+
+<!-- ============================================= -->
+<!-- FINAL CTA — bilingual -->
+<!-- ============================================= -->
+<section id="cta" class="py-28 bg-ink text-cream relative overflow-hidden">
+  <div class="absolute inset-0 opacity-10">
+    <div class="absolute top-10 left-10 serif text-[200px] italic text-grape leading-none">UAE</div>
+    <div class="absolute bottom-10 right-10 serif text-[200px] italic text-grape leading-none">OM</div>
+  </div>
+
+  <div class="max-w-4xl mx-auto px-6 lg:px-10 text-center relative">
+    <span class="eyebrow text-cream/60">START NOW · <span dir="rtl" lang="ar" class="ar text-xs">ابدأ الحين</span></span>
+    <h2 class="serif text-5xl md:text-6xl leading-[1.05] mt-6 mb-4">
+      Start free. Ship in 48 hours.
+    </h2>
+    <p dir="rtl" lang="ar" class="ar-serif italic text-3xl md:text-4xl text-coral mb-10">ابدأ مجاناً. شحن خلال ٤٨ ساعة.</p>
+
+    <p class="text-cream/80 text-lg mb-10 max-w-2xl mx-auto">
+      One account. Two markets. No credit card to sign up.<br>
+      <span dir="rtl" lang="ar" class="ar text-base text-cream/70">حساب واحد · سوقين · بدون بطاقة ائتمان للتسجيل.</span>
+    </p>
+
+    <div class="flex flex-wrap items-center justify-center gap-4">
+      <a href="#" class="btn-primary text-base">
+        Start free
+        <span class="text-ink/60">·</span>
+        <span dir="rtl" lang="ar" class="ar">ابدأ مجاناً</span>
+        <svg class="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M17 8l4 4m0 0l-4 4m4-4H3"/></svg>
+      </a>
+      <a href="#" class="text-cream border border-cream/30 px-6 py-[13px] rounded-sm text-sm hover:bg-cream hover:text-ink transition">
+        Book a bilingual walkthrough
+      </a>
+    </div>
+
+    <p class="mt-8 mono text-xs text-cream/50">AED 400/MONTH · NO COMMITMENT · CANCEL ANYTIME</p>
+  </div>
+</section>
+
+<!-- ============================================= -->
+<!-- FOOTER -->
+<!-- ============================================= -->
+<footer class="bg-cream border-t border-line">
+  <div class="max-w-7xl mx-auto px-6 lg:px-10 py-16">
+    <div class="grid md:grid-cols-5 gap-10 mb-12">
+
+      <div class="md:col-span-2">
+        <a href="/" class="flex items-center gap-2 mb-5">
+          <img src="./assets/wordmark-navy.png" alt="packman" class="h-7 sm:h-8 w-auto" />
+        </a>
+        <p class="text-sm text-ink/70 max-w-xs mb-2">E-commerce infrastructure for UAE and Oman merchants.</p>
+        <p dir="rtl" lang="ar" class="ar text-sm text-ink/70 max-w-xs">بنية تحتية للتجارة الإلكترونية لتجّار الإمارات وعُمان.</p>
+
+        <form class="mt-6 flex items-center gap-0 max-w-sm border border-ink">
+          <input type="email" placeholder="you@brand.com" class="bg-transparent flex-1 px-4 py-3 text-sm focus:outline-none">
+          <button class="bg-ink text-cream px-4 py-3 text-sm mono">JOIN →</button>
+        </form>
+      </div>
+
+      <div>
+        <div class="eyebrow text-muted mb-4">PRODUCT</div>
+        <ul class="space-y-2 text-sm">
+          <li><a href="/" class="hover:text-coral">Platform</a></li>
+          <li><a href="/pricing" class="hover:text-coral">Pricing</a></li>
+          <li><a href="#" class="hover:text-coral">Dashboard</a></li>
+          <li><a href="#" class="hover:text-coral">API</a></li>
+        </ul>
+      </div>
+
+      <div>
+        <div class="eyebrow text-muted mb-4">COMPANY</div>
+        <ul class="space-y-2 text-sm">
+          <li><a href="#" class="hover:text-coral">About</a></li>
+          <li><a href="#" class="hover:text-coral">Careers</a></li>
+          <li><a href="#" class="hover:text-coral">Contact</a></li>
+          <li><a href="#" class="hover:text-coral">Legal</a></li>
+        </ul>
+      </div>
+
+      <div>
+        <div class="eyebrow text-muted mb-4">REGIONS</div>
+        <ul class="space-y-2 text-sm">
+          <li><a href="#" class="hover:text-coral">UAE</a></li>
+          <li><a href="#" class="hover:text-coral">KSA · السعودية</a></li>
+          <li><a href="#" class="text-coral">Oman · عُمان</a></li>
+        </ul>
+      </div>
+    </div>
+
+    <div class="pt-8 border-t border-line flex flex-col md:flex-row items-start md:items-center justify-between gap-4 text-xs text-muted mono">
+      <div>© 2026 PACKMAN.AI · AL QUOZ, DUBAI · UAE &amp; OMAN</div>
+      <div class="flex items-center gap-6">
+        <span>VAT READY</span>
+        <span>·</span>
+        <span>BURAQ · ARAMEX</span>
+        <span>·</span>
+        <span dir="rtl" lang="ar" class="ar" style="font-size:12px">الإمارات · عُمان</span>
+      </div>
+    </div>
+  </div>
+</footer>
+
+</body>
+</html>

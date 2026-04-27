@@ -1,0 +1,400 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+<title>Pricing — Packman</title>
+<meta name="description" content="AED 400/month. One plan. Four ways to pay. Or start completely free — no credit card." />
+
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Nunito+Sans:ital,wght@0,300;0,400;0,600;0,700;0,800;0,900;1,400;1,700;1,900&family=JetBrains+Mono:wght@400;500&family=IBM+Plex+Sans+Arabic:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+<script src="https://cdn.tailwindcss.com"></script>
+<script>
+  tailwind.config = { theme: { extend: {
+    colors: { navy: '#2C2A59', ink: '#2C2A59', cream: '#F3F1E8', paper: '#FFFFFF', volt: '#D2F801', coral: '#D2F801', grape: '#5B22C7', teal: '#5B22C7', lilac: '#C8C6E7', muted: '#6B6B85', line: '#E2E0E8', sand: '#EBE4D4' },
+    fontFamily: { sans: ['"Avenir Next LT Pro"','"Avenir Next"','"Nunito Sans"','system-ui','sans-serif'], serif: ['"Avenir Next LT Pro"','"Avenir Next"','"Nunito Sans"','system-ui','sans-serif'], mono: ['"JetBrains Mono"','"Geist Mono"','ui-monospace','monospace'], ar: ['"Avenir Arabic"','"IBM Plex Sans Arabic"','system-ui','sans-serif'], arserif: ['"Avenir Arabic"','"IBM Plex Sans Arabic"','system-ui','sans-serif'] }
+  }}};
+</script>
+<style>
+  @font-face { font-family: 'Avenir Arabic'; src: url('./assets/avenir-arabic-book.otf') format('opentype'); font-weight: 400; font-style: normal; font-display: swap; }
+  @font-face { font-family: 'Avenir Arabic'; src: url('./assets/avenir-arabic-black.otf') format('opentype'); font-weight: 900; font-style: normal; font-display: swap; }
+  .ar { font-family: 'Avenir Arabic','IBM Plex Sans Arabic',system-ui,sans-serif; font-weight: 400; }
+  .ar-serif { font-family: 'Avenir Arabic','IBM Plex Sans Arabic',system-ui,sans-serif; font-weight: 900; }
+
+  html { scroll-behavior: smooth; }
+  body { background: #F3F1E8; color: #2C2A59; font-family: 'Avenir Next LT Pro','Avenir Next','Nunito Sans',system-ui,sans-serif; font-weight: 400; }
+  .serif { font-family: 'Avenir Next LT Pro','Avenir Next','Nunito Sans',system-ui,sans-serif; font-weight: 900; letter-spacing: -0.035em; line-height: 1.02; }
+  .mono { font-family: 'JetBrains Mono','Geist Mono',ui-monospace,monospace; letter-spacing: 0.02em; font-weight: 500; }
+  .eyebrow { font-family: 'JetBrains Mono','Geist Mono',monospace; font-size: 11px; letter-spacing: 0.18em; text-transform: uppercase; font-weight: 500; }
+  .btn-primary { background: #D2F801; color: #2C2A59; font-weight: 700; padding: 14px 24px; border-radius: 2px; transition: all 0.15s; box-shadow: 0 1px 0 #2C2A59; }
+  .btn-primary:hover { transform: translate(-1px,-1px); box-shadow: 3px 3px 0 #2C2A59; }
+  .btn-ghost { border: 1px solid #2C2A59; color: #2C2A59; padding: 13px 24px; border-radius: 2px; font-weight: 500; transition: all 0.15s; }
+  .btn-ghost:hover { background: #2C2A59; color: #F3F1E8; }
+
+  /* FAQ accordion */
+  details[open] summary .chev { transform: rotate(45deg); }
+  details summary { list-style: none; cursor: pointer; }
+  details summary::-webkit-details-marker { display: none; }
+  .chev { transition: transform 0.2s; }
+
+  /* Context-aware accents — readable grape on light surfaces, vibrant volt on dark */
+  .text-coral { color: #5B22C7 !important; }
+  .hover\:text-coral:hover { color: #5B22C7 !important; }
+  .bg-ink .text-coral, .bg-navy .text-coral,
+  section.bg-ink .text-coral, section.bg-navy .text-coral,
+  .bg-ink .hover\:text-coral:hover, .bg-navy .hover\:text-coral:hover,
+  footer.bg-ink .text-coral, footer.bg-navy .text-coral { color: #D2F801 !important; }
+
+  /* Nav links: use grape as hover on cream nav */
+  nav.bg-cream\/85 a.hover\:text-coral:hover { color: #5B22C7 !important; }
+
+  /* Paper/grain texture on body for editorial warmth */
+  body::before {
+    content: ''; position: fixed; inset: 0; pointer-events: none; z-index: 0; opacity: 0.035;
+    background-image: radial-gradient(circle at 1px 1px, #2C2A59 1px, transparent 0);
+    background-size: 3px 3px;
+  }
+  main, section, nav, footer { position: relative; z-index: 1; }
+
+</style>
+</head>
+
+<body class="antialiased">
+
+<!-- NAV -->
+<nav class="sticky top-0 z-50 bg-cream/85 backdrop-blur-md border-b border-line">
+  <div class="max-w-7xl mx-auto px-6 lg:px-10 h-18 flex items-center justify-between py-4">
+    <a href="/" class="flex items-center gap-2">
+      <img src="./assets/wordmark-navy.png" alt="packman" class="h-7 sm:h-8 w-auto" />
+    </a>
+    <div class="hidden md:flex items-center gap-8 text-sm">
+      <a href="/" class="hover:text-coral">Platform</a>
+      <a href="#" class="text-coral">Pricing</a>
+      <a href="#" class="hover:text-coral">For brands</a>
+      <a href="#" class="hover:text-coral">Learn</a>
+    </div>
+    <div class="flex items-center gap-3">
+      <a href="#" class="hidden sm:inline text-sm">Log in</a>
+      <a href="#cta" class="btn-primary text-sm">Start Free →</a>
+    </div>
+  </div>
+</nav>
+
+<!-- ============================================== -->
+<!-- PRICING HERO — tight, type-forward             -->
+<!-- ============================================== -->
+<section class="max-w-5xl mx-auto px-6 lg:px-10 pt-20 lg:pt-28 pb-16 text-center">
+  <div class="eyebrow text-teal mb-6">Pricing</div>
+  <h1 class="serif text-6xl md:text-8xl leading-[0.95] mb-6">
+    Simple pricing.<br>
+    <em>Four ways to pay.</em>
+  </h1>
+  <p class="text-lg md:text-xl text-ink/70 max-w-2xl mx-auto">
+    One plan. AED 400 a month. Commit longer, pay less. Or start completely free — no credit card, no trade licence to sign up.
+  </p>
+</section>
+
+<!-- ============================================== -->
+<!-- PLAN SELECTOR — 4 cards                        -->
+<!-- ============================================== -->
+<section class="max-w-7xl mx-auto px-6 lg:px-10 pb-24">
+  <div class="grid md:grid-cols-2 lg:grid-cols-4 gap-0 border border-line bg-paper">
+
+    <!-- Monthly -->
+    <div class="p-8 border-b lg:border-b-0 lg:border-r border-line flex flex-col">
+      <div class="mono text-xs text-muted mb-3">MONTHLY</div>
+      <div class="mb-4">
+        <div class="serif text-5xl">AED 400</div>
+        <div class="mono text-xs text-muted mt-1">/month · AED 400 effective</div>
+      </div>
+      <div class="mono text-xs text-muted mb-6">Rolling · cancel anytime</div>
+      <ul class="space-y-2 text-sm mb-8 flex-1">
+        <li class="flex gap-2"><span class="text-coral">✓</span> Unlimited orders</li>
+        <li class="flex gap-2"><span class="text-coral">✓</span> Buraq + Aramex shipping</li>
+        <li class="flex gap-2"><span class="text-coral">✓</span> UAE · KSA · Oman markets</li>
+        <li class="flex gap-2"><span class="text-coral">✓</span> 100 AI credits/month</li>
+        <li class="flex gap-2"><span class="text-coral">✓</span> EN + AR storefront</li>
+      </ul>
+      <a href="#" class="block text-center py-3 border border-ink text-sm hover:bg-ink hover:text-cream transition">Choose Plan</a>
+    </div>
+
+    <!-- 3-month -->
+    <div class="p-8 border-b lg:border-b-0 lg:border-r border-line flex flex-col">
+      <div class="mono text-xs text-muted mb-3">3-MONTH</div>
+      <div class="mb-4">
+        <div class="serif text-5xl">AED 1,100</div>
+        <div class="mono text-xs text-muted mt-1">/upfront · AED 367 effective</div>
+      </div>
+      <div class="mono text-xs text-teal mb-6">Save AED 100</div>
+      <ul class="space-y-2 text-sm mb-8 flex-1">
+        <li class="flex gap-2"><span class="text-coral">✓</span> Everything in monthly</li>
+        <li class="flex gap-2"><span class="text-coral">✓</span> 300 AI credits included</li>
+        <li class="flex gap-2"><span class="text-coral">✓</span> Priority onboarding</li>
+        <li class="flex gap-2"><span class="text-coral">✓</span> Quarterly growth review</li>
+      </ul>
+      <a href="#" class="block text-center py-3 border border-ink text-sm hover:bg-ink hover:text-cream transition">Choose Plan</a>
+    </div>
+
+    <!-- 6-month (featured) -->
+    <div class="p-8 border-b md:border-b-0 md:border-r border-line bg-ink text-cream flex flex-col relative">
+      <div class="absolute top-0 right-0 bg-coral text-ink mono text-[10px] px-3 py-1">MOST POPULAR</div>
+      <div class="mono text-xs text-coral mb-3">6-MONTH</div>
+      <div class="mb-4">
+        <div class="serif text-5xl">AED 2,100</div>
+        <div class="mono text-xs text-cream/60 mt-1">/upfront · AED 350 effective</div>
+      </div>
+      <div class="mono text-xs text-coral mb-6">Save AED 300</div>
+      <ul class="space-y-2 text-sm mb-8 flex-1 text-cream/90">
+        <li class="flex gap-2"><span class="text-coral">✓</span> Everything in 3-month</li>
+        <li class="flex gap-2"><span class="text-coral">✓</span> 600 AI credits included</li>
+        <li class="flex gap-2"><span class="text-coral">✓</span> Dedicated Slack channel</li>
+        <li class="flex gap-2"><span class="text-coral">✓</span> Free theme customisation</li>
+      </ul>
+      <a href="#" class="block text-center py-3 bg-coral text-ink text-sm font-medium hover:bg-coral/90 transition">Choose Plan</a>
+    </div>
+
+    <!-- 12-month -->
+    <div class="p-8 flex flex-col">
+      <div class="mono text-xs text-muted mb-3">12-MONTH · BEST VALUE</div>
+      <div class="mb-4">
+        <div class="serif text-5xl">AED 3,900</div>
+        <div class="mono text-xs text-muted mt-1">/upfront · AED 325 effective</div>
+      </div>
+      <div class="mono text-xs text-coral mb-6">Save AED 900</div>
+      <ul class="space-y-2 text-sm mb-8 flex-1">
+        <li class="flex gap-2"><span class="text-coral">✓</span> Everything in 6-month</li>
+        <li class="flex gap-2"><span class="text-coral">✓</span> 1,500 AI credits included</li>
+        <li class="flex gap-2"><span class="text-coral">✓</span> Quarterly business review</li>
+        <li class="flex gap-2"><span class="text-coral">✓</span> API access unlocked</li>
+      </ul>
+      <a href="#" class="block text-center py-3 border border-ink text-sm hover:bg-ink hover:text-cream transition">Choose Plan</a>
+    </div>
+  </div>
+</section>
+
+<!-- ============================================== -->
+<!-- FREE TRIAL BAND — teal                         -->
+<!-- ============================================== -->
+<section class="bg-teal text-cream py-20">
+  <div class="max-w-5xl mx-auto px-6 lg:px-10 grid md:grid-cols-2 gap-12 items-center">
+    <div>
+      <div class="eyebrow text-coral mb-4">Not ready to commit?</div>
+      <h2 class="serif text-5xl md:text-6xl leading-[1.02] mb-6">Start completely free.</h2>
+      <p class="text-lg text-cream/85 mb-8">
+        Full platform access. No credit card. No trade licence at signup. Upload your licence when you're ready to go live — usually within 48 hours.
+      </p>
+      <a href="#cta" class="inline-block bg-coral text-ink px-8 py-4 font-medium hover:bg-coral/90 transition">Start Free Trial →</a>
+    </div>
+    <ul class="space-y-4 text-cream/90">
+      <li class="flex items-start gap-3 pb-4 border-b border-cream/20">
+        <span class="mono text-coral">01</span>
+        <div><div class="font-medium">No credit card required</div><div class="text-sm text-cream/70">Sign up with just an email.</div></div>
+      </li>
+      <li class="flex items-start gap-3 pb-4 border-b border-cream/20">
+        <span class="mono text-coral">02</span>
+        <div><div class="font-medium">Full platform access</div><div class="text-sm text-cream/70">Every feature. Nothing locked behind a paywall.</div></div>
+      </li>
+      <li class="flex items-start gap-3 pb-4 border-b border-cream/20">
+        <span class="mono text-coral">03</span>
+        <div><div class="font-medium">48-hour first-order guarantee</div><div class="text-sm text-cream/70">Upload a licence, go live, ship your first order.</div></div>
+      </li>
+      <li class="flex items-start gap-3">
+        <span class="mono text-coral">04</span>
+        <div><div class="font-medium">Pay when you're ready</div><div class="text-sm text-cream/70">Convert to paid only when the platform earns it.</div></div>
+      </li>
+    </ul>
+  </div>
+</section>
+
+<!-- ============================================== -->
+<!-- VSL #2 EMBED                                   -->
+<!-- ============================================== -->
+<section class="max-w-5xl mx-auto px-6 lg:px-10 py-24">
+  <div class="text-center mb-10">
+    <div class="eyebrow text-coral mb-4">VSL · Platform demo</div>
+    <h2 class="serif text-4xl md:text-5xl leading-tight">See exactly what AED 400/month gets you.</h2>
+  </div>
+  <!-- VSL #2 Player: 90-sec demo walkthrough -->
+  <div class="relative aspect-video bg-ink rounded-sm overflow-hidden cursor-pointer group" style="box-shadow: 16px 16px 0 #5B22C7;">
+    <div class="absolute inset-0 bg-gradient-to-br from-ink via-ink to-teal/30"></div>
+    <div class="absolute inset-10 border border-cream/20 rounded opacity-40">
+      <div class="p-5 grid grid-cols-4 gap-2">
+        <div class="h-16 bg-cream/10 col-span-2 rounded"></div>
+        <div class="h-16 bg-cream/10 rounded"></div>
+        <div class="h-16 bg-coral/30 rounded"></div>
+        <div class="h-24 col-span-4 bg-cream/5 rounded"></div>
+      </div>
+    </div>
+    <div class="absolute inset-0 flex items-center justify-center">
+      <div class="w-24 h-24 bg-coral rounded-full flex items-center justify-center group-hover:scale-110 transition">
+        <svg width="32" height="32" viewBox="0 0 24 24" fill="#2C2A59" class="ml-1"><path d="M8 5v14l11-7z"/></svg>
+      </div>
+    </div>
+    <div class="absolute bottom-4 right-4 mono text-xs text-cream bg-ink/70 px-2 py-1 rounded">01:30</div>
+    <div class="absolute top-4 left-4 eyebrow text-cream/80">90-sec platform tour</div>
+  </div>
+</section>
+
+<!-- ============================================== -->
+<!-- FEATURE MATRIX — long comparison               -->
+<!-- ============================================== -->
+<section class="max-w-7xl mx-auto px-6 lg:px-10 py-24">
+  <div class="mb-12">
+    <div class="eyebrow text-teal mb-4">What's included</div>
+    <h2 class="serif text-5xl md:text-6xl leading-[1.02]">Everything. In every plan.</h2>
+  </div>
+
+  <div class="bg-paper border border-line overflow-x-auto">
+    <table class="w-full text-sm">
+      <thead class="border-b border-line">
+        <tr class="text-left">
+          <th class="p-4 font-medium w-1/2">Feature</th>
+          <th class="p-4 mono text-xs text-center">Monthly</th>
+          <th class="p-4 mono text-xs text-center">3-mo</th>
+          <th class="p-4 mono text-xs text-center bg-ink text-cream">6-mo</th>
+          <th class="p-4 mono text-xs text-center">12-mo</th>
+        </tr>
+      </thead>
+      <tbody>
+        <!-- Populate with feature rows -->
+        <tr class="border-b border-line"><td class="p-4">Unlimited orders & products</td><td class="text-center text-coral">✓</td><td class="text-center text-coral">✓</td><td class="text-center text-coral bg-ink/5">✓</td><td class="text-center text-coral">✓</td></tr>
+        <tr class="border-b border-line"><td class="p-4">Buraq (domestic UAE)</td><td class="text-center text-coral">✓</td><td class="text-center text-coral">✓</td><td class="text-center text-coral bg-ink/5">✓</td><td class="text-center text-coral">✓</td></tr>
+        <tr class="border-b border-line"><td class="p-4">Aramex (KSA · Oman · GCC)</td><td class="text-center text-coral">✓</td><td class="text-center text-coral">✓</td><td class="text-center text-coral bg-ink/5">✓</td><td class="text-center text-coral">✓</td></tr>
+        <tr class="border-b border-line"><td class="p-4">Arabic + English storefront</td><td class="text-center text-coral">✓</td><td class="text-center text-coral">✓</td><td class="text-center text-coral bg-ink/5">✓</td><td class="text-center text-coral">✓</td></tr>
+        <tr class="border-b border-line"><td class="p-4">VAT-ready checkout</td><td class="text-center text-coral">✓</td><td class="text-center text-coral">✓</td><td class="text-center text-coral bg-ink/5">✓</td><td class="text-center text-coral">✓</td></tr>
+        <tr class="border-b border-line"><td class="p-4">Cash on delivery + card + Tabby + Tamara</td><td class="text-center text-coral">✓</td><td class="text-center text-coral">✓</td><td class="text-center text-coral bg-ink/5">✓</td><td class="text-center text-coral">✓</td></tr>
+        <tr class="border-b border-line"><td class="p-4">AI credits / month</td><td class="text-center mono">100</td><td class="text-center mono">100</td><td class="text-center mono bg-ink/5">100</td><td class="text-center mono">125</td></tr>
+        <tr class="border-b border-line"><td class="p-4">Bonus AI credits at signup</td><td class="text-center mono">0</td><td class="text-center mono">300</td><td class="text-center mono bg-ink/5 text-coral">600</td><td class="text-center mono text-coral">1,500</td></tr>
+        <tr class="border-b border-line"><td class="p-4">Custom domain + SSL</td><td class="text-center text-coral">✓</td><td class="text-center text-coral">✓</td><td class="text-center text-coral bg-ink/5">✓</td><td class="text-center text-coral">✓</td></tr>
+        <tr class="border-b border-line"><td class="p-4">Priority onboarding</td><td class="text-center text-muted">—</td><td class="text-center text-coral">✓</td><td class="text-center text-coral bg-ink/5">✓</td><td class="text-center text-coral">✓</td></tr>
+        <tr class="border-b border-line"><td class="p-4">Dedicated Slack channel</td><td class="text-center text-muted">—</td><td class="text-center text-muted">—</td><td class="text-center text-coral bg-ink/5">✓</td><td class="text-center text-coral">✓</td></tr>
+        <tr class="border-b border-line"><td class="p-4">API access</td><td class="text-center text-muted">—</td><td class="text-center text-muted">—</td><td class="text-center text-muted bg-ink/5">—</td><td class="text-center text-coral">✓</td></tr>
+        <tr><td class="p-4">Quarterly business review</td><td class="text-center text-muted">—</td><td class="text-center text-muted">—</td><td class="text-center text-muted bg-ink/5">—</td><td class="text-center text-coral">✓</td></tr>
+      </tbody>
+    </table>
+  </div>
+</section>
+
+<!-- ============================================== -->
+<!-- ADD-ON SERVICES                                -->
+<!-- ============================================== -->
+<section class="max-w-7xl mx-auto px-6 lg:px-10 py-24">
+  <div class="mb-12">
+    <div class="eyebrow text-teal mb-4">Optional add-ons</div>
+    <h2 class="serif text-5xl md:text-6xl leading-[1.02]">When you need more.</h2>
+  </div>
+
+  <div class="grid md:grid-cols-2 gap-6">
+    <!-- Account Mgmt -->
+    <div class="bg-paper border border-line p-8">
+      <div class="flex items-start justify-between mb-6">
+        <div>
+          <div class="mono text-xs text-muted mb-2">ACCOUNT MANAGEMENT</div>
+          <h3 class="serif text-3xl">A human on your team.</h3>
+        </div>
+        <div class="text-right">
+          <div class="serif text-3xl">AED 800</div>
+          <div class="mono text-xs text-muted">/month</div>
+        </div>
+      </div>
+      <p class="text-muted mb-4">Dedicated manager. Store design support. Builder training. Priority support on everything.</p>
+      <p class="mono text-xs text-muted">3-mo AED 2,400 · 6-mo AED 4,800 · Yearly AED 9,600</p>
+    </div>
+
+    <!-- Storage -->
+    <div class="bg-paper border border-line p-8">
+      <div class="flex items-start justify-between mb-6">
+        <div>
+          <div class="mono text-xs text-muted mb-2">STORAGE & WAREHOUSE</div>
+          <h3 class="serif text-3xl">Physical fulfilment.</h3>
+        </div>
+        <div class="text-right">
+          <div class="serif text-3xl">AED 2,000</div>
+          <div class="mono text-xs text-muted">/year · per pallet</div>
+        </div>
+      </div>
+      <p class="text-muted mb-4">Packman warehouses in UAE, KSA, Oman. Stock alerts, inventory tracking, fulfilment included. Box 50×60×90cm.</p>
+      <p class="mono text-xs text-muted">3-mo AED 500 · 6-mo AED 1,000 · Yearly AED 2,000</p>
+    </div>
+  </div>
+</section>
+
+<!-- ============================================== -->
+<!-- FAQ                                            -->
+<!-- ============================================== -->
+<section class="bg-paper border-y border-line py-24">
+  <div class="max-w-4xl mx-auto px-6 lg:px-10">
+    <div class="eyebrow text-coral mb-4">Frequently asked</div>
+    <h2 class="serif text-5xl md:text-6xl leading-[1.02] mb-12">Common questions.</h2>
+
+    <div class="space-y-0 border-t border-line">
+      <details class="border-b border-line group">
+        <summary class="flex justify-between items-center py-5 font-medium">Can I cancel anytime?<span class="chev text-coral text-2xl">+</span></summary>
+        <p class="pb-5 text-muted">Yes. Monthly rolls cancel at end of cycle. Upfront plans cancel within 14 days for a full refund, otherwise run to the end of the committed term.</p>
+      </details>
+      <details class="border-b border-line group">
+        <summary class="flex justify-between items-center py-5 font-medium">Do I need a trade licence to start?<span class="chev text-coral text-2xl">+</span></summary>
+        <p class="pb-5 text-muted">No licence needed to sign up or build your store. You only need to upload it when you're ready to go live and start accepting orders — usually within 48 hours.</p>
+      </details>
+      <details class="border-b border-line group">
+        <summary class="flex justify-between items-center py-5 font-medium">Can I sell in KSA and Oman from a UAE-registered store?<span class="chev text-coral text-2xl">+</span></summary>
+        <p class="pb-5 text-muted">Yes. One dashboard, three markets. Arabic + English out of the box. Aramex handles the cross-border shipping.</p>
+      </details>
+      <details class="border-b border-line group">
+        <summary class="flex justify-between items-center py-5 font-medium">What happens if I run out of AI credits?<span class="chev text-coral text-2xl">+</span></summary>
+        <p class="pb-5 text-muted">Top up from the Wallet in one click. Credits never expire. Product media costs 10 credits, social content 15, 3D models 20.</p>
+      </details>
+      <details class="border-b border-line group">
+        <summary class="flex justify-between items-center py-5 font-medium">How does VAT work?<span class="chev text-coral text-2xl">+</span></summary>
+        <p class="pb-5 text-muted">The platform calculates UAE 5% VAT automatically once you enable it in settings. It tracks your rolling 12-month sales against the AED 375,000 threshold so you know exactly when to register.</p>
+      </details>
+      <details class="border-b border-line group">
+        <summary class="flex justify-between items-center py-5 font-medium">Can I migrate from Shopify?<span class="chev text-coral text-2xl">+</span></summary>
+        <p class="pb-5 text-muted">Yes. Import products via Excel, CSV, or the AI image extractor that reads product photos and builds the listing automatically. Most brands are fully migrated within a week.</p>
+      </details>
+      <details class="border-b border-line group">
+        <summary class="flex justify-between items-center py-5 font-medium">Who owns my customer data?<span class="chev text-coral text-2xl">+</span></summary>
+        <p class="pb-5 text-muted">You do. Export everything anytime. API access on the yearly plan gives you programmatic access to orders, products, and customers.</p>
+      </details>
+      <details class="group">
+        <summary class="flex justify-between items-center py-5 font-medium">Is there a setup fee?<span class="chev text-coral text-2xl">+</span></summary>
+        <p class="pb-5 text-muted">No. The price you see is everything. No hidden onboarding cost, no platform migration charge, no integration fee.</p>
+      </details>
+    </div>
+  </div>
+</section>
+
+<!-- FINAL CTA -->
+<section id="cta" class="bg-coral py-24">
+  <div class="max-w-5xl mx-auto px-6 lg:px-10 text-center">
+    <h2 class="serif text-5xl md:text-7xl leading-[0.95] mb-8 text-ink">Start free. <em>Pay when it works.</em></h2>
+    <a href="#" class="inline-block bg-ink text-cream px-10 py-5 text-lg font-medium hover:bg-ink/90 transition">Start Free Trial →</a>
+    <p class="mono text-xs text-ink/60 mt-6">No credit card · Cancel any upfront plan within 14 days · Full refund</p>
+  </div>
+</section>
+
+<!-- FOOTER -->
+<footer class="bg-ink text-cream/70 py-16">
+  <div class="max-w-7xl mx-auto px-6 lg:px-10">
+    <div class="grid md:grid-cols-5 gap-10 pb-12 border-b border-cream/10">
+      <div class="md:col-span-2">
+        <div class="flex items-center gap-2 mb-4">
+          <div class="w-8 h-8 bg-cream flex items-center justify-center"><span class="serif text-ink text-xl leading-none">p</span></div>
+          <span class="serif text-2xl text-cream">packman</span>
+        </div>
+        <p class="text-sm max-w-xs">E-commerce infrastructure for Gulf brands. UAE · KSA · Oman.</p>
+      </div>
+      <div><div class="eyebrow text-coral mb-4">Product</div><ul class="space-y-2 text-sm"><li><a href="/">Platform</a></li><li><a href="#">Pricing</a></li><li><a href="#">AI Media</a></li></ul></div>
+      <div><div class="eyebrow text-coral mb-4">Company</div><ul class="space-y-2 text-sm"><li><a href="#">About</a></li><li><a href="#">Careers</a></li></ul></div>
+      <div><div class="eyebrow text-coral mb-4">Regions</div><ul class="space-y-2 text-sm"><li>🇦🇪 UAE</li><li>🇸🇦 Saudi Arabia</li><li>🇴🇲 Oman</li></ul></div>
+    </div>
+    <div class="flex flex-col md:flex-row justify-between pt-8 mono text-xs text-cream/50 gap-3">
+      <div>© 2026 Packman.ai · Al Quoz, Dubai, UAE</div>
+      <div class="flex gap-6"><a href="#">Privacy</a><a href="#">Terms</a></div>
+    </div>
+  </div>
+</footer>
+
+</body>
+</html>
