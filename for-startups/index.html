@@ -27,9 +27,9 @@
   .eyebrow { font-family: 'JetBrains Mono','Geist Mono',monospace; font-size: 11px; letter-spacing: 0.18em; text-transform: uppercase; font-weight: 500; }
   .ar { font-family: 'Avenir Arabic','IBM Plex Sans Arabic',system-ui,sans-serif; font-weight: 400; }
   .ar-serif { font-family: 'Avenir Arabic','IBM Plex Sans Arabic',system-ui,sans-serif; font-weight: 900; }
-  .btn-primary { background: #D2F801; color: #2C2A59; font-weight: 700; padding: 14px 24px; border-radius: 12px; transition: all 0.15s; box-shadow: 0 1px 0 #2C2A59; display: inline-flex; align-items: center; gap: 8px; }
+  .btn-primary { background: #D2F801; color: #2C2A59; font-weight: 700; padding: 14px 24px; border-radius: 2px; transition: all 0.15s; box-shadow: 0 1px 0 #2C2A59; display: inline-flex; align-items: center; gap: 8px; }
   .btn-primary:hover { transform: translate(-1px,-1px); box-shadow: 3px 3px 0 #2C2A59; }
-  .btn-ghost { border: 1px solid #2C2A59; padding: 13px 23px; border-radius: 12px; color: #2C2A59; font-weight: 600; transition: all 0.15s; display: inline-flex; align-items: center; gap: 8px; }
+  .btn-ghost { border: 1px solid #2C2A59; padding: 13px 23px; border-radius: 2px; color: #2C2A59; font-weight: 600; transition: all 0.15s; display: inline-flex; align-items: center; gap: 8px; }
   .btn-ghost:hover { background: #2C2A59; color: #D2F801; }
   @keyframes pulse-volt { 0%,100% { box-shadow: 0 0 0 0 rgba(210,248,1,0.65); } 50% { box-shadow: 0 0 0 18px rgba(210,248,1,0); } }
   .play-btn { animation: pulse-volt 2.4s ease-in-out infinite; }
@@ -45,10 +45,71 @@
   body::before { content: ''; position: fixed; inset: 0; pointer-events: none; z-index: 0; opacity: 0.035; background-image: radial-gradient(circle at 1px 1px, #2C2A59 1px, transparent 0); background-size: 3px 3px; }
   main, section, nav, footer { position: relative; z-index: 1; }
 
-  /* Region toggle active state */
+  /* ════════════════════════════════════════════════
+   * EDGY: clip-path shapes — no rectangles
+   * ════════════════════════════════════════════════ */
+
+  /* Buttons → forward-chevron arrow */
+  .btn-primary, .btn-ghost {
+    clip-path: polygon(0 0, calc(100% - 14px) 0, 100% 50%, calc(100% - 14px) 100%, 0 100%);
+    border-radius: 0 !important;
+    padding-right: 30px !important;
+  }
+  .btn-ghost {
+    background: rgba(44, 42, 89, 0.07) !important;
+    border: none !important;
+  }
+  .btn-primary:hover, .btn-ghost:hover {
+    transform: translate(-1px, -1px);
+    box-shadow: none !important;
+  }
+  .btn-ghost:hover { background: rgba(44, 42, 89, 0.14) !important; }
+
+  /* Edge utility classes (per-element overrides) */
+  .edge-tl   { clip-path: polygon(28px 0, 100% 0, 100% 100%, 0 100%, 0 28px) !important; border-radius: 0 !important; }
+  .edge-tr   { clip-path: polygon(0 0, calc(100% - 28px) 0, 100% 28px, 100% 100%, 0 100%) !important; border-radius: 0 !important; }
+  .edge-br   { clip-path: polygon(0 0, 100% 0, 100% calc(100% - 28px), calc(100% - 28px) 100%, 0 100%) !important; border-radius: 0 !important; }
+  .edge-bl   { clip-path: polygon(0 0, 100% 0, 100% 100%, 28px 100%, 0 calc(100% - 28px)) !important; border-radius: 0 !important; }
+  .edge-diag { clip-path: polygon(0 0, calc(100% - 32px) 0, 100% 32px, 100% 100%, 32px 100%, 0 calc(100% - 32px)) !important; border-radius: 0 !important; }
+  .edge-anti { clip-path: polygon(32px 0, 100% 0, 100% calc(100% - 32px), calc(100% - 32px) 100%, 0 100%, 0 32px) !important; border-radius: 0 !important; }
+
+  /* Cards (bg-paper.border / bg-cream.border) → TR cut by default */
+  .bg-paper.border, .bg-cream.border {
+    clip-path: polygon(0 0, calc(100% - 24px) 0, 100% 24px, 100% 100%, 0 100%);
+    border-color: transparent !important;
+    border-radius: 0 !important;
+  }
+
+  /* Dashboard mocks → bigger BR cut + drop-shadow */
+  .mock-dashboard {
+    clip-path: polygon(0 0, 100% 0, 100% calc(100% - 36px), calc(100% - 36px) 100%, 0 100%) !important;
+    border: none !important;
+    border-radius: 0 !important;
+    box-shadow: none !important;
+    filter: drop-shadow(8px 8px 0 #2C2A59);
+  }
+
+  /* VSL hero containers → dramatic BR cut */
+  .aspect-video.bg-ink {
+    clip-path: polygon(0 0, 100% 0, 100% calc(100% - 48px), calc(100% - 48px) 100%, 0 100%);
+    border-radius: 0 !important;
+    box-shadow: none !important;
+    filter: drop-shadow(8px 8px 0 #5B22C7);
+  }
+
+  /* Drop-shadow utilities (for clipped elements) */
+  .drop-grape { filter: drop-shadow(8px 8px 0 #5B22C7); }
+  .drop-ink   { filter: drop-shadow(8px 8px 0 #2C2A59); }
+  .drop-coral { filter: drop-shadow(6px 6px 0 #E85D45); }
+
+  /* "MOST POPULAR" tag rotation */
+  .rot-tag { transform: rotate(-3deg) translateX(-3px); display: inline-block; }
+
+  /* Region toggle states */
   .region-toggle { font: inherit; cursor: pointer; background: transparent; border: none; padding: 0; }
   .region-toggle.region-on { color: #D2F801; font-weight: 600; }
-  footer.bg-cream .region-toggle.region-on { color: #5B22C7; }
+  footer.bg-cream .region-toggle.region-on,
+  footer .bg-cream .region-toggle.region-on { color: #5B22C7; }
 </style>
 </head>
 
@@ -96,7 +157,7 @@
 
 <!-- VSL #4 -->
 <section class="max-w-5xl mx-auto px-6 lg:px-10 pb-24">
-  <div class="relative aspect-video bg-ink rounded-2xl overflow-hidden cursor-pointer group" style="box-shadow: 16px 16px 0 #5B22C7;">
+  <div class="relative aspect-video bg-ink rounded-sm overflow-hidden cursor-pointer group" style="box-shadow: 16px 16px 0 #5B22C7;">
     <div class="absolute inset-0 bg-gradient-to-br from-ink via-teal/20 to-coral/20"></div>
     <div class="absolute inset-10 grid grid-cols-5 gap-2 opacity-40">
       <div class="h-6 bg-cream/20 rounded col-span-2"></div>
@@ -160,17 +221,17 @@
       <div class="border border-cream/20 p-8">
         <div class="mono text-xs text-cream/50 mb-6">OLD WAY · 6 MONTHS, 6 FIGURES</div>
         <ul class="space-y-4 text-cream/80">
-          <li class="flex justify-between pb-3 border-b border-cream/10"><span>Warehouse lease (6-mo)</span><span class="mono text-sm">AED 60,000</span></li>
-          <li class="flex justify-between pb-3 border-b border-cream/10"><span>Courier accounts × 3</span><span class="mono text-sm">AED 15,000</span></li>
-          <li class="flex justify-between pb-3 border-b border-cream/10"><span>Dev team (MVP build)</span><span class="mono text-sm">AED 40,000</span></li>
-          <li class="flex justify-between pb-3 border-b border-cream/10"><span>Payment gateway setup</span><span class="mono text-sm">AED 8,000</span></li>
-          <li class="flex justify-between pb-3 border-b border-cream/10"><span>Inventory software</span><span class="mono text-sm">AED 4,800</span></li>
-          <li class="flex justify-between pb-3 border-b border-cream/10"><span>Trade licence + legal</span><span class="mono text-sm">AED 15,000</span></li>
-          <li class="flex justify-between"><span>Product photography</span><span class="mono text-sm">AED 6,000</span></li>
+          <li class="flex justify-between pb-3 border-b border-cream/10"><span>Warehouse lease (6-mo)</span><span class="mono text-sm"><span data-aed="60,000">AED 60,000</span></span></li>
+          <li class="flex justify-between pb-3 border-b border-cream/10"><span>Courier accounts × 3</span><span class="mono text-sm"><span data-aed="15,000">AED 15,000</span></span></li>
+          <li class="flex justify-between pb-3 border-b border-cream/10"><span>Dev team (MVP build)</span><span class="mono text-sm"><span data-aed="40,000">AED 40,000</span></span></li>
+          <li class="flex justify-between pb-3 border-b border-cream/10"><span>Payment gateway setup</span><span class="mono text-sm"><span data-aed="8,000">AED 8,000</span></span></li>
+          <li class="flex justify-between pb-3 border-b border-cream/10"><span>Inventory software</span><span class="mono text-sm"><span data-aed="4,800">AED 4,800</span></span></li>
+          <li class="flex justify-between pb-3 border-b border-cream/10"><span>Trade licence + legal</span><span class="mono text-sm"><span data-aed="15,000">AED 15,000</span></span></li>
+          <li class="flex justify-between"><span>Product photography</span><span class="mono text-sm"><span data-aed="6,000">AED 6,000</span></span></li>
         </ul>
         <div class="flex justify-between mt-6 pt-6 border-t border-cream/30">
           <span class="mono text-xs text-cream/50">TOTAL</span>
-          <span class="serif text-3xl">AED 148,800</span>
+          <span class="serif text-3xl"><span data-aed="148,800">AED 148,800</span></span>
         </div>
       </div>
 
@@ -181,13 +242,13 @@
           <li class="flex justify-between pb-3 border-b border-ink/20"><span>Buraq + Aramex shipping</span><span class="mono text-sm">Included</span></li>
           <li class="flex justify-between pb-3 border-b border-ink/20"><span>Payment processing</span><span class="mono text-sm">Included</span></li>
           <li class="flex justify-between pb-3 border-b border-ink/20"><span>Inventory & analytics</span><span class="mono text-sm">Included</span></li>
-          <li class="flex justify-between pb-3 border-b border-ink/20"><span>Warehousing</span><span class="mono text-sm"><span data-price-key="st">AED 2,000</span>/yr</span></li>
+          <li class="flex justify-between pb-3 border-b border-ink/20"><span>Warehousing</span><span class="mono text-sm"><span data-aed="2,000">AED 2,000</span>/yr</span></li>
           <li class="flex justify-between pb-3 border-b border-ink/20"><span>AI product photos</span><span class="mono text-sm">Included</span></li>
           <li class="flex justify-between"><span>Arabic + English UI</span><span class="mono text-sm">Included</span></li>
         </ul>
         <div class="flex justify-between mt-6 pt-6 border-t border-ink/40">
           <span class="mono text-xs">TOTAL / MONTH</span>
-          <span class="serif text-4xl"><span data-price-key="m">AED 400</span></span>
+          <span class="serif text-4xl"><span data-aed="400">AED 400</span></span>
         </div>
       </div>
     </div>
@@ -243,7 +304,7 @@
     <div class="inline-block bg-ink text-cream p-10 text-left">
       <div class="mono text-xs text-coral mb-3">ONE PLAN · NO SURPRISES</div>
       <div class="flex items-baseline gap-2 mb-4">
-        <span class="serif text-7xl"><span data-price-key="m">AED 400</span></span>
+        <span class="serif text-7xl"><span data-aed="400">AED 400</span></span>
         <span class="text-cream/60">/month</span>
       </div>
       <p class="text-cream/80 mb-6">Or start free. Pay nothing until you're ready to go live.</p>
@@ -262,8 +323,8 @@
     <details class="border-b border-line"><summary class="flex justify-between items-center py-5 font-medium">What if I only have one product?<span class="chev text-coral text-2xl">+</span></summary><p class="pb-5 text-muted">Perfect. Many of our best-performing stores launched with one SKU. Add variants, add photos, go live. You can grow the catalog from there.</p></details>
     <details class="border-b border-line"><summary class="flex justify-between items-center py-5 font-medium">Can I still sell on Instagram and WhatsApp?<span class="chev text-coral text-2xl">+</span></summary><p class="pb-5 text-muted">Yes. Packman is your back-end — it doesn't replace your social presence. Drive Instagram traffic to your Packman store, use Draft Carts to send pre-built checkout links via WhatsApp to specific customers.</p></details>
     <details class="border-b border-line"><summary class="flex justify-between items-center py-5 font-medium">What payment methods can I accept?<span class="chev text-coral text-2xl">+</span></summary><p class="pb-5 text-muted">Card, Apple Pay, Google Pay, Card on Delivery, Cash on Delivery, Tabby (BNPL), Tamara (BNPL). Turn any of them on or off in settings.</p></details>
-    <details class="border-b border-line"><summary class="flex justify-between items-center py-5 font-medium">Do I need my own warehouse?<span class="chev text-coral text-2xl">+</span></summary><p class="pb-5 text-muted">No. Ship your stock to a Packman warehouse (UAE, KSA, or Oman — AED 2,000/yr per pallet). We pick, pack, and hand to the courier. You see every movement in the dashboard.</p></details>
-    <details><summary class="flex justify-between items-center py-5 font-medium">What if I don't know how to build a store?<span class="chev text-coral text-2xl">+</span></summary><p class="pb-5 text-muted">The Builder is drag-and-drop. Pick a theme. Add products. Publish. Our Learning Center has 14 guides. And the 3-month Account Management add-on (AED 2,400) gets you a human who builds it with you.</p></details>
+    <details class="border-b border-line"><summary class="flex justify-between items-center py-5 font-medium">Do I need my own warehouse?<span class="chev text-coral text-2xl">+</span></summary><p class="pb-5 text-muted">No. Ship your stock to a Packman warehouse (UAE, KSA, or Oman — <span data-aed="2,000">AED 2,000</span>/yr per pallet). We pick, pack, and hand to the courier. You see every movement in the dashboard.</p></details>
+    <details><summary class="flex justify-between items-center py-5 font-medium">What if I don't know how to build a store?<span class="chev text-coral text-2xl">+</span></summary><p class="pb-5 text-muted">The Builder is drag-and-drop. Pick a theme. Add products. Publish. Our Learning Center has 14 guides. And the 3-month Account Management add-on (<span data-aed="2,400">AED 2,400</span>) gets you a human who builds it with you.</p></details>
   </div>
 </section>
 
@@ -315,43 +376,48 @@
 
 <script>
 (function(){
-  const PRICES = {
-    aed: { m:'AED 400', q3:'AED 1,100', q6:'AED 2,100', y:'AED 3,900',
-           e3:'AED 367', e6:'AED 350', ey:'AED 325',
-           s3:'AED 100', s6:'AED 300', sy:'AED 900',
-           am:'AED 800', am3:'AED 2,400', am6:'AED 4,800', amy:'AED 9,600',
-           st:'AED 2,000', st3:'AED 500', st6:'AED 1,000' },
-    sar: { m:'SAR 410', q3:'SAR 1,130', q6:'SAR 2,150', y:'SAR 4,000',
-           e3:'SAR 380', e6:'SAR 360', ey:'SAR 330',
-           s3:'SAR 100', s6:'SAR 310', sy:'SAR 920',
-           am:'SAR 820', am3:'SAR 2,460', am6:'SAR 4,920', amy:'SAR 9,840',
-           st:'SAR 2,050', st3:'SAR 510', st6:'SAR 1,030' },
-    omr: { m:'OMR 40', q3:'OMR 110', q6:'OMR 220', y:'OMR 400',
-           e3:'OMR 40', e6:'OMR 40', ey:'OMR 30',
-           s3:'OMR 10', s6:'OMR 20', sy:'OMR 80',
-           am:'OMR 80', am3:'OMR 250', am6:'OMR 490', amy:'OMR 990',
-           st:'OMR 210', st3:'OMR 50', st6:'OMR 100' }
-  };
-  function applyRegion(r){
-    if(!PRICES[r]) r='aed';
-    document.querySelectorAll('[data-price-key]').forEach(el=>{
-      const k=el.dataset.priceKey;
-      if(PRICES[r][k]) el.textContent=PRICES[r][k];
-    });
-    document.querySelectorAll('.region-toggle').forEach(b=>{
-      const on=b.dataset.region===r;
-      b.classList.toggle('region-on',on);
-      b.setAttribute('aria-pressed',on?'true':'false');
-    });
-    document.documentElement.dataset.region=r;
-    try{localStorage.setItem('packman.region',r);}catch(e){}
+  var SYMBOLS = { aed:'AED', sar:'SAR', omr:'OMR' };
+  var RATIOS  = { aed:1, sar:1.0256, omr:0.1026 };
+
+  function fmt(aedStr, region){
+    var s    = String(aedStr);
+    var num  = parseFloat(s.replace(/,/g,''));
+    var conv = num * RATIOS[region];
+    var hasDecimal = s.indexOf('.') !== -1;
+    if (hasDecimal) {
+      conv = Math.round(conv * 100) / 100;
+      return SYMBOLS[region] + ' ' + conv.toLocaleString('en-US', {minimumFractionDigits:2, maximumFractionDigits:2});
+    }
+    if      (conv >= 100) conv = Math.round(conv/10) * 10;
+    else if (conv >= 10)  conv = Math.round(conv/5)  * 5;
+    else                  conv = Math.round(conv);
+    return SYMBOLS[region] + ' ' + conv.toLocaleString('en-US');
   }
-  document.addEventListener('click',e=>{
-    const btn=e.target.closest('.region-toggle');
-    if(btn){e.preventDefault();applyRegion(btn.dataset.region);}
+
+  function applyRegion(r){
+    if(!RATIOS[r]) r = 'aed';
+    document.querySelectorAll('[data-aed]').forEach(function(el){
+      el.textContent = fmt(el.dataset.aed, r);
+    });
+    document.querySelectorAll('[data-cur-label]').forEach(function(el){
+      el.textContent = SYMBOLS[r];
+    });
+    document.querySelectorAll('.region-toggle').forEach(function(b){
+      var on = b.dataset.region === r;
+      b.classList.toggle('region-on', on);
+      b.setAttribute('aria-pressed', on ? 'true' : 'false');
+    });
+    document.documentElement.dataset.region = r;
+    try { localStorage.setItem('packman.region', r); } catch(e){}
+  }
+
+  document.addEventListener('click', function(e){
+    var btn = e.target.closest('.region-toggle');
+    if (btn) { e.preventDefault(); applyRegion(btn.dataset.region); }
   });
-  let saved='aed';
-  try{saved=localStorage.getItem('packman.region')||'aed';}catch(e){}
+
+  var saved = 'aed';
+  try { saved = localStorage.getItem('packman.region') || 'aed'; } catch(e){}
   applyRegion(saved);
 })();
 </script>

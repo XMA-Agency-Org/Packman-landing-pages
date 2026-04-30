@@ -27,9 +27,9 @@
   .serif { font-family: 'Avenir Next LT Pro','Avenir Next','Nunito Sans',system-ui,sans-serif; font-weight: 900; letter-spacing: -0.035em; line-height: 1.02; }
   .mono { font-family: 'JetBrains Mono','Geist Mono',ui-monospace,monospace; letter-spacing: 0.02em; font-weight: 500; }
   .eyebrow { font-family: 'JetBrains Mono','Geist Mono',monospace; font-size: 11px; letter-spacing: 0.18em; text-transform: uppercase; font-weight: 500; }
-  .btn-primary { background: #D2F801; color: #2C2A59; font-weight: 700; padding: 14px 24px; border-radius: 12px; transition: all 0.15s; box-shadow: 0 1px 0 #2C2A59; }
+  .btn-primary { background: #D2F801; color: #2C2A59; font-weight: 700; padding: 14px 24px; border-radius: 2px; transition: all 0.15s; box-shadow: 0 1px 0 #2C2A59; }
   .btn-primary:hover { transform: translate(-1px,-1px); box-shadow: 3px 3px 0 #2C2A59; }
-  .btn-ghost { border: 1px solid #2C2A59; color: #2C2A59; padding: 13px 24px; border-radius: 12px; font-weight: 500; transition: all 0.15s; }
+  .btn-ghost { border: 1px solid #2C2A59; color: #2C2A59; padding: 13px 24px; border-radius: 2px; font-weight: 500; transition: all 0.15s; }
   .btn-ghost:hover { background: #2C2A59; color: #F3F1E8; }
 
   /* FAQ accordion */
@@ -58,10 +58,71 @@
   main, section, nav, footer { position: relative; z-index: 1; }
 
 
-  /* Region toggle active state */
+  /* ════════════════════════════════════════════════
+   * EDGY: clip-path shapes — no rectangles
+   * ════════════════════════════════════════════════ */
+
+  /* Buttons → forward-chevron arrow */
+  .btn-primary, .btn-ghost {
+    clip-path: polygon(0 0, calc(100% - 14px) 0, 100% 50%, calc(100% - 14px) 100%, 0 100%);
+    border-radius: 0 !important;
+    padding-right: 30px !important;
+  }
+  .btn-ghost {
+    background: rgba(44, 42, 89, 0.07) !important;
+    border: none !important;
+  }
+  .btn-primary:hover, .btn-ghost:hover {
+    transform: translate(-1px, -1px);
+    box-shadow: none !important;
+  }
+  .btn-ghost:hover { background: rgba(44, 42, 89, 0.14) !important; }
+
+  /* Edge utility classes (per-element overrides) */
+  .edge-tl   { clip-path: polygon(28px 0, 100% 0, 100% 100%, 0 100%, 0 28px) !important; border-radius: 0 !important; }
+  .edge-tr   { clip-path: polygon(0 0, calc(100% - 28px) 0, 100% 28px, 100% 100%, 0 100%) !important; border-radius: 0 !important; }
+  .edge-br   { clip-path: polygon(0 0, 100% 0, 100% calc(100% - 28px), calc(100% - 28px) 100%, 0 100%) !important; border-radius: 0 !important; }
+  .edge-bl   { clip-path: polygon(0 0, 100% 0, 100% 100%, 28px 100%, 0 calc(100% - 28px)) !important; border-radius: 0 !important; }
+  .edge-diag { clip-path: polygon(0 0, calc(100% - 32px) 0, 100% 32px, 100% 100%, 32px 100%, 0 calc(100% - 32px)) !important; border-radius: 0 !important; }
+  .edge-anti { clip-path: polygon(32px 0, 100% 0, 100% calc(100% - 32px), calc(100% - 32px) 100%, 0 100%, 0 32px) !important; border-radius: 0 !important; }
+
+  /* Cards (bg-paper.border / bg-cream.border) → TR cut by default */
+  .bg-paper.border, .bg-cream.border {
+    clip-path: polygon(0 0, calc(100% - 24px) 0, 100% 24px, 100% 100%, 0 100%);
+    border-color: transparent !important;
+    border-radius: 0 !important;
+  }
+
+  /* Dashboard mocks → bigger BR cut + drop-shadow */
+  .mock-dashboard {
+    clip-path: polygon(0 0, 100% 0, 100% calc(100% - 36px), calc(100% - 36px) 100%, 0 100%) !important;
+    border: none !important;
+    border-radius: 0 !important;
+    box-shadow: none !important;
+    filter: drop-shadow(8px 8px 0 #2C2A59);
+  }
+
+  /* VSL hero containers → dramatic BR cut */
+  .aspect-video.bg-ink {
+    clip-path: polygon(0 0, 100% 0, 100% calc(100% - 48px), calc(100% - 48px) 100%, 0 100%);
+    border-radius: 0 !important;
+    box-shadow: none !important;
+    filter: drop-shadow(8px 8px 0 #5B22C7);
+  }
+
+  /* Drop-shadow utilities (for clipped elements) */
+  .drop-grape { filter: drop-shadow(8px 8px 0 #5B22C7); }
+  .drop-ink   { filter: drop-shadow(8px 8px 0 #2C2A59); }
+  .drop-coral { filter: drop-shadow(6px 6px 0 #E85D45); }
+
+  /* "MOST POPULAR" tag rotation */
+  .rot-tag { transform: rotate(-3deg) translateX(-3px); display: inline-block; }
+
+  /* Region toggle states */
   .region-toggle { font: inherit; cursor: pointer; background: transparent; border: none; padding: 0; }
   .region-toggle.region-on { color: #D2F801; font-weight: 600; }
-  footer.bg-cream .region-toggle.region-on { color: #5B22C7; }
+  footer.bg-cream .region-toggle.region-on,
+  footer .bg-cream .region-toggle.region-on { color: #5B22C7; }
 </style>
 </head>
 
@@ -97,7 +158,7 @@
     <em>Four ways to pay.</em>
   </h1>
   <p class="text-lg md:text-xl text-ink/70 max-w-2xl mx-auto">
-    One plan. AED 400 a month. Commit longer, pay less. Or start completely free — no credit card, no trade licence to sign up.
+    One plan. <span data-aed="400">AED 400</span> a month. Commit longer, pay less. Or start completely free — no credit card, no trade licence to sign up.
   </p>
 </section>
 
@@ -111,8 +172,8 @@
     <div class="p-8 border-b lg:border-b-0 lg:border-r border-line flex flex-col">
       <div class="mono text-xs text-muted mb-3">MONTHLY</div>
       <div class="mb-4">
-        <div class="serif text-5xl"><span data-price-key="m">AED 400</span></div>
-        <div class="mono text-xs text-muted mt-1">/month · <span data-price-key="m">AED 400</span> effective</div>
+        <div class="serif text-5xl"><span data-aed="400">AED 400</span></div>
+        <div class="mono text-xs text-muted mt-1">/month · <span data-aed="400">AED 400</span> effective</div>
       </div>
       <div class="mono text-xs text-muted mb-6">Rolling · cancel anytime</div>
       <ul class="space-y-2 text-sm mb-8 flex-1">
@@ -129,10 +190,10 @@
     <div class="p-8 border-b lg:border-b-0 lg:border-r border-line flex flex-col">
       <div class="mono text-xs text-muted mb-3">3-MONTH</div>
       <div class="mb-4">
-        <div class="serif text-5xl"><span data-price-key="q3">AED 1,100</span></div>
-        <div class="mono text-xs text-muted mt-1">/upfront · <span data-price-key="e3">AED 367</span> effective</div>
+        <div class="serif text-5xl"><span data-aed="1,100">AED 1,100</span></div>
+        <div class="mono text-xs text-muted mt-1">/upfront · <span data-aed="367">AED 367</span> effective</div>
       </div>
-      <div class="mono text-xs text-teal mb-6">Save <span data-price-key="s3">AED 100</span></div>
+      <div class="mono text-xs text-teal mb-6">Save <span data-aed="100">AED 100</span></div>
       <ul class="space-y-2 text-sm mb-8 flex-1">
         <li class="flex gap-2"><span class="text-coral">✓</span> Everything in monthly</li>
         <li class="flex gap-2"><span class="text-coral">✓</span> 300 AI credits included</li>
@@ -147,10 +208,10 @@
       <div class="absolute top-0 right-0 bg-coral text-ink mono text-[10px] px-3 py-1">MOST POPULAR</div>
       <div class="mono text-xs text-coral mb-3">6-MONTH</div>
       <div class="mb-4">
-        <div class="serif text-5xl"><span data-price-key="q6">AED 2,100</span></div>
-        <div class="mono text-xs text-cream/60 mt-1">/upfront · <span data-price-key="e6">AED 350</span> effective</div>
+        <div class="serif text-5xl"><span data-aed="2,100">AED 2,100</span></div>
+        <div class="mono text-xs text-cream/60 mt-1">/upfront · <span data-aed="350">AED 350</span> effective</div>
       </div>
-      <div class="mono text-xs text-coral mb-6">Save <span data-price-key="s6">AED 300</span></div>
+      <div class="mono text-xs text-coral mb-6">Save <span data-aed="300">AED 300</span></div>
       <ul class="space-y-2 text-sm mb-8 flex-1 text-cream/90">
         <li class="flex gap-2"><span class="text-coral">✓</span> Everything in 3-month</li>
         <li class="flex gap-2"><span class="text-coral">✓</span> 600 AI credits included</li>
@@ -164,10 +225,10 @@
     <div class="p-8 flex flex-col">
       <div class="mono text-xs text-muted mb-3">12-MONTH · BEST VALUE</div>
       <div class="mb-4">
-        <div class="serif text-5xl"><span data-price-key="y">AED 3,900</span></div>
-        <div class="mono text-xs text-muted mt-1">/upfront · <span data-price-key="ey">AED 325</span> effective</div>
+        <div class="serif text-5xl"><span data-aed="3,900">AED 3,900</span></div>
+        <div class="mono text-xs text-muted mt-1">/upfront · <span data-aed="325">AED 325</span> effective</div>
       </div>
-      <div class="mono text-xs text-coral mb-6">Save <span data-price-key="sy">AED 900</span></div>
+      <div class="mono text-xs text-coral mb-6">Save <span data-aed="900">AED 900</span></div>
       <ul class="space-y-2 text-sm mb-8 flex-1">
         <li class="flex gap-2"><span class="text-coral">✓</span> Everything in 6-month</li>
         <li class="flex gap-2"><span class="text-coral">✓</span> 1,500 AI credits included</li>
@@ -219,10 +280,10 @@
 <section class="max-w-5xl mx-auto px-6 lg:px-10 py-24">
   <div class="text-center mb-10">
     <div class="eyebrow text-coral mb-4">VSL · Platform demo</div>
-    <h2 class="serif text-4xl md:text-5xl leading-tight">See exactly what AED 400/month gets you.</h2>
+    <h2 class="serif text-4xl md:text-5xl leading-tight">See exactly what <span data-aed="400">AED 400</span>/month gets you.</h2>
   </div>
   <!-- VSL #2 Player: 90-sec demo walkthrough -->
-  <div class="relative aspect-video bg-ink rounded-2xl overflow-hidden cursor-pointer group" style="box-shadow: 16px 16px 0 #5B22C7;">
+  <div class="relative aspect-video bg-ink rounded-sm overflow-hidden cursor-pointer group" style="box-shadow: 16px 16px 0 #5B22C7;">
     <div class="absolute inset-0 bg-gradient-to-br from-ink via-ink to-teal/30"></div>
     <div class="absolute inset-10 border border-cream/20 rounded opacity-40">
       <div class="p-5 grid grid-cols-4 gap-2">
@@ -300,12 +361,12 @@
           <h3 class="serif text-3xl">A human on your team.</h3>
         </div>
         <div class="text-right">
-          <div class="serif text-3xl"><span data-price-key="am">AED 800</span></div>
+          <div class="serif text-3xl"><span data-aed="800">AED 800</span></div>
           <div class="mono text-xs text-muted">/month</div>
         </div>
       </div>
       <p class="text-muted mb-4">Dedicated manager. Store design support. Builder training. Priority support on everything.</p>
-      <p class="mono text-xs text-muted">3-mo <span data-price-key="am3">AED 2,400</span> · 6-mo <span data-price-key="am6">AED 4,800</span> · Yearly <span data-price-key="amy">AED 9,600</span></p>
+      <p class="mono text-xs text-muted">3-mo <span data-aed="2,400">AED 2,400</span> · 6-mo <span data-aed="4,800">AED 4,800</span> · Yearly <span data-aed="9,600">AED 9,600</span></p>
     </div>
 
     <!-- Storage -->
@@ -316,12 +377,12 @@
           <h3 class="serif text-3xl">Physical fulfilment.</h3>
         </div>
         <div class="text-right">
-          <div class="serif text-3xl"><span data-price-key="st">AED 2,000</span></div>
+          <div class="serif text-3xl"><span data-aed="2,000">AED 2,000</span></div>
           <div class="mono text-xs text-muted">/year · per pallet</div>
         </div>
       </div>
       <p class="text-muted mb-4">Packman warehouses in UAE, KSA, Oman. Stock alerts, inventory tracking, fulfilment included. Box 50×60×90cm.</p>
-      <p class="mono text-xs text-muted">3-mo <span data-price-key="st3">AED 500</span> · 6-mo <span data-price-key="st6">AED 1,000</span> · Yearly <span data-price-key="st">AED 2,000</span></p>
+      <p class="mono text-xs text-muted">3-mo <span data-aed="500">AED 500</span> · 6-mo <span data-aed="1,000">AED 1,000</span> · Yearly <span data-aed="2,000">AED 2,000</span></p>
     </div>
   </div>
 </section>
@@ -353,7 +414,7 @@
       </details>
       <details class="border-b border-line group">
         <summary class="flex justify-between items-center py-5 font-medium">How does VAT work?<span class="chev text-coral text-2xl">+</span></summary>
-        <p class="pb-5 text-muted">The platform calculates UAE 5% VAT automatically once you enable it in settings. It tracks your rolling 12-month sales against the AED 375,000 threshold so you know exactly when to register.</p>
+        <p class="pb-5 text-muted">The platform calculates UAE 5% VAT automatically once you enable it in settings. It tracks your rolling 12-month sales against the <span data-aed="375,000">AED 375,000</span> threshold so you know exactly when to register.</p>
       </details>
       <details class="border-b border-line group">
         <summary class="flex justify-between items-center py-5 font-medium">Can I migrate from Shopify?<span class="chev text-coral text-2xl">+</span></summary>
@@ -412,43 +473,48 @@
 
 <script>
 (function(){
-  const PRICES = {
-    aed: { m:'AED 400', q3:'AED 1,100', q6:'AED 2,100', y:'AED 3,900',
-           e3:'AED 367', e6:'AED 350', ey:'AED 325',
-           s3:'AED 100', s6:'AED 300', sy:'AED 900',
-           am:'AED 800', am3:'AED 2,400', am6:'AED 4,800', amy:'AED 9,600',
-           st:'AED 2,000', st3:'AED 500', st6:'AED 1,000' },
-    sar: { m:'SAR 410', q3:'SAR 1,130', q6:'SAR 2,150', y:'SAR 4,000',
-           e3:'SAR 380', e6:'SAR 360', ey:'SAR 330',
-           s3:'SAR 100', s6:'SAR 310', sy:'SAR 920',
-           am:'SAR 820', am3:'SAR 2,460', am6:'SAR 4,920', amy:'SAR 9,840',
-           st:'SAR 2,050', st3:'SAR 510', st6:'SAR 1,030' },
-    omr: { m:'OMR 40', q3:'OMR 110', q6:'OMR 220', y:'OMR 400',
-           e3:'OMR 40', e6:'OMR 40', ey:'OMR 30',
-           s3:'OMR 10', s6:'OMR 20', sy:'OMR 80',
-           am:'OMR 80', am3:'OMR 250', am6:'OMR 490', amy:'OMR 990',
-           st:'OMR 210', st3:'OMR 50', st6:'OMR 100' }
-  };
-  function applyRegion(r){
-    if(!PRICES[r]) r='aed';
-    document.querySelectorAll('[data-price-key]').forEach(el=>{
-      const k=el.dataset.priceKey;
-      if(PRICES[r][k]) el.textContent=PRICES[r][k];
-    });
-    document.querySelectorAll('.region-toggle').forEach(b=>{
-      const on=b.dataset.region===r;
-      b.classList.toggle('region-on',on);
-      b.setAttribute('aria-pressed',on?'true':'false');
-    });
-    document.documentElement.dataset.region=r;
-    try{localStorage.setItem('packman.region',r);}catch(e){}
+  var SYMBOLS = { aed:'AED', sar:'SAR', omr:'OMR' };
+  var RATIOS  = { aed:1, sar:1.0256, omr:0.1026 };
+
+  function fmt(aedStr, region){
+    var s    = String(aedStr);
+    var num  = parseFloat(s.replace(/,/g,''));
+    var conv = num * RATIOS[region];
+    var hasDecimal = s.indexOf('.') !== -1;
+    if (hasDecimal) {
+      conv = Math.round(conv * 100) / 100;
+      return SYMBOLS[region] + ' ' + conv.toLocaleString('en-US', {minimumFractionDigits:2, maximumFractionDigits:2});
+    }
+    if      (conv >= 100) conv = Math.round(conv/10) * 10;
+    else if (conv >= 10)  conv = Math.round(conv/5)  * 5;
+    else                  conv = Math.round(conv);
+    return SYMBOLS[region] + ' ' + conv.toLocaleString('en-US');
   }
-  document.addEventListener('click',e=>{
-    const btn=e.target.closest('.region-toggle');
-    if(btn){e.preventDefault();applyRegion(btn.dataset.region);}
+
+  function applyRegion(r){
+    if(!RATIOS[r]) r = 'aed';
+    document.querySelectorAll('[data-aed]').forEach(function(el){
+      el.textContent = fmt(el.dataset.aed, r);
+    });
+    document.querySelectorAll('[data-cur-label]').forEach(function(el){
+      el.textContent = SYMBOLS[r];
+    });
+    document.querySelectorAll('.region-toggle').forEach(function(b){
+      var on = b.dataset.region === r;
+      b.classList.toggle('region-on', on);
+      b.setAttribute('aria-pressed', on ? 'true' : 'false');
+    });
+    document.documentElement.dataset.region = r;
+    try { localStorage.setItem('packman.region', r); } catch(e){}
+  }
+
+  document.addEventListener('click', function(e){
+    var btn = e.target.closest('.region-toggle');
+    if (btn) { e.preventDefault(); applyRegion(btn.dataset.region); }
   });
-  let saved='aed';
-  try{saved=localStorage.getItem('packman.region')||'aed';}catch(e){}
+
+  var saved = 'aed';
+  try { saved = localStorage.getItem('packman.region') || 'aed'; } catch(e){}
   applyRegion(saved);
 })();
 </script>
