@@ -27,9 +27,9 @@
   .eyebrow { font-family: 'JetBrains Mono','Geist Mono',monospace; font-size: 11px; letter-spacing: 0.18em; text-transform: uppercase; font-weight: 500; }
   .ar, [lang="ar"].ar, [dir="rtl"] .ar { font-family: 'Avenir Arabic','IBM Plex Sans Arabic',system-ui,sans-serif; font-weight: 400; }
   .ar-serif, [lang="ar"].ar-serif { font-family: 'Avenir Arabic','IBM Plex Sans Arabic',system-ui,sans-serif; font-weight: 900; letter-spacing: -0.01em; }
-  .btn-primary { background: #D2F801; color: #2C2A59; font-weight: 700; padding: 14px 24px; border-radius: 2px; transition: all 0.15s; box-shadow: 0 1px 0 #2C2A59; display: inline-flex; align-items: center; gap: 8px; }
+  .btn-primary { background: #D2F801; color: #2C2A59; font-weight: 700; padding: 14px 24px; border-radius: 12px; transition: all 0.15s; box-shadow: 0 1px 0 #2C2A59; display: inline-flex; align-items: center; gap: 8px; }
   .btn-primary:hover { transform: translate(-1px,-1px); box-shadow: 3px 3px 0 #2C2A59; }
-  .btn-ghost { border: 1px solid #2C2A59; padding: 13px 23px; border-radius: 2px; color: #2C2A59; font-weight: 600; transition: all 0.15s; display: inline-flex; align-items: center; gap: 8px; }
+  .btn-ghost { border: 1px solid #2C2A59; padding: 13px 23px; border-radius: 12px; color: #2C2A59; font-weight: 600; transition: all 0.15s; display: inline-flex; align-items: center; gap: 8px; }
   .btn-ghost:hover { background: #2C2A59; color: #D2F801; }
   @keyframes pulse-volt { 0%,100% { box-shadow: 0 0 0 0 rgba(210,248,1,0.65); } 50% { box-shadow: 0 0 0 18px rgba(210,248,1,0); } }
   .play-btn { animation: pulse-volt 2.4s ease-in-out infinite; }
@@ -46,6 +46,11 @@
   nav.bg-cream\/85 a.hover\:text-coral:hover { color: #5B22C7 !important; }
   body::before { content: ''; position: fixed; inset: 0; pointer-events: none; z-index: 0; opacity: 0.035; background-image: radial-gradient(circle at 1px 1px, #2C2A59 1px, transparent 0); background-size: 3px 3px; }
   main, section, nav, footer { position: relative; z-index: 1; }
+
+  /* Region toggle active state */
+  .region-toggle { font: inherit; cursor: pointer; background: transparent; border: none; padding: 0; }
+  .region-toggle.region-on { color: #D2F801; font-weight: 600; }
+  footer.bg-cream .region-toggle.region-on { color: #5B22C7; }
 </style>
 </head>
 
@@ -54,8 +59,9 @@
 <!-- NAV — bilingual: EN primary, AR lang pill -->
 <nav class="sticky top-0 z-50 bg-cream/85 backdrop-blur-md border-b border-line">
   <div class="max-w-7xl mx-auto px-6 lg:px-10 h-18 flex items-center justify-between py-4">
-    <a href="/" class="flex items-center gap-2">
-      <img src="/assets/wordmark-navy.png" alt="packman" class="h-7 sm:h-8 w-auto" />
+    <a href="/" class="flex items-center gap-2.5">
+      <img src="/assets/logo-mark-navy.png" alt="" class="w-9 h-9 select-none" />
+      <span class="serif text-2xl tracking-tight text-ink">packman</span>
     </a>
     <div class="hidden md:flex items-center gap-8 text-sm">
       <a href="/" class="hover:text-coral">Platform</a>
@@ -302,10 +308,10 @@
       </div>
 
       <div class="lg:col-span-7">
-        <div class="bg-cream text-ink rounded-sm overflow-hidden" style="box-shadow: 10px 10px 0 #5B22C7;">
+        <div class="bg-cream text-ink rounded-2xl overflow-hidden" style="box-shadow: 10px 10px 0 #5B22C7;">
           <div class="flex items-center justify-between px-5 py-3 border-b border-line bg-paper">
             <div class="flex items-center gap-2">
-              <img src="/assets/logo-icon-navy.png" alt="" class="w-6 h-6" />
+              <img src="/assets/logo-mark-navy.png" alt="" class="w-6 h-6" />
               <span class="mono text-xs">packman / orders</span>
             </div>
             <div class="flex items-center gap-2 mono text-[10px]">
@@ -394,7 +400,7 @@
     <div class="grid md:grid-cols-3 gap-6 text-left">
       <div class="bg-paper border border-line p-8">
         <div class="mono text-xs text-muted mb-3">MONTHLY · <span class="ar text-xs">شهري</span></div>
-        <div class="serif text-5xl mb-1">AED 400</div>
+        <div class="serif text-5xl mb-1"><span data-price-key="m">AED 400</span></div>
         <div class="text-sm text-muted mb-6">per month · شهرياً</div>
         <ul class="text-sm space-y-2 text-ink/80">
           <li>→ Both markets live</li>
@@ -405,8 +411,8 @@
       <div class="bg-ink text-cream p-8 relative" style="box-shadow: 6px 6px 0 #5B22C7;">
         <div class="absolute -top-3 left-6 bg-coral text-ink mono text-[10px] px-3 py-1">BEST VALUE · أفضل قيمة</div>
         <div class="mono text-xs text-cream/60 mb-3">6-MONTH · <span class="ar text-xs">٦ شهور</span></div>
-        <div class="serif text-5xl mb-1">AED 2,100</div>
-        <div class="text-sm text-cream/70 mb-6">AED 350/mo · save AED 300</div>
+        <div class="serif text-5xl mb-1"><span data-price-key="q6">AED 2,100</span></div>
+        <div class="text-sm text-cream/70 mb-6"><span data-price-key="e6">AED 350</span>/mo · save <span data-price-key="s6">AED 300</span></div>
         <ul class="text-sm space-y-2 text-cream/90">
           <li>→ Best balance</li>
           <li>→ Priority onboarding</li>
@@ -415,8 +421,8 @@
       </div>
       <div class="bg-paper border border-line p-8">
         <div class="mono text-xs text-muted mb-3">YEARLY · <span class="ar text-xs">سنوي</span></div>
-        <div class="serif text-5xl mb-1">AED 3,900</div>
-        <div class="text-sm text-muted mb-6">AED 325/mo · save AED 900</div>
+        <div class="serif text-5xl mb-1"><span data-price-key="y">AED 3,900</span></div>
+        <div class="text-sm text-muted mb-6"><span data-price-key="ey">AED 325</span>/mo · save <span data-price-key="sy">AED 900</span></div>
         <ul class="text-sm space-y-2 text-ink/80">
           <li>→ Maximum savings</li>
           <li>→ Free account review</li>
@@ -515,7 +521,7 @@
         <span dir="rtl" lang="ar" class="ar">ابدأ مجاناً</span>
         <svg class="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M17 8l4 4m0 0l-4 4m4-4H3"/></svg>
       </a>
-      <a href="#" class="text-cream border border-cream/30 px-6 py-[13px] rounded-sm text-sm hover:bg-cream hover:text-ink transition">
+      <a href="#" class="text-cream border border-cream/30 px-6 py-[13px] rounded-2xl text-sm hover:bg-cream hover:text-ink transition">
         Book a bilingual walkthrough
       </a>
     </div>
@@ -530,8 +536,9 @@
     <div class="grid md:grid-cols-5 gap-10 mb-12">
 
       <div class="md:col-span-2">
-        <a href="/" class="flex items-center gap-2 mb-5">
-          <img src="/assets/wordmark-navy.png" alt="packman" class="h-7 sm:h-8 w-auto" />
+        <a href="/" class="flex items-center gap-2.5 mb-5">
+          <img src="/assets/logo-mark-navy.png" alt="" class="w-10 h-10 select-none" />
+          <span class="serif text-2xl tracking-tight text-ink">packman</span>
         </a>
         <p class="text-sm text-ink/70 max-w-xs mb-2">E-commerce infrastructure for UAE and Oman merchants.</p>
         <p dir="rtl" lang="ar" class="ar text-sm text-ink/70 max-w-xs">بنية تحتية للتجارة الإلكترونية لتجّار الإمارات وعُمان.</p>
@@ -563,10 +570,11 @@
       </div>
 
       <div>
-        <div class="eyebrow text-muted mb-4">REGIONS</div>
+        <div class="eyebrow text-muted mb-4">REGION · CURRENCY</div>
         <ul class="space-y-2 text-sm">
-          <li><a href="/uae-oman" class="text-coral">UAE · عُمان</a></li>
-          <li><a href="/ar" class="hover:text-coral">KSA · السعودية</a></li>
+          <li><button type="button" class="region-toggle text-left flex items-center gap-3 hover:text-coral transition" data-region="aed"><span class="text-base">🇦🇪</span><span>UAE</span><span class="mono text-[10px] text-muted">AED</span></button></li>
+          <li><button type="button" class="region-toggle text-left flex items-center gap-3 hover:text-coral transition" data-region="sar"><span class="text-base">🇸🇦</span><span>KSA</span><span class="mono text-[10px] text-muted">SAR</span></button></li>
+          <li><button type="button" class="region-toggle text-left flex items-center gap-3 hover:text-coral transition" data-region="omr"><span class="text-base">🇴🇲</span><span>Oman</span><span class="mono text-[10px] text-muted">OMR</span></button></li>
         </ul>
       </div>
     </div>
@@ -584,5 +592,48 @@
   </div>
 </footer>
 
+
+<script>
+(function(){
+  const PRICES = {
+    aed: { m:'AED 400', q3:'AED 1,100', q6:'AED 2,100', y:'AED 3,900',
+           e3:'AED 367', e6:'AED 350', ey:'AED 325',
+           s3:'AED 100', s6:'AED 300', sy:'AED 900',
+           am:'AED 800', am3:'AED 2,400', am6:'AED 4,800', amy:'AED 9,600',
+           st:'AED 2,000', st3:'AED 500', st6:'AED 1,000' },
+    sar: { m:'SAR 410', q3:'SAR 1,130', q6:'SAR 2,150', y:'SAR 4,000',
+           e3:'SAR 380', e6:'SAR 360', ey:'SAR 330',
+           s3:'SAR 100', s6:'SAR 310', sy:'SAR 920',
+           am:'SAR 820', am3:'SAR 2,460', am6:'SAR 4,920', amy:'SAR 9,840',
+           st:'SAR 2,050', st3:'SAR 510', st6:'SAR 1,030' },
+    omr: { m:'OMR 40', q3:'OMR 110', q6:'OMR 220', y:'OMR 400',
+           e3:'OMR 40', e6:'OMR 40', ey:'OMR 30',
+           s3:'OMR 10', s6:'OMR 20', sy:'OMR 80',
+           am:'OMR 80', am3:'OMR 250', am6:'OMR 490', amy:'OMR 990',
+           st:'OMR 210', st3:'OMR 50', st6:'OMR 100' }
+  };
+  function applyRegion(r){
+    if(!PRICES[r]) r='aed';
+    document.querySelectorAll('[data-price-key]').forEach(el=>{
+      const k=el.dataset.priceKey;
+      if(PRICES[r][k]) el.textContent=PRICES[r][k];
+    });
+    document.querySelectorAll('.region-toggle').forEach(b=>{
+      const on=b.dataset.region===r;
+      b.classList.toggle('region-on',on);
+      b.setAttribute('aria-pressed',on?'true':'false');
+    });
+    document.documentElement.dataset.region=r;
+    try{localStorage.setItem('packman.region',r);}catch(e){}
+  }
+  document.addEventListener('click',e=>{
+    const btn=e.target.closest('.region-toggle');
+    if(btn){e.preventDefault();applyRegion(btn.dataset.region);}
+  });
+  let saved='aed';
+  try{saved=localStorage.getItem('packman.region')||'aed';}catch(e){}
+  applyRegion(saved);
+})();
+</script>
 </body>
 </html>

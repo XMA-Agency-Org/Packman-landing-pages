@@ -1,78 +1,53 @@
-# Packman site — Vercel-ready
+# Packman site
 
-Static HTML. No build step. Drop into Vercel and it works.
+Static HTML, deploy-ready for Vercel. Drag the folder onto vercel.com/new — done.
+
+## What's new in this build
+
+**1. Real logo installed.** The navy mark sits in the nav next to "packman" wordmark.
+Volt mark in dark footers. All four logo files are in `/assets/` (with transparent backgrounds).
+
+**2. Rounded edges.** Buttons radiused at 12px (was sharp 2px). Cards and dashboard
+mocks at 16px. Visual containers across the site feel softer without going
+pill-shaped.
+
+**3. Currency switching by region.** The footer has three buttons — UAE, KSA, Oman.
+Click any of them and every price on the page swaps:
+- UAE → AED (e.g. AED 3,900/yr)
+- KSA → SAR 4,000/yr
+- Oman → OMR 400/yr
+Choice persists across pages via localStorage.
+
+Numbers rounded to the nearest 10 in each currency. Yearly anchor: AED 3,900 →
+SAR 4,000 → OMR 400 (per your spec).
 
 ## Folder structure
 
 ```
 packman/
-├── index.html               ← homepage           (route: /)
-├── pricing/index.html       ← pricing page       (route: /pricing)
-├── for-brands/index.html    ← for brand owners   (route: /for-brands)
-├── for-startups/index.html  ← for first-timers   (route: /for-startups)
-├── ar/index.html            ← Arabic / KSA       (route: /ar)
-├── uae-oman/index.html      ← UAE + Oman         (route: /uae-oman)
-├── assets/                  ← logos + Arabic font files (you add these)
-└── vercel.json              ← clean URLs config
+├── index.html               → /
+├── pricing/index.html       → /pricing
+├── for-brands/index.html    → /for-brands
+├── for-startups/index.html  → /for-startups
+├── ar/index.html            → /ar
+├── uae-oman/index.html      → /uae-oman
+├── assets/                  ← logos already here, drop fonts in
+└── vercel.json
 ```
 
-## Why this fixes the broken pricing link
+## Optional — Arabic font
 
-Vercel serves `pricing/index.html` automatically when someone visits `/pricing`.
-Each page now lives in its own folder with an `index.html`, so every internal
-link in the nav (`/`, `/pricing`, `/for-brands`, `/for-startups`, `/ar`,
-`/uae-oman`) resolves correctly.
+Drop these into `/assets/` for the Avenir Arabic brand font:
+- `avenir-arabic-book.otf`
+- `avenir-arabic-black.otf`
 
-The previous setup had standalone HTML files with no routing — so a click on
-"Pricing" hit `/pricing` and returned 404 because nothing was there.
+Without them, Arabic text falls back to IBM Plex Sans Arabic (loaded via Google
+Fonts). Still readable, just not the brand font.
 
-## Before deploying — add your assets
+## Deploy
 
-Drop these 4 files into `/assets/`:
+**Easiest:** drag the `packman/` folder onto https://vercel.com/new
 
-- `wordmark-navy.png` — your wordmark logo
-- `logo-icon-navy.png` — your small icon mark
-- `avenir-arabic-book.otf` — Avenir Arabic Book (weight 400)
-- `avenir-arabic-black.otf` — Avenir Arabic Black (weight 900)
+**CLI:** `cd packman && vercel deploy --prod`
 
-The site will load without them, but the wordmark will be missing and Arabic
-text will fall back to IBM Plex Sans Arabic.
-
-## Deploy options
-
-### Option 1: Drag and drop (easiest)
-1. Go to https://vercel.com/new
-2. Drag the `packman/` folder onto the upload area
-3. Click Deploy
-
-### Option 2: Vercel CLI
-```bash
-cd packman
-vercel deploy --prod
-```
-
-### Option 3: Git
-```bash
-cd packman
-git init && git add . && git commit -m "Initial site"
-git remote add origin <your-repo-url>
-git push -u origin main
-```
-Then connect the repo to Vercel.
-
-## Local preview before deploying
-
-```bash
-cd packman
-python3 -m http.server 8000
-```
-Open http://localhost:8000 — the nav should work across all pages.
-
-## Notes
-
-- Pages use Tailwind via CDN — no build step needed.
-- Internal links use absolute paths (`/pricing`, not `./pricing`) so they work
-  from any folder depth.
-- `vercel.json` enables clean URLs — `/pricing` rather than `/pricing/`.
-- The `/ar` page is fully RTL. Language switcher links in the nav take users
-  between `/` (EN) and `/ar` (Arabic).
+**Local preview:** `python3 -m http.server 8000` then open http://localhost:8000
