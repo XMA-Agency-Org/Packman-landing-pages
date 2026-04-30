@@ -8,125 +8,72 @@
 
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-<!-- Arabic fonts: IBM Plex Sans Arabic (body) + Noto Naskh Arabic (display-ish) -->
-<link href="https://fonts.googleapis.com/css2?family=IBM+Plex+Sans+Arabic:wght@300;400;500;600;700&family=Amiri:wght@400;700&family=Geist+Mono:wght@400;500&display=swap" rel="stylesheet">
+<link href="https://fonts.googleapis.com/css2?family=IBM+Plex+Sans+Arabic:wght@300;400;500;600;700&family=Amiri:wght@400;700&family=JetBrains+Mono:wght@400;500&display=swap" rel="stylesheet">
 <script src="https://cdn.tailwindcss.com"></script>
 <script>
   tailwind.config = { theme: { extend: {
     colors: { navy: '#2C2A59', ink: '#2C2A59', cream: '#F3F1E8', paper: '#FFFFFF', volt: '#D2F801', coral: '#D2F801', grape: '#5B22C7', teal: '#5B22C7', lilac: '#C8C6E7', muted: '#6B6B85', line: '#E2E0E8', sand: '#EBE4D4' },
-    fontFamily: { sans: ['"Avenir Next LT Pro"','"Avenir Next"','"Nunito Sans"','system-ui','sans-serif'], serif: ['"Avenir Next LT Pro"','"Avenir Next"','"Nunito Sans"','system-ui','sans-serif'], mono: ['"JetBrains Mono"','"Geist Mono"','ui-monospace','monospace'], ar: ['"Avenir Arabic"','"IBM Plex Sans Arabic"','system-ui','sans-serif'], arserif: ['"Avenir Arabic"','"IBM Plex Sans Arabic"','system-ui','sans-serif'] }
+    fontFamily: { sans: ['"IBM Plex Sans Arabic"','"Avenir Arabic"','system-ui','sans-serif'], serif: ['"IBM Plex Sans Arabic"','"Avenir Arabic"','system-ui','sans-serif'], mono: ['"JetBrains Mono"','"Geist Mono"','ui-monospace','monospace'] }
   }}};
 </script>
 <style>
-  @font-face {
-    font-family: 'Avenir Arabic';
-    src: url('./assets/avenir-arabic-book.otf') format('opentype');
-    font-weight: 400; font-style: normal; font-display: swap;
-  }
-  @font-face {
-    font-family: 'Avenir Arabic';
-    src: url('./assets/avenir-arabic-black.otf') format('opentype');
-    font-weight: 900; font-style: normal; font-display: swap;
-  }
+  @font-face { font-family: 'Avenir Arabic'; src: url('/assets/avenir-arabic-book.otf') format('opentype'); font-weight: 400; font-style: normal; font-display: swap; }
+  @font-face { font-family: 'Avenir Arabic'; src: url('/assets/avenir-arabic-black.otf') format('opentype'); font-weight: 900; font-style: normal; font-display: swap; }
   html { scroll-behavior: smooth; }
-  body {
-    background: #F3F1E8; color: #2C2A59;
-    font-family: 'Avenir Next LT Pro', 'Avenir Next', 'Nunito Sans', system-ui, sans-serif;
-    font-weight: 400;
-  }
-  /* .serif kept as a class name for minimal diffs, but now renders as heavy geometric sans matching brand wordmark */
-  .serif {
-    font-family: 'Avenir Next LT Pro', 'Avenir Next', 'Nunito Sans', system-ui, sans-serif;
-    font-weight: 900; letter-spacing: -0.035em; line-height: 1.02;
-  }
+  body { background: #F3F1E8; color: #2C2A59; font-family: 'Avenir Arabic','IBM Plex Sans Arabic',system-ui,sans-serif; font-weight: 400; }
+  .serif, .display { font-family: 'Avenir Arabic','IBM Plex Sans Arabic',system-ui,sans-serif; font-weight: 900; letter-spacing: -0.01em; line-height: 1.05; }
   .serif.italic, .italic { font-style: italic; }
-  .mono { font-family: 'JetBrains Mono', 'Geist Mono', ui-monospace, monospace; letter-spacing: 0.02em; font-weight: 500; }
-  .eyebrow { font-family: 'JetBrains Mono', 'Geist Mono', monospace; font-size: 11px; letter-spacing: 0.18em; text-transform: uppercase; font-weight: 500; }
-
-  /* Arabic */
-  .ar, [lang="ar"].ar, [dir="rtl"] .ar { font-family: 'Avenir Arabic', 'IBM Plex Sans Arabic', system-ui, sans-serif; font-weight: 400; }
-  .ar-serif, [lang="ar"].ar-serif { font-family: 'Avenir Arabic', 'IBM Plex Sans Arabic', system-ui, sans-serif; font-weight: 900; letter-spacing: -0.01em; }
-
-  /* Brand CTA — volt green fill, navy text, hardware-style offset shadow */
-  .btn-primary {
-    background: #D2F801; color: #2C2A59; font-weight: 700;
-    padding: 14px 24px; border-radius: 2px;
-    transition: all 0.15s; box-shadow: 0 1px 0 #2C2A59;
-    display: inline-flex; align-items: center; gap: 8px;
-  }
-  .btn-primary:hover { transform: translate(-1px,-1px); box-shadow: 3px 3px 0 #2C2A59; }
+  .mono { font-family: 'JetBrains Mono','Geist Mono',ui-monospace,monospace; letter-spacing: 0.02em; font-weight: 500; direction: ltr; display: inline-block; }
+  .eyebrow { font-family: 'JetBrains Mono','Geist Mono',monospace; font-size: 11px; letter-spacing: 0.18em; text-transform: uppercase; font-weight: 500; direction: ltr; display: inline-block; }
+  .btn-primary { background: #D2F801; color: #2C2A59; font-weight: 700; padding: 14px 24px; border-radius: 2px; transition: all 0.15s; box-shadow: 0 1px 0 #2C2A59; display: inline-flex; align-items: center; gap: 8px; }
+  .btn-primary:hover { transform: translate(1px,-1px); box-shadow: -3px 3px 0 #2C2A59; }
   .btn-ghost { border: 1px solid #2C2A59; padding: 13px 23px; border-radius: 2px; color: #2C2A59; font-weight: 600; transition: all 0.15s; display: inline-flex; align-items: center; gap: 8px; }
   .btn-ghost:hover { background: #2C2A59; color: #D2F801; }
-
   @keyframes pulse-volt { 0%,100% { box-shadow: 0 0 0 0 rgba(210,248,1,0.65); } 50% { box-shadow: 0 0 0 18px rgba(210,248,1,0); } }
   .play-btn { animation: pulse-volt 2.4s ease-in-out infinite; }
-  /* Legacy compat */
-  @keyframes pulse-coral { 0%,100% { box-shadow: 0 0 0 0 rgba(210,248,1,0.65); } 50% { box-shadow: 0 0 0 18px rgba(210,248,1,0); } }
-
-  /* Context-aware accents — readable grape on light surfaces, vibrant volt on dark */
   .text-coral { color: #5B22C7 !important; }
   .hover\:text-coral:hover { color: #5B22C7 !important; }
-  .bg-ink .text-coral, .bg-navy .text-coral,
-  section.bg-ink .text-coral, section.bg-navy .text-coral,
-  .bg-ink .hover\:text-coral:hover, .bg-navy .hover\:text-coral:hover,
-  footer.bg-ink .text-coral, footer.bg-navy .text-coral { color: #D2F801 !important; }
-
-  /* Nav links: use grape as hover on cream nav */
+  .bg-ink .text-coral, .bg-navy .text-coral, section.bg-ink .text-coral, section.bg-navy .text-coral, .bg-ink .hover\:text-coral:hover, .bg-navy .hover\:text-coral:hover, footer.bg-ink .text-coral, footer.bg-navy .text-coral { color: #D2F801 !important; }
   nav.bg-cream\/85 a.hover\:text-coral:hover { color: #5B22C7 !important; }
-
-  /* Paper/grain texture on body for editorial warmth */
-  body::before {
-    content: ''; position: fixed; inset: 0; pointer-events: none; z-index: 0; opacity: 0.035;
-    background-image: radial-gradient(circle at 1px 1px, #2C2A59 1px, transparent 0);
-    background-size: 3px 3px;
-  }
+  body::before { content: ''; position: fixed; inset: 0; pointer-events: none; z-index: 0; opacity: 0.035; background-image: radial-gradient(circle at 1px 1px, #2C2A59 1px, transparent 0); background-size: 3px 3px; }
   main, section, nav, footer { position: relative; z-index: 1; }
-
 </style>
 </head>
 
 <body class="antialiased">
 
-<!-- شريط التنقل — NAV -->
 <nav class="sticky top-0 z-50 bg-cream/85 backdrop-blur-md border-b border-line">
   <div class="max-w-7xl mx-auto px-6 lg:px-10 flex items-center justify-between py-4">
-    <a href="/" class="flex items-center gap-2">
-      <img src="./assets/logo-icon-navy.png" alt="" class="w-9 h-9" />
-      <span class="display text-2xl">باكمان</span>
+    <a href="/ar" class="flex items-center gap-2">
+      <img src="/assets/wordmark-navy.png" alt="باكمان" class="h-7 sm:h-8 w-auto" />
     </a>
     <div class="hidden md:flex items-center gap-8 text-sm">
       <a href="#platform" class="hover:text-coral transition">المنصّة</a>
       <a href="#pricing" class="hover:text-coral transition">الأسعار</a>
-      <a href="#" class="hover:text-coral transition">للبراندات</a>
-      <a href="#" class="hover:text-coral transition">الدليل</a>
+      <a href="/for-brands" class="hover:text-coral transition">للبراندات</a>
+      <a href="/for-startups" class="hover:text-coral transition">للمبتدئين</a>
     </div>
     <div class="flex items-center gap-3">
-      <a href="#" class="hidden sm:inline text-sm">تسجيل الدخول</a>
+      <a href="/" class="hidden sm:inline text-sm hover:text-coral">EN</a>
       <a href="#cta" class="btn-primary text-sm">ابدأ مجاناً ←</a>
     </div>
   </div>
 </nav>
 
-<!-- ============================================== -->
-<!-- HERO — Arabic, VSL #6                          -->
-<!-- ============================================== -->
+<!-- HERO -->
 <section class="max-w-7xl mx-auto px-6 lg:px-10 pt-16 lg:pt-24 pb-24">
   <div class="grid lg:grid-cols-12 gap-12 lg:gap-16 items-center">
-
     <div class="lg:col-span-7">
       <div class="eyebrow text-teal mb-6">
         <span class="inline-block w-8 h-px bg-teal align-middle ml-2"></span>
         منصّة التجارة الإلكترونية · السعودية · الإمارات · عُمان
       </div>
-
       <h1 class="display text-6xl md:text-7xl lg:text-8xl mb-8">
         براندك يستحق نظام <span class="text-coral">يليق فيه.</span>
       </h1>
-
       <p class="text-xl text-ink/75 max-w-xl mb-10 leading-loose">
         لا جداول في الأكسل. لا رسائل واتساب مع المندوبين. لا فوضى. كل طلباتك، مخزونك، وشحناتك في لوحة تحكم واحدة. من الدمام لجدّة للرياض — وحتى الإمارات وعُمان.
       </p>
-
       <div class="flex flex-wrap items-center gap-4">
         <a href="#cta" class="btn-primary">ابدأ مجاناً ←</a>
         <a href="#vsl" class="btn-ghost inline-flex items-center gap-2">
@@ -134,13 +81,11 @@
           شاهد الفيديو · ٦٠ ثانية
         </a>
       </div>
-
       <p class="mono text-xs text-muted mt-8">
         بدون بطاقة ائتمان · بدون سجل تجاري للتسجيل · أول طلب خلال ٤٨ ساعة
       </p>
     </div>
 
-    <!-- VSL #6 Player — Arabic KSA -->
     <div class="lg:col-span-5" id="vsl">
       <div class="relative aspect-video bg-ink rounded-sm overflow-hidden group cursor-pointer" style="box-shadow: -16px 16px 0 #5B22C7;">
         <div class="absolute inset-0 bg-gradient-to-bl from-ink via-ink to-teal/40"></div>
@@ -163,9 +108,7 @@
   </div>
 </section>
 
-<!-- ============================================== -->
-<!-- PAIN POINTS — 4 tiles, Khaleeji phrasing       -->
-<!-- ============================================== -->
+<!-- PAIN POINTS -->
 <section class="max-w-7xl mx-auto px-6 lg:px-10 py-24 lg:py-32">
   <div class="max-w-3xl mb-20">
     <div class="eyebrow text-coral mb-4">الفوضى اللي تاكل البراند</div>
@@ -198,12 +141,9 @@
   </div>
 </section>
 
-<!-- ============================================== -->
-<!-- PLATFORM SHOWCASE                              -->
-<!-- ============================================== -->
+<!-- PLATFORM -->
 <section id="platform" class="bg-ink text-cream py-24 lg:py-32">
   <div class="max-w-7xl mx-auto px-6 lg:px-10">
-
     <div class="max-w-3xl mb-20">
       <div class="eyebrow text-coral mb-4">المنصّة</div>
       <h2 class="display text-5xl md:text-6xl">
@@ -211,7 +151,6 @@
       </h2>
     </div>
 
-    <!-- Row: Orders -->
     <div class="grid lg:grid-cols-2 gap-16 items-center mb-24">
       <div>
         <div class="eyebrow text-coral mb-4">٠١ · الطلبات</div>
@@ -225,7 +164,6 @@
           <li class="flex gap-3"><span class="text-coral">←</span> إشعار واتساب يوصلك لحظة الطلب.</li>
         </ul>
       </div>
-      <!-- Dashboard mock (Arabic labels) -->
       <div class="bg-paper text-ink rounded-sm overflow-hidden" style="box-shadow: -12px 12px 0 #5B22C7;">
         <div class="flex items-center justify-between px-4 py-3 border-b border-line bg-cream">
           <div class="flex gap-2">
@@ -277,7 +215,6 @@
       </div>
     </div>
 
-    <!-- Row: Arabic support built-in -->
     <div class="grid lg:grid-cols-2 gap-16 items-center">
       <div class="bg-paper text-ink p-8 rounded-sm" style="box-shadow: 12px 12px 0 #5B22C7;">
         <div class="mono text-[10px] text-muted mb-4">STOREFRONT · LANGUAGE</div>
@@ -308,9 +245,6 @@
   </div>
 </section>
 
-<!-- ============================================== -->
-<!-- VISION 2030 SUBTLE HOOK                        -->
-<!-- ============================================== -->
 <section class="max-w-5xl mx-auto px-6 lg:px-10 py-24 text-center">
   <div class="eyebrow text-teal mb-6">الاقتصاد الرقمي</div>
   <h2 class="display text-4xl md:text-5xl mb-6 max-w-3xl mx-auto">
@@ -321,9 +255,6 @@
   </p>
 </section>
 
-<!-- ============================================== -->
-<!-- PRICING                                        -->
-<!-- ============================================== -->
 <section id="pricing" class="bg-paper border-y border-line py-24 lg:py-32">
   <div class="max-w-5xl mx-auto px-6 lg:px-10 text-center">
     <div class="eyebrow text-coral mb-4">الأسعار</div>
@@ -358,23 +289,15 @@
   </div>
 </section>
 
-<!-- ============================================== -->
-<!-- SOCIAL PROOF — Saudi testimonial               -->
-<!-- ============================================== -->
 <section class="max-w-5xl mx-auto px-6 lg:px-10 py-24 lg:py-32">
   <figure class="border-r-2 border-coral pr-8">
     <blockquote class="display text-3xl md:text-5xl leading-snug mb-8">
       "كنت أدير ثلاث أدوات عشان أشغّل متجر واحد. بعد باكمان — كل شي في شاشة وحدة. الإيرادات ارتفعت ٥٦٪ خلال شهر. وما عبيت كرتون بنفسي من فبراير."
     </blockquote>
-    <figcaption class="mono text-sm text-muted">
-      مؤسسة براند أزياء · الرياض · +٢٠٠ طلب شهرياً
-    </figcaption>
+    <figcaption class="mono text-sm text-muted">مؤسسة براند أزياء · الرياض · +٢٠٠ طلب شهرياً</figcaption>
   </figure>
 </section>
 
-<!-- ============================================== -->
-<!-- FINAL CTA                                      -->
-<!-- ============================================== -->
 <section id="cta" class="bg-coral py-24 lg:py-32">
   <div class="max-w-5xl mx-auto px-6 lg:px-10 text-center">
     <h2 class="display text-5xl md:text-7xl lg:text-8xl mb-8 text-ink">
@@ -392,7 +315,6 @@
   </div>
 </section>
 
-<!-- FOOTER -->
 <footer class="bg-ink text-cream/70 py-16">
   <div class="max-w-7xl mx-auto px-6 lg:px-10">
     <div class="grid md:grid-cols-5 gap-10 pb-12 border-b border-cream/10">
@@ -408,9 +330,10 @@
       <div>
         <div class="eyebrow text-coral mb-4">المنتج</div>
         <ul class="space-y-2 text-sm">
-          <li><a href="#" class="hover:text-cream">المنصّة</a></li>
-          <li><a href="#" class="hover:text-cream">الأسعار</a></li>
-          <li><a href="#" class="hover:text-cream">الذكاء الاصطناعي</a></li>
+          <li><a href="/" class="hover:text-cream">EN site</a></li>
+          <li><a href="/pricing" class="hover:text-cream">الأسعار</a></li>
+          <li><a href="/for-brands" class="hover:text-cream">للبراندات</a></li>
+          <li><a href="/for-startups" class="hover:text-cream">للمبتدئين</a></li>
         </ul>
       </div>
       <div>
@@ -425,8 +348,7 @@
         <div class="eyebrow text-coral mb-4">المناطق</div>
         <ul class="space-y-2 text-sm">
           <li>🇸🇦 السعودية</li>
-          <li>🇦🇪 الإمارات</li>
-          <li>🇴🇲 عُمان</li>
+          <li><a href="/uae-oman" class="hover:text-cream">🇦🇪 الإمارات · 🇴🇲 عُمان</a></li>
         </ul>
       </div>
     </div>

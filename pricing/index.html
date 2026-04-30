@@ -17,8 +17,8 @@
   }}};
 </script>
 <style>
-  @font-face { font-family: 'Avenir Arabic'; src: url('./assets/avenir-arabic-book.otf') format('opentype'); font-weight: 400; font-style: normal; font-display: swap; }
-  @font-face { font-family: 'Avenir Arabic'; src: url('./assets/avenir-arabic-black.otf') format('opentype'); font-weight: 900; font-style: normal; font-display: swap; }
+  @font-face { font-family: 'Avenir Arabic'; src: url('/assets/avenir-arabic-book.otf') format('opentype'); font-weight: 400; font-style: normal; font-display: swap; }
+  @font-face { font-family: 'Avenir Arabic'; src: url('/assets/avenir-arabic-black.otf') format('opentype'); font-weight: 900; font-style: normal; font-display: swap; }
   .ar { font-family: 'Avenir Arabic','IBM Plex Sans Arabic',system-ui,sans-serif; font-weight: 400; }
   .ar-serif { font-family: 'Avenir Arabic','IBM Plex Sans Arabic',system-ui,sans-serif; font-weight: 900; }
 
@@ -66,16 +66,16 @@
 <nav class="sticky top-0 z-50 bg-cream/85 backdrop-blur-md border-b border-line">
   <div class="max-w-7xl mx-auto px-6 lg:px-10 h-18 flex items-center justify-between py-4">
     <a href="/" class="flex items-center gap-2">
-      <img src="./assets/wordmark-navy.png" alt="packman" class="h-7 sm:h-8 w-auto" />
+      <img src="/assets/wordmark-navy.png" alt="packman" class="h-7 sm:h-8 w-auto" />
     </a>
     <div class="hidden md:flex items-center gap-8 text-sm">
       <a href="/" class="hover:text-coral">Platform</a>
-      <a href="#" class="text-coral">Pricing</a>
-      <a href="#" class="hover:text-coral">For brands</a>
-      <a href="#" class="hover:text-coral">Learn</a>
+      <a href="/pricing" class="text-coral">Pricing</a>
+      <a href="/for-brands" class="hover:text-coral">For brands</a>
+      <a href="/for-startups" class="hover:text-coral">For startups</a>
     </div>
     <div class="flex items-center gap-3">
-      <a href="#" class="hidden sm:inline text-sm">Log in</a>
+      <a href="/ar" class="hidden sm:inline text-sm hover:text-coral">عربي</a>
       <a href="#cta" class="btn-primary text-sm">Start Free →</a>
     </div>
   </div>
@@ -385,9 +385,9 @@
         </div>
         <p class="text-sm max-w-xs">E-commerce infrastructure for Gulf brands. UAE · KSA · Oman.</p>
       </div>
-      <div><div class="eyebrow text-coral mb-4">Product</div><ul class="space-y-2 text-sm"><li><a href="/">Platform</a></li><li><a href="#">Pricing</a></li><li><a href="#">AI Media</a></li></ul></div>
-      <div><div class="eyebrow text-coral mb-4">Company</div><ul class="space-y-2 text-sm"><li><a href="#">About</a></li><li><a href="#">Careers</a></li></ul></div>
-      <div><div class="eyebrow text-coral mb-4">Regions</div><ul class="space-y-2 text-sm"><li>🇦🇪 UAE</li><li>🇸🇦 Saudi Arabia</li><li>🇴🇲 Oman</li></ul></div>
+      <div><div class="eyebrow text-coral mb-4">Product</div><ul class="space-y-2 text-sm"><li><a href="/" class="hover:text-cream">Platform</a></li><li><a href="/pricing" class="hover:text-cream">Pricing</a></li><li><a href="/for-brands" class="hover:text-cream">For brands</a></li><li><a href="/for-startups" class="hover:text-cream">For startups</a></li></ul></div>
+      <div><div class="eyebrow text-coral mb-4">Company</div><ul class="space-y-2 text-sm"><li><a href="#" class="hover:text-cream">About</a></li><li><a href="#" class="hover:text-cream">Careers</a></li></ul></div>
+      <div><div class="eyebrow text-coral mb-4">Regions</div><ul class="space-y-2 text-sm"><li><a href="/uae-oman" class="hover:text-cream">🇦🇪 UAE · 🇴🇲 Oman</a></li><li><a href="/ar" class="hover:text-cream">🇸🇦 السعودية</a></li></ul></div>
     </div>
     <div class="flex flex-col md:flex-row justify-between pt-8 mono text-xs text-cream/50 gap-3">
       <div>© 2026 Packman.ai · Al Quoz, Dubai, UAE</div>

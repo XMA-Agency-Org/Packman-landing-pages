@@ -26,12 +26,12 @@
 <style>
   @font-face {
     font-family: 'Avenir Arabic';
-    src: url('./assets/avenir-arabic-book.otf') format('opentype');
+    src: url('/assets/avenir-arabic-book.otf') format('opentype');
     font-weight: 400; font-style: normal; font-display: swap;
   }
   @font-face {
     font-family: 'Avenir Arabic';
-    src: url('./assets/avenir-arabic-black.otf') format('opentype');
+    src: url('/assets/avenir-arabic-black.otf') format('opentype');
     font-weight: 900; font-style: normal; font-display: swap;
   }
   html { scroll-behavior: smooth; }
@@ -123,16 +123,16 @@
 <nav class="sticky top-0 z-50 bg-cream/85 backdrop-blur-md border-b border-line">
   <div class="max-w-7xl mx-auto px-6 lg:px-10 h-18 flex items-center justify-between py-4">
     <a href="/" class="flex items-center gap-2">
-      <img src="./assets/wordmark-navy.png" alt="packman · e-commerce for entrepreneurs" class="h-7 sm:h-8 w-auto" />
+      <img src="/assets/wordmark-navy.png" alt="packman · e-commerce for entrepreneurs" class="h-7 sm:h-8 w-auto" />
     </a>
     <div class="hidden md:flex items-center gap-8 text-sm">
-      <a href="#platform" class="hover:text-coral transition">Platform</a>
-      <a href="/pricing" class="hover:text-coral transition">Pricing</a>
-      <a href="#" class="hover:text-coral transition">For brands</a>
-      <a href="#" class="hover:text-coral transition">Learn</a>
+      <a href="/" class="hover:text-coral transition" data-nav="platform">Platform</a>
+      <a href="/pricing" class="hover:text-coral transition" data-nav="pricing">Pricing</a>
+      <a href="/for-brands" class="hover:text-coral transition" data-nav="brands">For brands</a>
+      <a href="/for-startups" class="hover:text-coral transition" data-nav="startups">For startups</a>
     </div>
     <div class="flex items-center gap-3">
-      <a href="#" class="hidden sm:inline text-sm">Log in</a>
+      <a href="/ar" class="hidden sm:inline text-sm hover:text-coral">عربي</a>
       <a href="#cta" class="btn-primary text-sm">Start Free →</a>
     </div>
   </div>
@@ -607,10 +607,10 @@
       <div>
         <div class="eyebrow text-coral mb-4">Product</div>
         <ul class="space-y-2 text-sm">
-          <li><a href="#" class="hover:text-cream">Platform</a></li>
+          <li><a href="/" class="hover:text-cream">Platform</a></li>
           <li><a href="/pricing" class="hover:text-cream">Pricing</a></li>
-          <li><a href="#" class="hover:text-cream">AI Media</a></li>
-          <li><a href="#" class="hover:text-cream">API</a></li>
+          <li><a href="/for-brands" class="hover:text-cream">For brands</a></li>
+          <li><a href="/for-startups" class="hover:text-cream">For startups</a></li>
         </ul>
       </div>
       <div>
@@ -624,9 +624,8 @@
       <div>
         <div class="eyebrow text-coral mb-4">Regions</div>
         <ul class="space-y-2 text-sm">
-          <li>🇦🇪 UAE</li>
-          <li>🇸🇦 Saudi Arabia</li>
-          <li>🇴🇲 Oman</li>
+          <li><a href="/uae-oman" class="hover:text-cream">🇦🇪 UAE · 🇴🇲 Oman</a></li>
+          <li><a href="/ar" class="hover:text-cream">🇸🇦 السعودية</a></li>
         </ul>
       </div>
     </div>
