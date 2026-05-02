@@ -3,8 +3,8 @@
 <head>
 <meta charset="UTF-8" />
 <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-<meta name="description" content="Drop a photo, get a ready-to-sell store. Packman builds your e-commerce business across the Gulf." />
-<title>Packman · Sell anything, anywhere</title>
+<meta name="description" content="Simple pricing in OMR for sellers in Oman." />
+<title>Packman · Pricing · Oman</title>
 <link rel="icon" href="/assets/logo-mark-navy.png" type="image/png" />
 <link rel="preconnect" href="https://fonts.googleapis.com" />
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
@@ -426,7 +426,7 @@ footer .divider {
 
 <div style="padding: 24px 24px 0;">
   <nav class="pill-nav" style="max-width: 1100px; margin: 0 auto; display: flex; align-items: center; gap: 16px; padding: 8px 8px 8px 16px;">
-    <a href="/" style="display:flex; align-items:center; gap:12px; text-decoration:none;">
+    <a href="/oman" style="display:flex; align-items:center; gap:12px; text-decoration:none;">
   <span class="logo-mark"><img src="/assets/logo-mark-volt.png" alt="" /></span>
   <span style="display:flex; flex-direction:column; line-height:1;">
     <span style="display:flex; align-items:baseline;">
@@ -448,42 +448,81 @@ footer .divider {
       </button>
       <a href="#start" class="btn-pill btn-volt" style="padding: 10px 18px; font-size: 14px; text-decoration: none;">Launch your store</a>
       <span class="lang-toggle" style="margin-left: 4px;">
-        <a href="/" class="lang-on">EN</a>
+        <a href="/oman" class="lang-on">EN</a>
         <a href="/ar">AR</a>
       </span>
     </div>
   </nav>
 </div>
 
-<main style="max-width: 1100px; margin: 0 auto; padding: 80px 24px 120px; text-align: center;">
-  <div class="tag-pill mono">
-    <span class="green-dot"></span>
-    <span>NEW · AI-POWERED SETUP</span>
+<main style="max-width: 1200px; margin: 0 auto; padding: 64px 24px 80px; text-align: center;">
+  <div class="section-eyebrow mono">PRICING</div>
+  <h1 class="section-h2">Simple pricing.<br/>Four ways to pay.</h1>
+  <p class="hero-sub" style="margin-top: 16px;">
+    One plan. OMR 40 a month. Commit longer, pay less. Or start completely free — no credit card, no trade licence to sign up.
+  </p>
+  <div style="margin-top: 20px; font-size: 13px; color: var(--muted);">
+    Country: <a href="/pricing-uae" style="color:var(--olive); text-decoration:underline;">🇦🇪 UAE</a> · <a href="/pricing-ksa" style="color:var(--olive); text-decoration:underline;">🇸🇦 KSA</a> · <strong style="color:var(--ink);">🇴🇲 Oman</strong>
+  </div>
+  
+<div class="price-grid">
+  <div class="price-card">
+    <div class="label">Monthly</div>
+    <div class="amount">OMR 40</div>
+    <div class="effective">per month · cancel anytime</div>
+    <ul>
+      <li>Unlimited orders</li>
+      <li>Buraq + Aramex shipping</li>
+      <li>UAE · KSA · Oman markets</li>
+      <li>100 AI credits/month</li>
+      <li>Bilingual storefront</li>
+    </ul>
+    <a href="#" class="cta">Start free</a>
   </div>
 
-  <h1 class="hero-h1">
-    Sell anything, anywhere.<br />
-    Packman builds <span class="olive">your store from one photo.</span>
-  </h1>
+  <div class="price-card">
+    <div class="label">3-Month</div>
+    <div class="amount">OMR 110</div>
+    <div class="effective">OMR 40/mo effective</div>
+    <span class="save">Save 8%</span>
+    <ul>
+      <li>Everything in Monthly</li>
+      <li>300 AI credits</li>
+      <li>Priority onboarding</li>
+      <li>Quarterly growth review</li>
+    </ul>
+    <a href="#" class="cta">Choose plan</a>
+  </div>
 
-  <p class="hero-sub">
-    Describe what you sell, drop in a single product photo, and we turn it into a ready-to-sell business with products, branding, and store included.
-  </p>
+  <div class="price-card featured">
+    <span class="badge">MOST POPULAR</span>
+    <div class="label">6-Month</div>
+    <div class="amount">OMR 220</div>
+    <div class="effective">OMR 35/mo effective</div>
+    <span class="save">Save 12%</span>
+    <ul>
+      <li>Everything in 3-Month</li>
+      <li>600 AI credits</li>
+      <li>Dedicated Slack channel</li>
+      <li>Free theme customisation</li>
+    </ul>
+    <a href="#" class="cta">Choose plan</a>
+  </div>
 
-  <form class="hero-input" id="start" onsubmit="event.preventDefault(); window.location='/pricing';">
-    <span class="cam"><svg width="18" height="18" viewBox="0 0 20 20" fill="none">
-<path d="M2.5 6h2L5.7 4.3h8.6L15.5 6H17.5a1 1 0 011 1v9a1 1 0 01-1 1h-15a1 1 0 01-1-1V7a1 1 0 011-1z" stroke="currentColor" stroke-width="1.4" stroke-linejoin="round"/>
-<circle cx="10" cy="11.5" r="3.5" stroke="currentColor" stroke-width="1.4"/>
-</svg></span>
-    <input type="text" placeholder="I want to sell..." />
-    <button type="submit" class="btn-pill btn-volt" style="padding: 11px 22px; font-size: 14.5px;">
-      Start free
-      <svg width="14" height="14" viewBox="0 0 16 16" fill="none" style="margin-left:4px;"><path d="M3 8h10m0 0L9 4m4 4l-4 4" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"/></svg>
-    </button>
-  </form>
-
-  <p class="trust">Trusted by thousands of sellers across the region</p>
-  
+  <div class="price-card">
+    <div class="label">12-Month · Best value</div>
+    <div class="amount">OMR 400</div>
+    <div class="effective">OMR 35/mo effective</div>
+    <span class="save">Save 19%</span>
+    <ul>
+      <li>Everything in 6-Month</li>
+      <li>1,500 AI credits</li>
+      <li>Quarterly business review</li>
+      <li>API access unlocked</li>
+    </ul>
+    <a href="#" class="cta">Choose plan</a>
+  </div>
+</div>
 </main>
 
 <footer>
@@ -525,7 +564,7 @@ footer .divider {
       <div>
         <h3 class="col-title">COUNTRIES</h3>
         <div style="display:flex; flex-direction:column; align-items:flex-start; gap:10px;">
-          <a href="/uae" class="country-pill"><span style="font-size:18px;">🇦🇪</span>UAE</a><a href="/ksa" class="country-pill"><span style="font-size:18px;">🇸🇦</span>KSA</a><a href="/oman" class="country-pill"><span style="font-size:18px;">🇴🇲</span>Oman</a>
+          <a href="/uae" class="country-pill"><span style="font-size:18px;">🇦🇪</span>UAE</a><a href="/ksa" class="country-pill"><span style="font-size:18px;">🇸🇦</span>KSA</a><a href="/oman" class="country-pill active"><span style="font-size:18px;">🇴🇲</span>Oman</a>
         </div>
       </div>
     </div>

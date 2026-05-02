@@ -3,520 +3,591 @@
 <head>
 <meta charset="UTF-8" />
 <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-<title>Pricing — Packman</title>
-<meta name="description" content="AED 400/month. One plan. Four ways to pay. Or start completely free — no credit card." />
-
-<link rel="preconnect" href="https://fonts.googleapis.com">
-<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-<link href="https://fonts.googleapis.com/css2?family=Nunito+Sans:ital,wght@0,300;0,400;0,600;0,700;0,800;0,900;1,400;1,700;1,900&family=JetBrains+Mono:wght@400;500&family=IBM+Plex+Sans+Arabic:wght@300;400;500;600;700&display=swap" rel="stylesheet">
-<script src="https://cdn.tailwindcss.com"></script>
-<script>
-  tailwind.config = { theme: { extend: {
-    colors: { navy: '#2C2A59', ink: '#2C2A59', cream: '#F3F1E8', paper: '#FFFFFF', volt: '#D2F801', coral: '#D2F801', grape: '#5B22C7', teal: '#5B22C7', lilac: '#C8C6E7', muted: '#6B6B85', line: '#E2E0E8', sand: '#EBE4D4' },
-    fontFamily: { sans: ['"Avenir Next LT Pro"','"Avenir Next"','"Nunito Sans"','system-ui','sans-serif'], serif: ['"Avenir Next LT Pro"','"Avenir Next"','"Nunito Sans"','system-ui','sans-serif'], mono: ['"JetBrains Mono"','"Geist Mono"','ui-monospace','monospace'], ar: ['"Avenir Arabic"','"IBM Plex Sans Arabic"','system-ui','sans-serif'], arserif: ['"Avenir Arabic"','"IBM Plex Sans Arabic"','system-ui','sans-serif'] }
-  }}};
-</script>
+<meta name="description" content="Simple pricing. Four ways to pay. Start free, no credit card." />
+<title>Packman · Pricing</title>
+<link rel="icon" href="/assets/logo-mark-navy.png" type="image/png" />
+<link rel="preconnect" href="https://fonts.googleapis.com" />
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800;900&family=IBM+Plex+Mono:wght@500;600&display=swap" rel="stylesheet" />
 <style>
-  @font-face { font-family: 'Avenir Arabic'; src: url('/assets/avenir-arabic-book.otf') format('opentype'); font-weight: 400; font-style: normal; font-display: swap; }
-  @font-face { font-family: 'Avenir Arabic'; src: url('/assets/avenir-arabic-black.otf') format('opentype'); font-weight: 900; font-style: normal; font-display: swap; }
-  .ar { font-family: 'Avenir Arabic','IBM Plex Sans Arabic',system-ui,sans-serif; font-weight: 400; }
-  .ar-serif { font-family: 'Avenir Arabic','IBM Plex Sans Arabic',system-ui,sans-serif; font-weight: 900; }
+:root {
+  --bg-top:    #FBFCEF;
+  --bg-mid:    #F1F6D8;
+  --bg-bot:    #E5EEC0;
+  --bg-glow:   #DCEAA4;
+  --ink:       #0E1820;
+  --ink-2:     #1A2530;
+  --ink-soft:  #4A5560;
+  --muted:     #7B8590;
+  --line:      #E1E5C9;
+  --line-soft: #EFF1DF;
+  --paper:     #FFFFFF;
+  --soft:      #F0F2E3;
+  --soft-h:    #E5E9D2;
+  --volt:      #D2F801;
+  --volt-h:    #BEE000;
+  --olive:     #788938;
+  --olive-2:   #67782D;
+}
 
-  html { scroll-behavior: smooth; }
-  body { background: #F3F1E8; color: #2C2A59; font-family: 'Avenir Next LT Pro','Avenir Next','Nunito Sans',system-ui,sans-serif; font-weight: 400; }
-  .serif { font-family: 'Avenir Next LT Pro','Avenir Next','Nunito Sans',system-ui,sans-serif; font-weight: 900; letter-spacing: -0.035em; line-height: 1.02; }
-  .mono { font-family: 'JetBrains Mono','Geist Mono',ui-monospace,monospace; letter-spacing: 0.02em; font-weight: 500; }
-  .eyebrow { font-family: 'JetBrains Mono','Geist Mono',monospace; font-size: 11px; letter-spacing: 0.18em; text-transform: uppercase; font-weight: 500; }
-  .btn-primary { background: #D2F801; color: #2C2A59; font-weight: 700; padding: 14px 24px; border-radius: 2px; transition: all 0.15s; box-shadow: 0 1px 0 #2C2A59; }
-  .btn-primary:hover { transform: translate(-1px,-1px); box-shadow: 3px 3px 0 #2C2A59; }
-  .btn-ghost { border: 1px solid #2C2A59; color: #2C2A59; padding: 13px 24px; border-radius: 2px; font-weight: 500; transition: all 0.15s; }
-  .btn-ghost:hover { background: #2C2A59; color: #F3F1E8; }
+* { box-sizing: border-box; }
+html, body { margin: 0; padding: 0; }
+a { text-decoration: none; color: inherit; }
+body {
+  font-family: 'Inter', -apple-system, BlinkMacSystemFont, sans-serif;
+  color: var(--ink);
+  -webkit-font-smoothing: antialiased;
+  background:
+    radial-gradient(ellipse 80% 60% at 50% 35%, #FCFDF4 0%, rgba(252,253,244,0) 70%),
+    linear-gradient(180deg, #F4F7DF 0%, #ECF1CB 100%);
+  background-attachment: fixed;
+  min-height: 100vh;
+}
 
-  /* FAQ accordion */
-  details[open] summary .chev { transform: rotate(45deg); }
-  details summary { list-style: none; cursor: pointer; }
-  details summary::-webkit-details-marker { display: none; }
-  .chev { transition: transform 0.2s; }
+.mono { font-family: 'IBM Plex Mono', ui-monospace, monospace; }
 
-  /* Context-aware accents — readable grape on light surfaces, vibrant volt on dark */
-  .text-coral { color: #5B22C7 !important; }
-  .hover\:text-coral:hover { color: #5B22C7 !important; }
-  .bg-ink .text-coral, .bg-navy .text-coral,
-  section.bg-ink .text-coral, section.bg-navy .text-coral,
-  .bg-ink .hover\:text-coral:hover, .bg-navy .hover\:text-coral:hover,
-  footer.bg-ink .text-coral, footer.bg-navy .text-coral { color: #D2F801 !important; }
+/* Pill nav */
+.pill-nav {
+  background: var(--paper);
+  border-radius: 9999px;
+  box-shadow:
+    0 1px 2px rgba(15, 24, 32, 0.04),
+    0 8px 24px rgba(15, 24, 32, 0.05);
+}
 
-  /* Nav links: use grape as hover on cream nav */
-  nav.bg-cream\/85 a.hover\:text-coral:hover { color: #5B22C7 !important; }
+/* Logo lockup */
+.logo-mark {
+  width: 44px; height: 44px;
+  border-radius: 12px;
+  background: var(--ink);
+  display: inline-flex;
+  align-items: center; justify-content: center;
+  flex-shrink: 0;
+}
+.logo-mark img { width: 30px; height: 30px; }
+.logo-text { font-weight: 800; font-size: 1.5rem; letter-spacing: -0.025em; line-height: 1; color: var(--ink); }
+.logo-reg  { font-size: 0.5rem; vertical-align: super; margin-left: 1px; color: var(--ink); font-weight: 600; }
+.logo-tag  { font-size: 0.625rem; color: var(--muted); margin-top: 2px; line-height: 1; font-weight: 500; }
 
-  /* Paper/grain texture on body for editorial warmth */
-  body::before {
-    content: ''; position: fixed; inset: 0; pointer-events: none; z-index: 0; opacity: 0.035;
-    background-image: radial-gradient(circle at 1px 1px, #2C2A59 1px, transparent 0);
-    background-size: 3px 3px;
-  }
-  main, section, nav, footer { position: relative; z-index: 1; }
+/* Buttons */
+.btn-pill {
+  border-radius: 9999px;
+  font-weight: 600;
+  transition: all .15s ease;
+  border: none;
+  cursor: pointer;
+  display: inline-flex;
+  align-items: center;
+  gap: 6px;
+  white-space: nowrap;
+}
+.btn-volt { background: var(--volt); color: var(--ink); }
+.btn-volt:hover { background: var(--volt-h); transform: translateY(-1px); }
+.btn-soft { background: var(--soft); color: var(--ink); }
+.btn-soft:hover { background: var(--soft-h); }
+.btn-ink  { background: var(--ink); color: var(--paper); }
+.btn-ink:hover { background: var(--ink-2); }
 
+/* Nav links */
+.nav-link {
+  font-size: 15px; font-weight: 500;
+  color: var(--ink);
+  padding: 6px 4px;
+  transition: color .15s ease;
+}
+.nav-link:hover { color: var(--olive); }
+.pill-nav .nav-links {
+  display: flex;
+  align-items: center;
+  gap: 32px;
+  flex: 1;
+  justify-content: center;
+}
+.pill-nav .login-btn { display: inline-flex; }
 
-  /* ════════════════════════════════════════════════
-   * EDGY: clip-path shapes — no rectangles
-   * ════════════════════════════════════════════════ */
+/* Lang toggle */
+.lang-toggle {
+  background: var(--soft);
+  border-radius: 9999px;
+  padding: 3px;
+  display: inline-flex;
+  align-items: center;
+  font-size: 12px;
+  font-weight: 700;
+}
+.lang-toggle a, .lang-toggle span {
+  padding: 6px 10px;
+  border-radius: 9999px;
+  color: var(--muted);
+  text-decoration: none;
+  transition: all .15s ease;
+  display: inline-block;
+  min-width: 28px;
+  text-align: center;
+}
+.lang-toggle .lang-on { background: var(--ink); color: var(--paper); }
 
-  /* Buttons → forward-chevron arrow */
-  .btn-primary, .btn-ghost {
-    clip-path: polygon(0 0, calc(100% - 14px) 0, 100% 50%, calc(100% - 14px) 100%, 0 100%);
-    border-radius: 0 !important;
-    padding-right: 30px !important;
-  }
-  .btn-ghost {
-    background: rgba(44, 42, 89, 0.07) !important;
-    border: none !important;
-  }
-  .btn-primary:hover, .btn-ghost:hover {
-    transform: translate(-1px, -1px);
-    box-shadow: none !important;
-  }
-  .btn-ghost:hover { background: rgba(44, 42, 89, 0.14) !important; }
+/* Tag pill */
+.tag-pill {
+  display: inline-flex;
+  align-items: center;
+  gap: 8px;
+  padding: 8px 16px;
+  background: rgba(255, 255, 255, 0.5);
+  border: 1px solid var(--line);
+  border-radius: 9999px;
+  font-size: 11px;
+  font-weight: 700;
+  letter-spacing: 0.05em;
+}
+.green-dot {
+  width: 8px; height: 8px;
+  background: var(--volt);
+  border-radius: 50%;
+  display: inline-block;
+}
 
-  /* Edge utility classes (per-element overrides) */
-  .edge-tl   { clip-path: polygon(28px 0, 100% 0, 100% 100%, 0 100%, 0 28px) !important; border-radius: 0 !important; }
-  .edge-tr   { clip-path: polygon(0 0, calc(100% - 28px) 0, 100% 28px, 100% 100%, 0 100%) !important; border-radius: 0 !important; }
-  .edge-br   { clip-path: polygon(0 0, 100% 0, 100% calc(100% - 28px), calc(100% - 28px) 100%, 0 100%) !important; border-radius: 0 !important; }
-  .edge-bl   { clip-path: polygon(0 0, 100% 0, 100% 100%, 28px 100%, 0 calc(100% - 28px)) !important; border-radius: 0 !important; }
-  .edge-diag { clip-path: polygon(0 0, calc(100% - 32px) 0, 100% 32px, 100% 100%, 32px 100%, 0 calc(100% - 32px)) !important; border-radius: 0 !important; }
-  .edge-anti { clip-path: polygon(32px 0, 100% 0, 100% calc(100% - 32px), calc(100% - 32px) 100%, 0 100%, 0 32px) !important; border-radius: 0 !important; }
+/* Hero text */
+.hero-h1 {
+  font-size: clamp(2.25rem, 5vw, 4.25rem);
+  font-weight: 800;
+  letter-spacing: -0.035em;
+  line-height: 1.05;
+  color: var(--ink);
+  margin: 32px 0 0;
+}
+.hero-h1 .olive { color: var(--olive); }
+.hero-sub {
+  font-size: clamp(1rem, 1.5vw, 1.125rem);
+  color: var(--ink-soft);
+  max-width: 640px;
+  margin: 28px auto 0;
+  line-height: 1.6;
+}
 
-  /* Cards (bg-paper.border / bg-cream.border) → TR cut by default */
-  .bg-paper.border, .bg-cream.border {
-    clip-path: polygon(0 0, calc(100% - 24px) 0, 100% 24px, 100% 100%, 0 100%);
-    border-color: transparent !important;
-    border-radius: 0 !important;
-  }
+/* Hero input */
+.hero-input {
+  background: var(--paper);
+  border-radius: 9999px;
+  padding: 8px 8px 8px 16px;
+  display: flex;
+  align-items: center;
+  gap: 12px;
+  max-width: 640px;
+  margin: 36px auto 0;
+  box-shadow:
+    0 2px 4px rgba(15, 24, 32, 0.04),
+    0 12px 32px rgba(15, 24, 32, 0.06);
+}
+.hero-input .cam {
+  width: 36px; height: 36px;
+  border-radius: 50%;
+  background: var(--soft);
+  display: inline-flex;
+  align-items: center; justify-content: center;
+  flex-shrink: 0;
+  color: var(--ink-soft);
+}
+.hero-input input {
+  flex: 1;
+  border: none;
+  outline: none;
+  background: transparent;
+  font-size: 16px;
+  color: var(--ink);
+  padding: 8px 0;
+  font-family: inherit;
+}
+.hero-input input::placeholder { color: var(--muted); }
 
-  /* Dashboard mocks → bigger BR cut + drop-shadow */
-  .mock-dashboard {
-    clip-path: polygon(0 0, 100% 0, 100% calc(100% - 36px), calc(100% - 36px) 100%, 0 100%) !important;
-    border: none !important;
-    border-radius: 0 !important;
-    box-shadow: none !important;
-    filter: drop-shadow(8px 8px 0 #2C2A59);
-  }
+/* Trust line */
+.trust { font-size: 14px; color: var(--muted); margin-top: 22px; }
 
-  /* VSL hero containers → dramatic BR cut */
-  .aspect-video.bg-ink {
-    clip-path: polygon(0 0, 100% 0, 100% calc(100% - 48px), calc(100% - 48px) 100%, 0 100%);
-    border-radius: 0 !important;
-    box-shadow: none !important;
-    filter: drop-shadow(8px 8px 0 #5B22C7);
-  }
+/* Cookie banner */
+.cookie-banner {
+  position: fixed;
+  bottom: 24px;
+  left: 50%;
+  transform: translateX(-50%);
+  width: calc(100% - 48px);
+  max-width: 1200px;
+  background: var(--paper);
+  border: 1px solid var(--line);
+  border-radius: 24px;
+  padding: 20px 24px;
+  display: flex;
+  align-items: center;
+  gap: 24px;
+  box-shadow: 0 4px 12px rgba(15, 24, 32, 0.04), 0 16px 40px rgba(15, 24, 32, 0.08);
+  z-index: 50;
+}
+.cookie-banner h3 { font-size: 18px; font-weight: 700; margin: 0 0 6px; }
+.cookie-banner p  { font-size: 14px; color: var(--ink-soft); margin: 0; line-height: 1.55; }
+.cookie-banner .btns { display: flex; gap: 10px; flex-shrink: 0; }
+.cookie-text { flex: 1; }
 
-  /* Drop-shadow utilities (for clipped elements) */
-  .drop-grape { filter: drop-shadow(8px 8px 0 #5B22C7); }
-  .drop-ink   { filter: drop-shadow(8px 8px 0 #2C2A59); }
-  .drop-coral { filter: drop-shadow(6px 6px 0 #E85D45); }
+/* Country pill (footer) */
+.country-pill {
+  border: 1px solid var(--line);
+  background: var(--paper);
+  border-radius: 9999px;
+  padding: 10px 18px;
+  font-size: 14px;
+  font-weight: 600;
+  display: inline-flex;
+  align-items: center;
+  gap: 10px;
+  text-decoration: none;
+  color: var(--ink);
+  transition: all .15s ease;
+}
+.country-pill:hover {
+  border-color: var(--olive);
+  transform: translateY(-1px);
+}
+.country-pill.active {
+  background: var(--ink);
+  color: var(--paper);
+  border-color: var(--ink);
+}
 
-  /* "MOST POPULAR" tag rotation */
-  .rot-tag { transform: rotate(-3deg) translateX(-3px); display: inline-block; }
+/* Footer */
+footer { padding: 80px 24px 64px; }
+footer .inner { max-width: 1200px; margin: 0 auto; }
+footer .col-title {
+  font-size: 11px;
+  font-weight: 700;
+  letter-spacing: 0.08em;
+  color: var(--muted);
+  margin: 0 0 16px;
+}
+footer ul { list-style: none; padding: 0; margin: 0; }
+footer li { margin-bottom: 10px; font-size: 14px; }
+footer a { color: var(--ink); text-decoration: none; transition: color .15s ease; }
+footer a:hover { color: var(--olive); }
+footer .divider {
+  border: 0;
+  border-top: 1px solid var(--line);
+  margin: 0 0 40px;
+}
 
-  /* Region toggle states */
-  .region-toggle { font: inherit; cursor: pointer; background: transparent; border: none; padding: 0; }
-  .region-toggle.region-on { color: #D2F801; font-weight: 600; }
-  footer.bg-cream .region-toggle.region-on,
-  footer .bg-cream .region-toggle.region-on { color: #5B22C7; }
+/* Pricing cards (for /pricing) */
+.price-grid {
+  display: grid;
+  grid-template-columns: repeat(4, 1fr);
+  gap: 16px;
+  max-width: 1200px;
+  margin: 48px auto 0;
+}
+.price-card {
+  background: var(--paper);
+  border: 1px solid var(--line);
+  border-radius: 28px;
+  padding: 28px;
+  position: relative;
+}
+.price-card.featured {
+  background: var(--ink);
+  color: var(--paper);
+  border-color: var(--ink);
+}
+.price-card .label {
+  font-size: 11px; font-weight: 700; letter-spacing: 0.08em;
+  color: var(--muted); text-transform: uppercase;
+}
+.price-card.featured .label { color: var(--volt); }
+.price-card .amount {
+  font-size: 2.5rem; font-weight: 800; letter-spacing: -0.03em;
+  margin: 12px 0 4px; line-height: 1;
+}
+.price-card .effective {
+  font-size: 13px; color: var(--ink-soft); margin: 8px 0 0;
+}
+.price-card.featured .effective { color: rgba(255,255,255,0.7); }
+.price-card .save {
+  display: inline-block;
+  font-size: 11px;
+  font-weight: 700;
+  color: var(--olive);
+  margin-top: 8px;
+  background: var(--soft);
+  padding: 4px 10px;
+  border-radius: 9999px;
+}
+.price-card.featured .save { color: var(--ink); background: var(--volt); }
+.price-card ul { list-style: none; padding: 0; margin: 24px 0 0; }
+.price-card li { font-size: 14px; padding: 8px 0; border-top: 1px solid var(--line-soft); display: flex; gap: 8px; }
+.price-card.featured li { border-top-color: rgba(255,255,255,0.1); }
+.price-card li::before { content: "✓"; color: var(--olive); font-weight: 700; }
+.price-card.featured li::before { color: var(--volt); }
+.price-card .badge {
+  position: absolute;
+  top: 16px; right: 16px;
+  background: var(--volt);
+  color: var(--ink);
+  font-size: 10px;
+  font-weight: 700;
+  letter-spacing: 0.05em;
+  padding: 4px 10px;
+  border-radius: 9999px;
+}
+.price-card .cta {
+  display: block;
+  text-align: center;
+  width: 100%;
+  margin-top: 24px;
+  padding: 12px;
+  border-radius: 9999px;
+  background: var(--soft);
+  font-weight: 600;
+  font-size: 14px;
+  color: var(--ink);
+  text-decoration: none;
+  transition: all .15s ease;
+}
+.price-card .cta:hover { background: var(--soft-h); }
+.price-card.featured .cta { background: var(--volt); color: var(--ink); }
+.price-card.featured .cta:hover { background: var(--volt-h); }
+
+/* FAQ */
+.faq-item {
+  background: var(--paper);
+  border: 1px solid var(--line);
+  border-radius: 20px;
+  padding: 24px 28px;
+  margin-bottom: 12px;
+}
+.faq-item summary {
+  font-weight: 600;
+  font-size: 16px;
+  cursor: pointer;
+  list-style: none;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+.faq-item summary::-webkit-details-marker { display: none; }
+.faq-item summary::after {
+  content: "+";
+  font-size: 24px;
+  font-weight: 300;
+  color: var(--muted);
+  transition: transform .2s ease;
+}
+.faq-item[open] summary::after { transform: rotate(45deg); }
+.faq-item p {
+  font-size: 14.5px;
+  color: var(--ink-soft);
+  margin: 16px 0 0;
+  line-height: 1.65;
+}
+
+/* Generic content */
+.section-eyebrow {
+  font-size: 11px; font-weight: 700; letter-spacing: 0.08em;
+  color: var(--olive); margin-bottom: 12px;
+}
+.section-h2 {
+  font-size: clamp(2rem, 4vw, 3rem);
+  font-weight: 800;
+  letter-spacing: -0.03em;
+  line-height: 1.1;
+  color: var(--ink);
+  margin: 0 0 16px;
+}
+
+/* Mobile */
+@media (max-width: 768px) {
+  .pill-nav { padding: 6px 8px 6px 12px !important; gap: 6px !important; }
+  .pill-nav .nav-links { display: none; }
+  .pill-nav .login-btn { display: none; }
+  .pill-nav .logo-tag { display: none; }
+  .pill-nav .logo-text { font-size: 1.1rem; }
+  .pill-nav .logo-mark { width: 36px; height: 36px; border-radius: 10px; }
+  .pill-nav .logo-mark img { width: 24px; height: 24px; }
+  .pill-nav a[href="#start"] { padding: 7px 12px !important; font-size: 12px !important; }
+  .pill-nav .lang-toggle { font-size: 11px; }
+  .pill-nav .lang-toggle a, .pill-nav .lang-toggle span { padding: 4px 7px; min-width: 22px; }
+  main { padding: 48px 20px 80px !important; }
+  .hero-input { padding: 6px 6px 6px 12px; gap: 8px; }
+  .hero-input input { font-size: 15px; min-width: 0; }
+  .hero-input .cam { width: 32px; height: 32px; }
+  .hero-input .btn-volt { padding: 9px 14px !important; font-size: 13px !important; }
+  .hero-input .btn-volt svg { display: none; }
+  .price-grid { grid-template-columns: 1fr; }
+  .cookie-banner { flex-direction: column; align-items: stretch; bottom: 16px; padding: 16px 18px; }
+  .cookie-banner .btns { justify-content: stretch; }
+  .cookie-banner .btns button { flex: 1; }
+  footer .grid-4 { grid-template-columns: 1fr !important; gap: 32px !important; }
+}
 </style>
 </head>
+<body>
 
-<body class="antialiased">
-
-<!-- NAV -->
-<nav class="sticky top-0 z-50 bg-cream/85 backdrop-blur-md border-b border-line">
-  <div class="max-w-7xl mx-auto px-6 lg:px-10 h-18 flex items-center justify-between py-4">
-    <a href="/" class="flex items-center gap-2.5">
-      <img src="/assets/logo-mark-navy.png" alt="" class="w-9 h-9 select-none" />
-      <span class="serif text-2xl tracking-tight text-ink">packman</span>
-    </a>
-    <div class="hidden md:flex items-center gap-8 text-sm">
-      <a href="/" class="hover:text-coral">Platform</a>
-      <a href="/pricing" class="text-coral">Pricing</a>
-      <a href="/for-brands" class="hover:text-coral">For brands</a>
-      <a href="/for-startups" class="hover:text-coral">For startups</a>
+<div style="padding: 24px 24px 0;">
+  <nav class="pill-nav" style="max-width: 1100px; margin: 0 auto; display: flex; align-items: center; gap: 16px; padding: 8px 8px 8px 16px;">
+    <a href="/" style="display:flex; align-items:center; gap:12px; text-decoration:none;">
+  <span class="logo-mark"><img src="/assets/logo-mark-volt.png" alt="" /></span>
+  <span style="display:flex; flex-direction:column; line-height:1;">
+    <span style="display:flex; align-items:baseline;">
+      <span class="logo-text">packman</span><span class="logo-reg">®</span>
+    </span>
+    <span class="logo-tag">e-commerce for entrepreneurs</span>
+  </span>
+</a>
+    <div class="nav-links">
+      <a href="/pricing" class="nav-link">Pricing</a>
+      <a href="/partners" class="nav-link">Partners</a>
+      <a href="/faqs" class="nav-link">FAQs</a>
+      <a href="/contact" class="nav-link">Contact Us</a>
     </div>
-    <div class="flex items-center gap-3">
-      <a href="/ar" class="hidden sm:inline text-sm hover:text-coral">عربي</a>
-      <a href="#cta" class="btn-primary text-sm">Start Free →</a>
+    <div style="display:flex; align-items:center; gap:8px;">
+      <button class="btn-pill btn-soft login-btn" style="padding: 9px 16px; font-size: 14px;">
+        Login
+        <svg width="11" height="11" viewBox="0 0 12 12" fill="none" style="margin-left:2px;"><path d="M3 4.5L6 7.5L9 4.5" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/></svg>
+      </button>
+      <a href="#start" class="btn-pill btn-volt" style="padding: 10px 18px; font-size: 14px; text-decoration: none;">Launch your store</a>
+      <span class="lang-toggle" style="margin-left: 4px;">
+        <a href="/" class="lang-on">EN</a>
+        <a href="/ar">AR</a>
+      </span>
     </div>
-  </div>
-</nav>
+  </nav>
+</div>
 
-<!-- ============================================== -->
-<!-- PRICING HERO — tight, type-forward             -->
-<!-- ============================================== -->
-<section class="max-w-5xl mx-auto px-6 lg:px-10 pt-20 lg:pt-28 pb-16 text-center">
-  <div class="eyebrow text-teal mb-6">Pricing</div>
-  <h1 class="serif text-6xl md:text-8xl leading-[0.95] mb-6">
-    Simple pricing.<br>
-    <em>Four ways to pay.</em>
-  </h1>
-  <p class="text-lg md:text-xl text-ink/70 max-w-2xl mx-auto">
-    One plan. <span data-aed="400">AED 400</span> a month. Commit longer, pay less. Or start completely free — no credit card, no trade licence to sign up.
+<main style="max-width: 1200px; margin: 0 auto; padding: 64px 24px 80px; text-align: center;">
+  <div class="section-eyebrow mono">PRICING</div>
+  <h1 class="section-h2">Simple pricing.<br/>Four ways to pay.</h1>
+  <p class="hero-sub" style="margin-top: 16px;">
+    One plan. AED 400 a month. Commit longer, pay less. Or start completely free — no credit card, no trade licence to sign up.
   </p>
-</section>
-
-<!-- ============================================== -->
-<!-- PLAN SELECTOR — 4 cards                        -->
-<!-- ============================================== -->
-<section class="max-w-7xl mx-auto px-6 lg:px-10 pb-24">
-  <div class="grid md:grid-cols-2 lg:grid-cols-4 gap-0 border border-line bg-paper">
-
-    <!-- Monthly -->
-    <div class="p-8 border-b lg:border-b-0 lg:border-r border-line flex flex-col">
-      <div class="mono text-xs text-muted mb-3">MONTHLY</div>
-      <div class="mb-4">
-        <div class="serif text-5xl"><span data-aed="400">AED 400</span></div>
-        <div class="mono text-xs text-muted mt-1">/month · <span data-aed="400">AED 400</span> effective</div>
-      </div>
-      <div class="mono text-xs text-muted mb-6">Rolling · cancel anytime</div>
-      <ul class="space-y-2 text-sm mb-8 flex-1">
-        <li class="flex gap-2"><span class="text-coral">✓</span> Unlimited orders</li>
-        <li class="flex gap-2"><span class="text-coral">✓</span> Buraq + Aramex shipping</li>
-        <li class="flex gap-2"><span class="text-coral">✓</span> UAE · KSA · Oman markets</li>
-        <li class="flex gap-2"><span class="text-coral">✓</span> 100 AI credits/month</li>
-        <li class="flex gap-2"><span class="text-coral">✓</span> EN + AR storefront</li>
-      </ul>
-      <a href="#" class="block text-center py-3 border border-ink text-sm hover:bg-ink hover:text-cream transition">Choose Plan</a>
-    </div>
-
-    <!-- 3-month -->
-    <div class="p-8 border-b lg:border-b-0 lg:border-r border-line flex flex-col">
-      <div class="mono text-xs text-muted mb-3">3-MONTH</div>
-      <div class="mb-4">
-        <div class="serif text-5xl"><span data-aed="1,100">AED 1,100</span></div>
-        <div class="mono text-xs text-muted mt-1">/upfront · <span data-aed="367">AED 367</span> effective</div>
-      </div>
-      <div class="mono text-xs text-teal mb-6">Save <span data-aed="100">AED 100</span></div>
-      <ul class="space-y-2 text-sm mb-8 flex-1">
-        <li class="flex gap-2"><span class="text-coral">✓</span> Everything in monthly</li>
-        <li class="flex gap-2"><span class="text-coral">✓</span> 300 AI credits included</li>
-        <li class="flex gap-2"><span class="text-coral">✓</span> Priority onboarding</li>
-        <li class="flex gap-2"><span class="text-coral">✓</span> Quarterly growth review</li>
-      </ul>
-      <a href="#" class="block text-center py-3 border border-ink text-sm hover:bg-ink hover:text-cream transition">Choose Plan</a>
-    </div>
-
-    <!-- 6-month (featured) -->
-    <div class="p-8 border-b md:border-b-0 md:border-r border-line bg-ink text-cream flex flex-col relative">
-      <div class="absolute top-0 right-0 bg-coral text-ink mono text-[10px] px-3 py-1">MOST POPULAR</div>
-      <div class="mono text-xs text-coral mb-3">6-MONTH</div>
-      <div class="mb-4">
-        <div class="serif text-5xl"><span data-aed="2,100">AED 2,100</span></div>
-        <div class="mono text-xs text-cream/60 mt-1">/upfront · <span data-aed="350">AED 350</span> effective</div>
-      </div>
-      <div class="mono text-xs text-coral mb-6">Save <span data-aed="300">AED 300</span></div>
-      <ul class="space-y-2 text-sm mb-8 flex-1 text-cream/90">
-        <li class="flex gap-2"><span class="text-coral">✓</span> Everything in 3-month</li>
-        <li class="flex gap-2"><span class="text-coral">✓</span> 600 AI credits included</li>
-        <li class="flex gap-2"><span class="text-coral">✓</span> Dedicated Slack channel</li>
-        <li class="flex gap-2"><span class="text-coral">✓</span> Free theme customisation</li>
-      </ul>
-      <a href="#" class="block text-center py-3 bg-coral text-ink text-sm font-medium hover:bg-coral/90 transition">Choose Plan</a>
-    </div>
-
-    <!-- 12-month -->
-    <div class="p-8 flex flex-col">
-      <div class="mono text-xs text-muted mb-3">12-MONTH · BEST VALUE</div>
-      <div class="mb-4">
-        <div class="serif text-5xl"><span data-aed="3,900">AED 3,900</span></div>
-        <div class="mono text-xs text-muted mt-1">/upfront · <span data-aed="325">AED 325</span> effective</div>
-      </div>
-      <div class="mono text-xs text-coral mb-6">Save <span data-aed="900">AED 900</span></div>
-      <ul class="space-y-2 text-sm mb-8 flex-1">
-        <li class="flex gap-2"><span class="text-coral">✓</span> Everything in 6-month</li>
-        <li class="flex gap-2"><span class="text-coral">✓</span> 1,500 AI credits included</li>
-        <li class="flex gap-2"><span class="text-coral">✓</span> Quarterly business review</li>
-        <li class="flex gap-2"><span class="text-coral">✓</span> API access unlocked</li>
-      </ul>
-      <a href="#" class="block text-center py-3 border border-ink text-sm hover:bg-ink hover:text-cream transition">Choose Plan</a>
-    </div>
+  <div style="margin-top: 20px; font-size: 13px; color: var(--muted);">
+    Country: <strong style="color:var(--ink);">🇦🇪 UAE</strong> · <a href="/pricing-ksa" style="color:var(--olive); text-decoration:underline;">🇸🇦 KSA</a> · <a href="/pricing-oman" style="color:var(--olive); text-decoration:underline;">🇴🇲 Oman</a>
   </div>
-</section>
-
-<!-- ============================================== -->
-<!-- FREE TRIAL BAND — teal                         -->
-<!-- ============================================== -->
-<section class="bg-teal text-cream py-20">
-  <div class="max-w-5xl mx-auto px-6 lg:px-10 grid md:grid-cols-2 gap-12 items-center">
-    <div>
-      <div class="eyebrow text-coral mb-4">Not ready to commit?</div>
-      <h2 class="serif text-5xl md:text-6xl leading-[1.02] mb-6">Start completely free.</h2>
-      <p class="text-lg text-cream/85 mb-8">
-        Full platform access. No credit card. No trade licence at signup. Upload your licence when you're ready to go live — usually within 48 hours.
-      </p>
-      <a href="#cta" class="inline-block bg-coral text-ink px-8 py-4 font-medium hover:bg-coral/90 transition">Start Free Trial →</a>
-    </div>
-    <ul class="space-y-4 text-cream/90">
-      <li class="flex items-start gap-3 pb-4 border-b border-cream/20">
-        <span class="mono text-coral">01</span>
-        <div><div class="font-medium">No credit card required</div><div class="text-sm text-cream/70">Sign up with just an email.</div></div>
-      </li>
-      <li class="flex items-start gap-3 pb-4 border-b border-cream/20">
-        <span class="mono text-coral">02</span>
-        <div><div class="font-medium">Full platform access</div><div class="text-sm text-cream/70">Every feature. Nothing locked behind a paywall.</div></div>
-      </li>
-      <li class="flex items-start gap-3 pb-4 border-b border-cream/20">
-        <span class="mono text-coral">03</span>
-        <div><div class="font-medium">48-hour first-order guarantee</div><div class="text-sm text-cream/70">Upload a licence, go live, ship your first order.</div></div>
-      </li>
-      <li class="flex items-start gap-3">
-        <span class="mono text-coral">04</span>
-        <div><div class="font-medium">Pay when you're ready</div><div class="text-sm text-cream/70">Convert to paid only when the platform earns it.</div></div>
-      </li>
+  
+<div class="price-grid">
+  <div class="price-card">
+    <div class="label">Monthly</div>
+    <div class="amount">AED 400</div>
+    <div class="effective">per month · cancel anytime</div>
+    <ul>
+      <li>Unlimited orders</li>
+      <li>Buraq + Aramex shipping</li>
+      <li>UAE · KSA · Oman markets</li>
+      <li>100 AI credits/month</li>
+      <li>Bilingual storefront</li>
     </ul>
-  </div>
-</section>
-
-<!-- ============================================== -->
-<!-- VSL #2 EMBED                                   -->
-<!-- ============================================== -->
-<section class="max-w-5xl mx-auto px-6 lg:px-10 py-24">
-  <div class="text-center mb-10">
-    <div class="eyebrow text-coral mb-4">VSL · Platform demo</div>
-    <h2 class="serif text-4xl md:text-5xl leading-tight">See exactly what <span data-aed="400">AED 400</span>/month gets you.</h2>
-  </div>
-  <!-- VSL #2 Player: 90-sec demo walkthrough -->
-  <div class="relative aspect-video bg-ink rounded-sm overflow-hidden cursor-pointer group" style="box-shadow: 16px 16px 0 #5B22C7;">
-    <div class="absolute inset-0 bg-gradient-to-br from-ink via-ink to-teal/30"></div>
-    <div class="absolute inset-10 border border-cream/20 rounded opacity-40">
-      <div class="p-5 grid grid-cols-4 gap-2">
-        <div class="h-16 bg-cream/10 col-span-2 rounded"></div>
-        <div class="h-16 bg-cream/10 rounded"></div>
-        <div class="h-16 bg-coral/30 rounded"></div>
-        <div class="h-24 col-span-4 bg-cream/5 rounded"></div>
-      </div>
-    </div>
-    <div class="absolute inset-0 flex items-center justify-center">
-      <div class="w-24 h-24 bg-coral rounded-full flex items-center justify-center group-hover:scale-110 transition">
-        <svg width="32" height="32" viewBox="0 0 24 24" fill="#2C2A59" class="ml-1"><path d="M8 5v14l11-7z"/></svg>
-      </div>
-    </div>
-    <div class="absolute bottom-4 right-4 mono text-xs text-cream bg-ink/70 px-2 py-1 rounded">01:30</div>
-    <div class="absolute top-4 left-4 eyebrow text-cream/80">90-sec platform tour</div>
-  </div>
-</section>
-
-<!-- ============================================== -->
-<!-- FEATURE MATRIX — long comparison               -->
-<!-- ============================================== -->
-<section class="max-w-7xl mx-auto px-6 lg:px-10 py-24">
-  <div class="mb-12">
-    <div class="eyebrow text-teal mb-4">What's included</div>
-    <h2 class="serif text-5xl md:text-6xl leading-[1.02]">Everything. In every plan.</h2>
+    <a href="#" class="cta">Start free</a>
   </div>
 
-  <div class="bg-paper border border-line overflow-x-auto">
-    <table class="w-full text-sm">
-      <thead class="border-b border-line">
-        <tr class="text-left">
-          <th class="p-4 font-medium w-1/2">Feature</th>
-          <th class="p-4 mono text-xs text-center">Monthly</th>
-          <th class="p-4 mono text-xs text-center">3-mo</th>
-          <th class="p-4 mono text-xs text-center bg-ink text-cream">6-mo</th>
-          <th class="p-4 mono text-xs text-center">12-mo</th>
-        </tr>
-      </thead>
-      <tbody>
-        <!-- Populate with feature rows -->
-        <tr class="border-b border-line"><td class="p-4">Unlimited orders & products</td><td class="text-center text-coral">✓</td><td class="text-center text-coral">✓</td><td class="text-center text-coral bg-ink/5">✓</td><td class="text-center text-coral">✓</td></tr>
-        <tr class="border-b border-line"><td class="p-4">Buraq (domestic UAE)</td><td class="text-center text-coral">✓</td><td class="text-center text-coral">✓</td><td class="text-center text-coral bg-ink/5">✓</td><td class="text-center text-coral">✓</td></tr>
-        <tr class="border-b border-line"><td class="p-4">Aramex (KSA · Oman · GCC)</td><td class="text-center text-coral">✓</td><td class="text-center text-coral">✓</td><td class="text-center text-coral bg-ink/5">✓</td><td class="text-center text-coral">✓</td></tr>
-        <tr class="border-b border-line"><td class="p-4">Arabic + English storefront</td><td class="text-center text-coral">✓</td><td class="text-center text-coral">✓</td><td class="text-center text-coral bg-ink/5">✓</td><td class="text-center text-coral">✓</td></tr>
-        <tr class="border-b border-line"><td class="p-4">VAT-ready checkout</td><td class="text-center text-coral">✓</td><td class="text-center text-coral">✓</td><td class="text-center text-coral bg-ink/5">✓</td><td class="text-center text-coral">✓</td></tr>
-        <tr class="border-b border-line"><td class="p-4">Cash on delivery + card + Tabby + Tamara</td><td class="text-center text-coral">✓</td><td class="text-center text-coral">✓</td><td class="text-center text-coral bg-ink/5">✓</td><td class="text-center text-coral">✓</td></tr>
-        <tr class="border-b border-line"><td class="p-4">AI credits / month</td><td class="text-center mono">100</td><td class="text-center mono">100</td><td class="text-center mono bg-ink/5">100</td><td class="text-center mono">125</td></tr>
-        <tr class="border-b border-line"><td class="p-4">Bonus AI credits at signup</td><td class="text-center mono">0</td><td class="text-center mono">300</td><td class="text-center mono bg-ink/5 text-coral">600</td><td class="text-center mono text-coral">1,500</td></tr>
-        <tr class="border-b border-line"><td class="p-4">Custom domain + SSL</td><td class="text-center text-coral">✓</td><td class="text-center text-coral">✓</td><td class="text-center text-coral bg-ink/5">✓</td><td class="text-center text-coral">✓</td></tr>
-        <tr class="border-b border-line"><td class="p-4">Priority onboarding</td><td class="text-center text-muted">—</td><td class="text-center text-coral">✓</td><td class="text-center text-coral bg-ink/5">✓</td><td class="text-center text-coral">✓</td></tr>
-        <tr class="border-b border-line"><td class="p-4">Dedicated Slack channel</td><td class="text-center text-muted">—</td><td class="text-center text-muted">—</td><td class="text-center text-coral bg-ink/5">✓</td><td class="text-center text-coral">✓</td></tr>
-        <tr class="border-b border-line"><td class="p-4">API access</td><td class="text-center text-muted">—</td><td class="text-center text-muted">—</td><td class="text-center text-muted bg-ink/5">—</td><td class="text-center text-coral">✓</td></tr>
-        <tr><td class="p-4">Quarterly business review</td><td class="text-center text-muted">—</td><td class="text-center text-muted">—</td><td class="text-center text-muted bg-ink/5">—</td><td class="text-center text-coral">✓</td></tr>
-      </tbody>
-    </table>
-  </div>
-</section>
-
-<!-- ============================================== -->
-<!-- ADD-ON SERVICES                                -->
-<!-- ============================================== -->
-<section class="max-w-7xl mx-auto px-6 lg:px-10 py-24">
-  <div class="mb-12">
-    <div class="eyebrow text-teal mb-4">Optional add-ons</div>
-    <h2 class="serif text-5xl md:text-6xl leading-[1.02]">When you need more.</h2>
+  <div class="price-card">
+    <div class="label">3-Month</div>
+    <div class="amount">AED 1,100</div>
+    <div class="effective">AED 370/mo effective</div>
+    <span class="save">Save 8%</span>
+    <ul>
+      <li>Everything in Monthly</li>
+      <li>300 AI credits</li>
+      <li>Priority onboarding</li>
+      <li>Quarterly growth review</li>
+    </ul>
+    <a href="#" class="cta">Choose plan</a>
   </div>
 
-  <div class="grid md:grid-cols-2 gap-6">
-    <!-- Account Mgmt -->
-    <div class="bg-paper border border-line p-8">
-      <div class="flex items-start justify-between mb-6">
-        <div>
-          <div class="mono text-xs text-muted mb-2">ACCOUNT MANAGEMENT</div>
-          <h3 class="serif text-3xl">A human on your team.</h3>
-        </div>
-        <div class="text-right">
-          <div class="serif text-3xl"><span data-aed="800">AED 800</span></div>
-          <div class="mono text-xs text-muted">/month</div>
-        </div>
-      </div>
-      <p class="text-muted mb-4">Dedicated manager. Store design support. Builder training. Priority support on everything.</p>
-      <p class="mono text-xs text-muted">3-mo <span data-aed="2,400">AED 2,400</span> · 6-mo <span data-aed="4,800">AED 4,800</span> · Yearly <span data-aed="9,600">AED 9,600</span></p>
-    </div>
-
-    <!-- Storage -->
-    <div class="bg-paper border border-line p-8">
-      <div class="flex items-start justify-between mb-6">
-        <div>
-          <div class="mono text-xs text-muted mb-2">STORAGE & WAREHOUSE</div>
-          <h3 class="serif text-3xl">Physical fulfilment.</h3>
-        </div>
-        <div class="text-right">
-          <div class="serif text-3xl"><span data-aed="2,000">AED 2,000</span></div>
-          <div class="mono text-xs text-muted">/year · per pallet</div>
-        </div>
-      </div>
-      <p class="text-muted mb-4">Packman warehouses in UAE, KSA, Oman. Stock alerts, inventory tracking, fulfilment included. Box 50×60×90cm.</p>
-      <p class="mono text-xs text-muted">3-mo <span data-aed="500">AED 500</span> · 6-mo <span data-aed="1,000">AED 1,000</span> · Yearly <span data-aed="2,000">AED 2,000</span></p>
-    </div>
+  <div class="price-card featured">
+    <span class="badge">MOST POPULAR</span>
+    <div class="label">6-Month</div>
+    <div class="amount">AED 2,100</div>
+    <div class="effective">AED 350/mo effective</div>
+    <span class="save">Save 12%</span>
+    <ul>
+      <li>Everything in 3-Month</li>
+      <li>600 AI credits</li>
+      <li>Dedicated Slack channel</li>
+      <li>Free theme customisation</li>
+    </ul>
+    <a href="#" class="cta">Choose plan</a>
   </div>
-</section>
 
-<!-- ============================================== -->
-<!-- FAQ                                            -->
-<!-- ============================================== -->
-<section class="bg-paper border-y border-line py-24">
-  <div class="max-w-4xl mx-auto px-6 lg:px-10">
-    <div class="eyebrow text-coral mb-4">Frequently asked</div>
-    <h2 class="serif text-5xl md:text-6xl leading-[1.02] mb-12">Common questions.</h2>
-
-    <div class="space-y-0 border-t border-line">
-      <details class="border-b border-line group">
-        <summary class="flex justify-between items-center py-5 font-medium">Can I cancel anytime?<span class="chev text-coral text-2xl">+</span></summary>
-        <p class="pb-5 text-muted">Yes. Monthly rolls cancel at end of cycle. Upfront plans cancel within 14 days for a full refund, otherwise run to the end of the committed term.</p>
-      </details>
-      <details class="border-b border-line group">
-        <summary class="flex justify-between items-center py-5 font-medium">Do I need a trade licence to start?<span class="chev text-coral text-2xl">+</span></summary>
-        <p class="pb-5 text-muted">No licence needed to sign up or build your store. You only need to upload it when you're ready to go live and start accepting orders — usually within 48 hours.</p>
-      </details>
-      <details class="border-b border-line group">
-        <summary class="flex justify-between items-center py-5 font-medium">Can I sell in KSA and Oman from a UAE-registered store?<span class="chev text-coral text-2xl">+</span></summary>
-        <p class="pb-5 text-muted">Yes. One dashboard, three markets. Arabic + English out of the box. Aramex handles the cross-border shipping.</p>
-      </details>
-      <details class="border-b border-line group">
-        <summary class="flex justify-between items-center py-5 font-medium">What happens if I run out of AI credits?<span class="chev text-coral text-2xl">+</span></summary>
-        <p class="pb-5 text-muted">Top up from the Wallet in one click. Credits never expire. Product media costs 10 credits, social content 15, 3D models 20.</p>
-      </details>
-      <details class="border-b border-line group">
-        <summary class="flex justify-between items-center py-5 font-medium">How does VAT work?<span class="chev text-coral text-2xl">+</span></summary>
-        <p class="pb-5 text-muted">The platform calculates UAE 5% VAT automatically once you enable it in settings. It tracks your rolling 12-month sales against the <span data-aed="375,000">AED 375,000</span> threshold so you know exactly when to register.</p>
-      </details>
-      <details class="border-b border-line group">
-        <summary class="flex justify-between items-center py-5 font-medium">Can I migrate from Shopify?<span class="chev text-coral text-2xl">+</span></summary>
-        <p class="pb-5 text-muted">Yes. Import products via Excel, CSV, or the AI image extractor that reads product photos and builds the listing automatically. Most brands are fully migrated within a week.</p>
-      </details>
-      <details class="border-b border-line group">
-        <summary class="flex justify-between items-center py-5 font-medium">Who owns my customer data?<span class="chev text-coral text-2xl">+</span></summary>
-        <p class="pb-5 text-muted">You do. Export everything anytime. API access on the yearly plan gives you programmatic access to orders, products, and customers.</p>
-      </details>
-      <details class="group">
-        <summary class="flex justify-between items-center py-5 font-medium">Is there a setup fee?<span class="chev text-coral text-2xl">+</span></summary>
-        <p class="pb-5 text-muted">No. The price you see is everything. No hidden onboarding cost, no platform migration charge, no integration fee.</p>
-      </details>
-    </div>
+  <div class="price-card">
+    <div class="label">12-Month · Best value</div>
+    <div class="amount">AED 3,900</div>
+    <div class="effective">AED 325/mo effective</div>
+    <span class="save">Save 19%</span>
+    <ul>
+      <li>Everything in 6-Month</li>
+      <li>1,500 AI credits</li>
+      <li>Quarterly business review</li>
+      <li>API access unlocked</li>
+    </ul>
+    <a href="#" class="cta">Choose plan</a>
   </div>
-</section>
+</div>
+</main>
 
-<!-- FINAL CTA -->
-<section id="cta" class="bg-coral py-24">
-  <div class="max-w-5xl mx-auto px-6 lg:px-10 text-center">
-    <h2 class="serif text-5xl md:text-7xl leading-[0.95] mb-8 text-ink">Start free. <em>Pay when it works.</em></h2>
-    <a href="#" class="inline-block bg-ink text-cream px-10 py-5 text-lg font-medium hover:bg-ink/90 transition">Start Free Trial →</a>
-    <p class="mono text-xs text-ink/60 mt-6">No credit card · Cancel any upfront plan within 14 days · Full refund</p>
-  </div>
-</section>
-
-<!-- FOOTER -->
-<footer class="bg-ink text-cream/70 py-16">
-  <div class="max-w-7xl mx-auto px-6 lg:px-10">
-    <div class="grid md:grid-cols-5 gap-10 pb-12 border-b border-cream/10">
-      <div class="md:col-span-2">
-        <a href="/" class="flex items-center gap-2.5 mb-4">
-          <img src="/assets/logo-mark-volt.png" alt="" class="w-10 h-10 select-none" />
-          <span class="serif text-2xl tracking-tight text-cream">packman</span>
-        </a>
-        <p class="text-sm max-w-xs">E-commerce infrastructure for Gulf brands. UAE · KSA · Oman.</p>
-      </div>
-      <div><div class="eyebrow text-coral mb-4">Product</div><ul class="space-y-2 text-sm"><li><a href="/" class="hover:text-cream">Platform</a></li><li><a href="/pricing" class="hover:text-cream">Pricing</a></li><li><a href="/for-brands" class="hover:text-cream">For brands</a></li><li><a href="/for-startups" class="hover:text-cream">For startups</a></li></ul></div>
-      <div><div class="eyebrow text-coral mb-4">Company</div><ul class="space-y-2 text-sm"><li><a href="#" class="hover:text-cream">About</a></li><li><a href="#" class="hover:text-cream">Careers</a></li></ul></div>
+<footer>
+  <div class="inner">
+    <hr class="divider" />
+    <div class="grid-4" style="display:grid; grid-template-columns: 2fr 1fr 1fr 2fr; gap: 48px; margin-bottom: 56px;">
       <div>
-        <div class="eyebrow text-coral mb-4">Region · Currency</div>
-        <ul class="space-y-2 text-sm">
-          <li><button type="button" class="region-toggle text-left flex items-center gap-3 hover:text-cream transition" data-region="aed"><span class="text-base">🇦🇪</span><span>UAE</span><span class="mono text-[10px] text-cream/40">AED</span></button></li>
-          <li><button type="button" class="region-toggle text-left flex items-center gap-3 hover:text-cream transition" data-region="sar"><span class="text-base">🇸🇦</span><span>KSA</span><span class="mono text-[10px] text-cream/40">SAR</span></button></li>
-          <li><button type="button" class="region-toggle text-left flex items-center gap-3 hover:text-cream transition" data-region="omr"><span class="text-base">🇴🇲</span><span>Oman</span><span class="mono text-[10px] text-cream/40">OMR</span></button></li>
+        <div style="margin-bottom: 16px;"><a href="/" style="display:flex; align-items:center; gap:12px; text-decoration:none;">
+  <span class="logo-mark"><img src="/assets/logo-mark-volt.png" alt="" /></span>
+  <span style="display:flex; flex-direction:column; line-height:1;">
+    <span style="display:flex; align-items:baseline;">
+      <span class="logo-text">packman</span><span class="logo-reg">®</span>
+    </span>
+    <span class="logo-tag">e-commerce for entrepreneurs</span>
+  </span>
+</a></div>
+        <p style="font-size:14px; color:var(--ink-soft); margin:0; max-width: 320px; line-height: 1.6;">
+          Sell across the Gulf with one dashboard. Products, branding, store, and shipping handled in 48 hours.
+        </p>
+      </div>
+      <div>
+        <h3 class="col-title">PRODUCT</h3>
+        <ul>
+          <li><a href="/pricing">Pricing</a></li>
+          <li><a href="/partners">Partners</a></li>
+          <li><a href="/faqs">FAQs</a></li>
+          <li><a href="/contact">Contact Us</a></li>
         </ul>
       </div>
+      <div>
+        <h3 class="col-title">COMPANY</h3>
+        <ul>
+          <li><a href="#">About</a></li>
+          <li><a href="#">Careers</a></li>
+          <li><a href="#">Blog</a></li>
+          <li><a href="#">Press</a></li>
+        </ul>
+      </div>
+      <div>
+        <h3 class="col-title">COUNTRIES</h3>
+        <div style="display:flex; flex-direction:column; align-items:flex-start; gap:10px;">
+          <a href="/uae" class="country-pill"><span style="font-size:18px;">🇦🇪</span>UAE</a><a href="/ksa" class="country-pill"><span style="font-size:18px;">🇸🇦</span>KSA</a><a href="/oman" class="country-pill"><span style="font-size:18px;">🇴🇲</span>Oman</a>
+        </div>
+      </div>
     </div>
-    <div class="flex flex-col md:flex-row justify-between pt-8 mono text-xs text-cream/50 gap-3">
-      <div>© 2026 Packman.ai · Al Quoz, Dubai, UAE</div>
-      <div class="flex gap-6"><a href="#">Privacy</a><a href="#">Terms</a></div>
+    <div style="display:flex; justify-content:space-between; align-items:center; padding-top: 24px; border-top: 1px solid var(--line); font-size: 13px; color: var(--muted);">
+      <span>© 2026 Packman · All rights reserved</span>
+      <div style="display:flex; gap: 24px;">
+        <a href="#" style="color:inherit;">Privacy</a>
+        <a href="#" style="color:inherit;">Terms</a>
+        <a href="#" style="color:inherit;">Cookies</a>
+      </div>
     </div>
   </div>
 </footer>
 
-
-<script>
-(function(){
-  var SYMBOLS = { aed:'AED', sar:'SAR', omr:'OMR' };
-  var RATIOS  = { aed:1, sar:1.0256, omr:0.1026 };
-
-  function fmt(aedStr, region){
-    var s    = String(aedStr);
-    var num  = parseFloat(s.replace(/,/g,''));
-    var conv = num * RATIOS[region];
-    var hasDecimal = s.indexOf('.') !== -1;
-    if (hasDecimal) {
-      conv = Math.round(conv * 100) / 100;
-      return SYMBOLS[region] + ' ' + conv.toLocaleString('en-US', {minimumFractionDigits:2, maximumFractionDigits:2});
-    }
-    if      (conv >= 100) conv = Math.round(conv/10) * 10;
-    else if (conv >= 10)  conv = Math.round(conv/5)  * 5;
-    else                  conv = Math.round(conv);
-    return SYMBOLS[region] + ' ' + conv.toLocaleString('en-US');
-  }
-
-  function applyRegion(r){
-    if(!RATIOS[r]) r = 'aed';
-    document.querySelectorAll('[data-aed]').forEach(function(el){
-      el.textContent = fmt(el.dataset.aed, r);
-    });
-    document.querySelectorAll('[data-cur-label]').forEach(function(el){
-      el.textContent = SYMBOLS[r];
-    });
-    document.querySelectorAll('.region-toggle').forEach(function(b){
-      var on = b.dataset.region === r;
-      b.classList.toggle('region-on', on);
-      b.setAttribute('aria-pressed', on ? 'true' : 'false');
-    });
-    document.documentElement.dataset.region = r;
-    try { localStorage.setItem('packman.region', r); } catch(e){}
-  }
-
-  document.addEventListener('click', function(e){
-    var btn = e.target.closest('.region-toggle');
-    if (btn) { e.preventDefault(); applyRegion(btn.dataset.region); }
-  });
-
-  var saved = 'aed';
-  try { saved = localStorage.getItem('packman.region') || 'aed'; } catch(e){}
-  applyRegion(saved);
-})();
-</script>
+<div class="cookie-banner" id="cookie-banner">
+  <div class="cookie-text">
+    <h3>We use cookies</h3>
+    <p>We use analytics cookies to understand how people use Packman so we can make it better. You can change your preferences anytime.</p>
+  </div>
+  <div class="btns">
+    <button class="btn-pill btn-soft" style="padding: 11px 20px; font-size: 14px;" onclick="document.getElementById('cookie-banner').style.display='none'">Reject</button>
+    <button class="btn-pill btn-volt" style="padding: 11px 20px; font-size: 14px;" onclick="document.getElementById('cookie-banner').style.display='none'">Accept</button>
+  </div>
+</div>
 </body>
 </html>

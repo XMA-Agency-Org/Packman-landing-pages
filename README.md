@@ -1,72 +1,79 @@
-# Packman site
+# Packman site — v4
 
-Static HTML, deploy-ready for Vercel.
+Static HTML, deploy-ready for Vercel. Complete redesign matching the cream/lime brand reference.
+
+## What changed
+
+This is a full visual redesign. Old edgy/dark aesthetic is gone — now soft cream wash background, floating pill navigation, two-color headlines, and rounded everything.
 
 ## Routes
 
-| URL                | File                       |
-|--------------------|----------------------------|
-| `/`                | `index.html`               |
-| `/pricing`         | `pricing/index.html`       |
-| `/for-brands`      | `for-brands/index.html`    |
-| `/for-startups`    | `for-startups/index.html`  |
-| `/ar`              | `ar/index.html`            |
-| `/uae-oman`        | `uae-oman/index.html`      |
+### Country landing pages (homepage variants)
+| URL      | Country | Currency |
+|----------|---------|----------|
+| `/`      | Generic | (none)   |
+| `/uae`   | UAE 🇦🇪  | AED      |
+| `/ksa`   | KSA 🇸🇦  | SAR      |
+| `/oman`  | Oman 🇴🇲 | OMR      |
 
-## v3 changes
+Each country page is identical to home, but:
+- Its country pill in the footer is highlighted (dark navy)
+- A small country badge under the hero shows "Showing prices for [country]" with a "change country" link
 
-### 1. Edgy non-rectangular shapes (everywhere)
-Every visual container uses CSS `clip-path` polygons — no rounded rectangles.
+### Pricing pages (per-country plans)
+| URL                | Currency           |
+|--------------------|--------------------|
+| `/pricing`         | AED (UAE default)  |
+| `/pricing-uae`     | AED                |
+| `/pricing-ksa`     | SAR                |
+| `/pricing-oman`    | OMR                |
 
-| Element                          | Shape                                   |
-|----------------------------------|-----------------------------------------|
-| Buttons (`.btn-primary/ghost`)   | Forward-chevron arrow (cut right edge)  |
-| All cards (`bg-paper.border` etc.) | Cut top-right corner (24px)           |
-| VSL hero containers              | Big cut bottom-right (48px) + grape drop-shadow |
-| Dashboard mocks (`.mock-dashboard`) | Cut bottom-right (36px) + ink drop-shadow |
-| Featured pricing card            | Diagonal cuts (TR + BL) when `.edge-diag` |
-| "MOST POPULAR" tag               | Rotated -3deg                           |
+Currency in the plan tiers is baked in per URL — no JS toggle needed.
 
-Box-shadows that wouldn't survive `clip-path` were swapped to `filter: drop-shadow()` so the offset shadow follows the cut shape.
+### Auxiliary pages
+| URL          | Purpose                                  |
+|--------------|------------------------------------------|
+| `/partners`  | Logistics, payments, platforms partners  |
+| `/faqs`      | 8 expandable FAQ items                   |
+| `/contact`   | Email, WhatsApp, partnerships channels   |
 
-### 2. Universal currency switching
-Every money number on every page (94 references) updates instantly when the user clicks **UAE / KSA / Oman** in the footer. Choice persists across pages via `localStorage`.
+## Design tokens
 
-| Region | Currency | Anchor              |
-|--------|----------|---------------------|
-| UAE    | AED      | base                |
-| KSA    | SAR      | AED 3,900 → SAR 4,000 |
-| Oman   | OMR      | AED 3,900 → OMR 400   |
+| Token       | Value     | Usage                              |
+|-------------|-----------|------------------------------------|
+| `--ink`     | `#0E1820` | Body text, dark buttons, logo bg   |
+| `--olive`   | `#788938` | Highlighted headline phrase, links |
+| `--volt`    | `#D2F801` | Lime green primary CTA buttons     |
+| `--paper`   | `#FFFFFF` | Pill nav, cards, cookie banner     |
+| `--soft`    | `#F0F2E3` | Light pill buttons (Login, Reject) |
+| `--bg-base` | gradient  | Cream-yellow page wash             |
 
-Conversion: `1 AED = 1.0256 SAR = 0.1026 OMR`.
+Typography: **Inter** (400/500/600/700/800) for everything; **IBM Plex Mono** (500/600) for tag pills and column titles.
 
-Rounding tiers:
-- ≥ 100 → nearest 10 (clean headline numbers like AED 1,100 / SAR 1,130 / OMR 110)
-- 10–99 → nearest 5 (preserves visual differentiation between effective rates)
-- < 10 → nearest 1 (small fees like shipping)
-- Source amounts with decimals (dashboard mock orders like AED 239.65) preserve 2-decimal precision
+## Components
 
-What switches:
-- Plan tiers, effective rates, savings (across all 6 pages)
-- Account-management add-ons, storage tiers (pricing page)
-- Revenue / cost-comparison numbers (for-brands math: AED 199 AOV, AED 39,800/mo, AED 7,960 lost; for-startups old-way breakdown: AED 60,000 + 15,000 + 40,000 + 8,000 + 4,800 + 15,000 + 6,000 = AED 148,800)
-- Dashboard mock orders, including OMR-priced Oman side on the bilingual UAE-Oman page (OMR 22.40 / 17.90 / 38.75 → switch with toggle)
-- Arabic-numeric mention "٧,٩٦٠ درهم" on the AR page (normalized to AED 7,960 then wired)
-- VAT threshold (AED 375,000), shipping fees (AED 9, AED 25), and all other money references
-- Column headers on the bilingual dashboard mock (`UAE · AED` / `OMAN · OMR` → both swap to current currency)
+- **Pill nav** — floating, white, full-rounded, subtle shadow. Logo lockup + nav links + Login (light pill, with chevron) + Launch your store (lime pill) + EN/AR toggle (dark/light pill).
+- **Tag pill** — `● NEW · AI-POWERED SETUP` style indicator with green dot.
+- **Two-color headline** — navy first half, olive second half. Wraps cleanly across two lines.
+- **Hero input** — large white pill with camera icon + placeholder + lime "Start free →" button. Pressing Enter or clicking submits to `/pricing`.
+- **Cookie banner** — fixed-position card at bottom with Reject (light pill) and Accept (lime pill). Dismissable via JS.
+- **Country pills (footer)** — three pills with flag + name. Active country becomes dark navy.
+- **Pricing cards** — 4-column grid with featured plan in dark navy + lime accents. Each card has a "Save X%" badge.
+- **FAQ accordion** — `<details>`/`<summary>` rounded cards with rotating + indicator.
 
-### 3. Logos installed
-Real logo PNGs replace the previous wordmark placeholders.
-- Nav: navy mark + "packman" wordmark (or "باكمان" on `/ar`)
-- Dark footer: volt mark + cream wordmark
-- Light footer (uae-oman page): navy mark + ink wordmark
+## Mobile
 
-### 4. Folder routing
-Each page lives in its own folder so URLs are clean (`/pricing` → `pricing/index.html`). `vercel.json` enables `cleanUrls`.
+Below 768px:
+- Nav links and Login button hide; only logo + Launch + EN/AR remain in the pill
+- Logo tagline hides; logo mark/text shrink
+- Hero text scales down; input button compacts to "Start free" without arrow icon
+- Pricing grid collapses to single column
+- Cookie banner stacks vertically with stretched buttons
+- Footer columns collapse to single column
 
 ## Deploy
 
-Drag the `packman/` folder onto https://vercel.com/new — that's it.
+Drag the `packman/` folder onto https://vercel.com/new — that's it. `vercel.json` enables `cleanUrls`.
 
 ## Local preview
 
@@ -78,6 +85,11 @@ python3 -m http.server 8000
 
 ## Source
 
-Build script: `build_v3.py` (in the project root, not in this folder).
-Source HTML: `source/01-home.html` through `06-uae-oman.html`.
-Re-run `python3 build_v3.py` to regenerate.
+Build script: `build_v4.py` in the project root.
+Run `python3 build_v4.py` to regenerate the entire `packman/` folder.
+
+The script holds:
+- A single CSS block (design tokens + components + mobile media query)
+- A reusable shell with nav + footer + cookie banner
+- Per-page body templates: `home_body`, `pricing_body`, `partners_body`, `faqs_body`, `contact_body`
+- Country variants generated from a single dictionary (`COUNTRIES`)
