@@ -3,12 +3,12 @@
 <head>
 <meta charset="UTF-8" />
 <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-<meta name="description" content="Drop a photo, get a ready-to-sell store. Packman builds your e-commerce business in UAE." />
+<meta name="description" content="Drop a photo, get a ready-to-sell store. Packman in UAE." />
 <title>Packman · UAE</title>
 <link rel="icon" href="/assets/logo-mark-navy.png" type="image/png" />
 <link rel="preconnect" href="https://fonts.googleapis.com" />
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
-<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800;900&family=IBM+Plex+Mono:wght@500;600&family=IBM+Plex+Sans+Arabic:wght@400;500;600;700;800&display=swap" rel="stylesheet" />
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800;900&family=IBM+Plex+Mono:wght@500;600;700&family=IBM+Plex+Sans+Arabic:wght@400;500;600;700;800&display=swap" rel="stylesheet" />
 <style>
 :root {
   --ink:       #0E1820;
@@ -25,6 +25,8 @@
   --olive:     #788938;
   --olive-2:   #67782D;
   --olive-bg:  #ECF1CB;
+  --coral:     #E85D45;
+  --coral-bg:  #FCE9E3;
 }
 
 * { box-sizing: border-box; }
@@ -55,7 +57,6 @@ body {
   border-radius: 9999px;
   box-shadow: 0 1px 2px rgba(15, 24, 32, 0.04), 0 8px 24px rgba(15, 24, 32, 0.05);
 }
-
 .logo-mark {
   width: 44px; height: 44px;
   border-radius: 12px;
@@ -102,7 +103,7 @@ body {
 .pill-nav .nav-links {
   display: flex;
   align-items: center;
-  gap: 32px;
+  gap: 28px;
   flex: 1;
   justify-content: center;
 }
@@ -148,12 +149,7 @@ body {
   font-weight: 700;
   letter-spacing: 0.05em;
 }
-.green-dot {
-  width: 8px; height: 8px;
-  background: var(--volt);
-  border-radius: 50%;
-  display: inline-block;
-}
+.green-dot { width: 8px; height: 8px; background: var(--volt); border-radius: 50%; display: inline-block; }
 
 /* ───── Hero ───── */
 .hero-h1 {
@@ -172,7 +168,6 @@ body {
   margin: 28px auto 0;
   line-height: 1.6;
 }
-
 .hero-input {
   background: var(--paper);
   border-radius: 9999px;
@@ -199,7 +194,6 @@ body {
   font-family: inherit;
 }
 .hero-input input::placeholder { color: var(--muted); }
-
 .trust { font-size: 14px; color: var(--muted); margin-top: 22px; }
 
 /* ───── Section heading ───── */
@@ -216,6 +210,7 @@ body {
   margin: 0 0 16px;
 }
 .section-h2 .olive { color: var(--olive); }
+.section-h2 em { font-style: italic; color: var(--olive); font-weight: 800; }
 .section-sub {
   font-size: 1.0625rem;
   color: var(--ink-soft);
@@ -230,7 +225,6 @@ body {
   border-radius: 24px;
   padding: 28px;
 }
-
 .tile {
   background: var(--paper);
   border: 1px solid var(--line);
@@ -240,82 +234,339 @@ body {
 }
 .tile:hover { transform: translateY(-2px); border-color: var(--olive); }
 
-/* ───── Video tiles (3 store types) ───── */
-.video-tile {
+/* ───── VSL player ───── */
+.vsl-card {
   position: relative;
-  aspect-ratio: 9/16;
   background: var(--ink);
-  border-radius: 24px;
+  border-radius: 32px;
   overflow: hidden;
+  aspect-ratio: 16/9;
   cursor: pointer;
-  display: flex;
-  align-items: flex-end;
-  padding: 24px;
-  color: var(--paper);
+  box-shadow: 0 24px 60px -20px rgba(15, 24, 32, 0.4);
 }
-.video-tile::before {
-  content: "";
+.vsl-card .bg-glow {
   position: absolute;
   inset: 0;
-  background: linear-gradient(180deg, rgba(14,24,32,0.05) 60%, rgba(14,24,32,0.85) 100%);
-  z-index: 1;
+  background:
+    radial-gradient(ellipse 60% 40% at 50% 50%, rgba(210, 248, 1, 0.18) 0%, transparent 70%),
+    linear-gradient(135deg, #1A2530 0%, #0E1820 100%);
 }
-.video-tile .play-icon {
-  position: absolute; top: 50%; left: 50%;
+.vsl-card .vsl-eyebrow {
+  position: absolute;
+  top: 24px; left: 24px;
+  font-family: 'IBM Plex Mono', monospace;
+  font-size: 11px;
+  letter-spacing: 0.1em;
+  font-weight: 700;
+  color: var(--volt);
+  z-index: 2;
+}
+.vsl-card .vsl-time {
+  position: absolute;
+  bottom: 24px; right: 24px;
+  font-family: 'IBM Plex Mono', monospace;
+  font-size: 12px;
+  font-weight: 700;
+  color: rgba(255, 255, 255, 0.75);
+  background: rgba(255, 255, 255, 0.08);
+  border: 1px solid rgba(255, 255, 255, 0.12);
+  padding: 4px 10px;
+  border-radius: 999px;
+  z-index: 2;
+}
+.vsl-card .play-button {
+  position: absolute;
+  top: 50%; left: 50%;
   transform: translate(-50%, -50%);
-  width: 64px; height: 64px;
+  width: 96px; height: 96px;
   background: var(--volt);
   border-radius: 50%;
   display: flex; align-items: center; justify-content: center;
   z-index: 2;
+  box-shadow: 0 0 0 8px rgba(210, 248, 1, 0.2), 0 0 0 16px rgba(210, 248, 1, 0.08);
   transition: transform .2s ease;
 }
-.video-tile:hover .play-icon { transform: translate(-50%, -50%) scale(1.05); }
-.video-tile .label {
-  position: relative; z-index: 2;
-  font-size: 14px; font-weight: 700;
-  letter-spacing: 0.05em;
+.vsl-card:hover .play-button { transform: translate(-50%, -50%) scale(1.05); }
+.vsl-card .vsl-grid {
+  position: absolute;
+  inset: 8%;
+  border: 1px solid rgba(255, 255, 255, 0.1);
+  border-radius: 16px;
+  z-index: 1;
 }
-.video-tile .gradient-bg {
-  position: absolute; inset: 0;
+.vsl-card .vsl-headline {
+  position: absolute;
+  bottom: 24px; left: 24px;
+  max-width: 60%;
+  font-family: 'Inter', sans-serif;
+  font-size: 14px;
+  font-weight: 600;
+  color: rgba(255, 255, 255, 0.85);
+  line-height: 1.4;
+  z-index: 2;
+}
+.vsl-quote {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  margin-top: 16px;
+  font-size: 13px;
+  color: var(--olive);
+  font-weight: 600;
+  font-family: 'IBM Plex Mono', monospace;
+  letter-spacing: 0.02em;
 }
 
-/* ───── Steps ───── */
-.step-num {
-  font-size: 11px; font-weight: 700; letter-spacing: 0.1em;
-  color: var(--olive); margin-bottom: 12px;
-}
-.step-title {
-  font-size: 22px; font-weight: 700; letter-spacing: -0.02em;
-  margin: 0 0 8px;
-}
-.step-desc { font-size: 14.5px; color: var(--ink-soft); line-height: 1.6; margin: 0; }
-
-/* ───── Region cards ───── */
-.region-card {
+/* ───── Pain stat cards ───── */
+.pain-card {
   background: var(--paper);
   border: 1px solid var(--line);
   border-radius: 24px;
   padding: 32px 28px;
-  text-align: center;
-  transition: transform .2s ease;
+  position: relative;
+  overflow: hidden;
 }
-.region-card:hover { transform: translateY(-2px); }
-.region-card .flag-circle {
-  width: 56px; height: 56px;
+.pain-card .pain-num {
+  font-size: 3rem;
+  font-weight: 800;
+  letter-spacing: -0.04em;
+  color: var(--coral);
+  line-height: 1;
+}
+.pain-card .pain-label {
+  font-size: 14px;
+  font-weight: 700;
+  margin: 12px 0 8px;
+  color: var(--ink);
+}
+.pain-card .pain-desc {
+  font-size: 13.5px;
+  color: var(--ink-soft);
+  margin: 0;
+  line-height: 1.5;
+}
+
+/* ───── Dashboard mock ───── */
+.mock {
+  background: var(--paper);
+  border: 1px solid var(--line);
+  border-radius: 20px;
+  overflow: hidden;
+  box-shadow: 0 8px 24px -8px rgba(15, 24, 32, 0.08);
+}
+.mock-bar {
+  background: var(--soft);
+  padding: 10px 16px;
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  border-bottom: 1px solid var(--line);
+  font-family: 'IBM Plex Mono', monospace;
+  font-size: 12px;
+  color: var(--muted);
+}
+.mock-bar .dots { display: flex; gap: 6px; margin-right: 8px; }
+.mock-bar .dots span { width: 10px; height: 10px; border-radius: 50%; }
+.mock-bar .dots span:nth-child(1) { background: #FFB7B0; }
+.mock-bar .dots span:nth-child(2) { background: #FFE08A; }
+.mock-bar .dots span:nth-child(3) { background: #B9DEA8; }
+.mock-body { padding: 20px; }
+.mock-row {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 12px 0;
+  border-bottom: 1px solid var(--line-soft);
+  font-size: 13.5px;
+}
+.mock-row:last-child { border-bottom: none; }
+.mock-row .sku { font-family: 'IBM Plex Mono', monospace; font-size: 12px; color: var(--ink-soft); }
+.mock-row .amt { font-family: 'IBM Plex Mono', monospace; font-weight: 700; color: var(--olive); }
+.mock-row .badge {
+  font-size: 10px; font-weight: 700; letter-spacing: 0.05em;
+  padding: 3px 8px; border-radius: 999px;
+  background: var(--olive-bg); color: var(--olive-2);
+}
+.mock-row .badge-coral { background: var(--coral-bg); color: var(--coral); }
+
+/* ───── Before/After ───── */
+.compare-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 16px; }
+.compare-card {
+  border-radius: 24px;
+  padding: 32px;
+  position: relative;
+}
+.compare-card.before { background: var(--paper); border: 1px solid var(--line); }
+.compare-card.after  { background: var(--ink); color: var(--paper); }
+.compare-card .label {
+  font-size: 11px; font-weight: 700; letter-spacing: 0.08em; text-transform: uppercase;
+  color: var(--muted); margin-bottom: 8px;
+}
+.compare-card.after .label { color: var(--volt); }
+.compare-card h3 {
+  font-size: 1.5rem; font-weight: 700; letter-spacing: -0.02em;
+  margin: 0 0 20px;
+}
+.compare-card ul { list-style: none; padding: 0; margin: 0; }
+.compare-card li {
+  padding: 10px 0;
+  border-top: 1px solid var(--line-soft);
+  font-size: 14px;
+  display: flex;
+  align-items: flex-start;
+  gap: 10px;
+}
+.compare-card.after li { border-top-color: rgba(255, 255, 255, 0.08); }
+.compare-card.before li::before { content: "✕"; color: var(--coral); font-weight: 700; }
+.compare-card.after li::before  { content: "✓"; color: var(--volt); font-weight: 700; }
+.compare-card .total {
+  margin-top: 24px;
+  padding-top: 16px;
+  border-top: 2px solid var(--ink);
+  display: flex;
+  justify-content: space-between;
+  align-items: baseline;
+  font-weight: 700;
+}
+.compare-card.after .total { border-top-color: var(--volt); }
+.compare-card .total .num { font-size: 1.75rem; letter-spacing: -0.02em; }
+.compare-card.before .total .num { color: var(--coral); }
+.compare-card.after .total .num { color: var(--volt); }
+
+/* ───── Math reveal ───── */
+.math-card {
+  background: var(--ink);
+  color: var(--paper);
+  border-radius: 32px;
+  padding: 56px 48px;
+  text-align: center;
+}
+.math-equation {
+  font-family: 'IBM Plex Mono', monospace;
+  font-size: clamp(1.25rem, 2.5vw, 2rem);
+  font-weight: 600;
+  letter-spacing: -0.01em;
+  margin: 24px 0;
+  line-height: 1.5;
+}
+.math-equation .num { color: var(--volt); }
+.math-equation .op  { color: var(--muted); margin: 0 8px; }
+.math-result {
+  font-size: clamp(2.5rem, 6vw, 4.5rem);
+  font-weight: 800;
+  letter-spacing: -0.04em;
+  color: var(--volt);
+  margin: 8px 0 16px;
+}
+.math-card p { color: rgba(255, 255, 255, 0.7); font-size: 16px; margin: 0; }
+
+/* ───── Timeline ───── */
+.timeline { position: relative; padding-left: 32px; }
+[dir="rtl"] .timeline { padding-left: 0; padding-right: 32px; }
+.timeline::before {
+  content: "";
+  position: absolute;
+  top: 8px; bottom: 8px;
+  left: 12px; width: 2px;
+  background: var(--olive);
+}
+[dir="rtl"] .timeline::before { left: auto; right: 12px; }
+.timeline-item {
+  position: relative;
+  padding: 16px 0 24px 24px;
+}
+[dir="rtl"] .timeline-item { padding: 16px 24px 24px 0; }
+.timeline-item::before {
+  content: "";
+  position: absolute;
+  left: -28px; top: 22px;
+  width: 14px; height: 14px;
+  border-radius: 50%;
+  background: var(--volt);
+  border: 3px solid var(--ink);
+}
+[dir="rtl"] .timeline-item::before { left: auto; right: -28px; }
+.timeline-item .time {
+  display: inline-block;
+  font-family: 'IBM Plex Mono', monospace;
+  font-size: 11px;
+  font-weight: 700;
+  letter-spacing: 0.08em;
+  color: var(--olive);
+  margin-bottom: 6px;
+}
+.timeline-item h4 { font-size: 1.0625rem; font-weight: 700; margin: 0 0 4px; }
+.timeline-item p { font-size: 14px; color: var(--ink-soft); margin: 0; line-height: 1.5; }
+
+/* ───── Testimonial ───── */
+.testimonial {
+  background: var(--paper);
+  border: 1px solid var(--line);
+  border-radius: 24px;
+  padding: 32px;
+}
+.testimonial blockquote {
+  margin: 0 0 24px;
+  font-size: 1rem;
+  line-height: 1.6;
+  color: var(--ink);
+}
+.testimonial blockquote::before {
+  content: "\201C";
+  font-family: 'IBM Plex Mono', serif;
+  font-size: 3rem;
+  color: var(--olive);
+  line-height: 0;
+  vertical-align: -0.4em;
+  margin-right: 4px;
+}
+.testimonial .who { display: flex; align-items: center; gap: 12px; }
+.testimonial .avatar {
+  width: 44px; height: 44px;
   border-radius: 50%;
   background: var(--olive-bg);
   display: inline-flex;
   align-items: center; justify-content: center;
-  font-size: 28px;
-  margin-bottom: 16px;
-}
-.region-card h3 {
-  font-size: 1.25rem;
   font-weight: 700;
-  margin: 0 0 6px;
+  color: var(--olive-2);
+  font-size: 16px;
 }
-.region-card p { font-size: 14px; color: var(--ink-soft); margin: 0; }
+.testimonial .name { font-weight: 700; font-size: 14.5px; }
+.testimonial .role { font-size: 13px; color: var(--ink-soft); }
+
+/* ───── Path cards (Who's it for) ───── */
+.path-card {
+  background: var(--paper);
+  border: 1px solid var(--line);
+  border-radius: 28px;
+  padding: 40px 32px;
+  text-decoration: none;
+  color: var(--ink);
+  display: block;
+  transition: all .2s ease;
+  position: relative;
+  overflow: hidden;
+}
+.path-card:hover {
+  transform: translateY(-4px);
+  border-color: var(--olive);
+  box-shadow: 0 16px 40px -16px rgba(15, 24, 32, 0.12);
+}
+.path-card .path-eyebrow {
+  font-family: 'IBM Plex Mono', monospace;
+  font-size: 11px; font-weight: 700; letter-spacing: 0.08em;
+  color: var(--olive); margin-bottom: 12px;
+}
+.path-card h3 { font-size: 1.5rem; font-weight: 700; letter-spacing: -0.02em; margin: 0 0 12px; }
+.path-card p { font-size: 14.5px; color: var(--ink-soft); margin: 0 0 20px; line-height: 1.55; }
+.path-card .arrow {
+  display: inline-flex;
+  align-items: center;
+  gap: 6px;
+  color: var(--olive);
+  font-weight: 600;
+  font-size: 14px;
+}
 
 /* ───── AI manager cards ───── */
 .ai-card {
@@ -353,27 +604,17 @@ body {
   padding: 10px 24px;
   border-radius: 9999px;
   background: transparent;
-  border: none;
-  cursor: pointer;
-  font-family: inherit;
-  font-size: 14px;
-  font-weight: 600;
+  border: none; cursor: pointer;
+  font-family: inherit; font-size: 14px; font-weight: 600;
   color: var(--muted);
   transition: all .15s ease;
 }
-.billing-toggle button.active {
-  background: var(--ink);
-  color: var(--paper);
-}
+.billing-toggle button.active { background: var(--ink); color: var(--paper); }
 .savings-badge {
-  display: inline-block;
-  margin-left: 6px;
-  font-size: 10px;
-  font-weight: 700;
-  background: var(--volt);
-  color: var(--ink);
-  padding: 2px 8px;
-  border-radius: 9999px;
+  display: inline-block; margin-left: 6px;
+  font-size: 10px; font-weight: 700;
+  background: var(--volt); color: var(--ink);
+  padding: 2px 8px; border-radius: 9999px;
 }
 
 .price-hero-card {
@@ -387,6 +628,7 @@ body {
   position: relative;
   overflow: hidden;
 }
+[dir="rtl"] .price-hero-card { text-align: right; }
 .price-hero-card .country-tag {
   display: inline-flex;
   align-items: center;
@@ -422,13 +664,7 @@ body {
 .price-amount .num { font-size: 4rem; font-weight: 800; letter-spacing: -0.04em; line-height: 1; color: var(--ink); }
 .price-amount .per { font-size: 16px; color: var(--ink-soft); margin-left: 8px; }
 
-.price-features {
-  list-style: none;
-  padding: 0;
-  margin: 0 0 32px;
-  display: grid;
-  gap: 12px;
-}
+.price-features { list-style: none; padding: 0; margin: 0 0 32px; display: grid; gap: 12px; }
 .price-features li {
   display: flex;
   align-items: flex-start;
@@ -443,10 +679,7 @@ body {
   font-size: 16px;
   flex-shrink: 0;
 }
-.price-cta-row {
-  display: flex;
-  gap: 12px;
-}
+.price-cta-row { display: flex; gap: 12px; }
 .price-bonus {
   margin-top: 32px;
   padding: 20px;
@@ -456,19 +689,10 @@ body {
   align-items: flex-start;
   gap: 12px;
 }
-.price-bonus .icon {
-  font-size: 20px;
-  flex-shrink: 0;
-}
-.price-bonus p {
-  font-size: 14px;
-  color: var(--ink);
-  margin: 0;
-  line-height: 1.5;
-}
+.price-bonus .icon { font-size: 20px; flex-shrink: 0; }
+.price-bonus p { font-size: 14px; color: var(--ink); margin: 0; line-height: 1.5; }
 .price-bonus strong { color: var(--olive-2); }
 
-/* ───── Country switcher (pricing) ───── */
 .country-switcher {
   display: inline-flex;
   gap: 8px;
@@ -521,6 +745,28 @@ body {
 }
 .faq-item[open] summary::after { transform: rotate(45deg); }
 .faq-item p { font-size: 14.5px; color: var(--ink-soft); margin: 14px 0 0; line-height: 1.65; }
+
+/* ───── Region cards ───── */
+.region-card {
+  background: var(--paper);
+  border: 1px solid var(--line);
+  border-radius: 24px;
+  padding: 32px 28px;
+  text-align: center;
+  transition: transform .2s ease;
+}
+.region-card:hover { transform: translateY(-2px); }
+.region-card .flag-circle {
+  width: 56px; height: 56px;
+  border-radius: 50%;
+  background: var(--olive-bg);
+  display: inline-flex;
+  align-items: center; justify-content: center;
+  font-size: 28px;
+  margin-bottom: 16px;
+}
+.region-card h3 { font-size: 1.25rem; font-weight: 700; margin: 0 0 6px; }
+.region-card p { font-size: 14px; color: var(--ink-soft); margin: 0; }
 
 /* ───── Country pill (footer) ───── */
 .country-pill {
@@ -577,9 +823,7 @@ footer .divider { border: 0; border-top: 1px solid var(--line); margin: 0 0 40px
 .cookie-text { flex: 1; }
 
 /* ───── Form ───── */
-.form-row {
-  display: flex; flex-direction: column; gap: 6px; margin-bottom: 16px;
-}
+.form-row { display: flex; flex-direction: column; gap: 6px; margin-bottom: 16px; }
 .form-row label {
   font-size: 12px; font-weight: 600; color: var(--ink-soft);
   letter-spacing: 0.05em;
@@ -595,10 +839,42 @@ footer .divider { border: 0; border-top: 1px solid var(--line); margin: 0 0 40px
   outline: none;
   transition: border-color .15s ease;
 }
-.form-row input:focus, .form-row select:focus, .form-row textarea:focus {
-  border-color: var(--olive);
-}
+.form-row input:focus, .form-row select:focus, .form-row textarea:focus { border-color: var(--olive); }
 .form-row textarea { resize: vertical; min-height: 120px; }
+
+/* ───── Final CTA ───── */
+.final-cta {
+  background: var(--ink);
+  color: var(--paper);
+  border-radius: 32px;
+  padding: 64px 48px;
+  text-align: center;
+  position: relative;
+  overflow: hidden;
+}
+.final-cta::before {
+  content: "";
+  position: absolute;
+  inset: 0;
+  background: radial-gradient(ellipse 50% 70% at 50% 0%, rgba(210, 248, 1, 0.15) 0%, transparent 60%);
+  z-index: 0;
+}
+.final-cta > * { position: relative; z-index: 1; }
+.final-cta h2 {
+  font-size: clamp(2rem, 4.5vw, 3.5rem);
+  font-weight: 800;
+  letter-spacing: -0.03em;
+  line-height: 1.05;
+  margin: 0 0 20px;
+}
+.final-cta h2 em { font-style: italic; color: var(--volt); font-weight: 800; }
+.final-cta p {
+  font-size: 1.125rem;
+  color: rgba(255, 255, 255, 0.75);
+  max-width: 560px;
+  margin: 0 auto 32px;
+  line-height: 1.5;
+}
 
 /* ───── Mobile ───── */
 @media (max-width: 768px) {
@@ -626,13 +902,17 @@ footer .divider { border: 0; border-top: 1px solid var(--line); margin: 0 0 40px
   footer .grid-4 { grid-template-columns: 1fr !important; gap: 32px !important; }
   .grid-3-mobile { grid-template-columns: 1fr !important; }
   .grid-4-mobile { grid-template-columns: repeat(2, 1fr) !important; }
+  .compare-grid { grid-template-columns: 1fr !important; }
+  .vsl-card .play-button { width: 64px; height: 64px; }
+  .math-card { padding: 32px 24px !important; }
+  .final-cta { padding: 40px 24px !important; }
 }
 </style>
 </head>
 <body>
 
 <div style="padding: 24px 24px 0;">
-  <nav class="pill-nav" style="max-width: 1100px; margin: 0 auto; display: flex; align-items: center; gap: 16px; padding: 8px 8px 8px 16px;">
+  <nav class="pill-nav" style="max-width: 1140px; margin: 0 auto; display: flex; align-items: center; gap: 16px; padding: 8px 8px 8px 16px;">
     <a href="/uae" style="display:flex; align-items:center; gap:12px; text-decoration:none;">
   <span class="logo-mark"><img src="/assets/logo-mark-volt.png" alt="" /></span>
   <span style="display:flex; flex-direction:column; line-height:1;">
@@ -643,16 +923,13 @@ footer .divider { border: 0; border-top: 1px solid var(--line); margin: 0 0 40px
   </span>
 </a>
     <div class="nav-links">
+      <a href="/for-brands" class="nav-link" data-en="For brands" data-ar="للبراندات">For brands</a>
+      <a href="/for-startups" class="nav-link" data-en="For startups" data-ar="للمبتدئين">For startups</a>
       <a href="/pricing" class="nav-link" data-en="Pricing" data-ar="الأسعار">Pricing</a>
       <a href="/partners" class="nav-link" data-en="Partners" data-ar="شركاؤنا">Partners</a>
-      <a href="/faqs" class="nav-link" data-en="FAQs" data-ar="الأسئلة الشائعة">FAQs</a>
-      <a href="/contact" class="nav-link" data-en="Contact Us" data-ar="تواصل معنا">Contact Us</a>
+      <a href="/faqs" class="nav-link" data-en="FAQs" data-ar="الأسئلة">FAQs</a>
     </div>
     <div style="display:flex; align-items:center; gap:8px;">
-      <button class="btn-pill btn-soft login-btn" style="padding: 9px 16px; font-size: 14px;" data-en-text="Login" data-ar-text="دخول">
-        <span data-en="Login" data-ar="دخول">Login</span>
-        <svg width="11" height="11" viewBox="0 0 12 12" fill="none" style="margin-left:2px;"><path d="M3 4.5L6 7.5L9 4.5" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/></svg>
-      </button>
       <a href="#start" class="btn-pill btn-volt" style="padding: 10px 18px; font-size: 14px;" data-en="Launch your store" data-ar="أطلق متجرك">Launch your store</a>
       <span class="lang-toggle" style="margin-left: 4px;">
         <button type="button" data-lang="en" class="lang-on">EN</button>
@@ -665,7 +942,7 @@ footer .divider { border: 0; border-top: 1px solid var(--line); margin: 0 0 40px
 <main>
 
 <!-- HERO -->
-<section style="max-width: 1100px; margin: 0 auto; padding: 80px 24px 80px; text-align: center;">
+<section style="max-width: 1100px; margin: 0 auto; padding: 64px 24px 48px; text-align: center;">
   <div class="tag-pill mono">
     <span class="green-dot"></span>
     <span data-en="NEW · AI-POWERED SETUP" data-ar="جديد · إعداد بالذكاء الاصطناعي">NEW · AI-POWERED SETUP</span>
@@ -676,8 +953,8 @@ footer .divider { border: 0; border-top: 1px solid var(--line); margin: 0 0 40px
     <span data-en="Packman builds" data-ar="باكمان يبني">Packman builds</span> <span class="olive" data-en="your store from one photo." data-ar="متجرك من صورة وحدة.">your store from one photo.</span>
   </h1>
 
-  <p class="hero-sub" data-en="Describe what you sell, drop in a single product photo, and we turn it into a ready-to-sell business with products, branding, and store included." data-ar="اوصف لنا منتجك، حط صورة وحدة، ونحن نحوّلها لمتجر متكامل مع المنتجات والهوية والواجهة — كل شي جاهز.">
-    Describe what you sell, drop in a single product photo, and we turn it into a ready-to-sell business with products, branding, and store included.
+  <p class="hero-sub" data-en="Describe what you sell, drop in a single product photo, and we turn it into a ready-to-sell business — products, branding, store, and shipping included." data-ar="اوصف منتجك، حط صورة وحدة، ونحن نحوّلها لمتجر متكامل — مع المنتجات والهوية والواجهة والشحن.">
+    Describe what you sell, drop in a single product photo, and we turn it into a ready-to-sell business — products, branding, store, and shipping included.
   </p>
 
   <form class="hero-input" id="start" onsubmit="event.preventDefault(); window.location='/pricing';">
@@ -692,7 +969,7 @@ footer .divider { border: 0; border-top: 1px solid var(--line); margin: 0 0 40px
     </button>
   </form>
 
-  <p class="trust" data-en="Trusted by thousands of sellers across the region" data-ar="موثوق فيه من آلاف البائعين في المنطقة">Trusted by thousands of sellers across the region</p>
+  <p class="trust" data-en="No credit card · No trade licence to start · First order ships in 48 hours" data-ar="بدون بطاقة ائتمان · بدون رخصة تجارية للبدء · أول طلب يُشحن خلال ٤٨ ساعة">No credit card · No trade licence to start · First order ships in 48 hours</p>
   
         <div style="margin-top: 24px; font-size: 13px; color: var(--muted);">
             <span style="font-size:16px;">🇦🇪</span>
@@ -703,196 +980,283 @@ footer .divider { border: 0; border-top: 1px solid var(--line); margin: 0 0 40px
         </div>
 </section>
 
-<!-- 3 STORE TYPES (Handmade / Retail / Niche) -->
-<section style="max-width: 1100px; margin: 0 auto; padding: 40px 24px 80px;">
-  <div style="text-align: center; margin-bottom: 48px;">
-    <div class="section-eyebrow mono" data-en="WHO IT'S FOR" data-ar="لمين">WHO IT'S FOR</div>
-    <h2 class="section-h2" data-en="From handmade to retail to niche brands." data-ar="من الحرفيين إلى التجزئة إلى البراندات المتخصصة.">From handmade to retail to niche brands.</h2>
-  </div>
-  <div class="grid-3-mobile" style="display: grid; grid-template-columns: repeat(3, 1fr); gap: 16px;">
-    <div class="video-tile">
-      <div class="gradient-bg" style="background: linear-gradient(135deg, #788938, #5A6A28);"></div>
-      <div class="play-icon"><svg width="22" height="22" viewBox="0 0 24 24" fill="none"><path d="M8 5v14l11-7z" fill="#0E1820"/></svg></div>
-      <div class="label" data-en="Handmade" data-ar="حرفي">Handmade</div>
+<!-- VSL #8 — THE 90-SEC HOOK -->
+<section style="max-width: 1000px; margin: 0 auto; padding: 32px 24px 80px;">
+  
+    <div class="vsl-card">
+      <div class="bg-glow"></div>
+      <div class="vsl-grid"></div>
+      <div class="vsl-eyebrow" data-en="VSL · THE 90-SEC HOOK" data-ar="فيديو · ملخص الـ٩٠ ثانية">VSL · THE 90-SEC HOOK</div>
+      <div class="play-button"><svg width="36" height="36" viewBox="0 0 24 24" fill="#0E1820"><path d="M8 5v14l11-7z"/></svg></div>
+      <div class="vsl-headline" data-en="How Gulf founders go from product photo to first paid order in 48 hours." data-ar="كيف يتحول رواد الأعمال في الخليج من صورة منتج لأول طلب مدفوع خلال ٤٨ ساعة.">How Gulf founders go from product photo to first paid order in 48 hours.</div>
+      <div class="vsl-time">01:30</div>
     </div>
-    <div class="video-tile">
-      <div class="gradient-bg" style="background: linear-gradient(135deg, #4A5560, #1A2530);"></div>
-      <div class="play-icon"><svg width="22" height="22" viewBox="0 0 24 24" fill="none"><path d="M8 5v14l11-7z" fill="#0E1820"/></svg></div>
-      <div class="label" data-en="Retail" data-ar="تجزئة">Retail</div>
-    </div>
-    <div class="video-tile">
-      <div class="gradient-bg" style="background: linear-gradient(135deg, #67782D, #788938);"></div>
-      <div class="play-icon"><svg width="22" height="22" viewBox="0 0 24 24" fill="none"><path d="M8 5v14l11-7z" fill="#0E1820"/></svg></div>
-      <div class="label" data-en="Niche" data-ar="متخصص">Niche</div>
-    </div>
-  </div>
+  <p class="vsl-quote">
+    <span class="green-dot" style="background: var(--olive);"></span>
+    <span data-en="“AED 5,780 earned in month one — without hiring a single ops person.”" data-ar="«AED ٥٬٧٨٠ مكسب في أول شهر — بدون توظيف موظف عمليات.»">“AED 5,780 earned in month one — without hiring a single ops person.”</span>
+  </p>
 </section>
 
-<!-- PACKMAN IS SIMPLE -->
-<section style="max-width: 1100px; margin: 0 auto; padding: 40px 24px 80px;">
-  <div style="text-align: center; margin-bottom: 56px;">
-    <div class="section-eyebrow mono" data-en="HOW IT WORKS" data-ar="كيف يعمل">HOW IT WORKS</div>
-    <h2 class="section-h2" data-en="Packman is simple." data-ar="باكمان بساطة.">Packman is simple.</h2>
-    <p class="section-sub" style="margin: 16px auto 0;" data-en="Four steps from a single product photo to your first paid order." data-ar="أربع خطوات من صورة منتج واحدة إلى أول طلب مدفوع.">
-      Four steps from a single product photo to your first paid order.
-    </p>
+<!-- THE PROBLEM — 4 pain stats -->
+<section style="max-width: 1100px; margin: 0 auto; padding: 32px 24px 80px;">
+  <div style="max-width: 720px; margin-bottom: 56px;">
+    <div class="section-eyebrow mono" data-en="THE MESS BEHIND THE SCENES" data-ar="الفوضى وراء الكواليس">THE MESS BEHIND THE SCENES</div>
+    <h2 class="section-h2" data-en="What kills most brands isn't competition." data-ar="اللي يقتل أغلب البراندات مو المنافسة.">What kills most brands isn't competition.</h2>
+    <h2 class="section-h2"><em data-en="It's the chaos." data-ar="هي الفوضى.">It's the chaos.</em></h2>
   </div>
+
   <div class="grid-4-mobile" style="display: grid; grid-template-columns: repeat(4, 1fr); gap: 16px;">
-    <div class="card-base">
-      <div class="step-num mono">01</div>
-      <h3 class="step-title" data-en="Drop a photo" data-ar="حط صورة">Drop a photo</h3>
-      <p class="step-desc" data-en="Upload one product photo and a short description. That's all the AI needs to start." data-ar="ارفع صورة منتج وصف قصير. هذا كل ما يحتاجه الذكاء الاصطناعي للبدء.">Upload one product photo and a short description. That's all the AI needs to start.</p>
+    <div class="pain-card">
+      <div class="pain-num">9</div>
+      <div class="pain-label" data-en="tools to manage one store" data-ar="أداة لإدارة متجر واحد">tools to manage one store</div>
+      <p class="pain-desc" data-en="Shopify, sheets, WhatsApp, courier portals, ad managers, finance tools — none of them talk." data-ar="شوبيفاي، إكسل، واتساب، بوابات الشحن، أدوات الإعلان، المحاسبة — ما يكلّمون بعض.">Shopify, sheets, WhatsApp, courier portals, ad managers, finance tools — none of them talk.</p>
     </div>
-    <div class="card-base">
-      <div class="step-num mono">02</div>
-      <h3 class="step-title" data-en="AI builds your store" data-ar="الذكاء الاصطناعي يبني متجرك">AI builds your store</h3>
-      <p class="step-desc" data-en="Bilingual storefront, branded product pages, descriptions, and your first collection — all auto-generated." data-ar="واجهة متجر ثنائية اللغة، صفحات منتجات بالهوية، أوصاف، وأول مجموعة — كلها تلقائياً.">Bilingual storefront, branded product pages, descriptions, and your first collection — all auto-generated.</p>
+    <div class="pain-card">
+      <div class="pain-num">3h</div>
+      <div class="pain-label" data-en="lost daily to manual ops" data-ar="ساعات تضيع يومياً على المهام اليدوية">lost daily to manual ops</div>
+      <p class="pain-desc" data-en="Copying orders to spreadsheets, chasing couriers, replying to WhatsApp — every single day." data-ar="نسخ الطلبات في الإكسل، ملاحقة الشحنات، الرد على الواتساب — كل يوم.">Copying orders to spreadsheets, chasing couriers, replying to WhatsApp — every single day.</p>
     </div>
-    <div class="card-base">
-      <div class="step-num mono">03</div>
-      <h3 class="step-title" data-en="Get orders" data-ar="استقبل الطلبات">Get orders</h3>
-      <p class="step-desc" data-en="Customers pay with cards, Apple Pay, Tabby, Tamara, or COD. Real-time dashboard tracks every order." data-ar="العملاء يدفعون بالبطاقات، آبل باي، تابي، تمارا، أو الدفع عند الاستلام. لوحة تحكم تتابع كل طلب.">Customers pay with cards, Apple Pay, Tabby, Tamara, or COD. Real-time dashboard tracks every order.</p>
+    <div class="pain-card">
+      <div class="pain-num">20%</div>
+      <div class="pain-label" data-en="returned to origin (RTO)" data-ar="ترجع للمصدر (RTO)">returned to origin (RTO)</div>
+      <p class="pain-desc" data-en="One in five orders fails delivery. That's AED 7,960/month gone for a brand doing 200 orders." data-ar="طلب من كل خمسة يفشل توصيله. وهذا AED 7,960/شهر يضيع لبراند يسوي ٢٠٠ طلب.">One in five orders fails delivery. That's AED 7,960/month gone for a brand doing 200 orders.</p>
     </div>
-    <div class="card-base">
-      <div class="step-num mono">04</div>
-      <h3 class="step-title" data-en="We ship" data-ar="نحن نشحن">We ship</h3>
-      <p class="step-desc" data-en="Pick from our UAE, KSA, or Oman warehouses. Same-day in Dubai and Riyadh, next-day across the GCC." data-ar="من مستودعاتنا في الإمارات والسعودية وعُمان. نفس اليوم في دبي والرياض، ثاني يوم في الخليج.">Pick from our UAE, KSA, or Oman warehouses. Same-day in Dubai and Riyadh, next-day across the GCC.</p>
+    <div class="pain-card">
+      <div class="pain-num">5</div>
+      <div class="pain-label" data-en="open browser tabs at all times" data-ar="تبويبات مفتوحة طوال الوقت">open browser tabs at all times</div>
+      <p class="pain-desc" data-en="And you still miss things. Refunds slip. Stock runs out. Customers ghost." data-ar="ومع ذلك تضيع أشياء. استرجاعات تنسى. مخزون ينفد. عملاء يختفون.">And you still miss things. Refunds slip. Stock runs out. Customers ghost.</p>
     </div>
   </div>
 </section>
 
-<!-- RUN ADS WITHOUT BECOMING A MARKETER -->
-<section style="max-width: 1100px; margin: 0 auto; padding: 40px 24px 80px;">
-  <div style="display: grid; grid-template-columns: 1fr 1fr; gap: 64px; align-items: center;" class="grid-3-mobile">
+<!-- THE SOLUTION — Platform walkthrough with dashboard mocks -->
+<section style="max-width: 1100px; margin: 0 auto; padding: 32px 24px 80px;">
+  <div style="max-width: 720px; margin-bottom: 56px;">
+    <div class="section-eyebrow mono" data-en="THE PLATFORM" data-ar="المنصة">THE PLATFORM</div>
+    <h2 class="section-h2" data-en="Everything your ops team does." data-ar="كل اللي يسويه فريق العمليات.">Everything your ops team does.</h2>
+    <h2 class="section-h2"><em data-en="In one dashboard." data-ar="في لوحة تحكم وحدة.">In one dashboard.</em></h2>
+  </div>
+
+  <!-- Module 1: Orders -->
+  <div style="display: grid; grid-template-columns: 1fr 1fr; gap: 64px; align-items: center; margin-bottom: 80px;" class="grid-3-mobile">
     <div>
-      <div class="section-eyebrow mono" data-en="MARKETING" data-ar="التسويق">MARKETING</div>
-      <h2 class="section-h2" data-en="Run ads without becoming a marketer." data-ar="شغّل إعلاناتك بدون ما تصير مسوّق.">Run ads without becoming a marketer.</h2>
-      <p class="section-sub" data-en="Packman generates ad creatives, captions, and audiences from your product page in one click. Test, iterate, and scale spend across Meta, TikTok, and Google — without hiring an agency." data-ar="باكمان يولّد الإبداعات والكابشن والجمهور من صفحة منتجك بضغطة. جرّب، حسّن، وزود الإنفاق على ميتا وتيك توك وقوقل — بدون وكالة.">
-        Packman generates ad creatives, captions, and audiences from your product page in one click. Test, iterate, and scale spend across Meta, TikTok, and Google — without hiring an agency.
+      <div class="section-eyebrow mono">01 · <span data-en="ORDERS" data-ar="الطلبات">ORDERS</span></div>
+      <h3 style="font-size: 1.75rem; font-weight: 700; letter-spacing: -0.02em; margin: 0 0 16px;" data-en="Every order, every market, one inbox." data-ar="كل طلب، كل سوق، صندوق وارد واحد.">Every order, every market, one inbox.</h3>
+      <p style="font-size: 15.5px; color: var(--ink-soft); margin: 0; line-height: 1.65;" data-en="UAE, KSA, and Oman orders land in the same screen. Filter by country, status, courier — and act on them without switching tabs." data-ar="طلبات الإمارات والسعودية وعُمان تنزل في نفس الشاشة. فلتر بالدولة، الحالة، شركة الشحن — واتعامل معها بدون فتح تبويبات.">
+        UAE, KSA, and Oman orders land in the same screen. Filter by country, status, courier — and act on them without switching tabs.
       </p>
     </div>
-    <div style="background: linear-gradient(135deg, #ECF1CB, #F4F7DF); border-radius: 24px; padding: 32px; aspect-ratio: 4/3; display: flex; align-items: center; justify-content: center;">
-      <div style="background: var(--paper); border-radius: 16px; padding: 24px; box-shadow: 0 4px 12px rgba(15,24,32,0.04); width: 100%; max-width: 320px;">
-        <div class="mono" style="font-size: 11px; color: var(--olive); letter-spacing: 0.08em; margin-bottom: 8px;" data-en="AD 2 · CAMPAIGN PREVIEW" data-ar="إعلان ٢ · معاينة">AD 2 · CAMPAIGN PREVIEW</div>
-        <div style="aspect-ratio: 1; background: linear-gradient(135deg, #E8B65C, #C97842); border-radius: 12px; margin-bottom: 12px;"></div>
-        <div style="font-weight: 700; font-size: 14px; margin-bottom: 4px;" data-en="SoftGlow Orange Scented Candle" data-ar="شمعة بأرج البرتقال">SoftGlow Orange Scented Candle</div>
-        <div style="font-size: 12px; color: var(--ink-soft); line-height: 1.4;" data-en="Invite calm and coastal freshness into your home with our orange-scented candle…" data-ar="ادخل الهدوء والانتعاش لبيتك مع شمعتنا برائحة البرتقال…">Invite calm and coastal freshness into your home with our orange-scented candle…</div>
+    <div class="mock">
+      <div class="mock-bar"><div class="dots"><span></span><span></span><span></span></div>packman.ai / orders</div>
+      <div class="mock-body">
+        <div class="mock-row"><span><span class="sku">51MJI-UL99</span> · <span data-en="Sara M." data-ar="سارة م.">Sara M.</span> 🇦🇪</span><span class="badge" data-en="Shipped" data-ar="شُحن">Shipped</span></div>
+        <div class="mock-row"><span><span class="sku">51MJI-OM31</span> · <span data-en="Ahmed K." data-ar="أحمد ك.">Ahmed K.</span> 🇴🇲</span><span class="badge badge-coral" data-en="New" data-ar="جديد">New</span></div>
+        <div class="mock-row"><span><span class="sku">51MJI-K2X4</span> · <span data-en="Reem A." data-ar="ريم ع.">Reem A.</span> 🇸🇦</span><span class="badge" data-en="Pending" data-ar="قيد التنفيذ">Pending</span></div>
+        <div class="mock-row"><span style="color:var(--muted);" data-en="+ 55 more today" data-ar="+ ٥٥ طلب إضافي اليوم">+ 55 more today</span><span class="amt">AED 39,800</span></div>
       </div>
     </div>
   </div>
-</section>
 
-<!-- LAUNCH CONTENT WITHOUT A CONTENT TEAM -->
-<section style="max-width: 1100px; margin: 0 auto; padding: 40px 24px 80px;">
-  <div style="display: grid; grid-template-columns: 1fr 1fr; gap: 64px; align-items: center;" class="grid-3-mobile">
-    <div style="display: grid; grid-template-columns: repeat(3, 1fr); gap: 8px; aspect-ratio: 4/3;">
-      <div style="background: linear-gradient(135deg, #2D3F4D, #0E1820); border-radius: 14px;"></div>
-      <div style="background: linear-gradient(135deg, #788938, #67782D); border-radius: 14px; transform: translateY(-12px);"></div>
-      <div style="background: linear-gradient(135deg, #B85F45, #8B3F2A); border-radius: 14px;"></div>
-      <div style="background: linear-gradient(135deg, #ECF1CB, #D4DFA8); border-radius: 14px;"></div>
-      <div style="background: linear-gradient(135deg, #E8B65C, #C97842); border-radius: 14px; transform: translateY(-12px);"></div>
-      <div style="background: linear-gradient(135deg, #4A5560, #1A2530); border-radius: 14px;"></div>
+  <!-- Module 2: AI Content -->
+  <div style="display: grid; grid-template-columns: 1fr 1fr; gap: 64px; align-items: center; margin-bottom: 80px;" class="grid-3-mobile">
+    <div class="mock" style="order: -1;">
+      <div class="mock-bar"><div class="dots"><span></span><span></span><span></span></div>packman.ai / content</div>
+      <div class="mock-body">
+        <div class="mock-row"><span style="display:flex; align-items:center; gap:10px;"><span style="width:36px; height:36px; border-radius:8px; background:linear-gradient(135deg,#E8B65C,#C97842);"></span><span data-en="Orange Scented Candle" data-ar="شمعة بأرج البرتقال">Orange Scented Candle</span></span><span class="badge" data-en="AI · live" data-ar="AI · مباشر">AI · live</span></div>
+        <div class="mock-row"><span style="display:flex; align-items:center; gap:10px;"><span style="width:36px; height:36px; border-radius:8px; background:linear-gradient(135deg,#788938,#67782D);"></span><span data-en="Linen Tote Bag" data-ar="حقيبة كتان">Linen Tote Bag</span></span><span class="badge" data-en="AI · live" data-ar="AI · مباشر">AI · live</span></div>
+        <div class="mock-row"><span style="display:flex; align-items:center; gap:10px;"><span style="width:36px; height:36px; border-radius:8px; background:linear-gradient(135deg,#4A5560,#1A2530);"></span><span data-en="Ceramic Mug · Forest" data-ar="كوب سيراميك · غابة">Ceramic Mug · Forest</span></span><span class="badge badge-coral" data-en="Drafting" data-ar="جاري الكتابة">Drafting</span></div>
+        <div class="mock-row"><span style="color:var(--muted);" data-en="3 ad creatives auto-generated this week" data-ar="٣ إبداعات إعلانية تم توليدها هذا الأسبوع">3 ad creatives auto-generated this week</span></div>
+      </div>
     </div>
     <div>
-      <div class="section-eyebrow mono" data-en="CONTENT" data-ar="المحتوى">CONTENT</div>
-      <h2 class="section-h2" data-en="Launch content without a content team." data-ar="أنشر محتوى بدون فريق محتوى.">Launch content without a content team.</h2>
-      <p class="section-sub" data-en="Product videos, lifestyle photography, social posts, blog articles — generated from your catalog and branded to your store. New content every week, automatically." data-ar="فيديوهات منتجات، تصوير حياة، منشورات سوشيال، مقالات — كلها من كتالوجك ومصممة على هويتك. محتوى جديد كل أسبوع، تلقائياً.">
-        Product videos, lifestyle photography, social posts, blog articles — generated from your catalog and branded to your store. New content every week, automatically.
+      <div class="section-eyebrow mono">02 · <span data-en="AI CONTENT" data-ar="محتوى الذكاء الاصطناعي">AI CONTENT</span></div>
+      <h3 style="font-size: 1.75rem; font-weight: 700; letter-spacing: -0.02em; margin: 0 0 16px;" data-en="Product copy, ads, posts — written for you." data-ar="نصوص المنتجات والإعلانات والمنشورات — مكتوبة لك.">Product copy, ads, posts — written for you.</h3>
+      <p style="font-size: 15.5px; color: var(--ink-soft); margin: 0; line-height: 1.65;" data-en="One photo in. Title, description, tags, ad creatives, and social captions out — bilingual, on-brand, ready to publish." data-ar="حط صورة وحدة. اطلع عنوان، وصف، تاجات، إبداعات إعلانية، ومنشورات سوشيال — ثنائية اللغة، بهويتك، جاهزة للنشر.">
+        One photo in. Title, description, tags, ad creatives, and social captions out — bilingual, on-brand, ready to publish.
+      </p>
+    </div>
+  </div>
+
+  <!-- Module 3: Inventory -->
+  <div style="display: grid; grid-template-columns: 1fr 1fr; gap: 64px; align-items: center; margin-bottom: 80px;" class="grid-3-mobile">
+    <div>
+      <div class="section-eyebrow mono">03 · <span data-en="INVENTORY" data-ar="المخزون">INVENTORY</span></div>
+      <h3 style="font-size: 1.75rem; font-weight: 700; letter-spacing: -0.02em; margin: 0 0 16px;" data-en="Stock once. Sell across the Gulf." data-ar="خزّن مرة. وبيع في كل الخليج.">Stock once. Sell across the Gulf.</h3>
+      <p style="font-size: 15.5px; color: var(--ink-soft); margin: 0; line-height: 1.65;" data-en="Reserve stock the moment a customer checks out — across UAE, KSA, and Oman warehouses. No overselling. No manual reconciliation." data-ar="احجز المخزون لحظة دفع العميل — عبر مستودعات الإمارات والسعودية وعُمان. بدون بيع زائد. بدون تسويات يدوية.">
+        Reserve stock the moment a customer checks out — across UAE, KSA, and Oman warehouses. No overselling. No manual reconciliation.
+      </p>
+    </div>
+    <div class="mock">
+      <div class="mock-bar"><div class="dots"><span></span><span></span><span></span></div>packman.ai / inventory</div>
+      <div class="mock-body">
+        <div class="mock-row"><span><span data-en="Dubai · Al Quoz" data-ar="دبي · القوز">Dubai · Al Quoz</span> 🇦🇪</span><span class="amt">412 <span style="color:var(--muted); font-weight:500;" data-en="units" data-ar="وحدة">units</span></span></div>
+        <div class="mock-row"><span><span data-en="Riyadh" data-ar="الرياض">Riyadh</span> 🇸🇦</span><span class="amt">187</span></div>
+        <div class="mock-row"><span><span data-en="Muscat" data-ar="مسقط">Muscat</span> 🇴🇲</span><span class="amt">94</span></div>
+        <div class="mock-row"><span style="color:var(--muted);" data-en="Reorder triggered: Linen Tote" data-ar="إعادة طلب: حقيبة كتان">Reorder triggered: Linen Tote</span><span class="badge" data-en="auto" data-ar="تلقائي">auto</span></div>
+      </div>
+    </div>
+  </div>
+
+  <!-- Module 4: Shipping -->
+  <div style="display: grid; grid-template-columns: 1fr 1fr; gap: 64px; align-items: center;" class="grid-3-mobile">
+    <div class="mock" style="order: -1;">
+      <div class="mock-bar"><div class="dots"><span></span><span></span><span></span></div>packman.ai / shipping</div>
+      <div class="mock-body">
+        <div class="mock-row"><span><span class="sku">51MJI-UL99</span> · <span data-en="Buraq" data-ar="براق">Buraq</span></span><span class="badge" data-en="Out for delivery" data-ar="جاري التوصيل">Out for delivery</span></div>
+        <div class="mock-row"><span><span class="sku">51MJI-OM31</span> · <span data-en="Aramex" data-ar="أرامكس">Aramex</span></span><span class="badge" data-en="In transit" data-ar="بالطريق">In transit</span></div>
+        <div class="mock-row"><span><span class="sku">51MJI-77AB</span> · <span data-en="Buraq" data-ar="براق">Buraq</span></span><span class="badge" data-en="Delivered" data-ar="تم التوصيل">Delivered</span></div>
+        <div class="mock-row"><span style="color:var(--muted);" data-en="Same-day delivery rate · 87%" data-ar="نسبة التوصيل في نفس اليوم · ٨٧٪">Same-day delivery rate · 87%</span><span class="badge" data-en="↑ 4%" data-ar="↑ ٤٪">↑ 4%</span></div>
+      </div>
+    </div>
+    <div>
+      <div class="section-eyebrow mono">04 · <span data-en="SHIPPING" data-ar="الشحن">SHIPPING</span></div>
+      <h3 style="font-size: 1.75rem; font-weight: 700; letter-spacing: -0.02em; margin: 0 0 16px;" data-en="Buraq, Aramex — picked automatically." data-ar="براق وأرامكس — يُختاران تلقائياً.">Buraq, Aramex — picked automatically.</h3>
+      <p style="font-size: 15.5px; color: var(--ink-soft); margin: 0; line-height: 1.65;" data-en="Set rate tiers by weight, zone, and method once. Packman picks the best courier for every order. Same-day in Dubai and Riyadh." data-ar="حدّد الأسعار حسب الوزن والمنطقة والطريقة مرة واحدة. باكمان يختار أفضل شركة شحن لكل طلب. نفس اليوم في دبي والرياض.">
+        Set rate tiers by weight, zone, and method once. Packman picks the best courier for every order. Same-day in Dubai and Riyadh.
       </p>
     </div>
   </div>
 </section>
 
-<!-- YOUR WAREHOUSE WITHOUT OWNING ONE -->
+<!-- AI MANAGERS -->
 <section style="max-width: 1100px; margin: 0 auto; padding: 40px 24px 80px;">
   <div style="text-align: center; margin-bottom: 48px;">
-    <div class="section-eyebrow mono" data-en="FULFILLMENT" data-ar="التوصيل">FULFILLMENT</div>
-    <h2 class="section-h2" data-en="Your warehouse, without owning one." data-ar="مستودعك، بدون ما تملكه.">Your warehouse, without owning one.</h2>
-    <p class="section-sub" style="margin: 16px auto 0;" data-en="Stock once with Packman. Ship to 160+ countries. Same-day domestic, next-day GCC." data-ar="خزّن مرة واحدة مع باكمان. شحن إلى ١٦٠+ دولة. نفس اليوم محلياً، ثاني يوم في الخليج.">
-      Stock once with Packman. Ship to 160+ countries. Same-day domestic, next-day GCC.
-    </p>
-  </div>
-  <div style="display: grid; grid-template-columns: repeat(4, 1fr); gap: 16px;" class="grid-4-mobile">
-    <div class="region-card">
-      <div class="flag-circle">🇦🇪</div>
-      <h3 data-en="UAE" data-ar="الإمارات">UAE</h3>
-      <p data-en="Dubai · Al Quoz" data-ar="دبي · القوز">Dubai · Al Quoz</p>
-    </div>
-    <div class="region-card">
-      <div class="flag-circle">🇸🇦</div>
-      <h3 data-en="KSA" data-ar="السعودية">KSA</h3>
-      <p data-en="Riyadh · Jeddah" data-ar="الرياض · جدة">Riyadh · Jeddah</p>
-    </div>
-    <div class="region-card">
-      <div class="flag-circle">🇴🇲</div>
-      <h3 data-en="Oman" data-ar="عُمان">Oman</h3>
-      <p data-en="Muscat" data-ar="مسقط">Muscat</p>
-    </div>
-    <div class="region-card">
-      <div class="flag-circle">🌍</div>
-      <h3 data-en="160+ countries" data-ar="١٦٠+ دولة">160+ countries</h3>
-      <p data-en="International cross-border" data-ar="شحن دولي عابر للحدود">International cross-border</p>
-    </div>
-  </div>
-</section>
-
-<!-- HIRE YOUR AI MANAGERS -->
-<section style="max-width: 1100px; margin: 0 auto; padding: 40px 24px 80px;">
-  <div style="text-align: center; margin-bottom: 48px;">
-    <div class="section-eyebrow mono" data-en="AI TEAM" data-ar="فريق الذكاء الاصطناعي">AI TEAM</div>
+    <div class="section-eyebrow mono" data-en="THE AI TEAM" data-ar="فريق الذكاء الاصطناعي">THE AI TEAM</div>
     <h2 class="section-h2"><span data-en="Hire your" data-ar="وظّف">Hire your</span> <span class="olive" data-en="AI managers." data-ar="مدراء الذكاء الاصطناعي.">AI managers.</span></h2>
-    <p class="section-sub" style="margin: 16px auto 0;" data-en="Eight specialists running your store 24/7 — so you can focus on the 10% of decisions that matter." data-ar="ثمانية متخصصين يديرون متجرك ٢٤/٧ — حتى تركّز على ال١٠٪ من القرارات اللي تسوي فرق.">
-      Eight specialists running your store 24/7 — so you can focus on the 10% of decisions that matter.
+    <p class="section-sub" style="margin: 16px auto 0;" data-en="Eight specialists running your store 24/7 — so you can focus on the 10% of decisions that actually matter." data-ar="ثمانية متخصصين يديرون متجرك ٢٤/٧ — حتى تركّز على ال١٠٪ من القرارات اللي تسوي فرق.">
+      Eight specialists running your store 24/7 — so you can focus on the 10% of decisions that actually matter.
     </p>
   </div>
   <div style="display: grid; grid-template-columns: repeat(4, 1fr); gap: 16px;" class="grid-4-mobile">
 <div class="ai-card">
       <div class="ai-icon">📈</div>
-      <h3 data-en="AI Marketing Manager" data-ar="مدير التسويق">AI Marketing Manager</h3>
-      <p class="ai-desc" data-en="Plans campaigns, writes ad copy, optimises spend across channels." data-ar="يخطّط الحملات، يكتب الإعلانات، ويحسّن الإنفاق.">Plans campaigns, writes ad copy, optimises spend across channels.</p>
+      <h3 data-en="AI Marketing" data-ar="التسويق">AI Marketing</h3>
+      <p class="ai-desc" data-en="Plans campaigns, writes ads, optimises spend across Meta, TikTok, Google." data-ar="يخطّط الحملات، يكتب الإعلانات، ويحسّن الإنفاق على ميتا وتيك توك وقوقل.">Plans campaigns, writes ads, optimises spend across Meta, TikTok, Google.</p>
     </div><div class="ai-card">
       <div class="ai-icon">✍️</div>
-      <h3 data-en="AI Content Manager" data-ar="مدير المحتوى">AI Content Manager</h3>
+      <h3 data-en="AI Content" data-ar="المحتوى">AI Content</h3>
       <p class="ai-desc" data-en="Generates product copy, social posts, blogs, and email flows." data-ar="يولّد نصوص المنتجات، منشورات السوشيال، المدونات، والإيميلات.">Generates product copy, social posts, blogs, and email flows.</p>
     </div><div class="ai-card">
       <div class="ai-icon">🎨</div>
-      <h3 data-en="AI Storefront Manager" data-ar="مدير الواجهة">AI Storefront Manager</h3>
-      <p class="ai-desc" data-en="Builds and updates your storefront, layouts, and visuals." data-ar="يبني ويحدّث الواجهة، التصاميم، والمرئيات.">Builds and updates your storefront, layouts, and visuals.</p>
+      <h3 data-en="AI Storefront" data-ar="الواجهة">AI Storefront</h3>
+      <p class="ai-desc" data-en="Builds and updates your storefront, layouts, and visuals on the fly." data-ar="يبني ويحدّث الواجهة، التصاميم، والمرئيات.">Builds and updates your storefront, layouts, and visuals on the fly.</p>
     </div><div class="ai-card">
       <div class="ai-icon">📦</div>
-      <h3 data-en="AI Fulfillment Manager" data-ar="مدير التوصيل">AI Fulfillment Manager</h3>
+      <h3 data-en="AI Fulfillment" data-ar="التوصيل">AI Fulfillment</h3>
       <p class="ai-desc" data-en="Routes orders to the right warehouse, picks the best courier." data-ar="يوجّه الطلبات للمستودع الصح، ويختار أفضل شركة شحن.">Routes orders to the right warehouse, picks the best courier.</p>
     </div><div class="ai-card">
       <div class="ai-icon">💬</div>
-      <h3 data-en="AI Support Manager" data-ar="مدير الدعم">AI Support Manager</h3>
-      <p class="ai-desc" data-en="Handles customer questions in Arabic and English, 24/7." data-ar="يجاوب على أسئلة العملاء بالعربي والإنجليزي، ٢٤/٧.">Handles customer questions in Arabic and English, 24/7.</p>
+      <h3 data-en="AI Support" data-ar="الدعم">AI Support</h3>
+      <p class="ai-desc" data-en="Answers customer questions in Arabic and English, 24/7." data-ar="يجاوب على أسئلة العملاء بالعربي والإنجليزي، ٢٤/٧.">Answers customer questions in Arabic and English, 24/7.</p>
     </div><div class="ai-card">
       <div class="ai-icon">📊</div>
       <h3 data-en="AI Analyst" data-ar="المحلل">AI Analyst</h3>
-      <p class="ai-desc" data-en="Tracks revenue, traffic, and conversion. Spots problems before you do." data-ar="يتابع المبيعات والزوار والتحويلات. يكتشف المشاكل قبلك.">Tracks revenue, traffic, and conversion. Spots problems before you do.</p>
+      <p class="ai-desc" data-en="Tracks revenue, traffic, and conversion. Spots problems early." data-ar="يتابع المبيعات والزوار والتحويلات. يكتشف المشاكل قبلك.">Tracks revenue, traffic, and conversion. Spots problems early.</p>
     </div><div class="ai-card">
       <div class="ai-icon">🧮</div>
       <h3 data-en="AI Accountant" data-ar="المحاسب">AI Accountant</h3>
       <p class="ai-desc" data-en="Logs transactions, tracks VAT, prepares your financial summaries." data-ar="يسجّل العمليات، يتابع الضريبة، ويجهّز التقارير.">Logs transactions, tracks VAT, prepares your financial summaries.</p>
     </div><div class="ai-card">
       <div class="ai-icon">🛠</div>
-      <h3 data-en="AI Technical Manager" data-ar="المدير التقني">AI Technical Manager</h3>
+      <h3 data-en="AI Technical" data-ar="التقني">AI Technical</h3>
       <p class="ai-desc" data-en="Manages domains, integrations, and platform settings end-to-end." data-ar="يدير الدومينات والتكاملات والإعدادات من البداية للنهاية.">Manages domains, integrations, and platform settings end-to-end.</p>
     </div>
   </div>
 </section>
 
+<!-- TESTIMONIALS -->
+<section style="max-width: 1100px; margin: 0 auto; padding: 40px 24px 80px;">
+  <div style="text-align: center; margin-bottom: 48px;">
+    <div class="section-eyebrow mono" data-en="WHAT SELLERS SAY" data-ar="ماذا يقول البائعون">WHAT SELLERS SAY</div>
+    <h2 class="section-h2"><span data-en="Brands across the Gulf — running on" data-ar="براندات في كل الخليج — تشتغل على">Brands across the Gulf — running on</span> <span class="olive" data-en="Packman." data-ar="باكمان.">Packman.</span></h2>
+  </div>
+  <div style="display: grid; grid-template-columns: repeat(3, 1fr); gap: 16px;" class="grid-3-mobile">
+    <div class="testimonial">
+      <blockquote data-en="We went from 9 tools to one in two days. The AI content alone replaced our agency. Best switch we ever made." data-ar="انتقلنا من ٩ أدوات لواحدة في يومين. محتوى الذكاء الاصطناعي وحده بدّل وكالتنا. أفضل قرار سويناه.">
+        We went from 9 tools to one in two days. The AI content alone replaced our agency. Best switch we ever made.
+      </blockquote>
+      <div class="who">
+        <div class="avatar">L</div>
+        <div>
+          <div class="name" data-en="Layla H." data-ar="ليلى ح.">Layla H.</div>
+          <div class="role" data-en="Founder · Skincare brand · Dubai" data-ar="مؤسسة · براند العناية بالبشرة · دبي">Founder · Skincare brand · Dubai</div>
+        </div>
+      </div>
+    </div>
+    <div class="testimonial">
+      <blockquote data-en="First order shipped 36 hours after we signed up. We didn't even have a trade licence yet. Real magic." data-ar="أول طلب شُحن خلال ٣٦ ساعة من التسجيل. حتى رخصتنا التجارية ما كانت جاهزة. سحر حقيقي.">
+        First order shipped 36 hours after we signed up. We didn't even have a trade licence yet. Real magic.
+      </blockquote>
+      <div class="who">
+        <div class="avatar">F</div>
+        <div>
+          <div class="name" data-en="Faisal A." data-ar="فيصل أ.">Faisal A.</div>
+          <div class="role" data-en="Founder · Coffee brand · Riyadh" data-ar="مؤسس · براند قهوة · الرياض">Founder · Coffee brand · Riyadh</div>
+        </div>
+      </div>
+    </div>
+    <div class="testimonial">
+      <blockquote data-en="Cut our RTO from 22% to 7%. The dashboard tells us why every order failed. Saved us thousands a month." data-ar="خفّضنا نسبة المرتجعات من ٢٢٪ لـ٧٪. لوحة التحكم تخبرنا ليش كل طلب فشل. وفّرنا آلاف بالشهر.">
+        Cut our RTO from 22% to 7%. The dashboard tells us why every order failed. Saved us thousands a month.
+      </blockquote>
+      <div class="who">
+        <div class="avatar">M</div>
+        <div>
+          <div class="name" data-en="Maitha S." data-ar="ميثاء س.">Maitha S.</div>
+          <div class="role" data-en="Operations · Apparel · Muscat" data-ar="عمليات · ملابس · مسقط">Operations · Apparel · Muscat</div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- WHO IT'S FOR — 2 paths -->
+<section style="max-width: 1100px; margin: 0 auto; padding: 40px 24px 80px;">
+  <div style="text-align: center; margin-bottom: 48px;">
+    <div class="section-eyebrow mono" data-en="WHO IT'S FOR" data-ar="لمين">WHO IT'S FOR</div>
+    <h2 class="section-h2" data-en="Pick your path." data-ar="اختر مسارك.">Pick your path.</h2>
+  </div>
+  <div style="display: grid; grid-template-columns: 1fr 1fr; gap: 16px;" class="grid-3-mobile">
+    <a href="/for-brands" class="path-card">
+      <div class="path-eyebrow" data-en="DOING 200+ ORDERS A MONTH" data-ar="٢٠٠+ طلب شهرياً">DOING 200+ ORDERS A MONTH</div>
+      <h3 data-en="For established brands." data-ar="للبراندات القائمة.">For established brands.</h3>
+      <p data-en="Cut your tool stack from 9 to 1. Reduce RTO. Add KSA and Oman markets without a second team." data-ar="قلّص أدواتك من ٩ لواحدة. قلّل المرتجعات. أضف أسواق السعودية وعُمان بدون فريق ثاني.">Cut your tool stack from 9 to 1. Reduce RTO. Add KSA and Oman markets without a second team.</p>
+      <span class="arrow" data-en="See the math →" data-ar="شوف الأرقام ←">See the math →</span>
+    </a>
+    <a href="/for-startups" class="path-card">
+      <div class="path-eyebrow" data-en="LAUNCHING YOUR FIRST STORE" data-ar="إطلاق متجرك الأول">LAUNCHING YOUR FIRST STORE</div>
+      <h3 data-en="For first-time sellers." data-ar="للبائعين المبتدئين.">For first-time sellers.</h3>
+      <p data-en="Go live in 48 hours. No trade licence to start. AI does the heavy lifting — products, branding, content, all of it." data-ar="ابدأ خلال ٤٨ ساعة. بدون رخصة تجارية للبدء. الذكاء الاصطناعي يقوم بالشغل الثقيل — منتجات، هوية، محتوى، كل شي.">Go live in 48 hours. No trade licence to start. AI does the heavy lifting — products, branding, content, all of it.</p>
+      <span class="arrow" data-en="See the timeline →" data-ar="شوف الجدول ←">See the timeline →</span>
+    </a>
+  </div>
+</section>
+
 <!-- PRICING TEASER -->
-<section style="max-width: 1100px; margin: 0 auto; padding: 40px 24px 120px; text-align: center;">
-  <div class="section-eyebrow mono" data-en="PRICING" data-ar="الأسعار">PRICING</div>
+<section style="max-width: 1100px; margin: 0 auto; padding: 40px 24px 80px; text-align: center;">
+  <div class="section-eyebrow mono" data-en="LESS THAN YOUR MOBILE PLAN" data-ar="أقل من فاتورة جوالك">LESS THAN YOUR MOBILE PLAN</div>
   <h2 class="section-h2" data-en="One plan. Three countries." data-ar="خطة وحدة. ثلاث دول.">One plan. Three countries.</h2>
-  <p class="section-sub" style="margin: 16px auto 32px;" data-en="Pay monthly, or save 25% by paying yearly. Switch anytime. No hidden fees, zero commission on sales." data-ar="ادفع شهرياً، أو وفّر ٢٥٪ بالدفع السنوي. غيّر في أي وقت. بدون رسوم خفية، صفر عمولة على المبيعات.">
-    Pay monthly, or save 25% by paying yearly. Switch anytime. No hidden fees, zero commission on sales.
+  <p class="section-sub" style="margin: 16px auto 32px;" data-en="Pay monthly, or save 25% with the yearly plan. Switch anytime. Zero commission on sales." data-ar="ادفع شهرياً، أو وفّر ٢٥٪ بالخطة السنوية. غيّر في أي وقت. صفر عمولة على المبيعات.">
+    Pay monthly, or save 25% with the yearly plan. Switch anytime. Zero commission on sales.
   </p>
   <a href="/pricing" class="btn-pill btn-volt" style="padding: 14px 28px; font-size: 16px;">
     <span data-en="See pricing" data-ar="شوف الأسعار">See pricing</span>
     <svg width="14" height="14" viewBox="0 0 16 16" fill="none" style="margin-left:4px;"><path d="M3 8h10m0 0L9 4m4 4l-4 4" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"/></svg>
   </a>
+</section>
+
+<!-- FINAL CTA -->
+<section style="max-width: 1100px; margin: 0 auto; padding: 40px 24px 100px;">
+  <div class="final-cta">
+    <h2><span data-en="Your first order ships" data-ar="أول طلبك يُشحن">Your first order ships</span><br/><em data-en="in 48 hours." data-ar="خلال ٤٨ ساعة.">in 48 hours.</em></h2>
+    <p data-en="No credit card. No trade licence to start. Just upload one product photo." data-ar="بدون بطاقة ائتمان. بدون رخصة تجارية للبدء. فقط ارفع صورة منتج وحدة.">
+      No credit card. No trade licence to start. Just upload one product photo.
+    </p>
+    <a href="#start" class="btn-pill btn-volt" style="padding: 16px 32px; font-size: 16px;">
+      <span data-en="Start free now" data-ar="ابدأ مجاناً الآن">Start free now</span>
+      <svg width="14" height="14" viewBox="0 0 16 16" fill="none" style="margin-left:4px;"><path d="M3 8h10m0 0L9 4m4 4l-4 4" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"/></svg>
+    </a>
+  </div>
 </section>
 
 </main>
@@ -916,10 +1280,10 @@ footer .divider { border: 0; border-top: 1px solid var(--line); margin: 0 0 40px
       <div>
         <h3 class="col-title" data-en="PRODUCT" data-ar="المنتج">PRODUCT</h3>
         <ul>
+          <li><a href="/for-brands" data-en="For brands" data-ar="للبراندات">For brands</a></li>
+          <li><a href="/for-startups" data-en="For startups" data-ar="للمبتدئين">For startups</a></li>
           <li><a href="/pricing" data-en="Pricing" data-ar="الأسعار">Pricing</a></li>
           <li><a href="/partners" data-en="Partners" data-ar="شركاؤنا">Partners</a></li>
-          <li><a href="/faqs" data-en="FAQs" data-ar="الأسئلة الشائعة">FAQs</a></li>
-          <li><a href="/contact" data-en="Contact Us" data-ar="تواصل معنا">Contact Us</a></li>
         </ul>
       </div>
       <div>
@@ -943,7 +1307,6 @@ footer .divider { border: 0; border-top: 1px solid var(--line); margin: 0 0 40px
       <div style="display:flex; gap: 24px;">
         <a href="#" style="color:inherit;" data-en="Privacy" data-ar="الخصوصية">Privacy</a>
         <a href="#" style="color:inherit;" data-en="Terms" data-ar="الشروط">Terms</a>
-        <a href="#" style="color:inherit;" data-en="Cookies" data-ar="ملفات الكوكيز">Cookies</a>
       </div>
     </div>
   </div>
@@ -969,39 +1332,23 @@ footer .divider { border: 0; border-top: 1px solid var(--line); margin: 0 0 40px
     document.querySelectorAll('[data-en][data-ar]').forEach(function(el){
       el.textContent = lang === 'ar' ? el.dataset.ar : el.dataset.en;
     });
+    document.querySelectorAll('[data-en-ph][data-ar-ph]').forEach(function(el){
+      el.placeholder = lang === 'ar' ? el.dataset.arPh : el.dataset.enPh;
+    });
     document.querySelectorAll('.lang-toggle button').forEach(function(b){
       b.classList.toggle('lang-on', b.dataset.lang === lang);
     });
     try { localStorage.setItem('packman.lang', lang); } catch(e) {}
   }
-
   document.addEventListener('click', function(e){
     var btn = e.target.closest('.lang-toggle button');
     if (btn) { e.preventDefault(); setLang(btn.dataset.lang); }
   });
-
   var saved = 'en';
   try { saved = localStorage.getItem('packman.lang') || 'en'; } catch(e) {}
   if (saved === 'ar') setLang('ar');
 })();
 </script>
 
-<!-- Update placeholder text on lang change -->
-<script>
-(function(){
-  function syncPlaceholders() {
-    var lang = document.documentElement.getAttribute('lang') === 'ar' ? 'ar' : 'en';
-    document.querySelectorAll('[data-en-ph][data-ar-ph]').forEach(function(el){
-      el.placeholder = lang === 'ar' ? el.dataset.arPh : el.dataset.enPh;
-    });
-  }
-  document.addEventListener('click', function(e){
-    if (e.target.closest('.lang-toggle button')) {
-      setTimeout(syncPlaceholders, 0);
-    }
-  });
-  syncPlaceholders();
-})();
-</script>
 </body>
 </html>
