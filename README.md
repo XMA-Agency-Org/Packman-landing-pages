@@ -1,75 +1,67 @@
-# Packman site — v4
+# Packman site — v5
 
-Static HTML, deploy-ready for Vercel. Complete redesign matching the cream/lime brand reference.
+Static HTML, deploy-ready for Vercel. Content sourced from packman.ai, redesigned in the cream/lime brand.
 
-## What changed
+## What changed in v5
 
-This is a full visual redesign. Old edgy/dark aesthetic is gone — now soft cream wash background, floating pill navigation, two-color headlines, and rounded everything.
+- ✅ **EN/AR toggle now works** — clicking AR switches the entire site to Arabic with proper RTL layout. Choice persists across pages via localStorage.
+- ✅ **Pricing simplified to 2 options** (Monthly / Yearly), per-country:
+  - 🇦🇪 UAE: AED 400 / month or AED 3,600 / year (save 25%)
+  - 🇸🇦 KSA: SAR 400 / month or SAR 3,600 / year (save 25%)
+  - 🇴🇲 Oman: OMR 40 / month or OMR 360 / year (save 25%)
+- ✅ **Real content from packman.ai** — hero, "Packman is simple" (4 steps), "Run ads without becoming a marketer", "Launch content without a content team", "Your warehouse, without owning one" (warehouses + 160+ countries), "Hire your AI managers" (8 specialists)
+- ✅ **Partners restructured** — government & ecosystem partnerships preserved as informational cards (Dubai Economy, RAKDED, Abu Dhabi Chamber, Ministry of Education Kidspreneur, World Government Summit, Harvard, etc.), plus a separate **Payment Gateways** section showing only Tabby, Tamara, and Apple Pay
+- ✅ **Real contact info** — Sales / Support / Partnerships / Careers channels with proper packman.ai email addresses, working contact form, three-office grid (Dubai · Riyadh · Muscat)
+- ✅ **Real FAQs** — 5 grouped sections (Getting started, Pricing & billing, Fulfillment & shipping, Payments, Support & account) with content rewritten from packman.ai
 
 ## Routes
 
-### Country landing pages (homepage variants)
-| URL      | Country | Currency |
-|----------|---------|----------|
-| `/`      | Generic | (none)   |
-| `/uae`   | UAE 🇦🇪  | AED      |
-| `/ksa`   | KSA 🇸🇦  | SAR      |
-| `/oman`  | Oman 🇴🇲 | OMR      |
+### Country home pages
+| URL      | Country  | Currency |
+|----------|----------|----------|
+| `/`      | Generic  | (none)   |
+| `/uae`   | UAE 🇦🇪   | AED      |
+| `/ksa`   | KSA 🇸🇦   | SAR      |
+| `/oman`  | Oman 🇴🇲  | OMR      |
 
-Each country page is identical to home, but:
-- Its country pill in the footer is highlighted (dark navy)
-- A small country badge under the hero shows "Showing prices for [country]" with a "change country" link
+### Pricing pages
+| URL                | Currency | Monthly | Yearly  |
+|--------------------|----------|---------|---------|
+| `/pricing`         | AED      | 400     | 3,600   |
+| `/pricing-uae`     | AED      | 400     | 3,600   |
+| `/pricing-ksa`     | SAR      | 400     | 3,600   |
+| `/pricing-oman`    | OMR      | 40      | 360     |
 
-### Pricing pages (per-country plans)
-| URL                | Currency           |
-|--------------------|--------------------|
-| `/pricing`         | AED (UAE default)  |
-| `/pricing-uae`     | AED                |
-| `/pricing-ksa`     | SAR                |
-| `/pricing-oman`    | OMR                |
-
-Currency in the plan tiers is baked in per URL — no JS toggle needed.
+Each pricing page has a country switcher pill (UAE/KSA/Oman) and a Monthly/Yearly toggle. The big number updates live when the toggle is clicked.
 
 ### Auxiliary pages
-| URL          | Purpose                                  |
-|--------------|------------------------------------------|
-| `/partners`  | Logistics, payments, platforms partners  |
-| `/faqs`      | 8 expandable FAQ items                   |
-| `/contact`   | Email, WhatsApp, partnerships channels   |
+| URL          | Content                                                  |
+|--------------|----------------------------------------------------------|
+| `/partners`  | 8 ecosystem partners + 3 payment gateways                |
+| `/faqs`      | 13 grouped FAQs (Getting started, Pricing, etc.)         |
+| `/contact`   | Contact form + 4 channel cards + 3 office cards          |
 
-## Design tokens
+## Bilingual implementation
 
-| Token       | Value     | Usage                              |
-|-------------|-----------|------------------------------------|
-| `--ink`     | `#0E1820` | Body text, dark buttons, logo bg   |
-| `--olive`   | `#788938` | Highlighted headline phrase, links |
-| `--volt`    | `#D2F801` | Lime green primary CTA buttons     |
-| `--paper`   | `#FFFFFF` | Pill nav, cards, cookie banner     |
-| `--soft`    | `#F0F2E3` | Light pill buttons (Login, Reject) |
-| `--bg-base` | gradient  | Cream-yellow page wash             |
+Every text element carries `data-en="..." data-ar="..."` attributes. Clicking the AR button:
 
-Typography: **Inter** (400/500/600/700/800) for everything; **IBM Plex Mono** (500/600) for tag pills and column titles.
+1. Sets `<html dir="rtl" lang="ar">`
+2. Switches all text to the Arabic translation via the data attributes
+3. Loads the Arabic font (`IBM Plex Sans Arabic`)
+4. Highlights AR in the toggle, persists choice in localStorage
 
-## Components
+Re-visiting any page reads the saved choice and applies it automatically.
 
-- **Pill nav** — floating, white, full-rounded, subtle shadow. Logo lockup + nav links + Login (light pill, with chevron) + Launch your store (lime pill) + EN/AR toggle (dark/light pill).
-- **Tag pill** — `● NEW · AI-POWERED SETUP` style indicator with green dot.
-- **Two-color headline** — navy first half, olive second half. Wraps cleanly across two lines.
-- **Hero input** — large white pill with camera icon + placeholder + lime "Start free →" button. Pressing Enter or clicking submits to `/pricing`.
-- **Cookie banner** — fixed-position card at bottom with Reject (light pill) and Accept (lime pill). Dismissable via JS.
-- **Country pills (footer)** — three pills with flag + name. Active country becomes dark navy.
-- **Pricing cards** — 4-column grid with featured plan in dark navy + lime accents. Each card has a "Save X%" badge.
-- **FAQ accordion** — `<details>`/`<summary>` rounded cards with rotating + indicator.
+## Sections on the home page
 
-## Mobile
-
-Below 768px:
-- Nav links and Login button hide; only logo + Launch + EN/AR remain in the pill
-- Logo tagline hides; logo mark/text shrink
-- Hero text scales down; input button compacts to "Start free" without arrow icon
-- Pricing grid collapses to single column
-- Cookie banner stacks vertically with stretched buttons
-- Footer columns collapse to single column
+1. **Hero** — `Sell anything, anywhere. Packman builds your store from one photo.` + camera-icon input + Start free CTA
+2. **Who it's for** — three video tiles (Handmade / Retail / Niche)
+3. **Packman is simple** — 4-step process (Drop a photo → AI builds → Get orders → We ship)
+4. **Run ads without becoming a marketer** — image grid + ad campaign preview card
+5. **Launch content without a content team** — tile mosaic + content explanation
+6. **Your warehouse, without owning one** — 4 region cards (UAE / KSA / Oman / 160+ countries)
+7. **Hire your AI managers** — 8 cards (Marketing, Content, Storefront, Fulfillment, Support, Analyst, Accountant, Technical)
+8. **Pricing teaser** — link to /pricing
 
 ## Deploy
 
@@ -85,11 +77,29 @@ python3 -m http.server 8000
 
 ## Source
 
-Build script: `build_v4.py` in the project root.
-Run `python3 build_v4.py` to regenerate the entire `packman/` folder.
+Build script: `build_v5.py` in the project root.
+Run `python3 build_v5.py` to regenerate the entire `packman/` folder.
 
-The script holds:
-- A single CSS block (design tokens + components + mobile media query)
-- A reusable shell with nav + footer + cookie banner
-- Per-page body templates: `home_body`, `pricing_body`, `partners_body`, `faqs_body`, `contact_body`
-- Country variants generated from a single dictionary (`COUNTRIES`)
+## File inventory
+
+```
+packman/
+├── README.md
+├── vercel.json
+├── index.html              ← home (generic)
+├── uae/index.html          ← UAE home
+├── ksa/index.html          ← KSA home
+├── oman/index.html         ← Oman home
+├── pricing/index.html      ← Pricing (UAE default)
+├── pricing-uae/index.html  ← Pricing UAE
+├── pricing-ksa/index.html  ← Pricing KSA
+├── pricing-oman/index.html ← Pricing Oman
+├── partners/index.html     ← Partners (ecosystem + payments)
+├── faqs/index.html         ← FAQs
+├── contact/index.html      ← Contact
+└── assets/
+    ├── logo-mark-navy.png
+    ├── logo-mark-volt.png
+    ├── logo-full-navy.png
+    └── logo-full-volt.png
+```

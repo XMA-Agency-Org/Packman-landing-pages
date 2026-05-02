@@ -3,18 +3,14 @@
 <head>
 <meta charset="UTF-8" />
 <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-<meta name="description" content="Simple pricing in AED for sellers in UAE." />
+<meta name="description" content="Packman pricing in AED for sellers in UAE. Pay monthly or save 25% yearly." />
 <title>Packman · Pricing · UAE</title>
 <link rel="icon" href="/assets/logo-mark-navy.png" type="image/png" />
 <link rel="preconnect" href="https://fonts.googleapis.com" />
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
-<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800;900&family=IBM+Plex+Mono:wght@500;600&display=swap" rel="stylesheet" />
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800;900&family=IBM+Plex+Mono:wght@500;600&family=IBM+Plex+Sans+Arabic:wght@400;500;600;700;800&display=swap" rel="stylesheet" />
 <style>
 :root {
-  --bg-top:    #FBFCEF;
-  --bg-mid:    #F1F6D8;
-  --bg-bot:    #E5EEC0;
-  --bg-glow:   #DCEAA4;
   --ink:       #0E1820;
   --ink-2:     #1A2530;
   --ink-soft:  #4A5560;
@@ -28,11 +24,14 @@
   --volt-h:    #BEE000;
   --olive:     #788938;
   --olive-2:   #67782D;
+  --olive-bg:  #ECF1CB;
 }
 
 * { box-sizing: border-box; }
 html, body { margin: 0; padding: 0; }
 a { text-decoration: none; color: inherit; }
+img { max-width: 100%; height: auto; display: block; }
+
 body {
   font-family: 'Inter', -apple-system, BlinkMacSystemFont, sans-serif;
   color: var(--ink);
@@ -44,18 +43,19 @@ body {
   min-height: 100vh;
 }
 
+[dir="rtl"] body, body[dir="rtl"] {
+  font-family: 'IBM Plex Sans Arabic', 'Noto Sans Arabic', 'Inter', sans-serif;
+}
+
 .mono { font-family: 'IBM Plex Mono', ui-monospace, monospace; }
 
-/* Pill nav */
+/* ───── Pill nav ───── */
 .pill-nav {
   background: var(--paper);
   border-radius: 9999px;
-  box-shadow:
-    0 1px 2px rgba(15, 24, 32, 0.04),
-    0 8px 24px rgba(15, 24, 32, 0.05);
+  box-shadow: 0 1px 2px rgba(15, 24, 32, 0.04), 0 8px 24px rgba(15, 24, 32, 0.05);
 }
 
-/* Logo lockup */
 .logo-mark {
   width: 44px; height: 44px;
   border-radius: 12px;
@@ -69,7 +69,7 @@ body {
 .logo-reg  { font-size: 0.5rem; vertical-align: super; margin-left: 1px; color: var(--ink); font-weight: 600; }
 .logo-tag  { font-size: 0.625rem; color: var(--muted); margin-top: 2px; line-height: 1; font-weight: 500; }
 
-/* Buttons */
+/* ───── Buttons ───── */
 .btn-pill {
   border-radius: 9999px;
   font-weight: 600;
@@ -80,6 +80,7 @@ body {
   align-items: center;
   gap: 6px;
   white-space: nowrap;
+  font-family: inherit;
 }
 .btn-volt { background: var(--volt); color: var(--ink); }
 .btn-volt:hover { background: var(--volt-h); transform: translateY(-1px); }
@@ -87,8 +88,10 @@ body {
 .btn-soft:hover { background: var(--soft-h); }
 .btn-ink  { background: var(--ink); color: var(--paper); }
 .btn-ink:hover { background: var(--ink-2); }
+.btn-outline { background: transparent; color: var(--ink); border: 1px solid var(--line); }
+.btn-outline:hover { border-color: var(--olive); }
 
-/* Nav links */
+/* ───── Nav links ───── */
 .nav-link {
   font-size: 15px; font-weight: 500;
   color: var(--ink);
@@ -105,7 +108,7 @@ body {
 }
 .pill-nav .login-btn { display: inline-flex; }
 
-/* Lang toggle */
+/* ───── Lang toggle ───── */
 .lang-toggle {
   background: var(--soft);
   border-radius: 9999px;
@@ -115,19 +118,24 @@ body {
   font-size: 12px;
   font-weight: 700;
 }
-.lang-toggle a, .lang-toggle span {
+.lang-toggle button {
   padding: 6px 10px;
   border-radius: 9999px;
   color: var(--muted);
-  text-decoration: none;
+  background: transparent;
+  border: none;
+  cursor: pointer;
+  font-family: inherit;
+  font-size: inherit;
+  font-weight: inherit;
   transition: all .15s ease;
   display: inline-block;
   min-width: 28px;
   text-align: center;
 }
-.lang-toggle .lang-on { background: var(--ink); color: var(--paper); }
+.lang-toggle button.lang-on { background: var(--ink); color: var(--paper); }
 
-/* Tag pill */
+/* ───── Tag pill ───── */
 .tag-pill {
   display: inline-flex;
   align-items: center;
@@ -147,7 +155,7 @@ body {
   display: inline-block;
 }
 
-/* Hero text */
+/* ───── Hero ───── */
 .hero-h1 {
   font-size: clamp(2.25rem, 5vw, 4.25rem);
   font-weight: 800;
@@ -165,7 +173,6 @@ body {
   line-height: 1.6;
 }
 
-/* Hero input */
 .hero-input {
   background: var(--paper);
   border-radius: 9999px;
@@ -175,9 +182,7 @@ body {
   gap: 12px;
   max-width: 640px;
   margin: 36px auto 0;
-  box-shadow:
-    0 2px 4px rgba(15, 24, 32, 0.04),
-    0 12px 32px rgba(15, 24, 32, 0.06);
+  box-shadow: 0 2px 4px rgba(15, 24, 32, 0.04), 0 12px 32px rgba(15, 24, 32, 0.06);
 }
 .hero-input .cam {
   width: 36px; height: 36px;
@@ -189,21 +194,366 @@ body {
   color: var(--ink-soft);
 }
 .hero-input input {
-  flex: 1;
-  border: none;
-  outline: none;
-  background: transparent;
-  font-size: 16px;
-  color: var(--ink);
-  padding: 8px 0;
+  flex: 1; border: none; outline: none; background: transparent;
+  font-size: 16px; color: var(--ink); padding: 8px 0;
   font-family: inherit;
 }
 .hero-input input::placeholder { color: var(--muted); }
 
-/* Trust line */
 .trust { font-size: 14px; color: var(--muted); margin-top: 22px; }
 
-/* Cookie banner */
+/* ───── Section heading ───── */
+.section-eyebrow {
+  font-size: 11px; font-weight: 700; letter-spacing: 0.08em;
+  color: var(--olive); margin-bottom: 12px; text-transform: uppercase;
+}
+.section-h2 {
+  font-size: clamp(2rem, 4vw, 3.25rem);
+  font-weight: 800;
+  letter-spacing: -0.03em;
+  line-height: 1.1;
+  color: var(--ink);
+  margin: 0 0 16px;
+}
+.section-h2 .olive { color: var(--olive); }
+.section-sub {
+  font-size: 1.0625rem;
+  color: var(--ink-soft);
+  line-height: 1.6;
+  max-width: 640px;
+}
+
+/* ───── Cards ───── */
+.card-base {
+  background: var(--paper);
+  border: 1px solid var(--line);
+  border-radius: 24px;
+  padding: 28px;
+}
+
+.tile {
+  background: var(--paper);
+  border: 1px solid var(--line);
+  border-radius: 20px;
+  padding: 24px;
+  transition: transform .2s ease, border-color .2s ease;
+}
+.tile:hover { transform: translateY(-2px); border-color: var(--olive); }
+
+/* ───── Video tiles (3 store types) ───── */
+.video-tile {
+  position: relative;
+  aspect-ratio: 9/16;
+  background: var(--ink);
+  border-radius: 24px;
+  overflow: hidden;
+  cursor: pointer;
+  display: flex;
+  align-items: flex-end;
+  padding: 24px;
+  color: var(--paper);
+}
+.video-tile::before {
+  content: "";
+  position: absolute;
+  inset: 0;
+  background: linear-gradient(180deg, rgba(14,24,32,0.05) 60%, rgba(14,24,32,0.85) 100%);
+  z-index: 1;
+}
+.video-tile .play-icon {
+  position: absolute; top: 50%; left: 50%;
+  transform: translate(-50%, -50%);
+  width: 64px; height: 64px;
+  background: var(--volt);
+  border-radius: 50%;
+  display: flex; align-items: center; justify-content: center;
+  z-index: 2;
+  transition: transform .2s ease;
+}
+.video-tile:hover .play-icon { transform: translate(-50%, -50%) scale(1.05); }
+.video-tile .label {
+  position: relative; z-index: 2;
+  font-size: 14px; font-weight: 700;
+  letter-spacing: 0.05em;
+}
+.video-tile .gradient-bg {
+  position: absolute; inset: 0;
+}
+
+/* ───── Steps ───── */
+.step-num {
+  font-size: 11px; font-weight: 700; letter-spacing: 0.1em;
+  color: var(--olive); margin-bottom: 12px;
+}
+.step-title {
+  font-size: 22px; font-weight: 700; letter-spacing: -0.02em;
+  margin: 0 0 8px;
+}
+.step-desc { font-size: 14.5px; color: var(--ink-soft); line-height: 1.6; margin: 0; }
+
+/* ───── Region cards ───── */
+.region-card {
+  background: var(--paper);
+  border: 1px solid var(--line);
+  border-radius: 24px;
+  padding: 32px 28px;
+  text-align: center;
+  transition: transform .2s ease;
+}
+.region-card:hover { transform: translateY(-2px); }
+.region-card .flag-circle {
+  width: 56px; height: 56px;
+  border-radius: 50%;
+  background: var(--olive-bg);
+  display: inline-flex;
+  align-items: center; justify-content: center;
+  font-size: 28px;
+  margin-bottom: 16px;
+}
+.region-card h3 {
+  font-size: 1.25rem;
+  font-weight: 700;
+  margin: 0 0 6px;
+}
+.region-card p { font-size: 14px; color: var(--ink-soft); margin: 0; }
+
+/* ───── AI manager cards ───── */
+.ai-card {
+  background: var(--paper);
+  border: 1px solid var(--line);
+  border-radius: 20px;
+  padding: 24px;
+  transition: all .2s ease;
+}
+.ai-card:hover { background: var(--ink); color: var(--paper); border-color: var(--ink); }
+.ai-card:hover .ai-icon { background: var(--volt); }
+.ai-card:hover .ai-desc { color: rgba(255,255,255,0.7); }
+.ai-icon {
+  width: 44px; height: 44px;
+  border-radius: 12px;
+  background: var(--olive-bg);
+  display: inline-flex;
+  align-items: center; justify-content: center;
+  margin-bottom: 16px;
+  font-size: 22px;
+  transition: background .2s ease;
+}
+.ai-card h3 { font-size: 1.0625rem; font-weight: 700; margin: 0 0 6px; }
+.ai-desc { font-size: 14px; color: var(--ink-soft); margin: 0; line-height: 1.5; transition: color .2s ease; }
+
+/* ───── Pricing ───── */
+.billing-toggle {
+  background: var(--soft);
+  border-radius: 9999px;
+  padding: 4px;
+  display: inline-flex;
+  margin: 24px auto 0;
+}
+.billing-toggle button {
+  padding: 10px 24px;
+  border-radius: 9999px;
+  background: transparent;
+  border: none;
+  cursor: pointer;
+  font-family: inherit;
+  font-size: 14px;
+  font-weight: 600;
+  color: var(--muted);
+  transition: all .15s ease;
+}
+.billing-toggle button.active {
+  background: var(--ink);
+  color: var(--paper);
+}
+.savings-badge {
+  display: inline-block;
+  margin-left: 6px;
+  font-size: 10px;
+  font-weight: 700;
+  background: var(--volt);
+  color: var(--ink);
+  padding: 2px 8px;
+  border-radius: 9999px;
+}
+
+.price-hero-card {
+  background: var(--paper);
+  border: 1px solid var(--line);
+  border-radius: 32px;
+  padding: 48px;
+  max-width: 640px;
+  margin: 40px auto 0;
+  text-align: left;
+  position: relative;
+  overflow: hidden;
+}
+.price-hero-card .country-tag {
+  display: inline-flex;
+  align-items: center;
+  gap: 8px;
+  background: var(--olive-bg);
+  color: var(--olive-2);
+  font-size: 11px;
+  font-weight: 700;
+  letter-spacing: 0.08em;
+  padding: 6px 12px;
+  border-radius: 9999px;
+  margin-bottom: 24px;
+}
+.price-hero-card h2 {
+  font-size: 1.75rem;
+  font-weight: 700;
+  margin: 0 0 8px;
+  letter-spacing: -0.02em;
+}
+.price-hero-card .blurb {
+  color: var(--ink-soft);
+  font-size: 15px;
+  margin: 0 0 32px;
+  line-height: 1.5;
+}
+.price-amount {
+  display: flex;
+  align-items: baseline;
+  gap: 4px;
+  margin: 0 0 32px;
+}
+.price-amount .cur { font-size: 22px; font-weight: 700; color: var(--ink-soft); }
+.price-amount .num { font-size: 4rem; font-weight: 800; letter-spacing: -0.04em; line-height: 1; color: var(--ink); }
+.price-amount .per { font-size: 16px; color: var(--ink-soft); margin-left: 8px; }
+
+.price-features {
+  list-style: none;
+  padding: 0;
+  margin: 0 0 32px;
+  display: grid;
+  gap: 12px;
+}
+.price-features li {
+  display: flex;
+  align-items: flex-start;
+  gap: 12px;
+  font-size: 14.5px;
+  color: var(--ink);
+}
+.price-features li::before {
+  content: "✓";
+  color: var(--olive);
+  font-weight: 700;
+  font-size: 16px;
+  flex-shrink: 0;
+}
+.price-cta-row {
+  display: flex;
+  gap: 12px;
+}
+.price-bonus {
+  margin-top: 32px;
+  padding: 20px;
+  background: var(--olive-bg);
+  border-radius: 16px;
+  display: flex;
+  align-items: flex-start;
+  gap: 12px;
+}
+.price-bonus .icon {
+  font-size: 20px;
+  flex-shrink: 0;
+}
+.price-bonus p {
+  font-size: 14px;
+  color: var(--ink);
+  margin: 0;
+  line-height: 1.5;
+}
+.price-bonus strong { color: var(--olive-2); }
+
+/* ───── Country switcher (pricing) ───── */
+.country-switcher {
+  display: inline-flex;
+  gap: 8px;
+  background: var(--paper);
+  border: 1px solid var(--line);
+  border-radius: 9999px;
+  padding: 4px;
+  margin-top: 16px;
+}
+.country-switcher a {
+  padding: 8px 18px;
+  border-radius: 9999px;
+  font-size: 14px;
+  font-weight: 600;
+  color: var(--ink);
+  display: inline-flex;
+  align-items: center;
+  gap: 8px;
+  transition: all .15s ease;
+}
+.country-switcher a:hover { background: var(--soft); }
+.country-switcher a.active { background: var(--ink); color: var(--paper); }
+
+/* ───── FAQ ───── */
+.faq-group { margin-bottom: 40px; }
+.faq-group h3 {
+  font-size: 1rem;
+  font-weight: 700;
+  color: var(--olive);
+  letter-spacing: 0.05em;
+  text-transform: uppercase;
+  margin: 0 0 16px;
+}
+.faq-item {
+  background: var(--paper);
+  border: 1px solid var(--line);
+  border-radius: 20px;
+  padding: 22px 28px;
+  margin-bottom: 10px;
+}
+.faq-item summary {
+  font-weight: 600; font-size: 16px;
+  cursor: pointer; list-style: none;
+  display: flex; justify-content: space-between; align-items: center;
+}
+.faq-item summary::-webkit-details-marker { display: none; }
+.faq-item summary::after {
+  content: "+"; font-size: 24px; font-weight: 300; color: var(--muted);
+  transition: transform .2s ease;
+}
+.faq-item[open] summary::after { transform: rotate(45deg); }
+.faq-item p { font-size: 14.5px; color: var(--ink-soft); margin: 14px 0 0; line-height: 1.65; }
+
+/* ───── Country pill (footer) ───── */
+.country-pill {
+  border: 1px solid var(--line);
+  background: var(--paper);
+  border-radius: 9999px;
+  padding: 10px 18px;
+  font-size: 14px;
+  font-weight: 600;
+  display: inline-flex;
+  align-items: center;
+  gap: 10px;
+  text-decoration: none;
+  color: var(--ink);
+  transition: all .15s ease;
+}
+.country-pill:hover { border-color: var(--olive); transform: translateY(-1px); }
+.country-pill.active { background: var(--ink); color: var(--paper); border-color: var(--ink); }
+
+/* ───── Footer ───── */
+footer { padding: 80px 24px 64px; }
+footer .inner { max-width: 1200px; margin: 0 auto; }
+footer .col-title {
+  font-size: 11px; font-weight: 700; letter-spacing: 0.08em;
+  color: var(--muted); margin: 0 0 16px;
+}
+footer ul { list-style: none; padding: 0; margin: 0; }
+footer li { margin-bottom: 10px; font-size: 14px; }
+footer a { color: var(--ink); transition: color .15s ease; }
+footer a:hover { color: var(--olive); }
+footer .divider { border: 0; border-top: 1px solid var(--line); margin: 0 0 40px; }
+
+/* ───── Cookie banner ───── */
 .cookie-banner {
   position: fixed;
   bottom: 24px;
@@ -222,181 +572,35 @@ body {
   z-index: 50;
 }
 .cookie-banner h3 { font-size: 18px; font-weight: 700; margin: 0 0 6px; }
-.cookie-banner p  { font-size: 14px; color: var(--ink-soft); margin: 0; line-height: 1.55; }
+.cookie-banner p { font-size: 14px; color: var(--ink-soft); margin: 0; line-height: 1.55; }
 .cookie-banner .btns { display: flex; gap: 10px; flex-shrink: 0; }
 .cookie-text { flex: 1; }
 
-/* Country pill (footer) */
-.country-pill {
-  border: 1px solid var(--line);
-  background: var(--paper);
-  border-radius: 9999px;
-  padding: 10px 18px;
-  font-size: 14px;
-  font-weight: 600;
-  display: inline-flex;
-  align-items: center;
-  gap: 10px;
-  text-decoration: none;
-  color: var(--ink);
-  transition: all .15s ease;
+/* ───── Form ───── */
+.form-row {
+  display: flex; flex-direction: column; gap: 6px; margin-bottom: 16px;
 }
-.country-pill:hover {
-  border-color: var(--olive);
-  transform: translateY(-1px);
-}
-.country-pill.active {
-  background: var(--ink);
-  color: var(--paper);
-  border-color: var(--ink);
-}
-
-/* Footer */
-footer { padding: 80px 24px 64px; }
-footer .inner { max-width: 1200px; margin: 0 auto; }
-footer .col-title {
-  font-size: 11px;
-  font-weight: 700;
-  letter-spacing: 0.08em;
-  color: var(--muted);
-  margin: 0 0 16px;
-}
-footer ul { list-style: none; padding: 0; margin: 0; }
-footer li { margin-bottom: 10px; font-size: 14px; }
-footer a { color: var(--ink); text-decoration: none; transition: color .15s ease; }
-footer a:hover { color: var(--olive); }
-footer .divider {
-  border: 0;
-  border-top: 1px solid var(--line);
-  margin: 0 0 40px;
-}
-
-/* Pricing cards (for /pricing) */
-.price-grid {
-  display: grid;
-  grid-template-columns: repeat(4, 1fr);
-  gap: 16px;
-  max-width: 1200px;
-  margin: 48px auto 0;
-}
-.price-card {
-  background: var(--paper);
-  border: 1px solid var(--line);
-  border-radius: 28px;
-  padding: 28px;
-  position: relative;
-}
-.price-card.featured {
-  background: var(--ink);
-  color: var(--paper);
-  border-color: var(--ink);
-}
-.price-card .label {
-  font-size: 11px; font-weight: 700; letter-spacing: 0.08em;
-  color: var(--muted); text-transform: uppercase;
-}
-.price-card.featured .label { color: var(--volt); }
-.price-card .amount {
-  font-size: 2.5rem; font-weight: 800; letter-spacing: -0.03em;
-  margin: 12px 0 4px; line-height: 1;
-}
-.price-card .effective {
-  font-size: 13px; color: var(--ink-soft); margin: 8px 0 0;
-}
-.price-card.featured .effective { color: rgba(255,255,255,0.7); }
-.price-card .save {
-  display: inline-block;
-  font-size: 11px;
-  font-weight: 700;
-  color: var(--olive);
-  margin-top: 8px;
-  background: var(--soft);
-  padding: 4px 10px;
-  border-radius: 9999px;
-}
-.price-card.featured .save { color: var(--ink); background: var(--volt); }
-.price-card ul { list-style: none; padding: 0; margin: 24px 0 0; }
-.price-card li { font-size: 14px; padding: 8px 0; border-top: 1px solid var(--line-soft); display: flex; gap: 8px; }
-.price-card.featured li { border-top-color: rgba(255,255,255,0.1); }
-.price-card li::before { content: "✓"; color: var(--olive); font-weight: 700; }
-.price-card.featured li::before { color: var(--volt); }
-.price-card .badge {
-  position: absolute;
-  top: 16px; right: 16px;
-  background: var(--volt);
-  color: var(--ink);
-  font-size: 10px;
-  font-weight: 700;
+.form-row label {
+  font-size: 12px; font-weight: 600; color: var(--ink-soft);
   letter-spacing: 0.05em;
-  padding: 4px 10px;
-  border-radius: 9999px;
 }
-.price-card .cta {
-  display: block;
-  text-align: center;
-  width: 100%;
-  margin-top: 24px;
-  padding: 12px;
-  border-radius: 9999px;
-  background: var(--soft);
-  font-weight: 600;
-  font-size: 14px;
-  color: var(--ink);
-  text-decoration: none;
-  transition: all .15s ease;
-}
-.price-card .cta:hover { background: var(--soft-h); }
-.price-card.featured .cta { background: var(--volt); color: var(--ink); }
-.price-card.featured .cta:hover { background: var(--volt-h); }
-
-/* FAQ */
-.faq-item {
+.form-row input, .form-row select, .form-row textarea {
   background: var(--paper);
   border: 1px solid var(--line);
-  border-radius: 20px;
-  padding: 24px 28px;
-  margin-bottom: 12px;
-}
-.faq-item summary {
-  font-weight: 600;
-  font-size: 16px;
-  cursor: pointer;
-  list-style: none;
-  display: flex;
-  justify-content: space-between;
-  align-items: center;
-}
-.faq-item summary::-webkit-details-marker { display: none; }
-.faq-item summary::after {
-  content: "+";
-  font-size: 24px;
-  font-weight: 300;
-  color: var(--muted);
-  transition: transform .2s ease;
-}
-.faq-item[open] summary::after { transform: rotate(45deg); }
-.faq-item p {
-  font-size: 14.5px;
-  color: var(--ink-soft);
-  margin: 16px 0 0;
-  line-height: 1.65;
-}
-
-/* Generic content */
-.section-eyebrow {
-  font-size: 11px; font-weight: 700; letter-spacing: 0.08em;
-  color: var(--olive); margin-bottom: 12px;
-}
-.section-h2 {
-  font-size: clamp(2rem, 4vw, 3rem);
-  font-weight: 800;
-  letter-spacing: -0.03em;
-  line-height: 1.1;
+  border-radius: 12px;
+  padding: 12px 16px;
+  font-size: 15px;
+  font-family: inherit;
   color: var(--ink);
-  margin: 0 0 16px;
+  outline: none;
+  transition: border-color .15s ease;
 }
+.form-row input:focus, .form-row select:focus, .form-row textarea:focus {
+  border-color: var(--olive);
+}
+.form-row textarea { resize: vertical; min-height: 120px; }
 
-/* Mobile */
+/* ───── Mobile ───── */
 @media (max-width: 768px) {
   .pill-nav { padding: 6px 8px 6px 12px !important; gap: 6px !important; }
   .pill-nav .nav-links { display: none; }
@@ -405,20 +609,23 @@ footer .divider {
   .pill-nav .logo-text { font-size: 1.1rem; }
   .pill-nav .logo-mark { width: 36px; height: 36px; border-radius: 10px; }
   .pill-nav .logo-mark img { width: 24px; height: 24px; }
-  .pill-nav a[href="#start"] { padding: 7px 12px !important; font-size: 12px !important; }
+  .pill-nav a[href="#start"], .pill-nav a.btn-volt { padding: 7px 12px !important; font-size: 12px !important; }
   .pill-nav .lang-toggle { font-size: 11px; }
-  .pill-nav .lang-toggle a, .pill-nav .lang-toggle span { padding: 4px 7px; min-width: 22px; }
+  .pill-nav .lang-toggle button { padding: 4px 7px; min-width: 22px; }
   main { padding: 48px 20px 80px !important; }
   .hero-input { padding: 6px 6px 6px 12px; gap: 8px; }
   .hero-input input { font-size: 15px; min-width: 0; }
   .hero-input .cam { width: 32px; height: 32px; }
   .hero-input .btn-volt { padding: 9px 14px !important; font-size: 13px !important; }
   .hero-input .btn-volt svg { display: none; }
-  .price-grid { grid-template-columns: 1fr; }
+  .price-hero-card { padding: 28px 24px; }
+  .price-amount .num { font-size: 3rem; }
   .cookie-banner { flex-direction: column; align-items: stretch; bottom: 16px; padding: 16px 18px; }
   .cookie-banner .btns { justify-content: stretch; }
   .cookie-banner .btns button { flex: 1; }
   footer .grid-4 { grid-template-columns: 1fr !important; gap: 32px !important; }
+  .grid-3-mobile { grid-template-columns: 1fr !important; }
+  .grid-4-mobile { grid-template-columns: repeat(2, 1fr) !important; }
 }
 </style>
 </head>
@@ -432,98 +639,163 @@ footer .divider {
     <span style="display:flex; align-items:baseline;">
       <span class="logo-text">packman</span><span class="logo-reg">®</span>
     </span>
-    <span class="logo-tag">e-commerce for entrepreneurs</span>
+    <span class="logo-tag" data-en="e-commerce for entrepreneurs" data-ar="التجارة الإلكترونية لرواد الأعمال">e-commerce for entrepreneurs</span>
   </span>
 </a>
     <div class="nav-links">
-      <a href="/pricing" class="nav-link">Pricing</a>
-      <a href="/partners" class="nav-link">Partners</a>
-      <a href="/faqs" class="nav-link">FAQs</a>
-      <a href="/contact" class="nav-link">Contact Us</a>
+      <a href="/pricing" class="nav-link" data-en="Pricing" data-ar="الأسعار">Pricing</a>
+      <a href="/partners" class="nav-link" data-en="Partners" data-ar="شركاؤنا">Partners</a>
+      <a href="/faqs" class="nav-link" data-en="FAQs" data-ar="الأسئلة الشائعة">FAQs</a>
+      <a href="/contact" class="nav-link" data-en="Contact Us" data-ar="تواصل معنا">Contact Us</a>
     </div>
     <div style="display:flex; align-items:center; gap:8px;">
-      <button class="btn-pill btn-soft login-btn" style="padding: 9px 16px; font-size: 14px;">
-        Login
+      <button class="btn-pill btn-soft login-btn" style="padding: 9px 16px; font-size: 14px;" data-en-text="Login" data-ar-text="دخول">
+        <span data-en="Login" data-ar="دخول">Login</span>
         <svg width="11" height="11" viewBox="0 0 12 12" fill="none" style="margin-left:2px;"><path d="M3 4.5L6 7.5L9 4.5" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/></svg>
       </button>
-      <a href="#start" class="btn-pill btn-volt" style="padding: 10px 18px; font-size: 14px; text-decoration: none;">Launch your store</a>
+      <a href="#start" class="btn-pill btn-volt" style="padding: 10px 18px; font-size: 14px;" data-en="Launch your store" data-ar="أطلق متجرك">Launch your store</a>
       <span class="lang-toggle" style="margin-left: 4px;">
-        <a href="/uae" class="lang-on">EN</a>
-        <a href="/ar">AR</a>
+        <button type="button" data-lang="en" class="lang-on">EN</button>
+        <button type="button" data-lang="ar">AR</button>
       </span>
     </div>
   </nav>
 </div>
 
-<main style="max-width: 1200px; margin: 0 auto; padding: 64px 24px 80px; text-align: center;">
-  <div class="section-eyebrow mono">PRICING</div>
-  <h1 class="section-h2">Simple pricing.<br/>Four ways to pay.</h1>
-  <p class="hero-sub" style="margin-top: 16px;">
-    One plan. AED 400 a month. Commit longer, pay less. Or start completely free — no credit card, no trade licence to sign up.
+<main>
+
+<section style="max-width: 1100px; margin: 0 auto; padding: 64px 24px 80px; text-align: center;">
+  <div class="section-eyebrow mono" data-en="PRICING" data-ar="الأسعار">PRICING</div>
+  <h1 class="section-h2" data-en="One plan. Three countries." data-ar="خطة وحدة. ثلاث دول.">One plan. Three countries.</h1>
+  <p class="section-sub" style="margin: 16px auto 0;" data-en="Pay monthly or yearly — whichever fits your business. Switch anytime. No hidden fees, zero commission on sales." data-ar="ادفع شهرياً أو سنوياً — اللي يناسب شغلك. غيّر في أي وقت. بدون رسوم خفية، صفر عمولة على المبيعات.">
+    Pay monthly or yearly — whichever fits your business. Switch anytime. No hidden fees, zero commission on sales.
   </p>
-  <div style="margin-top: 20px; font-size: 13px; color: var(--muted);">
-    Country: <strong style="color:var(--ink);">🇦🇪 UAE</strong> · <a href="/pricing-ksa" style="color:var(--olive); text-decoration:underline;">🇸🇦 KSA</a> · <a href="/pricing-oman" style="color:var(--olive); text-decoration:underline;">🇴🇲 Oman</a>
-  </div>
-  
-<div class="price-grid">
-  <div class="price-card">
-    <div class="label">Monthly</div>
-    <div class="amount">AED 400</div>
-    <div class="effective">per month · cancel anytime</div>
-    <ul>
-      <li>Unlimited orders</li>
-      <li>Buraq + Aramex shipping</li>
-      <li>UAE · KSA · Oman markets</li>
-      <li>100 AI credits/month</li>
-      <li>Bilingual storefront</li>
-    </ul>
-    <a href="#" class="cta">Start free</a>
+
+  <div class="country-switcher"><a href="/pricing-uae" class="active"><span style="font-size:16px;">🇦🇪</span><span data-en="UAE" data-ar="الإمارات">UAE</span></a><a href="/pricing-ksa" class=""><span style="font-size:16px;">🇸🇦</span><span data-en="KSA" data-ar="السعودية">KSA</span></a><a href="/pricing-oman" class=""><span style="font-size:16px;">🇴🇲</span><span data-en="Oman" data-ar="عُمان">Oman</span></a></div>
+
+  <div class="billing-toggle">
+    <button type="button" data-billing="monthly" class="active" data-en="Monthly" data-ar="شهري">Monthly</button>
+    <button type="button" data-billing="yearly">
+      <span data-en="Yearly" data-ar="سنوي">Yearly</span>
+      <span class="savings-badge" data-en="Save 25%" data-ar="وفّر ٢٥٪">Save 25%</span>
+    </button>
   </div>
 
-  <div class="price-card">
-    <div class="label">3-Month</div>
-    <div class="amount">AED 1,100</div>
-    <div class="effective">AED 370/mo effective</div>
-    <span class="save">Save 8%</span>
-    <ul>
-      <li>Everything in Monthly</li>
-      <li>300 AI credits</li>
-      <li>Priority onboarding</li>
-      <li>Quarterly growth review</li>
+  <div class="price-hero-card">
+    <div class="country-tag">
+      <span style="font-size:14px;">🇦🇪</span>
+      <span data-en="UAE · Subscription" data-ar="الإمارات · اشتراك">UAE · Subscription</span>
+    </div>
+    <h2 data-en="Packman Subscription" data-ar="اشتراك باكمان">Packman Subscription</h2>
+    <p class="blurb" data-en="Everything you need to build, sell, and ship — in one plan." data-ar="كل ما تحتاجه لتبني وتبيع وتشحن — في خطة وحدة.">
+      Everything you need to build, sell, and ship — in one plan.
+    </p>
+
+    <div class="price-amount">
+      <span class="cur">AED</span>
+      <span class="num" id="price-num" data-monthly="400" data-yearly="3,600">400</span>
+      <span class="per" id="price-per" data-en="/ month" data-ar="/ شهر">/ month</span>
+    </div>
+
+    <ul class="price-features">
+      <li data-en="E-store solutions — branded mobile-first storefront in minutes" data-ar="حلول المتجر — واجهة بالموبايل أولاً بالهوية في دقائق">E-store solutions — branded mobile-first storefront in minutes</li>
+      <li data-en="Payment gateway integration (Tabby, Tamara, Apple Pay, cards, COD)" data-ar="تكامل بوابات الدفع (تابي، تمارا، آبل باي، البطاقات، الدفع عند الاستلام)">Payment gateway integration (Tabby, Tamara, Apple Pay, cards, COD)</li>
+      <li data-en="Local & international delivery — UAE, KSA, Oman + 160+ countries" data-ar="توصيل محلي ودولي — الإمارات، السعودية، عُمان + ١٦٠ دولة">Local &amp; international delivery — UAE, KSA, Oman + 160+ countries</li>
+      <li data-en="Performance insights — real-time sales, traffic, fulfillment metrics" data-ar="تحليلات الأداء — مبيعات وزوار وعمليات بالوقت الحقيقي">Performance insights — real-time sales, traffic, fulfillment metrics</li>
+      <li data-en="Technical support — real humans, not bots" data-ar="دعم تقني — أشخاص حقيقيين، مو روبوتات">Technical support — real humans, not bots</li>
+      <li data-en="Easy dashboard — track orders, sales, and numbers in one screen" data-ar="لوحة تحكم سهلة — تابع الطلبات والمبيعات والأرقام في شاشة وحدة">Easy dashboard — track orders, sales, and numbers in one screen</li>
+      <li data-en="Dedicated account manager — from order to delivery" data-ar="مدير حساب مخصص — من الطلب للتوصيل">Dedicated account manager — from order to delivery</li>
     </ul>
-    <a href="#" class="cta">Choose plan</a>
+
+    <div class="price-cta-row">
+      <a href="https://api.leadconnectorhq.com/widget/booking/rGFxfeyGpekgxR06ZEzT/" class="btn-pill btn-outline" style="padding: 14px 24px; font-size: 15px; flex: 1; justify-content: center;" data-en="Schedule a demo" data-ar="احجز عرضاً">Schedule a demo</a>
+      <a href="#start" class="btn-pill btn-volt" style="padding: 14px 24px; font-size: 15px; flex: 1; justify-content: center;" data-en="Launch your store" data-ar="أطلق متجرك">Launch your store</a>
+    </div>
+
+    <div class="price-bonus">
+      <span class="icon">✨</span>
+      <p>
+        <strong data-en="365-order bonus." data-ar="مكافأة ٣٦٥ طلب.">365-order bonus.</strong>
+        <span data-en=" Complete 365 orders during your first year and get a full year of subscription free. (Yearly plan only.)" data-ar=" أكمل ٣٦٥ طلب في سنتك الأولى واحصل على سنة اشتراك كاملة مجاناً. (الخطة السنوية فقط.)"> Complete 365 orders during your first year and get a full year of subscription free. (Yearly plan only.)</span>
+      </p>
+    </div>
+  </div>
+</section>
+
+<!-- WHAT'S INCLUDED -->
+<section style="max-width: 1100px; margin: 0 auto; padding: 40px 24px 120px;">
+  <div style="text-align: center; margin-bottom: 56px;">
+    <div class="section-eyebrow mono" data-en="WHAT'S INCLUDED" data-ar="المتضمَّن">WHAT'S INCLUDED</div>
+    <h2 class="section-h2" data-en="One subscription. The full Packman stack." data-ar="اشتراك واحد. منصة باكمان كاملة.">One subscription. The full Packman stack.</h2>
+    <p class="section-sub" style="margin: 16px auto 0;" data-en="No upsells, no tiers, no surprise add-ons." data-ar="بدون باقات، بدون أسعار خفية، بدون إضافات مفاجئة.">No upsells, no tiers, no surprise add-ons.</p>
   </div>
 
-  <div class="price-card featured">
-    <span class="badge">MOST POPULAR</span>
-    <div class="label">6-Month</div>
-    <div class="amount">AED 2,100</div>
-    <div class="effective">AED 350/mo effective</div>
-    <span class="save">Save 12%</span>
-    <ul>
-      <li>Everything in 3-Month</li>
-      <li>600 AI credits</li>
-      <li>Dedicated Slack channel</li>
-      <li>Free theme customisation</li>
-    </ul>
-    <a href="#" class="cta">Choose plan</a>
+  <div style="display: grid; grid-template-columns: repeat(3, 1fr); gap: 16px;" class="grid-3-mobile">
+<div class="tile">
+      <div class="ai-icon" style="background: var(--olive-bg); width: 40px; height: 40px; font-size: 18px;">🛍</div>
+      <h3 style="font-size: 1.0625rem; font-weight: 700; margin: 12px 0 6px;" data-en="E-store solutions" data-ar="حلول المتجر">E-store solutions</h3>
+      <p style="font-size: 14.5px; color: var(--ink-soft); margin: 0; line-height: 1.6;" data-en="A branded, mobile-first storefront — bilingual in Arabic and English from day one." data-ar="واجهة بالموبايل أولاً بالهوية — ثنائية اللغة من اليوم الأول.">A branded, mobile-first storefront — bilingual in Arabic and English from day one.</p>
+    </div><div class="tile">
+      <div class="ai-icon" style="background: var(--olive-bg); width: 40px; height: 40px; font-size: 18px;">💳</div>
+      <h3 style="font-size: 1.0625rem; font-weight: 700; margin: 12px 0 6px;" data-en="Payment gateway" data-ar="بوابة الدفع">Payment gateway</h3>
+      <p style="font-size: 14.5px; color: var(--ink-soft); margin: 0; line-height: 1.6;" data-en="Trusted, secure checkout that keeps customers paying and conversions high." data-ar="دفع آمن وموثوق يحافظ على معدلات تحويل عالية.">Trusted, secure checkout that keeps customers paying and conversions high.</p>
+    </div><div class="tile">
+      <div class="ai-icon" style="background: var(--olive-bg); width: 40px; height: 40px; font-size: 18px;">🚚</div>
+      <h3 style="font-size: 1.0625rem; font-weight: 700; margin: 12px 0 6px;" data-en="Local & international delivery" data-ar="توصيل محلي ودولي">Local & international delivery</h3>
+      <p style="font-size: 14.5px; color: var(--ink-soft); margin: 0; line-height: 1.6;" data-en="Fulfillment centers in UAE, KSA, Oman — shipping to 160+ countries worldwide." data-ar="مراكز توصيل في الإمارات والسعودية وعُمان — شحن إلى ١٦٠ دولة.">Fulfillment centers in UAE, KSA, Oman — shipping to 160+ countries worldwide.</p>
+    </div><div class="tile">
+      <div class="ai-icon" style="background: var(--olive-bg); width: 40px; height: 40px; font-size: 18px;">📊</div>
+      <h3 style="font-size: 1.0625rem; font-weight: 700; margin: 12px 0 6px;" data-en="Performance insights" data-ar="تحليلات الأداء">Performance insights</h3>
+      <p style="font-size: 14.5px; color: var(--ink-soft); margin: 0; line-height: 1.6;" data-en="Real-time sales, traffic, and fulfillment metrics so you always know what's working." data-ar="مبيعات وزوار وعمليات بالوقت الحقيقي — تعرف دائماً وش يشتغل.">Real-time sales, traffic, and fulfillment metrics so you always know what's working.</p>
+    </div><div class="tile">
+      <div class="ai-icon" style="background: var(--olive-bg); width: 40px; height: 40px; font-size: 18px;">🛠</div>
+      <h3 style="font-size: 1.0625rem; font-weight: 700; margin: 12px 0 6px;" data-en="Technical support" data-ar="دعم تقني">Technical support</h3>
+      <p style="font-size: 14.5px; color: var(--ink-soft); margin: 0; line-height: 1.6;" data-en="Real humans, not bots — helping you launch, troubleshoot, and scale." data-ar="أشخاص حقيقيين، مو روبوتات — يساعدونك تطلق وتحل المشاكل وتكبر.">Real humans, not bots — helping you launch, troubleshoot, and scale.</p>
+    </div><div class="tile">
+      <div class="ai-icon" style="background: var(--olive-bg); width: 40px; height: 40px; font-size: 18px;">👤</div>
+      <h3 style="font-size: 1.0625rem; font-weight: 700; margin: 12px 0 6px;" data-en="Account manager" data-ar="مدير حساب">Account manager</h3>
+      <p style="font-size: 14.5px; color: var(--ink-soft); margin: 0; line-height: 1.6;" data-en="A dedicated manager who supports you from order placement to customer delivery." data-ar="مدير مخصص يدعمك من الطلب لتوصيل العميل.">A dedicated manager who supports you from order placement to customer delivery.</p>
+    </div>
   </div>
 
-  <div class="price-card">
-    <div class="label">12-Month · Best value</div>
-    <div class="amount">AED 3,900</div>
-    <div class="effective">AED 325/mo effective</div>
-    <span class="save">Save 19%</span>
-    <ul>
-      <li>Everything in 6-Month</li>
-      <li>1,500 AI credits</li>
-      <li>Quarterly business review</li>
-      <li>API access unlocked</li>
-    </ul>
-    <a href="#" class="cta">Choose plan</a>
+  <div style="text-align: center; margin-top: 64px; padding: 48px; background: var(--paper); border: 1px solid var(--line); border-radius: 28px;">
+    <h3 style="font-size: 1.75rem; font-weight: 800; letter-spacing: -0.02em; margin: 0 0 12px;" data-en="Get started today." data-ar="ابدأ اليوم.">Get started today.</h3>
+    <p style="font-size: 16px; color: var(--ink-soft); max-width: 480px; margin: 0 auto 24px;" data-en="Schedule a call and let's get started on your journey together." data-ar="احجز مكالمة ونبدأ رحلتك معنا.">Schedule a call and let's get started on your journey together.</p>
+    <a href="https://api.leadconnectorhq.com/widget/booking/rGFxfeyGpekgxR06ZEzT/" class="btn-pill btn-ink" style="padding: 14px 28px; font-size: 15px;">
+      <span data-en="Book a call" data-ar="احجز مكالمة">Book a call</span>
+      <svg width="14" height="14" viewBox="0 0 16 16" fill="none" style="margin-left:4px;"><path d="M3 8h10m0 0L9 4m4 4l-4 4" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"/></svg>
+    </a>
   </div>
-</div>
+</section>
+
 </main>
+
+<!-- billing toggle script -->
+<script>
+(function(){
+  var btns = document.querySelectorAll('.billing-toggle button');
+  var num  = document.getElementById('price-num');
+  var per  = document.getElementById('price-per');
+  if (!num || !per) return;
+  btns.forEach(function(b){
+    b.addEventListener('click', function(){
+      var bill = b.dataset.billing;
+      btns.forEach(function(x){ x.classList.toggle('active', x === b); });
+      num.textContent = bill === 'yearly' ? num.dataset.yearly : num.dataset.monthly;
+      var lang = document.documentElement.getAttribute('lang') === 'ar' ? 'ar' : 'en';
+      if (bill === 'yearly') {
+        per.dataset.en = '/ year';
+        per.dataset.ar = '/ سنة';
+      } else {
+        per.dataset.en = '/ month';
+        per.dataset.ar = '/ شهر';
+      }
+      per.textContent = lang === 'ar' ? per.dataset.ar : per.dataset.en;
+    });
+  });
+})();
+</script>
+
 
 <footer>
   <div class="inner">
@@ -536,44 +808,42 @@ footer .divider {
     <span style="display:flex; align-items:baseline;">
       <span class="logo-text">packman</span><span class="logo-reg">®</span>
     </span>
-    <span class="logo-tag">e-commerce for entrepreneurs</span>
+    <span class="logo-tag" data-en="e-commerce for entrepreneurs" data-ar="التجارة الإلكترونية لرواد الأعمال">e-commerce for entrepreneurs</span>
   </span>
 </a></div>
-        <p style="font-size:14px; color:var(--ink-soft); margin:0; max-width: 320px; line-height: 1.6;">
-          Sell across the Gulf with one dashboard. Products, branding, store, and shipping handled in 48 hours.
-        </p>
+        <p style="font-size:14px; color:var(--ink-soft); margin:0; max-width: 320px; line-height: 1.6;" data-en="Sell anywhere with one platform. Products, branding, payments, and shipping handled in minutes — not months." data-ar="بيع في كل مكان بمنصة واحدة. المنتجات، الهوية، المدفوعات، والشحن — في دقائق، لا أشهر.">Sell anywhere with one platform. Products, branding, payments, and shipping handled in minutes — not months.</p>
       </div>
       <div>
-        <h3 class="col-title">PRODUCT</h3>
+        <h3 class="col-title" data-en="PRODUCT" data-ar="المنتج">PRODUCT</h3>
         <ul>
-          <li><a href="/pricing">Pricing</a></li>
-          <li><a href="/partners">Partners</a></li>
-          <li><a href="/faqs">FAQs</a></li>
-          <li><a href="/contact">Contact Us</a></li>
+          <li><a href="/pricing" data-en="Pricing" data-ar="الأسعار">Pricing</a></li>
+          <li><a href="/partners" data-en="Partners" data-ar="شركاؤنا">Partners</a></li>
+          <li><a href="/faqs" data-en="FAQs" data-ar="الأسئلة الشائعة">FAQs</a></li>
+          <li><a href="/contact" data-en="Contact Us" data-ar="تواصل معنا">Contact Us</a></li>
         </ul>
       </div>
       <div>
-        <h3 class="col-title">COMPANY</h3>
+        <h3 class="col-title" data-en="COMPANY" data-ar="الشركة">COMPANY</h3>
         <ul>
-          <li><a href="#">About</a></li>
-          <li><a href="#">Careers</a></li>
-          <li><a href="#">Blog</a></li>
-          <li><a href="#">Press</a></li>
+          <li><a href="/contact" data-en="Sales" data-ar="المبيعات">Sales</a></li>
+          <li><a href="/contact" data-en="Support" data-ar="الدعم">Support</a></li>
+          <li><a href="/contact" data-en="Press" data-ar="الإعلام">Press</a></li>
+          <li><a href="/contact" data-en="Careers" data-ar="الوظائف">Careers</a></li>
         </ul>
       </div>
       <div>
-        <h3 class="col-title">COUNTRIES</h3>
+        <h3 class="col-title" data-en="COUNTRIES" data-ar="الدول">COUNTRIES</h3>
         <div style="display:flex; flex-direction:column; align-items:flex-start; gap:10px;">
-          <a href="/uae" class="country-pill active"><span style="font-size:18px;">🇦🇪</span>UAE</a><a href="/ksa" class="country-pill"><span style="font-size:18px;">🇸🇦</span>KSA</a><a href="/oman" class="country-pill"><span style="font-size:18px;">🇴🇲</span>Oman</a>
+          <a href="/uae" class="country-pill active"><span style="font-size:18px;">🇦🇪</span><span data-en="UAE" data-ar="الإمارات">UAE</span></a><a href="/ksa" class="country-pill"><span style="font-size:18px;">🇸🇦</span><span data-en="KSA" data-ar="السعودية">KSA</span></a><a href="/oman" class="country-pill"><span style="font-size:18px;">🇴🇲</span><span data-en="Oman" data-ar="عُمان">Oman</span></a>
         </div>
       </div>
     </div>
     <div style="display:flex; justify-content:space-between; align-items:center; padding-top: 24px; border-top: 1px solid var(--line); font-size: 13px; color: var(--muted);">
-      <span>© 2026 Packman · All rights reserved</span>
+      <span data-en="© 2026 Packman · All rights reserved" data-ar="© 2026 باكمان · جميع الحقوق محفوظة">© 2026 Packman · All rights reserved</span>
       <div style="display:flex; gap: 24px;">
-        <a href="#" style="color:inherit;">Privacy</a>
-        <a href="#" style="color:inherit;">Terms</a>
-        <a href="#" style="color:inherit;">Cookies</a>
+        <a href="#" style="color:inherit;" data-en="Privacy" data-ar="الخصوصية">Privacy</a>
+        <a href="#" style="color:inherit;" data-en="Terms" data-ar="الشروط">Terms</a>
+        <a href="#" style="color:inherit;" data-en="Cookies" data-ar="ملفات الكوكيز">Cookies</a>
       </div>
     </div>
   </div>
@@ -581,13 +851,57 @@ footer .divider {
 
 <div class="cookie-banner" id="cookie-banner">
   <div class="cookie-text">
-    <h3>We use cookies</h3>
-    <p>We use analytics cookies to understand how people use Packman so we can make it better. You can change your preferences anytime.</p>
+    <h3 data-en="We use cookies" data-ar="نستخدم ملفات الكوكيز">We use cookies</h3>
+    <p data-en="We use analytics cookies to understand how people use Packman so we can make it better. You can change your preferences anytime." data-ar="نستخدم ملفات الكوكيز التحليلية لفهم كيفية استخدام باكمان وتحسينه. يمكنك تغيير تفضيلاتك في أي وقت.">We use analytics cookies to understand how people use Packman so we can make it better. You can change your preferences anytime.</p>
   </div>
   <div class="btns">
-    <button class="btn-pill btn-soft" style="padding: 11px 20px; font-size: 14px;" onclick="document.getElementById('cookie-banner').style.display='none'">Reject</button>
-    <button class="btn-pill btn-volt" style="padding: 11px 20px; font-size: 14px;" onclick="document.getElementById('cookie-banner').style.display='none'">Accept</button>
+    <button class="btn-pill btn-soft" style="padding: 11px 20px; font-size: 14px;" onclick="document.getElementById('cookie-banner').style.display='none'" data-en="Reject" data-ar="رفض">Reject</button>
+    <button class="btn-pill btn-volt" style="padding: 11px 20px; font-size: 14px;" onclick="document.getElementById('cookie-banner').style.display='none'" data-en="Accept" data-ar="قبول">Accept</button>
   </div>
 </div>
+
+<script>
+(function(){
+  function setLang(lang) {
+    var html = document.documentElement;
+    html.setAttribute('lang', lang);
+    html.setAttribute('dir', lang === 'ar' ? 'rtl' : 'ltr');
+    document.querySelectorAll('[data-en][data-ar]').forEach(function(el){
+      el.textContent = lang === 'ar' ? el.dataset.ar : el.dataset.en;
+    });
+    document.querySelectorAll('.lang-toggle button').forEach(function(b){
+      b.classList.toggle('lang-on', b.dataset.lang === lang);
+    });
+    try { localStorage.setItem('packman.lang', lang); } catch(e) {}
+  }
+
+  document.addEventListener('click', function(e){
+    var btn = e.target.closest('.lang-toggle button');
+    if (btn) { e.preventDefault(); setLang(btn.dataset.lang); }
+  });
+
+  var saved = 'en';
+  try { saved = localStorage.getItem('packman.lang') || 'en'; } catch(e) {}
+  if (saved === 'ar') setLang('ar');
+})();
+</script>
+
+<!-- Update placeholder text on lang change -->
+<script>
+(function(){
+  function syncPlaceholders() {
+    var lang = document.documentElement.getAttribute('lang') === 'ar' ? 'ar' : 'en';
+    document.querySelectorAll('[data-en-ph][data-ar-ph]').forEach(function(el){
+      el.placeholder = lang === 'ar' ? el.dataset.arPh : el.dataset.enPh;
+    });
+  }
+  document.addEventListener('click', function(e){
+    if (e.target.closest('.lang-toggle button')) {
+      setTimeout(syncPlaceholders, 0);
+    }
+  });
+  syncPlaceholders();
+})();
+</script>
 </body>
 </html>
