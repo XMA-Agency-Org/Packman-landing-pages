@@ -3,8 +3,8 @@
 <head>
 <meta charset="UTF-8" />
 <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-<meta name="description" content="Sales, support, partnerships. Offices in Dubai, Riyadh, Muscat." />
-<title>Packman · Contact</title>
+<meta name="description" content="Packman pricing in SAR for sellers in KSA." />
+<title>Packman · Pricing · KSA</title>
 <link rel="icon" href="/assets/logo-mark-navy.png" type="image/png" />
 <link rel="preconnect" href="https://fonts.googleapis.com" />
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
@@ -173,6 +173,20 @@ body {
   margin: 32px 0 0;
 }
 .hero-h1 .olive { color: var(--olive); }
+
+/* Arabic needs more vertical breathing room — diacritics/letterforms collide at line-height 1.05 */
+[dir="rtl"] .hero-h1 {
+  line-height: 1.4;
+  letter-spacing: 0;
+}
+[dir="rtl"] .section-h2 {
+  line-height: 1.35;
+  letter-spacing: 0;
+}
+[dir="rtl"] .final-cta h2 {
+  line-height: 1.3;
+  letter-spacing: 0;
+}
 .hero-sub {
   font-size: clamp(1rem, 1.5vw, 1.125rem);
   color: var(--ink-soft);
@@ -909,12 +923,17 @@ footer .divider { border: 0; border-top: 1px solid var(--line); margin: 0 0 40px
   .pill-nav .lang-toggle {
     font-size: 10px;
     padding: 2px;
+    margin-left: 6px;
   }
   .pill-nav .lang-toggle button {
     padding: 4px 6px;
     min-width: 20px;
   }
-  .pill-nav > div:last-child { gap: 4px !important; }
+  [dir="rtl"] .pill-nav .lang-toggle {
+    margin-left: 0;
+    margin-right: 6px;
+  }
+  .pill-nav > div:last-child { gap: 6px !important; }
 
   main { padding: 48px 20px 80px !important; }
   .hero-input { padding: 6px 6px 6px 12px; gap: 8px; }
@@ -949,7 +968,7 @@ footer .divider { border: 0; border-top: 1px solid var(--line); margin: 0 0 40px
 
 <div style="padding: 24px 24px 0;">
   <nav class="pill-nav" style="max-width: 1140px; margin: 0 auto; display: flex; align-items: center; gap: 16px; padding: 8px 8px 8px 16px;">
-    <a href="/" style="display:flex; align-items:center; gap:12px; text-decoration:none;">
+    <a href="/ksa" style="display:flex; align-items:center; gap:12px; text-decoration:none;">
   <span class="logo-mark"><img src="/assets/logo-mark-volt.png" alt="" /></span>
   <span style="display:flex; flex-direction:column; line-height:1;">
     <span style="display:flex; align-items:baseline;">
@@ -976,99 +995,117 @@ footer .divider { border: 0; border-top: 1px solid var(--line); margin: 0 0 40px
 </div>
 
 <main>
-<section style="max-width: 1100px; margin: 0 auto; padding: 64px 24px 80px;">
+<section style="max-width: 1100px; margin: 0 auto; padding: 64px 24px 80px; text-align: center;">
+  <div class="section-eyebrow mono" data-en="PRICING" data-ar="الأسعار">PRICING</div>
+  <h1 class="section-h2" data-en="One plan. Three countries." data-ar="خطة وحدة. ثلاث دول.">One plan. Three countries.</h1>
+  <p class="section-sub" style="margin: 16px auto 0;" data-en="Pay monthly or yearly — whichever fits your business. Switch anytime. No hidden fees, zero commission on sales." data-ar="ادفع شهرياً أو سنوياً — اللي يناسب شغلك. غيّر في أي وقت. بدون رسوم خفية، صفر عمولة على المبيعات.">
+    Pay monthly or yearly — whichever fits your business. Switch anytime. No hidden fees, zero commission on sales.
+  </p>
+  <div class="country-switcher"><a href="/pricing-uae" class=""><span style="font-size:16px;">🇦🇪</span><span data-en="UAE" data-ar="الإمارات">UAE</span></a><a href="/pricing-ksa" class="active"><span style="font-size:16px;">🇸🇦</span><span data-en="KSA" data-ar="السعودية">KSA</span></a><a href="/pricing-oman" class=""><span style="font-size:16px;">🇴🇲</span><span data-en="Oman" data-ar="عُمان">Oman</span></a></div>
+  <div class="billing-toggle">
+    <button type="button" data-billing="monthly" class="active" data-en="Monthly" data-ar="شهري">Monthly</button>
+    <button type="button" data-billing="yearly">
+      <span data-en="Yearly" data-ar="سنوي">Yearly</span>
+      <span class="savings-badge" data-en="Save 25%" data-ar="وفّر ٢٥٪">Save 25%</span>
+    </button>
+  </div>
+  <div class="price-hero-card">
+    <div class="country-tag">
+      <span style="font-size:14px;">🇸🇦</span>
+      <span data-en="KSA · Subscription" data-ar="السعودية · اشتراك">KSA · Subscription</span>
+    </div>
+    <h2 data-en="Packman Subscription" data-ar="اشتراك باكمان">Packman Subscription</h2>
+    <p class="blurb" data-en="Everything you need to build, sell, and ship — in one plan." data-ar="كل ما تحتاجه لتبني وتبيع وتشحن — في خطة وحدة.">Everything you need to build, sell, and ship — in one plan.</p>
+    <div class="price-amount">
+      <span class="cur">SAR</span>
+      <span class="num" id="price-num" data-monthly="400" data-yearly="3,600">400</span>
+      <span class="per" id="price-per" data-en="/ month" data-ar="/ شهر">/ month</span>
+    </div>
+    <ul class="price-features">
+      <li data-en="E-store solutions — branded mobile-first storefront in minutes" data-ar="حلول المتجر — واجهة بالموبايل أولاً بالهوية في دقائق">E-store solutions — branded mobile-first storefront in minutes</li>
+      <li data-en="Payment gateway integration (Tabby, Tamara, Apple Pay, cards, COD)" data-ar="تكامل بوابات الدفع (تابي، تمارا، آبل باي، البطاقات، الدفع عند الاستلام)">Payment gateway integration (Tabby, Tamara, Apple Pay, cards, COD)</li>
+      <li data-en="Local & international delivery — UAE, KSA, Oman + 160+ countries" data-ar="توصيل محلي ودولي — الإمارات، السعودية، عُمان + ١٦٠ دولة">Local &amp; international delivery — UAE, KSA, Oman + 160+ countries</li>
+      <li data-en="Performance insights — real-time sales, traffic, fulfillment metrics" data-ar="تحليلات الأداء — مبيعات وزوار وعمليات بالوقت الحقيقي">Performance insights — real-time sales, traffic, fulfillment metrics</li>
+      <li data-en="Technical support — real humans, not bots" data-ar="دعم تقني — أشخاص حقيقيين، مو روبوتات">Technical support — real humans, not bots</li>
+      <li data-en="Easy dashboard — track orders, sales, and numbers in one screen" data-ar="لوحة تحكم سهلة — تابع الطلبات والمبيعات والأرقام في شاشة وحدة">Easy dashboard — track orders, sales, and numbers in one screen</li>
+      <li data-en="Dedicated account manager — from order to delivery" data-ar="مدير حساب مخصص — من الطلب للتوصيل">Dedicated account manager — from order to delivery</li>
+    </ul>
+    <div class="price-cta-row">
+      <a href="https://api.leadconnectorhq.com/widget/booking/rGFxfeyGpekgxR06ZEzT/" class="btn-pill btn-outline" style="padding: 14px 24px; font-size: 15px; flex: 1; justify-content: center;" data-en="Schedule a demo" data-ar="احجز عرضاً">Schedule a demo</a>
+      <a href="/" class="btn-pill btn-volt" style="padding: 14px 24px; font-size: 15px; flex: 1; justify-content: center;" data-en="Launch your store" data-ar="أطلق متجرك">Launch your store</a>
+    </div>
+    <div class="price-bonus">
+      <span class="icon">✨</span>
+      <p>
+        <strong data-en="365-order bonus." data-ar="مكافأة ٣٦٥ طلب.">365-order bonus.</strong>
+        <span data-en=" Complete 365 orders during your first year and get a full year of subscription free. (Yearly plan only.)" data-ar=" أكمل ٣٦٥ طلب في سنتك الأولى واحصل على سنة اشتراك كاملة مجاناً. (الخطة السنوية فقط.)"> Complete 365 orders during your first year and get a full year of subscription free. (Yearly plan only.)</span>
+      </p>
+    </div>
+  </div>
+</section>
+
+<section style="max-width: 1100px; margin: 0 auto; padding: 40px 24px 120px;">
   <div style="text-align: center; margin-bottom: 56px;">
-    <div class="section-eyebrow mono" data-en="CONTACT" data-ar="تواصل">CONTACT</div>
-    <h1 class="section-h2" data-en="Let's talk." data-ar="خلنا نتكلم.">Let's talk.</h1>
-    <p class="section-sub" style="margin: 16px auto 0;" data-en="Sales, support, partnerships, press, or careers — we reply within one business day." data-ar="مبيعات، دعم، شراكات، إعلام، أو وظائف — نرد خلال يوم عمل واحد.">
-      Sales, support, partnerships, press, or careers — we reply within one business day.
-    </p>
+    <div class="section-eyebrow mono" data-en="WHAT'S INCLUDED" data-ar="المتضمَّن">WHAT'S INCLUDED</div>
+    <h2 class="section-h2" data-en="One subscription. The full Packman stack." data-ar="اشتراك واحد. منصة باكمان كاملة.">One subscription. The full Packman stack.</h2>
+    <p class="section-sub" style="margin: 16px auto 0;" data-en="No upsells, no tiers, no surprise add-ons." data-ar="بدون باقات، بدون أسعار خفية، بدون إضافات مفاجئة.">No upsells, no tiers, no surprise add-ons.</p>
   </div>
-
-  <div style="display: grid; grid-template-columns: 5fr 7fr; gap: 48px;" class="grid-3-mobile">
-    <div class="card-base">
-      <h3 style="font-size: 1.25rem; font-weight: 700; margin: 0 0 24px;" data-en="Send a message" data-ar="أرسل رسالة">Send a message</h3>
-      <div class="form-row">
-        <label data-en="Name" data-ar="الاسم">Name</label>
-        <input type="text" placeholder="Your full name" data-en-ph="Your full name" data-ar-ph="اسمك الكامل" />
-      </div>
-      <div class="form-row">
-        <label data-en="Email" data-ar="الإيميل">Email</label>
-        <input type="email" placeholder="you@company.com" />
-      </div>
-      <div class="form-row">
-        <label data-en="Topic" data-ar="الموضوع">Topic</label>
-        <select>
-          <option data-en="Sales" data-ar="المبيعات">Sales</option>
-          <option data-en="Support" data-ar="الدعم">Support</option>
-          <option data-en="Partnership" data-ar="الشراكة">Partnership</option>
-          <option data-en="Press" data-ar="الإعلام">Press</option>
-          <option data-en="Careers" data-ar="الوظائف">Careers</option>
-        </select>
-      </div>
-      <div class="form-row">
-        <label data-en="Message" data-ar="الرسالة">Message</label>
-        <textarea placeholder="How can we help?" data-en-ph="How can we help?" data-ar-ph="كيف نقدر نساعدك؟"></textarea>
-      </div>
-      <button type="button" class="btn-pill btn-ink" style="padding: 13px 24px; font-size: 14px; width: 100%; justify-content: center; margin-top: 8px;" data-en="Send message" data-ar="إرسال الرسالة">Send message</button>
-    </div>
-
-    <div style="display: grid; gap: 16px; grid-template-columns: 1fr 1fr;">
-
-      <div class="tile" style="padding: 28px;">
-        <div class="ai-icon" style="background: var(--olive-bg); width: 40px; height: 40px; font-size: 18px;">💼</div>
-        <h3 style="font-size: 1.125rem; font-weight: 700; margin: 12px 0 8px;" data-en="Sales" data-ar="المبيعات">Sales</h3>
-        <p style="font-size: 14px; color: var(--ink-soft); margin: 0 0 12px; line-height: 1.5;" data-en="Upgrade plans, enterprise quotes, volume shipping." data-ar="ترقية الخطط، عروض الشركات الكبيرة، شحن بكميات.">Upgrade plans, enterprise quotes, volume shipping.</p>
-        <a href="mailto:sales@packman.ai" style="font-size: 14px; font-weight: 600; color: var(--olive);">sales@packman.ai</a>
-      </div>
-      <div class="tile" style="padding: 28px;">
-        <div class="ai-icon" style="background: var(--olive-bg); width: 40px; height: 40px; font-size: 18px;">🛟</div>
-        <h3 style="font-size: 1.125rem; font-weight: 700; margin: 12px 0 8px;" data-en="Support" data-ar="الدعم">Support</h3>
-        <p style="font-size: 14px; color: var(--ink-soft); margin: 0 0 12px; line-height: 1.5;" data-en="Live chat in your dashboard, 24/7 in Arabic and English." data-ar="محادثة مباشرة من لوحة التحكم، ٢٤/٧ بالعربي والإنجليزي.">Live chat in your dashboard, 24/7 in Arabic and English.</p>
-        <a href="mailto:support@packman.ai" style="font-size: 14px; font-weight: 600; color: var(--olive);">support@packman.ai</a>
-      </div>
-      <div class="tile" style="padding: 28px;">
-        <div class="ai-icon" style="background: var(--olive-bg); width: 40px; height: 40px; font-size: 18px;">🤝</div>
-        <h3 style="font-size: 1.125rem; font-weight: 700; margin: 12px 0 8px;" data-en="Partnerships" data-ar="الشراكات">Partnerships</h3>
-        <p style="font-size: 14px; color: var(--ink-soft); margin: 0 0 12px; line-height: 1.5;" data-en="Agencies, resellers, and technology integrators." data-ar="وكالات، موزّعين، ومتكاملي التقنية.">Agencies, resellers, and technology integrators.</p>
-        <a href="mailto:partnerships@packman.ai" style="font-size: 14px; font-weight: 600; color: var(--olive);">partnerships@packman.ai</a>
-      </div>
-      <div class="tile" style="padding: 28px;">
-        <div class="ai-icon" style="background: var(--olive-bg); width: 40px; height: 40px; font-size: 18px;">👥</div>
-        <h3 style="font-size: 1.125rem; font-weight: 700; margin: 12px 0 8px;" data-en="Careers" data-ar="الوظائف">Careers</h3>
-        <p style="font-size: 14px; color: var(--ink-soft); margin: 0 0 12px; line-height: 1.5;" data-en="We're hiring across engineering, operations, and growth." data-ar="نوظّف في الهندسة والعمليات والنمو.">We're hiring across engineering, operations, and growth.</p>
-        <a href="mailto:careers@packman.ai" style="font-size: 14px; font-weight: 600; color: var(--olive);">careers@packman.ai</a>
-      </div>
-    </div>
-  </div>
-
-  <div style="margin-top: 80px;">
-    <div style="text-align: center; margin-bottom: 32px;">
-      <div class="section-eyebrow mono" data-en="OFFICES" data-ar="المكاتب">OFFICES</div>
-      <h2 class="section-h2" style="font-size: 2rem;" data-en="Three cities. One team." data-ar="ثلاث مدن. فريق واحد.">Three cities. One team.</h2>
-    </div>
-    <div style="display: grid; grid-template-columns: repeat(3, 1fr); gap: 16px;" class="grid-3-mobile">
-
-      <div class="region-card">
-        <div class="flag-circle">🇦🇪</div>
-        <h3 data-en="Dubai" data-ar="دبي">Dubai</h3>
-        <p data-en="United Arab Emirates" data-ar="الإمارات العربية المتحدة">United Arab Emirates</p>
-      </div>
-      <div class="region-card">
-        <div class="flag-circle">🇸🇦</div>
-        <h3 data-en="Riyadh" data-ar="الرياض">Riyadh</h3>
-        <p data-en="Saudi Arabia" data-ar="المملكة العربية السعودية">Saudi Arabia</p>
-      </div>
-      <div class="region-card">
-        <div class="flag-circle">🇴🇲</div>
-        <h3 data-en="Muscat" data-ar="مسقط">Muscat</h3>
-        <p data-en="Oman" data-ar="سلطنة عُمان">Oman</p>
-      </div>
+  <div style="display: grid; grid-template-columns: repeat(3, 1fr); gap: 16px;" class="grid-3-mobile">
+<div class="tile">
+      <div class="ai-icon" style="background: var(--olive-bg); width: 40px; height: 40px; font-size: 18px;">🛍</div>
+      <h3 style="font-size: 1.0625rem; font-weight: 700; margin: 12px 0 6px;" data-en="E-store solutions" data-ar="حلول المتجر">E-store solutions</h3>
+      <p style="font-size: 14.5px; color: var(--ink-soft); margin: 0; line-height: 1.6;" data-en="A branded, mobile-first storefront — bilingual in Arabic and English from day one." data-ar="واجهة بالموبايل أولاً بالهوية — ثنائية اللغة من اليوم الأول.">A branded, mobile-first storefront — bilingual in Arabic and English from day one.</p>
+    </div><div class="tile">
+      <div class="ai-icon" style="background: var(--olive-bg); width: 40px; height: 40px; font-size: 18px;">💳</div>
+      <h3 style="font-size: 1.0625rem; font-weight: 700; margin: 12px 0 6px;" data-en="Payment gateway" data-ar="بوابة الدفع">Payment gateway</h3>
+      <p style="font-size: 14.5px; color: var(--ink-soft); margin: 0; line-height: 1.6;" data-en="Trusted, secure checkout that keeps customers paying and conversions high." data-ar="دفع آمن وموثوق يحافظ على معدلات تحويل عالية.">Trusted, secure checkout that keeps customers paying and conversions high.</p>
+    </div><div class="tile">
+      <div class="ai-icon" style="background: var(--olive-bg); width: 40px; height: 40px; font-size: 18px;">🚚</div>
+      <h3 style="font-size: 1.0625rem; font-weight: 700; margin: 12px 0 6px;" data-en="Local & international delivery" data-ar="توصيل محلي ودولي">Local & international delivery</h3>
+      <p style="font-size: 14.5px; color: var(--ink-soft); margin: 0; line-height: 1.6;" data-en="Fulfillment centers in UAE, KSA, Oman — shipping to 160+ countries worldwide." data-ar="مراكز توصيل في الإمارات والسعودية وعُمان — شحن إلى ١٦٠ دولة.">Fulfillment centers in UAE, KSA, Oman — shipping to 160+ countries worldwide.</p>
+    </div><div class="tile">
+      <div class="ai-icon" style="background: var(--olive-bg); width: 40px; height: 40px; font-size: 18px;">📊</div>
+      <h3 style="font-size: 1.0625rem; font-weight: 700; margin: 12px 0 6px;" data-en="Performance insights" data-ar="تحليلات الأداء">Performance insights</h3>
+      <p style="font-size: 14.5px; color: var(--ink-soft); margin: 0; line-height: 1.6;" data-en="Real-time sales, traffic, and fulfillment metrics so you always know what's working." data-ar="مبيعات وزوار وعمليات بالوقت الحقيقي — تعرف دائماً وش يشتغل.">Real-time sales, traffic, and fulfillment metrics so you always know what's working.</p>
+    </div><div class="tile">
+      <div class="ai-icon" style="background: var(--olive-bg); width: 40px; height: 40px; font-size: 18px;">🛠</div>
+      <h3 style="font-size: 1.0625rem; font-weight: 700; margin: 12px 0 6px;" data-en="Technical support" data-ar="دعم تقني">Technical support</h3>
+      <p style="font-size: 14.5px; color: var(--ink-soft); margin: 0; line-height: 1.6;" data-en="Real humans, not bots — helping you launch, troubleshoot, and scale." data-ar="أشخاص حقيقيين، مو روبوتات — يساعدونك تطلق وتحل المشاكل وتكبر.">Real humans, not bots — helping you launch, troubleshoot, and scale.</p>
+    </div><div class="tile">
+      <div class="ai-icon" style="background: var(--olive-bg); width: 40px; height: 40px; font-size: 18px;">👤</div>
+      <h3 style="font-size: 1.0625rem; font-weight: 700; margin: 12px 0 6px;" data-en="Account manager" data-ar="مدير حساب">Account manager</h3>
+      <p style="font-size: 14.5px; color: var(--ink-soft); margin: 0; line-height: 1.6;" data-en="A dedicated manager who supports you from order placement to customer delivery." data-ar="مدير مخصص يدعمك من الطلب لتوصيل العميل.">A dedicated manager who supports you from order placement to customer delivery.</p>
     </div>
   </div>
 </section>
 
 </main>
+
+<script>
+(function(){
+  var btns = document.querySelectorAll('.billing-toggle button');
+  var num  = document.getElementById('price-num');
+  var per  = document.getElementById('price-per');
+  if (!num || !per) return;
+  btns.forEach(function(b){
+    b.addEventListener('click', function(){
+      var bill = b.dataset.billing;
+      btns.forEach(function(x){ x.classList.toggle('active', x === b); });
+      num.textContent = bill === 'yearly' ? num.dataset.yearly : num.dataset.monthly;
+      var lang = document.documentElement.getAttribute('lang') === 'ar' ? 'ar' : 'en';
+      if (bill === 'yearly') {
+        per.dataset.en = '/ year';
+        per.dataset.ar = '/ سنة';
+      } else {
+        per.dataset.en = '/ month';
+        per.dataset.ar = '/ شهر';
+      }
+      per.textContent = lang === 'ar' ? per.dataset.ar : per.dataset.en;
+    });
+  });
+})();
+</script>
+
 
 <footer>
   <div class="inner">
@@ -1107,7 +1144,7 @@ footer .divider { border: 0; border-top: 1px solid var(--line); margin: 0 0 40px
       <div>
         <h3 class="col-title" data-en="COUNTRIES" data-ar="الدول">COUNTRIES</h3>
         <div style="display:flex; flex-direction:column; align-items:flex-start; gap:10px;">
-          <a href="/uae" class="country-pill"><span style="font-size:18px;">🇦🇪</span><span data-en="UAE" data-ar="الإمارات">UAE</span></a><a href="/ksa" class="country-pill"><span style="font-size:18px;">🇸🇦</span><span data-en="KSA" data-ar="السعودية">KSA</span></a><a href="/oman" class="country-pill"><span style="font-size:18px;">🇴🇲</span><span data-en="Oman" data-ar="عُمان">Oman</span></a>
+          <a href="/uae" class="country-pill"><span style="font-size:18px;">🇦🇪</span><span data-en="UAE" data-ar="الإمارات">UAE</span></a><a href="/ksa" class="country-pill active"><span style="font-size:18px;">🇸🇦</span><span data-en="KSA" data-ar="السعودية">KSA</span></a><a href="/oman" class="country-pill"><span style="font-size:18px;">🇴🇲</span><span data-en="Oman" data-ar="عُمان">Oman</span></a>
         </div>
       </div>
     </div>

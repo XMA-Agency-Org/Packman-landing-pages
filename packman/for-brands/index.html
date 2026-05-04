@@ -3,8 +3,8 @@
 <head>
 <meta charset="UTF-8" />
 <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-<meta name="description" content="Packman pricing in AED for sellers in UAE." />
-<title>Packman · Pricing · UAE</title>
+<meta name="description" content="Doing 200+ orders a month? Cut your tool stack from 9 to 1, reduce RTO, and add KSA + Oman markets." />
+<title>Packman · For brands · 200+ orders a month</title>
 <link rel="icon" href="/assets/logo-mark-navy.png" type="image/png" />
 <link rel="preconnect" href="https://fonts.googleapis.com" />
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
@@ -173,6 +173,20 @@ body {
   margin: 32px 0 0;
 }
 .hero-h1 .olive { color: var(--olive); }
+
+/* Arabic needs more vertical breathing room — diacritics/letterforms collide at line-height 1.05 */
+[dir="rtl"] .hero-h1 {
+  line-height: 1.4;
+  letter-spacing: 0;
+}
+[dir="rtl"] .section-h2 {
+  line-height: 1.35;
+  letter-spacing: 0;
+}
+[dir="rtl"] .final-cta h2 {
+  line-height: 1.3;
+  letter-spacing: 0;
+}
 .hero-sub {
   font-size: clamp(1rem, 1.5vw, 1.125rem);
   color: var(--ink-soft);
@@ -909,12 +923,17 @@ footer .divider { border: 0; border-top: 1px solid var(--line); margin: 0 0 40px
   .pill-nav .lang-toggle {
     font-size: 10px;
     padding: 2px;
+    margin-left: 6px;
   }
   .pill-nav .lang-toggle button {
     padding: 4px 6px;
     min-width: 20px;
   }
-  .pill-nav > div:last-child { gap: 4px !important; }
+  [dir="rtl"] .pill-nav .lang-toggle {
+    margin-left: 0;
+    margin-right: 6px;
+  }
+  .pill-nav > div:last-child { gap: 6px !important; }
 
   main { padding: 48px 20px 80px !important; }
   .hero-input { padding: 6px 6px 6px 12px; gap: 8px; }
@@ -949,7 +968,7 @@ footer .divider { border: 0; border-top: 1px solid var(--line); margin: 0 0 40px
 
 <div style="padding: 24px 24px 0;">
   <nav class="pill-nav" style="max-width: 1140px; margin: 0 auto; display: flex; align-items: center; gap: 16px; padding: 8px 8px 8px 16px;">
-    <a href="/uae" style="display:flex; align-items:center; gap:12px; text-decoration:none;">
+    <a href="/" style="display:flex; align-items:center; gap:12px; text-decoration:none;">
   <span class="logo-mark"><img src="/assets/logo-mark-volt.png" alt="" /></span>
   <span style="display:flex; flex-direction:column; line-height:1;">
     <span style="display:flex; align-items:baseline;">
@@ -976,117 +995,162 @@ footer .divider { border: 0; border-top: 1px solid var(--line); margin: 0 0 40px
 </div>
 
 <main>
-<section style="max-width: 1100px; margin: 0 auto; padding: 64px 24px 80px; text-align: center;">
-  <div class="section-eyebrow mono" data-en="PRICING" data-ar="الأسعار">PRICING</div>
-  <h1 class="section-h2" data-en="One plan. Three countries." data-ar="خطة وحدة. ثلاث دول.">One plan. Three countries.</h1>
-  <p class="section-sub" style="margin: 16px auto 0;" data-en="Pay monthly or yearly — whichever fits your business. Switch anytime. No hidden fees, zero commission on sales." data-ar="ادفع شهرياً أو سنوياً — اللي يناسب شغلك. غيّر في أي وقت. بدون رسوم خفية، صفر عمولة على المبيعات.">
-    Pay monthly or yearly — whichever fits your business. Switch anytime. No hidden fees, zero commission on sales.
-  </p>
-  <div class="country-switcher"><a href="/pricing-uae" class="active"><span style="font-size:16px;">🇦🇪</span><span data-en="UAE" data-ar="الإمارات">UAE</span></a><a href="/pricing-ksa" class=""><span style="font-size:16px;">🇸🇦</span><span data-en="KSA" data-ar="السعودية">KSA</span></a><a href="/pricing-oman" class=""><span style="font-size:16px;">🇴🇲</span><span data-en="Oman" data-ar="عُمان">Oman</span></a></div>
-  <div class="billing-toggle">
-    <button type="button" data-billing="monthly" class="active" data-en="Monthly" data-ar="شهري">Monthly</button>
-    <button type="button" data-billing="yearly">
-      <span data-en="Yearly" data-ar="سنوي">Yearly</span>
-      <span class="savings-badge" data-en="Save 25%" data-ar="وفّر ٢٥٪">Save 25%</span>
-    </button>
+
+<!-- HERO -->
+<section style="max-width: 1100px; margin: 0 auto; padding: 64px 24px 48px; text-align: center;">
+  <div class="tag-pill mono">
+    <span class="green-dot"></span>
+    <span data-en="FOR BRANDS · 200+ ORDERS A MONTH" data-ar="للبراندات · ٢٠٠+ طلب شهرياً">FOR BRANDS · 200+ ORDERS A MONTH</span>
   </div>
-  <div class="price-hero-card">
-    <div class="country-tag">
-      <span style="font-size:14px;">🇦🇪</span>
-      <span data-en="UAE · Subscription" data-ar="الإمارات · اشتراك">UAE · Subscription</span>
+  <h1 class="hero-h1">
+    <span data-en="Doing 200+ orders a month?" data-ar="تسوي ٢٠٠+ طلب شهرياً؟">Doing 200+ orders a month?</span><br />
+    <span class="olive" data-en="Let's talk math." data-ar="خلنا نتكلم بالأرقام.">Let's talk math.</span>
+  </h1>
+  <p class="hero-sub" data-en="Most brands hitting this volume are leaking thousands a month to RTO, fragmented tools, and ops chaos. This is exactly the volume Packman was built for." data-ar="أغلب البراندات اللي تصل لهذا الحجم تخسر آلاف بالشهر بسبب المرتجعات والأدوات المتفرقة وفوضى العمليات. هذا الحجم بالضبط اللي اتبنى باكمان عشانه.">
+    Most brands hitting this volume are leaking thousands a month to RTO, fragmented tools, and ops chaos. This is exactly the volume Packman was built for.
+  </p>
+  <div class="hero-ctas" style="margin-top: 32px; display: inline-flex; gap: 8px; justify-content: center;">
+    <a href="/pricing" class="btn-pill btn-volt" style="padding: 14px 28px; font-size: 15px;">
+      <span data-en="See pricing" data-ar="شوف الأسعار">See pricing</span>
+      <svg width="14" height="14" viewBox="0 0 16 16" fill="none" style="margin-left:4px;"><path d="M3 8h10m0 0L9 4m4 4l-4 4" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"/></svg>
+    </a>
+    <a href="https://api.leadconnectorhq.com/widget/booking/rGFxfeyGpekgxR06ZEzT/" class="btn-pill btn-soft" style="padding: 14px 28px; font-size: 15px;" data-en="Book a call" data-ar="احجز مكالمة">Book a call</a>
+  </div>
+</section>
+
+<!-- VSL #1 -->
+<section style="max-width: 1000px; margin: 0 auto; padding: 32px 24px 80px;">
+  
+    <div class="vsl-card">
+      <div class="bg-glow"></div>
+      <div class="vsl-grid"></div>
+      <div class="vsl-eyebrow" data-en="VSL · 9 TOOLS TO 1" data-ar="فيديو · من ٩ أدوات لواحدة">VSL · 9 TOOLS TO 1</div>
+      <div class="play-button"><svg width="36" height="36" viewBox="0 0 24 24" fill="#0E1820"><path d="M8 5v14l11-7z"/></svg></div>
+      <div class="vsl-headline" data-en="How a Dubai-based skincare brand cut their tool stack from 9 to 1 in two days." data-ar="كيف خفّض براند عناية بالبشرة من دبي عدد أدواته من ٩ لواحدة في يومين.">How a Dubai-based skincare brand cut their tool stack from 9 to 1 in two days.</div>
+      <div class="vsl-time">02:14</div>
     </div>
-    <h2 data-en="Packman Subscription" data-ar="اشتراك باكمان">Packman Subscription</h2>
-    <p class="blurb" data-en="Everything you need to build, sell, and ship — in one plan." data-ar="كل ما تحتاجه لتبني وتبيع وتشحن — في خطة وحدة.">Everything you need to build, sell, and ship — in one plan.</p>
-    <div class="price-amount">
-      <span class="cur">AED</span>
-      <span class="num" id="price-num" data-monthly="400" data-yearly="3,600">400</span>
-      <span class="per" id="price-per" data-en="/ month" data-ar="/ شهر">/ month</span>
+  <p class="vsl-quote">
+    <span class="green-dot" style="background: var(--olive);"></span>
+    <span data-en="“Cut our RTO from 22% to 7%. Saved us thousands a month.” — Maitha S." data-ar="«خفّضنا المرتجعات من ٢٢٪ لـ٧٪. وفّرنا آلاف بالشهر.» — ميثاء س.">“Cut our RTO from 22% to 7%. Saved us thousands a month.” — Maitha S.</span>
+  </p>
+</section>
+
+<!-- THE MATH -->
+<section style="max-width: 1100px; margin: 0 auto; padding: 40px 24px 80px;">
+  <div style="text-align: center; margin-bottom: 48px;">
+    <div class="section-eyebrow mono" data-en="THE MATH" data-ar="الأرقام">THE MATH</div>
+    <h2 class="section-h2"><span data-en="The hidden cost of" data-ar="التكلفة المخفية لـ">The hidden cost of</span> <span class="olive" data-en="200 orders a month." data-ar="٢٠٠ طلب شهرياً.">200 orders a month.</span></h2>
+  </div>
+
+  <div class="math-card">
+    <div class="section-eyebrow mono" style="color: var(--volt); margin-bottom: 0;" data-en="MONTHLY REVENUE" data-ar="الإيراد الشهري">MONTHLY REVENUE</div>
+    <div class="math-equation">
+      <span class="num">200</span>
+      <span class="op">×</span>
+      <span class="num">AED 199</span>
+      <span data-en="AOV" data-ar="متوسط الطلب">AOV</span>
+      <span class="op">=</span>
     </div>
-    <ul class="price-features">
-      <li data-en="E-store solutions — branded mobile-first storefront in minutes" data-ar="حلول المتجر — واجهة بالموبايل أولاً بالهوية في دقائق">E-store solutions — branded mobile-first storefront in minutes</li>
-      <li data-en="Payment gateway integration (Tabby, Tamara, Apple Pay, cards, COD)" data-ar="تكامل بوابات الدفع (تابي، تمارا، آبل باي، البطاقات، الدفع عند الاستلام)">Payment gateway integration (Tabby, Tamara, Apple Pay, cards, COD)</li>
-      <li data-en="Local & international delivery — UAE, KSA, Oman + 160+ countries" data-ar="توصيل محلي ودولي — الإمارات، السعودية، عُمان + ١٦٠ دولة">Local &amp; international delivery — UAE, KSA, Oman + 160+ countries</li>
-      <li data-en="Performance insights — real-time sales, traffic, fulfillment metrics" data-ar="تحليلات الأداء — مبيعات وزوار وعمليات بالوقت الحقيقي">Performance insights — real-time sales, traffic, fulfillment metrics</li>
-      <li data-en="Technical support — real humans, not bots" data-ar="دعم تقني — أشخاص حقيقيين، مو روبوتات">Technical support — real humans, not bots</li>
-      <li data-en="Easy dashboard — track orders, sales, and numbers in one screen" data-ar="لوحة تحكم سهلة — تابع الطلبات والمبيعات والأرقام في شاشة وحدة">Easy dashboard — track orders, sales, and numbers in one screen</li>
-      <li data-en="Dedicated account manager — from order to delivery" data-ar="مدير حساب مخصص — من الطلب للتوصيل">Dedicated account manager — from order to delivery</li>
-    </ul>
-    <div class="price-cta-row">
-      <a href="https://api.leadconnectorhq.com/widget/booking/rGFxfeyGpekgxR06ZEzT/" class="btn-pill btn-outline" style="padding: 14px 24px; font-size: 15px; flex: 1; justify-content: center;" data-en="Schedule a demo" data-ar="احجز عرضاً">Schedule a demo</a>
-      <a href="/" class="btn-pill btn-volt" style="padding: 14px 24px; font-size: 15px; flex: 1; justify-content: center;" data-en="Launch your store" data-ar="أطلق متجرك">Launch your store</a>
+    <div class="math-result">AED 39,800</div>
+    <p data-en="Solid revenue. But here's what 20% RTO does to it…" data-ar="إيراد جيد. لكن شوف وش تسوي نسبة المرتجعات ٢٠٪…">Solid revenue. But here's what 20% RTO does to it…</p>
+  </div>
+
+  <div class="math-card" style="margin-top: 16px; background: var(--coral); color: var(--paper);">
+    <div class="section-eyebrow mono" style="color: rgba(255,255,255,0.8); margin-bottom: 0;" data-en="LOST TO RTO EVERY MONTH" data-ar="ضائع بسبب المرتجعات كل شهر">LOST TO RTO EVERY MONTH</div>
+    <div class="math-equation" style="color: var(--paper);">
+      <span style="color:var(--paper);">AED 39,800</span>
+      <span class="op" style="color:rgba(255,255,255,0.6);">×</span>
+      <span style="color:var(--paper);">20%</span>
+      <span data-en="RTO" data-ar="مرتجعات">RTO</span>
+      <span class="op" style="color:rgba(255,255,255,0.6);">=</span>
     </div>
-    <div class="price-bonus">
-      <span class="icon">✨</span>
-      <p>
-        <strong data-en="365-order bonus." data-ar="مكافأة ٣٦٥ طلب.">365-order bonus.</strong>
-        <span data-en=" Complete 365 orders during your first year and get a full year of subscription free. (Yearly plan only.)" data-ar=" أكمل ٣٦٥ طلب في سنتك الأولى واحصل على سنة اشتراك كاملة مجاناً. (الخطة السنوية فقط.)"> Complete 365 orders during your first year and get a full year of subscription free. (Yearly plan only.)</span>
-      </p>
+    <div class="math-result" style="color: var(--paper);">AED 7,960 <span data-en="gone" data-ar="ضايع" style="font-size:0.5em; font-weight:600;">gone</span></div>
+    <p style="color: rgba(255,255,255,0.85);" data-en="That's almost AED 96,000 a year. Every year." data-ar="هذا تقريباً AED ٩٦٬٠٠٠ بالسنة. كل سنة.">That's almost AED 96,000 a year. Every year.</p>
+  </div>
+</section>
+
+<!-- BEFORE / AFTER -->
+<section style="max-width: 1100px; margin: 0 auto; padding: 40px 24px 80px;">
+  <div style="text-align: center; margin-bottom: 48px;">
+    <div class="section-eyebrow mono" data-en="THE SWITCH" data-ar="التحوّل">THE SWITCH</div>
+    <h2 class="section-h2" data-en="9 tools." data-ar="٩ أدوات.">9 tools.</h2>
+    <h2 class="section-h2"><span class="olive" data-en="One Packman." data-ar="باكمان واحد.">One Packman.</span></h2>
+  </div>
+
+  <div class="compare-grid">
+    <div class="compare-card before">
+      <div class="label" data-en="THE OLD STACK" data-ar="المنظومة القديمة">THE OLD STACK</div>
+      <h3 data-en="Nine apps. Five tabs." data-ar="تسع تطبيقات. خمس تبويبات.">Nine apps. Five tabs.</h3>
+      <ul>
+        <li data-en="Shopify · AED 290/mo" data-ar="شوبيفاي · AED ٢٩٠/شهر">Shopify · AED 290/mo</li>
+        <li data-en="Klaviyo · AED 180/mo" data-ar="كلافيو · AED ١٨٠/شهر">Klaviyo · AED 180/mo</li>
+        <li data-en="Sheets + Notion · AED 75/mo" data-ar="إكسل + نوشن · AED ٧٥/شهر">Sheets + Notion · AED 75/mo</li>
+        <li data-en="3rd-party courier portals × 2" data-ar="بوابتا شحن خارجيتان">3rd-party courier portals × 2</li>
+        <li data-en="Meta + TikTok ad managers" data-ar="مدراء إعلانات ميتا وتيك توك">Meta + TikTok ad managers</li>
+        <li data-en="Canva + photographer · AED 1,200/mo" data-ar="كانفا + مصور · AED ١٬٢٠٠/شهر">Canva + photographer · AED 1,200/mo</li>
+        <li data-en="WhatsApp + Gmail for support" data-ar="واتساب + جيميل للدعم">WhatsApp + Gmail for support</li>
+        <li data-en="Zoho Books · AED 120/mo" data-ar="زوهو بوكس · AED ١٢٠/شهر">Zoho Books · AED 120/mo</li>
+        <li data-en="None of them talk to each other" data-ar="ما يكلّمون بعض">None of them talk to each other</li>
+      </ul>
+      <div class="total">
+        <span data-en="Per month" data-ar="بالشهر">Per month</span>
+        <span class="num">AED 1,865+</span>
+      </div>
+    </div>
+    <div class="compare-card after">
+      <div class="label" data-en="THE NEW STACK" data-ar="المنظومة الجديدة">THE NEW STACK</div>
+      <h3 data-en="One dashboard. Done." data-ar="لوحة تحكم واحدة. خلاص.">One dashboard. Done.</h3>
+      <ul>
+        <li data-en="Storefront — bilingual, mobile-first" data-ar="واجهة متجر — ثنائية اللغة، الموبايل أولاً">Storefront — bilingual, mobile-first</li>
+        <li data-en="Email + WhatsApp marketing built-in" data-ar="تسويق بالإيميل والواتساب مدمج">Email + WhatsApp marketing built-in</li>
+        <li data-en="Inventory + reorder automation" data-ar="مخزون + إعادة طلب تلقائية">Inventory + reorder automation</li>
+        <li data-en="Packman fleet — we deliver, end-to-end" data-ar="أسطول باكمان — نحن نوصل، من البداية للنهاية">Packman fleet — we deliver, end-to-end</li>
+        <li data-en="Ad creatives auto-generated" data-ar="إبداعات إعلانية تلقائية">Ad creatives auto-generated</li>
+        <li data-en="AI content + photography" data-ar="محتوى وتصوير بالذكاء الاصطناعي">AI content + photography</li>
+        <li data-en="24/7 bilingual customer support" data-ar="دعم عملاء ثنائي اللغة ٢٤/٧">24/7 bilingual customer support</li>
+        <li data-en="VAT-ready accounting" data-ar="محاسبة جاهزة للضريبة">VAT-ready accounting</li>
+        <li data-en="Everything in one screen" data-ar="كل شي في شاشة وحدة">Everything in one screen</li>
+      </ul>
+      <div class="total">
+        <span data-en="Per month" data-ar="بالشهر">Per month</span>
+        <span class="num">AED 400</span>
+      </div>
+    </div>
+  </div>
+  <p style="text-align: center; margin-top: 24px; font-size: 14px; color: var(--ink-soft);" data-en="That's AED 1,465 saved per month. Before we even count the time." data-ar="هذا توفير AED ١٬٤٦٥ شهرياً. قبل ما نحسب الوقت.">That's AED 1,465 saved per month. Before we even count the time.</p>
+</section>
+
+<!-- TESTIMONIAL -->
+<section style="max-width: 800px; margin: 0 auto; padding: 40px 24px 80px;">
+  <div class="testimonial" style="padding: 40px;">
+    <blockquote style="font-size: 1.25rem; line-height: 1.55;" data-en="We were paying for 9 different tools and still missing orders. Two weeks after switching to Packman, our RTO dropped from 22% to 7% and we cancelled subscriptions to 6 vendors. The AI content alone replaced our agency." data-ar="كنا ندفع لـ٩ أدوات مختلفة ومع ذلك ضايعين طلبات. أسبوعين بعد ما حوّلنا لباكمان، نسبة المرتجعات نزلت من ٢٢٪ لـ٧٪ وألغينا اشتراكات ٦ موردين. محتوى الذكاء الاصطناعي وحده بدّل وكالتنا.">
+      We were paying for 9 different tools and still missing orders. Two weeks after switching to Packman, our RTO dropped from 22% to 7% and we cancelled subscriptions to 6 vendors. The AI content alone replaced our agency.
+    </blockquote>
+    <div class="who">
+      <div class="avatar">M</div>
+      <div>
+        <div class="name" data-en="Maitha S." data-ar="ميثاء س.">Maitha S.</div>
+        <div class="role" data-en="Operations Lead · Apparel brand · Muscat → Riyadh → Dubai" data-ar="مديرة العمليات · براند ملابس · مسقط ← الرياض ← دبي">Operations Lead · Apparel brand · Muscat → Riyadh → Dubai</div>
+      </div>
     </div>
   </div>
 </section>
 
-<section style="max-width: 1100px; margin: 0 auto; padding: 40px 24px 120px;">
-  <div style="text-align: center; margin-bottom: 56px;">
-    <div class="section-eyebrow mono" data-en="WHAT'S INCLUDED" data-ar="المتضمَّن">WHAT'S INCLUDED</div>
-    <h2 class="section-h2" data-en="One subscription. The full Packman stack." data-ar="اشتراك واحد. منصة باكمان كاملة.">One subscription. The full Packman stack.</h2>
-    <p class="section-sub" style="margin: 16px auto 0;" data-en="No upsells, no tiers, no surprise add-ons." data-ar="بدون باقات، بدون أسعار خفية، بدون إضافات مفاجئة.">No upsells, no tiers, no surprise add-ons.</p>
-  </div>
-  <div style="display: grid; grid-template-columns: repeat(3, 1fr); gap: 16px;" class="grid-3-mobile">
-<div class="tile">
-      <div class="ai-icon" style="background: var(--olive-bg); width: 40px; height: 40px; font-size: 18px;">🛍</div>
-      <h3 style="font-size: 1.0625rem; font-weight: 700; margin: 12px 0 6px;" data-en="E-store solutions" data-ar="حلول المتجر">E-store solutions</h3>
-      <p style="font-size: 14.5px; color: var(--ink-soft); margin: 0; line-height: 1.6;" data-en="A branded, mobile-first storefront — bilingual in Arabic and English from day one." data-ar="واجهة بالموبايل أولاً بالهوية — ثنائية اللغة من اليوم الأول.">A branded, mobile-first storefront — bilingual in Arabic and English from day one.</p>
-    </div><div class="tile">
-      <div class="ai-icon" style="background: var(--olive-bg); width: 40px; height: 40px; font-size: 18px;">💳</div>
-      <h3 style="font-size: 1.0625rem; font-weight: 700; margin: 12px 0 6px;" data-en="Payment gateway" data-ar="بوابة الدفع">Payment gateway</h3>
-      <p style="font-size: 14.5px; color: var(--ink-soft); margin: 0; line-height: 1.6;" data-en="Trusted, secure checkout that keeps customers paying and conversions high." data-ar="دفع آمن وموثوق يحافظ على معدلات تحويل عالية.">Trusted, secure checkout that keeps customers paying and conversions high.</p>
-    </div><div class="tile">
-      <div class="ai-icon" style="background: var(--olive-bg); width: 40px; height: 40px; font-size: 18px;">🚚</div>
-      <h3 style="font-size: 1.0625rem; font-weight: 700; margin: 12px 0 6px;" data-en="Local & international delivery" data-ar="توصيل محلي ودولي">Local & international delivery</h3>
-      <p style="font-size: 14.5px; color: var(--ink-soft); margin: 0; line-height: 1.6;" data-en="Fulfillment centers in UAE, KSA, Oman — shipping to 160+ countries worldwide." data-ar="مراكز توصيل في الإمارات والسعودية وعُمان — شحن إلى ١٦٠ دولة.">Fulfillment centers in UAE, KSA, Oman — shipping to 160+ countries worldwide.</p>
-    </div><div class="tile">
-      <div class="ai-icon" style="background: var(--olive-bg); width: 40px; height: 40px; font-size: 18px;">📊</div>
-      <h3 style="font-size: 1.0625rem; font-weight: 700; margin: 12px 0 6px;" data-en="Performance insights" data-ar="تحليلات الأداء">Performance insights</h3>
-      <p style="font-size: 14.5px; color: var(--ink-soft); margin: 0; line-height: 1.6;" data-en="Real-time sales, traffic, and fulfillment metrics so you always know what's working." data-ar="مبيعات وزوار وعمليات بالوقت الحقيقي — تعرف دائماً وش يشتغل.">Real-time sales, traffic, and fulfillment metrics so you always know what's working.</p>
-    </div><div class="tile">
-      <div class="ai-icon" style="background: var(--olive-bg); width: 40px; height: 40px; font-size: 18px;">🛠</div>
-      <h3 style="font-size: 1.0625rem; font-weight: 700; margin: 12px 0 6px;" data-en="Technical support" data-ar="دعم تقني">Technical support</h3>
-      <p style="font-size: 14.5px; color: var(--ink-soft); margin: 0; line-height: 1.6;" data-en="Real humans, not bots — helping you launch, troubleshoot, and scale." data-ar="أشخاص حقيقيين، مو روبوتات — يساعدونك تطلق وتحل المشاكل وتكبر.">Real humans, not bots — helping you launch, troubleshoot, and scale.</p>
-    </div><div class="tile">
-      <div class="ai-icon" style="background: var(--olive-bg); width: 40px; height: 40px; font-size: 18px;">👤</div>
-      <h3 style="font-size: 1.0625rem; font-weight: 700; margin: 12px 0 6px;" data-en="Account manager" data-ar="مدير حساب">Account manager</h3>
-      <p style="font-size: 14.5px; color: var(--ink-soft); margin: 0; line-height: 1.6;" data-en="A dedicated manager who supports you from order placement to customer delivery." data-ar="مدير مخصص يدعمك من الطلب لتوصيل العميل.">A dedicated manager who supports you from order placement to customer delivery.</p>
-    </div>
+<!-- FINAL CTA -->
+<section style="max-width: 1100px; margin: 0 auto; padding: 40px 24px 100px;">
+  <div class="final-cta">
+    <h2 data-en="Stop bleeding revenue." data-ar="بطّل تخسر إيراد.">Stop bleeding revenue.</h2>
+    <p data-en="Most brands recover their first year of Packman in the first month — just from RTO improvements." data-ar="أغلب البراندات يستردون تكلفة سنتهم الأولى في باكمان خلال الشهر الأول — من تحسين المرتجعات لوحدها.">
+      Most brands recover their first year of Packman in the first month — just from RTO improvements.
+    </p>
+    <a href="https://api.leadconnectorhq.com/widget/booking/rGFxfeyGpekgxR06ZEzT/" class="btn-pill btn-volt" style="padding: 16px 32px; font-size: 16px;">
+      <span data-en="Book a 20-min call" data-ar="احجز مكالمة ٢٠ دقيقة">Book a 20-min call</span>
+      <svg width="14" height="14" viewBox="0 0 16 16" fill="none" style="margin-left:4px;"><path d="M3 8h10m0 0L9 4m4 4l-4 4" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"/></svg>
+    </a>
   </div>
 </section>
 
 </main>
-
-<script>
-(function(){
-  var btns = document.querySelectorAll('.billing-toggle button');
-  var num  = document.getElementById('price-num');
-  var per  = document.getElementById('price-per');
-  if (!num || !per) return;
-  btns.forEach(function(b){
-    b.addEventListener('click', function(){
-      var bill = b.dataset.billing;
-      btns.forEach(function(x){ x.classList.toggle('active', x === b); });
-      num.textContent = bill === 'yearly' ? num.dataset.yearly : num.dataset.monthly;
-      var lang = document.documentElement.getAttribute('lang') === 'ar' ? 'ar' : 'en';
-      if (bill === 'yearly') {
-        per.dataset.en = '/ year';
-        per.dataset.ar = '/ سنة';
-      } else {
-        per.dataset.en = '/ month';
-        per.dataset.ar = '/ شهر';
-      }
-      per.textContent = lang === 'ar' ? per.dataset.ar : per.dataset.en;
-    });
-  });
-})();
-</script>
-
 
 <footer>
   <div class="inner">
@@ -1125,7 +1189,7 @@ footer .divider { border: 0; border-top: 1px solid var(--line); margin: 0 0 40px
       <div>
         <h3 class="col-title" data-en="COUNTRIES" data-ar="الدول">COUNTRIES</h3>
         <div style="display:flex; flex-direction:column; align-items:flex-start; gap:10px;">
-          <a href="/uae" class="country-pill active"><span style="font-size:18px;">🇦🇪</span><span data-en="UAE" data-ar="الإمارات">UAE</span></a><a href="/ksa" class="country-pill"><span style="font-size:18px;">🇸🇦</span><span data-en="KSA" data-ar="السعودية">KSA</span></a><a href="/oman" class="country-pill"><span style="font-size:18px;">🇴🇲</span><span data-en="Oman" data-ar="عُمان">Oman</span></a>
+          <a href="/uae" class="country-pill"><span style="font-size:18px;">🇦🇪</span><span data-en="UAE" data-ar="الإمارات">UAE</span></a><a href="/ksa" class="country-pill"><span style="font-size:18px;">🇸🇦</span><span data-en="KSA" data-ar="السعودية">KSA</span></a><a href="/oman" class="country-pill"><span style="font-size:18px;">🇴🇲</span><span data-en="Oman" data-ar="عُمان">Oman</span></a>
         </div>
       </div>
     </div>

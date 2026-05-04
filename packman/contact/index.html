@@ -3,8 +3,8 @@
 <head>
 <meta charset="UTF-8" />
 <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-<meta name="description" content="Government partnerships and payment gateways." />
-<title>Packman · Partners</title>
+<meta name="description" content="Sales, support, partnerships. Offices in Dubai, Riyadh, Muscat." />
+<title>Packman · Contact</title>
 <link rel="icon" href="/assets/logo-mark-navy.png" type="image/png" />
 <link rel="preconnect" href="https://fonts.googleapis.com" />
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
@@ -173,6 +173,20 @@ body {
   margin: 32px 0 0;
 }
 .hero-h1 .olive { color: var(--olive); }
+
+/* Arabic needs more vertical breathing room — diacritics/letterforms collide at line-height 1.05 */
+[dir="rtl"] .hero-h1 {
+  line-height: 1.4;
+  letter-spacing: 0;
+}
+[dir="rtl"] .section-h2 {
+  line-height: 1.35;
+  letter-spacing: 0;
+}
+[dir="rtl"] .final-cta h2 {
+  line-height: 1.3;
+  letter-spacing: 0;
+}
 .hero-sub {
   font-size: clamp(1rem, 1.5vw, 1.125rem);
   color: var(--ink-soft);
@@ -909,12 +923,17 @@ footer .divider { border: 0; border-top: 1px solid var(--line); margin: 0 0 40px
   .pill-nav .lang-toggle {
     font-size: 10px;
     padding: 2px;
+    margin-left: 6px;
   }
   .pill-nav .lang-toggle button {
     padding: 4px 6px;
     min-width: 20px;
   }
-  .pill-nav > div:last-child { gap: 4px !important; }
+  [dir="rtl"] .pill-nav .lang-toggle {
+    margin-left: 0;
+    margin-right: 6px;
+  }
+  .pill-nav > div:last-child { gap: 6px !important; }
 
   main { padding: 48px 20px 80px !important; }
   .hero-input { padding: 6px 6px 6px 12px; gap: 8px; }
@@ -976,88 +995,95 @@ footer .divider { border: 0; border-top: 1px solid var(--line); margin: 0 0 40px
 </div>
 
 <main>
-<section style="max-width: 1100px; margin: 0 auto; padding: 64px 24px 64px; text-align: center;">
-  <div class="section-eyebrow mono" data-en="PARTNERSHIPS" data-ar="الشراكات">PARTNERSHIPS</div>
-  <h1 class="section-h2"><span data-en="Partner with Packman." data-ar="اعمل بالشراكة مع باكمان.">Partner with Packman.</span><br/><span class="olive" data-en="The future of e-commerce, together." data-ar="مستقبل التجارة الإلكترونية، معاً.">The future of e-commerce, together.</span></h1>
-  <p class="section-sub" style="margin: 16px auto 0;" data-en="We work with governments, chambers of commerce, accelerators, and educational institutions across the region to help more founders launch, scale, and go global." data-ar="نعمل مع الحكومات وغرف التجارة والمسرّعات والمؤسسات التعليمية في المنطقة لمساعدة المزيد من رواد الأعمال على الإطلاق والتوسّع والوصول للعالم.">
-    We work with governments, chambers of commerce, accelerators, and educational institutions across the region to help more founders launch, scale, and go global.
-  </p>
-</section>
-
-<section style="max-width: 1100px; margin: 0 auto; padding: 24px 24px 80px;">
-  <div style="margin-bottom: 32px;">
-    <div class="section-eyebrow mono" data-en="ECOSYSTEM" data-ar="المنظومة">ECOSYSTEM</div>
-    <h2 class="section-h2" style="font-size: 2rem;" data-en="Government, chambers, and education." data-ar="حكومات، غرف، وتعليم.">Government, chambers, and education.</h2>
-  </div>
-  <div style="display: grid; grid-template-columns: repeat(4, 1fr); gap: 16px;" class="grid-4-mobile">
-    <div class="tile">
-      <div class="ai-icon" style="background: var(--olive-bg); width: 40px; height: 40px; font-size: 18px;">🏛</div>
-      <h3 style="font-size: 1.0625rem; font-weight: 700; margin: 12px 0 6px;" data-en="Dubai Economy × Packman" data-ar="اقتصادية دبي × باكمان">Dubai Economy × Packman</h3>
-      <p style="font-size: 14px; color: var(--ink-soft); margin: 0; line-height: 1.55;" data-en="Cooperation between Dubai Economy and Packman to support SMEs in the emirate." data-ar="تعاون بين اقتصادية دبي وباكمان لدعم الشركات الصغيرة والمتوسطة في الإمارة.">Cooperation between Dubai Economy and Packman to support SMEs in the emirate.</p>
-    </div><div class="tile">
-      <div class="ai-icon" style="background: var(--olive-bg); width: 40px; height: 40px; font-size: 18px;">🤝</div>
-      <h3 style="font-size: 1.0625rem; font-weight: 700; margin: 12px 0 6px;" data-en="RAKDED × Packman" data-ar="راكدد × باكمان">RAKDED × Packman</h3>
-      <p style="font-size: 14px; color: var(--ink-soft); margin: 0; line-height: 1.55;" data-en="RAKDED and Packman signed an MoU to support SMEs and Ras Al Khaimah's entrepreneur ecosystem." data-ar="وقعت راكدد وباكمان مذكرة تفاهم لدعم الشركات الصغيرة ورواد الأعمال في رأس الخيمة.">RAKDED and Packman signed an MoU to support SMEs and Ras Al Khaimah's entrepreneur ecosystem.</p>
-    </div><div class="tile">
-      <div class="ai-icon" style="background: var(--olive-bg); width: 40px; height: 40px; font-size: 18px;">🌟</div>
-      <h3 style="font-size: 1.0625rem; font-weight: 700; margin: 12px 0 6px;" data-en="Abu Dhabi Chamber × Packman" data-ar="غرفة أبوظبي × باكمان">Abu Dhabi Chamber × Packman</h3>
-      <p style="font-size: 14px; color: var(--ink-soft); margin: 0; line-height: 1.55;" data-en="An affiliate of Abu Dhabi Chamber signed an MoU with Packman to support Emirati businesswomen." data-ar="وقعت إحدى شركات غرفة أبوظبي مذكرة تفاهم مع باكمان لدعم رائدات الأعمال الإماراتيات.">An affiliate of Abu Dhabi Chamber signed an MoU with Packman to support Emirati businesswomen.</p>
-    </div><div class="tile">
-      <div class="ai-icon" style="background: var(--olive-bg); width: 40px; height: 40px; font-size: 18px;">🎤</div>
-      <h3 style="font-size: 1.0625rem; font-weight: 700; margin: 12px 0 6px;" data-en="Gulf Business Incubators Conference" data-ar="مؤتمر حاضنات الأعمال الخليجي">Gulf Business Incubators Conference</h3>
-      <p style="font-size: 14px; color: var(--ink-soft); margin: 0; line-height: 1.55;" data-en="Packman at the sixth edition of the Gulf conference for business incubators and accelerators." data-ar="باكمان في النسخة السادسة لمؤتمر حاضنات ومسرّعات الأعمال الخليجية.">Packman at the sixth edition of the Gulf conference for business incubators and accelerators.</p>
-    </div><div class="tile">
-      <div class="ai-icon" style="background: var(--olive-bg); width: 40px; height: 40px; font-size: 18px;">🏆</div>
-      <h3 style="font-size: 1.0625rem; font-weight: 700; margin: 12px 0 6px;" data-en="E7 Ras Al-Khaimah Exhibition" data-ar="معرض E7 رأس الخيمة">E7 Ras Al-Khaimah Exhibition</h3>
-      <p style="font-size: 14px; color: var(--ink-soft); margin: 0; line-height: 1.55;" data-en="Showcasing Packman to founders at RAK's flagship entrepreneurship exhibition." data-ar="عرض باكمان لرواد الأعمال في معرض ريادة الأعمال الرئيسي بإمارة رأس الخيمة.">Showcasing Packman to founders at RAK's flagship entrepreneurship exhibition.</p>
-    </div><div class="tile">
-      <div class="ai-icon" style="background: var(--olive-bg); width: 40px; height: 40px; font-size: 18px;">🎓</div>
-      <h3 style="font-size: 1.0625rem; font-weight: 700; margin: 12px 0 6px;" data-en="Dubai to Harvard" data-ar="من دبي إلى هارفارد">Dubai to Harvard</h3>
-      <p style="font-size: 14px; color: var(--ink-soft); margin: 0; line-height: 1.55;" data-en="Packman representing the region's commerce story on the Harvard stage." data-ar="باكمان يمثّل قصة التجارة في المنطقة على منصة جامعة هارفارد.">Packman representing the region's commerce story on the Harvard stage.</p>
-    </div><div class="tile">
-      <div class="ai-icon" style="background: var(--olive-bg); width: 40px; height: 40px; font-size: 18px;">👶</div>
-      <h3 style="font-size: 1.0625rem; font-weight: 700; margin: 12px 0 6px;" data-en="Kidspreneur 2024" data-ar="كيدزبرنر ٢٠٢٤">Kidspreneur 2024</h3>
-      <p style="font-size: 14px; color: var(--ink-soft); margin: 0; line-height: 1.55;" data-en="Partnering with the UAE Ministry of Education to introduce young founders to e-commerce." data-ar="بالشراكة مع وزارة التربية والتعليم الإماراتية لتعريف رواد الأعمال الصغار بالتجارة الإلكترونية.">Partnering with the UAE Ministry of Education to introduce young founders to e-commerce.</p>
-    </div><div class="tile">
-      <div class="ai-icon" style="background: var(--olive-bg); width: 40px; height: 40px; font-size: 18px;">🌐</div>
-      <h3 style="font-size: 1.0625rem; font-weight: 700; margin: 12px 0 6px;" data-en="World Government Summit" data-ar="القمة العالمية للحكومات">World Government Summit</h3>
-      <p style="font-size: 14px; color: var(--ink-soft); margin: 0; line-height: 1.55;" data-en="Packman on the global stage at the World Government Summit." data-ar="باكمان على المسرح العالمي في القمة العالمية للحكومات.">Packman on the global stage at the World Government Summit.</p>
-    </div>
-  </div>
-</section>
-
-<section style="max-width: 1100px; margin: 0 auto; padding: 40px 24px 80px;">
-  <div style="margin-bottom: 32px;">
-    <div class="section-eyebrow mono" data-en="PAYMENT GATEWAYS" data-ar="بوابات الدفع">PAYMENT GATEWAYS</div>
-    <h2 class="section-h2" style="font-size: 2rem;" data-en="Payment partners that work in the Gulf." data-ar="شركاء الدفع اللي يشتغلون في الخليج.">Payment partners that work in the Gulf.</h2>
-    <p class="section-sub" style="margin-top: 8px;" data-en="Three trusted gateways. Buy-now-pay-later, Sharia-compliant instalments, and one-tap secure checkout — included in every Packman plan." data-ar="ثلاث بوابات موثوقة. اشتر الآن وادفع لاحقاً، أقساط متوافقة مع الشريعة، ودفع آمن بضغطة وحدة — متضمنة في كل خطط باكمان.">
-      Three trusted gateways. Buy-now-pay-later, Sharia-compliant instalments, and one-tap secure checkout — included in every Packman plan.
+<section style="max-width: 1100px; margin: 0 auto; padding: 64px 24px 80px;">
+  <div style="text-align: center; margin-bottom: 56px;">
+    <div class="section-eyebrow mono" data-en="CONTACT" data-ar="تواصل">CONTACT</div>
+    <h1 class="section-h2" data-en="Let's talk." data-ar="خلنا نتكلم.">Let's talk.</h1>
+    <p class="section-sub" style="margin: 16px auto 0;" data-en="Sales, support, partnerships, press, or careers — we reply within one business day." data-ar="مبيعات، دعم، شراكات، إعلام، أو وظائف — نرد خلال يوم عمل واحد.">
+      Sales, support, partnerships, press, or careers — we reply within one business day.
     </p>
   </div>
-  <div style="display: grid; grid-template-columns: repeat(3, 1fr); gap: 16px;" class="grid-3-mobile">
-    <div class="tile" style="text-align: center; padding: 32px 24px;">
-      <div style="font-weight: 800; font-size: 1.5rem; letter-spacing: -0.02em; margin-bottom: 12px;">Tabby</div>
-      <p style="font-size: 14px; color: var(--ink-soft); margin: 0; line-height: 1.55;" data-en="Buy now, pay later — split into 4 interest-free payments." data-ar="اشتر الآن وادفع لاحقاً — قسّم على ٤ دفعات بدون فوائد.">Buy now, pay later — split into 4 interest-free payments.</p>
-    </div><div class="tile" style="text-align: center; padding: 32px 24px;">
-      <div style="font-weight: 800; font-size: 1.5rem; letter-spacing: -0.02em; margin-bottom: 12px;">Tamara</div>
-      <p style="font-size: 14px; color: var(--ink-soft); margin: 0; line-height: 1.55;" data-en="Pay in 3 — Sharia-compliant flexible instalments across the GCC." data-ar="ادفع على ٣ — أقساط مرنة متوافقة مع الشريعة في الخليج.">Pay in 3 — Sharia-compliant flexible instalments across the GCC.</p>
-    </div><div class="tile" style="text-align: center; padding: 32px 24px;">
-      <div style="font-weight: 800; font-size: 1.5rem; letter-spacing: -0.02em; margin-bottom: 12px;">Apple Pay</div>
-      <p style="font-size: 14px; color: var(--ink-soft); margin: 0; line-height: 1.55;" data-en="One-tap secure checkout with Touch ID and Face ID." data-ar="دفع آمن بضغطة واحدة مع Touch ID و Face ID.">One-tap secure checkout with Touch ID and Face ID.</p>
+
+  <div style="display: grid; grid-template-columns: 5fr 7fr; gap: 48px;" class="grid-3-mobile">
+    <div class="card-base">
+      <h3 style="font-size: 1.25rem; font-weight: 700; margin: 0 0 24px;" data-en="Send a message" data-ar="أرسل رسالة">Send a message</h3>
+      <div class="form-row">
+        <label data-en="Name" data-ar="الاسم">Name</label>
+        <input type="text" placeholder="Your full name" data-en-ph="Your full name" data-ar-ph="اسمك الكامل" />
+      </div>
+      <div class="form-row">
+        <label data-en="Email" data-ar="الإيميل">Email</label>
+        <input type="email" placeholder="you@company.com" />
+      </div>
+      <div class="form-row">
+        <label data-en="Topic" data-ar="الموضوع">Topic</label>
+        <select>
+          <option data-en="Sales" data-ar="المبيعات">Sales</option>
+          <option data-en="Support" data-ar="الدعم">Support</option>
+          <option data-en="Partnership" data-ar="الشراكة">Partnership</option>
+          <option data-en="Press" data-ar="الإعلام">Press</option>
+          <option data-en="Careers" data-ar="الوظائف">Careers</option>
+        </select>
+      </div>
+      <div class="form-row">
+        <label data-en="Message" data-ar="الرسالة">Message</label>
+        <textarea placeholder="How can we help?" data-en-ph="How can we help?" data-ar-ph="كيف نقدر نساعدك؟"></textarea>
+      </div>
+      <button type="button" class="btn-pill btn-ink" style="padding: 13px 24px; font-size: 14px; width: 100%; justify-content: center; margin-top: 8px;" data-en="Send message" data-ar="إرسال الرسالة">Send message</button>
+    </div>
+
+    <div style="display: grid; gap: 16px; grid-template-columns: 1fr 1fr;">
+
+      <div class="tile" style="padding: 28px;">
+        <div class="ai-icon" style="background: var(--olive-bg); width: 40px; height: 40px; font-size: 18px;">💼</div>
+        <h3 style="font-size: 1.125rem; font-weight: 700; margin: 12px 0 8px;" data-en="Sales" data-ar="المبيعات">Sales</h3>
+        <p style="font-size: 14px; color: var(--ink-soft); margin: 0 0 12px; line-height: 1.5;" data-en="Upgrade plans, enterprise quotes, volume shipping." data-ar="ترقية الخطط، عروض الشركات الكبيرة، شحن بكميات.">Upgrade plans, enterprise quotes, volume shipping.</p>
+        <a href="mailto:sales@packman.ai" style="font-size: 14px; font-weight: 600; color: var(--olive);">sales@packman.ai</a>
+      </div>
+      <div class="tile" style="padding: 28px;">
+        <div class="ai-icon" style="background: var(--olive-bg); width: 40px; height: 40px; font-size: 18px;">🛟</div>
+        <h3 style="font-size: 1.125rem; font-weight: 700; margin: 12px 0 8px;" data-en="Support" data-ar="الدعم">Support</h3>
+        <p style="font-size: 14px; color: var(--ink-soft); margin: 0 0 12px; line-height: 1.5;" data-en="Live chat in your dashboard, 24/7 in Arabic and English." data-ar="محادثة مباشرة من لوحة التحكم، ٢٤/٧ بالعربي والإنجليزي.">Live chat in your dashboard, 24/7 in Arabic and English.</p>
+        <a href="mailto:support@packman.ai" style="font-size: 14px; font-weight: 600; color: var(--olive);">support@packman.ai</a>
+      </div>
+      <div class="tile" style="padding: 28px;">
+        <div class="ai-icon" style="background: var(--olive-bg); width: 40px; height: 40px; font-size: 18px;">🤝</div>
+        <h3 style="font-size: 1.125rem; font-weight: 700; margin: 12px 0 8px;" data-en="Partnerships" data-ar="الشراكات">Partnerships</h3>
+        <p style="font-size: 14px; color: var(--ink-soft); margin: 0 0 12px; line-height: 1.5;" data-en="Agencies, resellers, and technology integrators." data-ar="وكالات، موزّعين، ومتكاملي التقنية.">Agencies, resellers, and technology integrators.</p>
+        <a href="mailto:partnerships@packman.ai" style="font-size: 14px; font-weight: 600; color: var(--olive);">partnerships@packman.ai</a>
+      </div>
+      <div class="tile" style="padding: 28px;">
+        <div class="ai-icon" style="background: var(--olive-bg); width: 40px; height: 40px; font-size: 18px;">👥</div>
+        <h3 style="font-size: 1.125rem; font-weight: 700; margin: 12px 0 8px;" data-en="Careers" data-ar="الوظائف">Careers</h3>
+        <p style="font-size: 14px; color: var(--ink-soft); margin: 0 0 12px; line-height: 1.5;" data-en="We're hiring across engineering, operations, and growth." data-ar="نوظّف في الهندسة والعمليات والنمو.">We're hiring across engineering, operations, and growth.</p>
+        <a href="mailto:careers@packman.ai" style="font-size: 14px; font-weight: 600; color: var(--olive);">careers@packman.ai</a>
+      </div>
     </div>
   </div>
-</section>
 
-<section style="max-width: 800px; margin: 0 auto; padding: 24px 24px 120px; text-align: center;">
-  <div class="final-cta">
-    <h2 data-en="Become a Packman partner." data-ar="كن شريكاً مع باكمان.">Become a Packman partner.</h2>
-    <p data-en="If you're a chamber of commerce, accelerator, educational body, or ecosystem partner, let's build the future of regional e-commerce together." data-ar="إذا كنت غرفة تجارة، مسرّعة، جهة تعليمية، أو شريك منظومة، خلنا نبني مستقبل التجارة الإلكترونية في المنطقة معاً.">
-      If you're a chamber of commerce, accelerator, educational body, or ecosystem partner, let's build the future of regional e-commerce together.
-    </p>
-    <a href="https://api.leadconnectorhq.com/widget/booking/rGFxfeyGpekgxR06ZEzT/" class="btn-pill btn-volt" style="padding: 14px 28px; font-size: 15px;">
-      <span data-en="Schedule a call" data-ar="احجز مكالمة">Schedule a call</span>
-      <svg width="14" height="14" viewBox="0 0 16 16" fill="none" style="margin-left:4px;"><path d="M3 8h10m0 0L9 4m4 4l-4 4" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"/></svg>
-    </a>
+  <div style="margin-top: 80px;">
+    <div style="text-align: center; margin-bottom: 32px;">
+      <div class="section-eyebrow mono" data-en="OFFICES" data-ar="المكاتب">OFFICES</div>
+      <h2 class="section-h2" style="font-size: 2rem;" data-en="Three cities. One team." data-ar="ثلاث مدن. فريق واحد.">Three cities. One team.</h2>
+    </div>
+    <div style="display: grid; grid-template-columns: repeat(3, 1fr); gap: 16px;" class="grid-3-mobile">
+
+      <div class="region-card">
+        <div class="flag-circle">🇦🇪</div>
+        <h3 data-en="Dubai" data-ar="دبي">Dubai</h3>
+        <p data-en="United Arab Emirates" data-ar="الإمارات العربية المتحدة">United Arab Emirates</p>
+      </div>
+      <div class="region-card">
+        <div class="flag-circle">🇸🇦</div>
+        <h3 data-en="Riyadh" data-ar="الرياض">Riyadh</h3>
+        <p data-en="Saudi Arabia" data-ar="المملكة العربية السعودية">Saudi Arabia</p>
+      </div>
+      <div class="region-card">
+        <div class="flag-circle">🇴🇲</div>
+        <h3 data-en="Muscat" data-ar="مسقط">Muscat</h3>
+        <p data-en="Oman" data-ar="سلطنة عُمان">Oman</p>
+      </div>
+    </div>
   </div>
 </section>
 

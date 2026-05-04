@@ -3,8 +3,8 @@
 <head>
 <meta charset="UTF-8" />
 <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-<meta name="description" content="Common questions about Packman." />
-<title>Packman · FAQs</title>
+<meta name="description" content="Packman pricing in AED for sellers in UAE." />
+<title>Packman · Pricing · UAE</title>
 <link rel="icon" href="/assets/logo-mark-navy.png" type="image/png" />
 <link rel="preconnect" href="https://fonts.googleapis.com" />
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
@@ -173,6 +173,20 @@ body {
   margin: 32px 0 0;
 }
 .hero-h1 .olive { color: var(--olive); }
+
+/* Arabic needs more vertical breathing room — diacritics/letterforms collide at line-height 1.05 */
+[dir="rtl"] .hero-h1 {
+  line-height: 1.4;
+  letter-spacing: 0;
+}
+[dir="rtl"] .section-h2 {
+  line-height: 1.35;
+  letter-spacing: 0;
+}
+[dir="rtl"] .final-cta h2 {
+  line-height: 1.3;
+  letter-spacing: 0;
+}
 .hero-sub {
   font-size: clamp(1rem, 1.5vw, 1.125rem);
   color: var(--ink-soft);
@@ -909,12 +923,17 @@ footer .divider { border: 0; border-top: 1px solid var(--line); margin: 0 0 40px
   .pill-nav .lang-toggle {
     font-size: 10px;
     padding: 2px;
+    margin-left: 6px;
   }
   .pill-nav .lang-toggle button {
     padding: 4px 6px;
     min-width: 20px;
   }
-  .pill-nav > div:last-child { gap: 4px !important; }
+  [dir="rtl"] .pill-nav .lang-toggle {
+    margin-left: 0;
+    margin-right: 6px;
+  }
+  .pill-nav > div:last-child { gap: 6px !important; }
 
   main { padding: 48px 20px 80px !important; }
   .hero-input { padding: 6px 6px 6px 12px; gap: 8px; }
@@ -949,7 +968,7 @@ footer .divider { border: 0; border-top: 1px solid var(--line); margin: 0 0 40px
 
 <div style="padding: 24px 24px 0;">
   <nav class="pill-nav" style="max-width: 1140px; margin: 0 auto; display: flex; align-items: center; gap: 16px; padding: 8px 8px 8px 16px;">
-    <a href="/" style="display:flex; align-items:center; gap:12px; text-decoration:none;">
+    <a href="/uae" style="display:flex; align-items:center; gap:12px; text-decoration:none;">
   <span class="logo-mark"><img src="/assets/logo-mark-volt.png" alt="" /></span>
   <span style="display:flex; flex-direction:column; line-height:1;">
     <span style="display:flex; align-items:baseline;">
@@ -976,19 +995,117 @@ footer .divider { border: 0; border-top: 1px solid var(--line); margin: 0 0 40px
 </div>
 
 <main>
-<section style="max-width: 800px; margin: 0 auto; padding: 64px 24px 80px;">
-  <div style="text-align: center; margin-bottom: 56px;">
-    <div class="section-eyebrow mono" data-en="SUPPORT" data-ar="الدعم">SUPPORT</div>
-    <h1 class="section-h2" data-en="Frequently asked questions." data-ar="الأسئلة الشائعة.">Frequently asked questions.</h1>
-    <p class="section-sub" style="margin: 16px auto 0;">
-      <span data-en="Can't find what you need?" data-ar="ما لقيت اللي تبيه؟">Can't find what you need?</span>
-      <a href="/contact" style="color: var(--olive); text-decoration: underline; margin-left: 6px;" data-en="Contact support" data-ar="تواصل مع الدعم">Contact support</a>.
-    </p>
+<section style="max-width: 1100px; margin: 0 auto; padding: 64px 24px 80px; text-align: center;">
+  <div class="section-eyebrow mono" data-en="PRICING" data-ar="الأسعار">PRICING</div>
+  <h1 class="section-h2" data-en="One plan. Three countries." data-ar="خطة وحدة. ثلاث دول.">One plan. Three countries.</h1>
+  <p class="section-sub" style="margin: 16px auto 0;" data-en="Pay monthly or yearly — whichever fits your business. Switch anytime. No hidden fees, zero commission on sales." data-ar="ادفع شهرياً أو سنوياً — اللي يناسب شغلك. غيّر في أي وقت. بدون رسوم خفية، صفر عمولة على المبيعات.">
+    Pay monthly or yearly — whichever fits your business. Switch anytime. No hidden fees, zero commission on sales.
+  </p>
+  <div class="country-switcher"><a href="/pricing-uae" class="active"><span style="font-size:16px;">🇦🇪</span><span data-en="UAE" data-ar="الإمارات">UAE</span></a><a href="/pricing-ksa" class=""><span style="font-size:16px;">🇸🇦</span><span data-en="KSA" data-ar="السعودية">KSA</span></a><a href="/pricing-oman" class=""><span style="font-size:16px;">🇴🇲</span><span data-en="Oman" data-ar="عُمان">Oman</span></a></div>
+  <div class="billing-toggle">
+    <button type="button" data-billing="monthly" class="active" data-en="Monthly" data-ar="شهري">Monthly</button>
+    <button type="button" data-billing="yearly">
+      <span data-en="Yearly" data-ar="سنوي">Yearly</span>
+      <span class="savings-badge" data-en="Save 25%" data-ar="وفّر ٢٥٪">Save 25%</span>
+    </button>
   </div>
-  <div class="faq-group"><h3 data-en="Getting started" data-ar="البدء">Getting started</h3><details class="faq-item"><summary data-en="How long does it take to launch a store?" data-ar="كم الوقت لإطلاق المتجر؟">How long does it take to launch a store?</summary><p data-en="From a single product photo, most sellers are live in under 10 minutes. Packman auto-generates your storefront, content, and first collection. Most see their first paid order within 48 hours." data-ar="من صورة منتج وحدة، أغلب البائعين يكونون أونلاين في أقل من ١٠ دقايق. باكمان يولّد الواجهة والمحتوى وأول مجموعة تلقائياً. معظمهم يحصلون على أول طلب خلال ٤٨ ساعة.">From a single product photo, most sellers are live in under 10 minutes. Packman auto-generates your storefront, content, and first collection. Most see their first paid order within 48 hours.</p></details><details class="faq-item"><summary data-en="Do I need my own domain?" data-ar="هل أحتاج دومين خاص؟">Do I need my own domain?</summary><p data-en="No. Every store starts on a free shop.packman.ai/yourstore domain. You can connect a custom domain at any time from your dashboard." data-ar="لا. كل متجر يبدأ بدومين مجاني shop.packman.ai/yourstore. تقدر تربط دومين خاص في أي وقت.">No. Every store starts on a free shop.packman.ai/yourstore domain. You can connect a custom domain at any time from your dashboard.</p></details><details class="faq-item"><summary data-en="Is my store bilingual by default?" data-ar="هل المتجر ثنائي اللغة افتراضياً؟">Is my store bilingual by default?</summary><p data-en="Yes. Packman stores are Arabic and English out of the box, with proper RTL layout and translation of your content." data-ar="نعم. متاجر باكمان عربي وإنجليزي من البداية، مع تنسيق RTL صحيح وترجمة كاملة للمحتوى.">Yes. Packman stores are Arabic and English out of the box, with proper RTL layout and translation of your content.</p></details><details class="faq-item"><summary data-en="Do I need a trade licence?" data-ar="هل أحتاج رخصة تجارية؟">Do I need a trade licence?</summary><p data-en="Not to start. You can sign up, build your store, and even take your first orders without one. When you're ready to scale, you upload your trade licence inside the dashboard — we walk you through it." data-ar="ليس للبدء. تقدر تسجّل وتبني متجرك وحتى تستقبل أول طلبات بدون رخصة. لما تكون جاهز للتوسّع، ترفع رخصتك من لوحة التحكم — ونرشدك خطوة بخطوة.">Not to start. You can sign up, build your store, and even take your first orders without one. When you're ready to scale, you upload your trade licence inside the dashboard — we walk you through it.</p></details></div><div class="faq-group"><h3 data-en="Pricing & billing" data-ar="الأسعار والفوترة">Pricing & billing</h3><details class="faq-item"><summary data-en="Is there a free trial?" data-ar="هل في تجربة مجانية؟">Is there a free trial?</summary><p data-en="Yes. Every store starts with a 14-day free trial. After that, you pick monthly or yearly billing. Shipping labels and optional add-ons are billed separately." data-ar="نعم. كل متجر يبدأ بتجربة مجانية ١٤ يوم. بعدها تختار الدفع الشهري أو السنوي. ملصقات الشحن والإضافات تُحسب بشكل منفصل.">Yes. Every store starts with a 14-day free trial. After that, you pick monthly or yearly billing. Shipping labels and optional add-ons are billed separately.</p></details><details class="faq-item"><summary data-en="What's the difference between monthly and yearly?" data-ar="وش الفرق بين الشهري والسنوي؟">What's the difference between monthly and yearly?</summary><p data-en="The yearly plan saves you 25%. And if you complete 365 orders in your first year on the yearly plan, the next year is free." data-ar="الخطة السنوية توفّر ٢٥٪. وإذا أكملت ٣٦٥ طلب في سنتك الأولى على الخطة السنوية، السنة الجاية مجانية.">The yearly plan saves you 25%. And if you complete 365 orders in your first year on the yearly plan, the next year is free.</p></details><details class="faq-item"><summary data-en="Do you charge transaction fees?" data-ar="هل تأخذون رسوم على المعاملات؟">Do you charge transaction fees?</summary><p data-en="No. Packman itself charges zero commission on your sales. Payment gateways (Tabby, Tamara, Apple Pay, etc.) have their own per-transaction fees set by them." data-ar="لا. باكمان يأخذ صفر عمولة على مبيعاتك. بوابات الدفع (تابي، تمارا، آبل باي وغيرها) لها رسوم خاصة بها.">No. Packman itself charges zero commission on your sales. Payment gateways (Tabby, Tamara, Apple Pay, etc.) have their own per-transaction fees set by them.</p></details><details class="faq-item"><summary data-en="Can I switch plans?" data-ar="هل أقدر أغيّر الاشتراك؟">Can I switch plans?</summary><p data-en="You can upgrade your plan at any time. Switch from monthly to yearly to lock in the 25% savings." data-ar="تقدر ترفع الاشتراك في أي وقت. حوّل من شهري لسنوي لتثبت توفير ال٢٥٪.">You can upgrade your plan at any time. Switch from monthly to yearly to lock in the 25% savings.</p></details></div><div class="faq-group"><h3 data-en="Fulfillment & shipping" data-ar="التوصيل والشحن">Fulfillment & shipping</h3><details class="faq-item"><summary data-en="Where are your warehouses?" data-ar="وين مستودعاتكم؟">Where are your warehouses?</summary><p data-en="We operate fulfillment centers in UAE (Dubai · Al Quoz), KSA (Riyadh and Jeddah), and Oman (Muscat). You can stock in one or all of them." data-ar="نشغّل مراكز توصيل في الإمارات (دبي · القوز)، السعودية (الرياض وجدة)، وعُمان (مسقط). تقدر تخزّن في وحدة أو كلهم.">We operate fulfillment centers in UAE (Dubai · Al Quoz), KSA (Riyadh and Jeddah), and Oman (Muscat). You can stock in one or all of them.</p></details><details class="faq-item"><summary data-en="Which countries do you ship to?" data-ar="وين تشحنون؟">Which countries do you ship to?</summary><p data-en="We ship to 160+ countries. International rates are quoted live at checkout based on weight, destination, and service level." data-ar="نشحن إلى ١٦٠+ دولة. أسعار الشحن الدولي تُعرض مباشرة عند الدفع حسب الوزن والوجهة ومستوى الخدمة.">We ship to 160+ countries. International rates are quoted live at checkout based on weight, destination, and service level.</p></details><details class="faq-item"><summary data-en="How fast is regional delivery?" data-ar="كم سرعة التوصيل المحلي؟">How fast is regional delivery?</summary><p data-en="Same-day in Dubai and Riyadh, next-day across the GCC, and 3–5 day standard delivery internationally." data-ar="نفس اليوم في دبي والرياض، ثاني يوم في الخليج، و٣-٥ أيام للتوصيل الدولي.">Same-day in Dubai and Riyadh, next-day across the GCC, and 3–5 day standard delivery internationally.</p></details></div><div class="faq-group"><h3 data-en="Payments" data-ar="المدفوعات">Payments</h3><details class="faq-item"><summary data-en="What payment methods are supported?" data-ar="إيش طرق الدفع المدعومة؟">What payment methods are supported?</summary><p data-en="Cards, Apple Pay, Google Pay, COD, Tabby, Tamara, and Mada. More are added regularly." data-ar="البطاقات، آبل باي، قوقل باي، الدفع عند الاستلام، تابي، تمارا، ومدى. نضيف المزيد بشكل مستمر.">Cards, Apple Pay, Google Pay, COD, Tabby, Tamara, and Mada. More are added regularly.</p></details><details class="faq-item"><summary data-en="How fast are payouts?" data-ar="كم سرعة التحويلات؟">How fast are payouts?</summary><p data-en="Payouts to your bank account every 2 weeks on standard plans. Faster cycles available on enterprise." data-ar="تحويلات لحسابك البنكي كل أسبوعين في الخطط القياسية. دورات أسرع متوفرة في خطط الشركات الكبيرة.">Payouts to your bank account every 2 weeks on standard plans. Faster cycles available on enterprise.</p></details></div><div class="faq-group"><h3 data-en="Support & account" data-ar="الدعم والحساب">Support & account</h3><details class="faq-item"><summary data-en="How do I contact support?" data-ar="كيف أتواصل مع الدعم؟">How do I contact support?</summary><p data-en="Live chat in your Packman dashboard, email at support@packman.ai, or WhatsApp. All bilingual, 24/7." data-ar="محادثة مباشرة من لوحة التحكم، إيميل support@packman.ai، أو واتساب. كلها ثنائية اللغة، ٢٤/٧.">Live chat in your Packman dashboard, email at support@packman.ai, or WhatsApp. All bilingual, 24/7.</p></details><details class="faq-item"><summary data-en="Can I export my data?" data-ar="هل أقدر أصدّر بياناتي؟">Can I export my data?</summary><p data-en="Yes. Products, orders, customers, and settings can be exported as CSV at any time." data-ar="نعم. المنتجات والطلبات والعملاء والإعدادات تقدر تصدّرها CSV في أي وقت.">Yes. Products, orders, customers, and settings can be exported as CSV at any time.</p></details></div>
+  <div class="price-hero-card">
+    <div class="country-tag">
+      <span style="font-size:14px;">🇦🇪</span>
+      <span data-en="UAE · Subscription" data-ar="الإمارات · اشتراك">UAE · Subscription</span>
+    </div>
+    <h2 data-en="Packman Subscription" data-ar="اشتراك باكمان">Packman Subscription</h2>
+    <p class="blurb" data-en="Everything you need to build, sell, and ship — in one plan." data-ar="كل ما تحتاجه لتبني وتبيع وتشحن — في خطة وحدة.">Everything you need to build, sell, and ship — in one plan.</p>
+    <div class="price-amount">
+      <span class="cur">AED</span>
+      <span class="num" id="price-num" data-monthly="400" data-yearly="3,600">400</span>
+      <span class="per" id="price-per" data-en="/ month" data-ar="/ شهر">/ month</span>
+    </div>
+    <ul class="price-features">
+      <li data-en="E-store solutions — branded mobile-first storefront in minutes" data-ar="حلول المتجر — واجهة بالموبايل أولاً بالهوية في دقائق">E-store solutions — branded mobile-first storefront in minutes</li>
+      <li data-en="Payment gateway integration (Tabby, Tamara, Apple Pay, cards, COD)" data-ar="تكامل بوابات الدفع (تابي، تمارا، آبل باي، البطاقات، الدفع عند الاستلام)">Payment gateway integration (Tabby, Tamara, Apple Pay, cards, COD)</li>
+      <li data-en="Local & international delivery — UAE, KSA, Oman + 160+ countries" data-ar="توصيل محلي ودولي — الإمارات، السعودية، عُمان + ١٦٠ دولة">Local &amp; international delivery — UAE, KSA, Oman + 160+ countries</li>
+      <li data-en="Performance insights — real-time sales, traffic, fulfillment metrics" data-ar="تحليلات الأداء — مبيعات وزوار وعمليات بالوقت الحقيقي">Performance insights — real-time sales, traffic, fulfillment metrics</li>
+      <li data-en="Technical support — real humans, not bots" data-ar="دعم تقني — أشخاص حقيقيين، مو روبوتات">Technical support — real humans, not bots</li>
+      <li data-en="Easy dashboard — track orders, sales, and numbers in one screen" data-ar="لوحة تحكم سهلة — تابع الطلبات والمبيعات والأرقام في شاشة وحدة">Easy dashboard — track orders, sales, and numbers in one screen</li>
+      <li data-en="Dedicated account manager — from order to delivery" data-ar="مدير حساب مخصص — من الطلب للتوصيل">Dedicated account manager — from order to delivery</li>
+    </ul>
+    <div class="price-cta-row">
+      <a href="https://api.leadconnectorhq.com/widget/booking/rGFxfeyGpekgxR06ZEzT/" class="btn-pill btn-outline" style="padding: 14px 24px; font-size: 15px; flex: 1; justify-content: center;" data-en="Schedule a demo" data-ar="احجز عرضاً">Schedule a demo</a>
+      <a href="/" class="btn-pill btn-volt" style="padding: 14px 24px; font-size: 15px; flex: 1; justify-content: center;" data-en="Launch your store" data-ar="أطلق متجرك">Launch your store</a>
+    </div>
+    <div class="price-bonus">
+      <span class="icon">✨</span>
+      <p>
+        <strong data-en="365-order bonus." data-ar="مكافأة ٣٦٥ طلب.">365-order bonus.</strong>
+        <span data-en=" Complete 365 orders during your first year and get a full year of subscription free. (Yearly plan only.)" data-ar=" أكمل ٣٦٥ طلب في سنتك الأولى واحصل على سنة اشتراك كاملة مجاناً. (الخطة السنوية فقط.)"> Complete 365 orders during your first year and get a full year of subscription free. (Yearly plan only.)</span>
+      </p>
+    </div>
+  </div>
+</section>
+
+<section style="max-width: 1100px; margin: 0 auto; padding: 40px 24px 120px;">
+  <div style="text-align: center; margin-bottom: 56px;">
+    <div class="section-eyebrow mono" data-en="WHAT'S INCLUDED" data-ar="المتضمَّن">WHAT'S INCLUDED</div>
+    <h2 class="section-h2" data-en="One subscription. The full Packman stack." data-ar="اشتراك واحد. منصة باكمان كاملة.">One subscription. The full Packman stack.</h2>
+    <p class="section-sub" style="margin: 16px auto 0;" data-en="No upsells, no tiers, no surprise add-ons." data-ar="بدون باقات، بدون أسعار خفية، بدون إضافات مفاجئة.">No upsells, no tiers, no surprise add-ons.</p>
+  </div>
+  <div style="display: grid; grid-template-columns: repeat(3, 1fr); gap: 16px;" class="grid-3-mobile">
+<div class="tile">
+      <div class="ai-icon" style="background: var(--olive-bg); width: 40px; height: 40px; font-size: 18px;">🛍</div>
+      <h3 style="font-size: 1.0625rem; font-weight: 700; margin: 12px 0 6px;" data-en="E-store solutions" data-ar="حلول المتجر">E-store solutions</h3>
+      <p style="font-size: 14.5px; color: var(--ink-soft); margin: 0; line-height: 1.6;" data-en="A branded, mobile-first storefront — bilingual in Arabic and English from day one." data-ar="واجهة بالموبايل أولاً بالهوية — ثنائية اللغة من اليوم الأول.">A branded, mobile-first storefront — bilingual in Arabic and English from day one.</p>
+    </div><div class="tile">
+      <div class="ai-icon" style="background: var(--olive-bg); width: 40px; height: 40px; font-size: 18px;">💳</div>
+      <h3 style="font-size: 1.0625rem; font-weight: 700; margin: 12px 0 6px;" data-en="Payment gateway" data-ar="بوابة الدفع">Payment gateway</h3>
+      <p style="font-size: 14.5px; color: var(--ink-soft); margin: 0; line-height: 1.6;" data-en="Trusted, secure checkout that keeps customers paying and conversions high." data-ar="دفع آمن وموثوق يحافظ على معدلات تحويل عالية.">Trusted, secure checkout that keeps customers paying and conversions high.</p>
+    </div><div class="tile">
+      <div class="ai-icon" style="background: var(--olive-bg); width: 40px; height: 40px; font-size: 18px;">🚚</div>
+      <h3 style="font-size: 1.0625rem; font-weight: 700; margin: 12px 0 6px;" data-en="Local & international delivery" data-ar="توصيل محلي ودولي">Local & international delivery</h3>
+      <p style="font-size: 14.5px; color: var(--ink-soft); margin: 0; line-height: 1.6;" data-en="Fulfillment centers in UAE, KSA, Oman — shipping to 160+ countries worldwide." data-ar="مراكز توصيل في الإمارات والسعودية وعُمان — شحن إلى ١٦٠ دولة.">Fulfillment centers in UAE, KSA, Oman — shipping to 160+ countries worldwide.</p>
+    </div><div class="tile">
+      <div class="ai-icon" style="background: var(--olive-bg); width: 40px; height: 40px; font-size: 18px;">📊</div>
+      <h3 style="font-size: 1.0625rem; font-weight: 700; margin: 12px 0 6px;" data-en="Performance insights" data-ar="تحليلات الأداء">Performance insights</h3>
+      <p style="font-size: 14.5px; color: var(--ink-soft); margin: 0; line-height: 1.6;" data-en="Real-time sales, traffic, and fulfillment metrics so you always know what's working." data-ar="مبيعات وزوار وعمليات بالوقت الحقيقي — تعرف دائماً وش يشتغل.">Real-time sales, traffic, and fulfillment metrics so you always know what's working.</p>
+    </div><div class="tile">
+      <div class="ai-icon" style="background: var(--olive-bg); width: 40px; height: 40px; font-size: 18px;">🛠</div>
+      <h3 style="font-size: 1.0625rem; font-weight: 700; margin: 12px 0 6px;" data-en="Technical support" data-ar="دعم تقني">Technical support</h3>
+      <p style="font-size: 14.5px; color: var(--ink-soft); margin: 0; line-height: 1.6;" data-en="Real humans, not bots — helping you launch, troubleshoot, and scale." data-ar="أشخاص حقيقيين، مو روبوتات — يساعدونك تطلق وتحل المشاكل وتكبر.">Real humans, not bots — helping you launch, troubleshoot, and scale.</p>
+    </div><div class="tile">
+      <div class="ai-icon" style="background: var(--olive-bg); width: 40px; height: 40px; font-size: 18px;">👤</div>
+      <h3 style="font-size: 1.0625rem; font-weight: 700; margin: 12px 0 6px;" data-en="Account manager" data-ar="مدير حساب">Account manager</h3>
+      <p style="font-size: 14.5px; color: var(--ink-soft); margin: 0; line-height: 1.6;" data-en="A dedicated manager who supports you from order placement to customer delivery." data-ar="مدير مخصص يدعمك من الطلب لتوصيل العميل.">A dedicated manager who supports you from order placement to customer delivery.</p>
+    </div>
+  </div>
 </section>
 
 </main>
+
+<script>
+(function(){
+  var btns = document.querySelectorAll('.billing-toggle button');
+  var num  = document.getElementById('price-num');
+  var per  = document.getElementById('price-per');
+  if (!num || !per) return;
+  btns.forEach(function(b){
+    b.addEventListener('click', function(){
+      var bill = b.dataset.billing;
+      btns.forEach(function(x){ x.classList.toggle('active', x === b); });
+      num.textContent = bill === 'yearly' ? num.dataset.yearly : num.dataset.monthly;
+      var lang = document.documentElement.getAttribute('lang') === 'ar' ? 'ar' : 'en';
+      if (bill === 'yearly') {
+        per.dataset.en = '/ year';
+        per.dataset.ar = '/ سنة';
+      } else {
+        per.dataset.en = '/ month';
+        per.dataset.ar = '/ شهر';
+      }
+      per.textContent = lang === 'ar' ? per.dataset.ar : per.dataset.en;
+    });
+  });
+})();
+</script>
+
 
 <footer>
   <div class="inner">
@@ -1027,7 +1144,7 @@ footer .divider { border: 0; border-top: 1px solid var(--line); margin: 0 0 40px
       <div>
         <h3 class="col-title" data-en="COUNTRIES" data-ar="الدول">COUNTRIES</h3>
         <div style="display:flex; flex-direction:column; align-items:flex-start; gap:10px;">
-          <a href="/uae" class="country-pill"><span style="font-size:18px;">🇦🇪</span><span data-en="UAE" data-ar="الإمارات">UAE</span></a><a href="/ksa" class="country-pill"><span style="font-size:18px;">🇸🇦</span><span data-en="KSA" data-ar="السعودية">KSA</span></a><a href="/oman" class="country-pill"><span style="font-size:18px;">🇴🇲</span><span data-en="Oman" data-ar="عُمان">Oman</span></a>
+          <a href="/uae" class="country-pill active"><span style="font-size:18px;">🇦🇪</span><span data-en="UAE" data-ar="الإمارات">UAE</span></a><a href="/ksa" class="country-pill"><span style="font-size:18px;">🇸🇦</span><span data-en="KSA" data-ar="السعودية">KSA</span></a><a href="/oman" class="country-pill"><span style="font-size:18px;">🇴🇲</span><span data-en="Oman" data-ar="عُمان">Oman</span></a>
         </div>
       </div>
     </div>
