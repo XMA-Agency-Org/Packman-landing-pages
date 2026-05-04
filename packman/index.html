@@ -3,8 +3,8 @@
 <head>
 <meta charset="UTF-8" />
 <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-<meta name="description" content="Drop a photo, get a ready-to-sell store. Packman in KSA." />
-<title>Packman · KSA</title>
+<meta name="description" content="Drop a photo, get a ready-to-sell store. Packman builds your e-commerce business across the Gulf in 48 hours." />
+<title>Packman · Sell anything, anywhere</title>
 <link rel="icon" href="/assets/logo-mark-navy.png" type="image/png" />
 <link rel="preconnect" href="https://fonts.googleapis.com" />
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
@@ -929,6 +929,11 @@ footer .divider { border: 0; border-top: 1px solid var(--line); margin: 0 0 40px
     padding: 4px 6px;
     min-width: 20px;
   }
+  /* In English mode, push the right-side group (Launch + EN/AR) to the far right edge */
+  .pill-nav > div:last-child {
+    margin-left: auto;
+    gap: 6px !important;
+  }
   /* In Arabic mode, push the AR/EN toggle to the visual far-left with auto margin */
   [dir="rtl"] .pill-nav .lang-toggle {
     margin-left: auto;
@@ -936,10 +941,10 @@ footer .divider { border: 0; border-top: 1px solid var(--line); margin: 0 0 40px
     order: -1;
   }
   [dir="rtl"] .pill-nav > div:last-child {
+    margin-left: 0;
     flex: 1;
     justify-content: flex-end;
   }
-  .pill-nav > div:last-child { gap: 6px !important; }
 
   main { padding: 48px 20px 80px !important; }
   .hero-input { padding: 6px 6px 6px 12px; gap: 8px; }
@@ -974,7 +979,7 @@ footer .divider { border: 0; border-top: 1px solid var(--line); margin: 0 0 40px
 
 <div style="padding: 24px 24px 0;">
   <nav class="pill-nav" style="max-width: 1140px; margin: 0 auto; display: flex; align-items: center; gap: 16px; padding: 8px 8px 8px 16px;">
-    <a href="/ksa" style="display:flex; align-items:center; gap:12px; text-decoration:none;">
+    <a href="/" style="display:flex; align-items:center; gap:12px; text-decoration:none;">
   <span class="logo-mark"><img src="/assets/logo-mark-volt.png" alt="" /></span>
   <span style="display:flex; flex-direction:column; line-height:1;">
     <span style="display:flex; align-items:baseline;">
@@ -1037,13 +1042,6 @@ footer .divider { border: 0; border-top: 1px solid var(--line); margin: 0 0 40px
 
   <p class="trust" data-en="No credit card · No trade licence to start · First order ships in 48 hours" data-ar="بدون بطاقة ائتمان · بدون رخصة تجارية للبدء · أول طلب يُشحن خلال ٤٨ ساعة">No credit card · No trade licence to start · First order ships in 48 hours</p>
   
-        <div style="margin-top: 24px; font-size: 13px; color: var(--muted);">
-            <span style="font-size:16px;">🇸🇦</span>
-            <span data-en="Showing prices for" data-ar="عرض الأسعار في">Showing prices for</span>
-            <strong style="color:var(--ink);" data-en="KSA" data-ar="السعودية">KSA</strong>
-            ·
-            <a href="/" style="color:var(--olive); text-decoration:underline;" data-en="change country" data-ar="تغيير الدولة">change country</a>
-        </div>
 </section>
 
 <!-- VSL #8 — THE 90-SEC HOOK -->
@@ -1059,7 +1057,7 @@ footer .divider { border: 0; border-top: 1px solid var(--line); margin: 0 0 40px
     </div>
   <p class="vsl-quote">
     <span class="green-dot" style="background: var(--olive);"></span>
-    <span data-en="“SAR 5,780 earned in month one — without hiring a single ops person.”" data-ar="«SAR ٥٬٧٨٠ مكسب في أول شهر — بدون توظيف موظف عمليات.»">“SAR 5,780 earned in month one — without hiring a single ops person.”</span>
+    <span data-en="“AED 5,780 earned in month one — without hiring a single ops person.”" data-ar="«AED ٥٬٧٨٠ مكسب في أول شهر — بدون توظيف موظف عمليات.»">“AED 5,780 earned in month one — without hiring a single ops person.”</span>
   </p>
 </section>
 
@@ -1085,7 +1083,7 @@ footer .divider { border: 0; border-top: 1px solid var(--line); margin: 0 0 40px
     <div class="pain-card">
       <div class="pain-num">20%</div>
       <div class="pain-label" data-en="returned to origin (RTO)" data-ar="ترجع للمصدر (RTO)">returned to origin (RTO)</div>
-      <p class="pain-desc" data-en="One in five orders fails delivery. That's SAR 7,960/month gone for a brand doing 200 orders." data-ar="طلب من كل خمسة يفشل توصيله. وهذا SAR 7,960/شهر يضيع لبراند يسوي ٢٠٠ طلب.">One in five orders fails delivery. That's SAR 7,960/month gone for a brand doing 200 orders.</p>
+      <p class="pain-desc" data-en="One in five orders fails delivery. That's AED 7,960/month gone for a brand doing 200 orders." data-ar="طلب من كل خمسة يفشل توصيله. وهذا AED 7,960/شهر يضيع لبراند يسوي ٢٠٠ طلب.">One in five orders fails delivery. That's AED 7,960/month gone for a brand doing 200 orders.</p>
     </div>
     <div class="pain-card">
       <div class="pain-num">5</div>
@@ -1118,7 +1116,7 @@ footer .divider { border: 0; border-top: 1px solid var(--line); margin: 0 0 40px
         <div class="mock-row"><span><span class="sku">51MJI-UL99</span> · <span data-en="Sara M." data-ar="سارة م.">Sara M.</span> 🇦🇪</span><span class="badge" data-en="Shipped" data-ar="شُحن">Shipped</span></div>
         <div class="mock-row"><span><span class="sku">51MJI-OM31</span> · <span data-en="Ahmed K." data-ar="أحمد ك.">Ahmed K.</span> 🇴🇲</span><span class="badge badge-coral" data-en="New" data-ar="جديد">New</span></div>
         <div class="mock-row"><span><span class="sku">51MJI-K2X4</span> · <span data-en="Reem A." data-ar="ريم ع.">Reem A.</span> 🇸🇦</span><span class="badge" data-en="Pending" data-ar="قيد التنفيذ">Pending</span></div>
-        <div class="mock-row"><span style="color:var(--muted);" data-en="+ 55 more today" data-ar="+ ٥٥ طلب إضافي اليوم">+ 55 more today</span><span class="amt">SAR 39,800</span></div>
+        <div class="mock-row"><span style="color:var(--muted);" data-en="+ 55 more today" data-ar="+ ٥٥ طلب إضافي اليوم">+ 55 more today</span><span class="amt">AED 39,800</span></div>
       </div>
     </div>
   </div>
@@ -1364,7 +1362,7 @@ footer .divider { border: 0; border-top: 1px solid var(--line); margin: 0 0 40px
       <div>
         <h3 class="col-title" data-en="COUNTRIES" data-ar="الدول">COUNTRIES</h3>
         <div style="display:flex; flex-direction:column; align-items:flex-start; gap:10px;">
-          <a href="/uae" class="country-pill"><span style="font-size:18px;">🇦🇪</span><span data-en="UAE" data-ar="الإمارات">UAE</span></a><a href="/ksa" class="country-pill active"><span style="font-size:18px;">🇸🇦</span><span data-en="KSA" data-ar="السعودية">KSA</span></a><a href="/oman" class="country-pill"><span style="font-size:18px;">🇴🇲</span><span data-en="Oman" data-ar="عُمان">Oman</span></a>
+          <a href="/uae" class="country-pill"><span style="font-size:18px;">🇦🇪</span><span data-en="UAE" data-ar="الإمارات">UAE</span></a><a href="/ksa" class="country-pill"><span style="font-size:18px;">🇸🇦</span><span data-en="KSA" data-ar="السعودية">KSA</span></a><a href="/oman" class="country-pill"><span style="font-size:18px;">🇴🇲</span><span data-en="Oman" data-ar="عُمان">Oman</span></a>
         </div>
       </div>
     </div>

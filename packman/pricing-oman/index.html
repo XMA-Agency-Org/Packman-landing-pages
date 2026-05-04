@@ -3,8 +3,8 @@
 <head>
 <meta charset="UTF-8" />
 <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-<meta name="description" content="Packman pricing in AED for sellers in UAE." />
-<title>Packman · Pricing · UAE</title>
+<meta name="description" content="Packman pricing in OMR for sellers in Oman." />
+<title>Packman · Pricing · Oman</title>
 <link rel="icon" href="/assets/logo-mark-navy.png" type="image/png" />
 <link rel="preconnect" href="https://fonts.googleapis.com" />
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
@@ -929,6 +929,11 @@ footer .divider { border: 0; border-top: 1px solid var(--line); margin: 0 0 40px
     padding: 4px 6px;
     min-width: 20px;
   }
+  /* In English mode, push the right-side group (Launch + EN/AR) to the far right edge */
+  .pill-nav > div:last-child {
+    margin-left: auto;
+    gap: 6px !important;
+  }
   /* In Arabic mode, push the AR/EN toggle to the visual far-left with auto margin */
   [dir="rtl"] .pill-nav .lang-toggle {
     margin-left: auto;
@@ -936,10 +941,10 @@ footer .divider { border: 0; border-top: 1px solid var(--line); margin: 0 0 40px
     order: -1;
   }
   [dir="rtl"] .pill-nav > div:last-child {
+    margin-left: 0;
     flex: 1;
     justify-content: flex-end;
   }
-  .pill-nav > div:last-child { gap: 6px !important; }
 
   main { padding: 48px 20px 80px !important; }
   .hero-input { padding: 6px 6px 6px 12px; gap: 8px; }
@@ -974,7 +979,7 @@ footer .divider { border: 0; border-top: 1px solid var(--line); margin: 0 0 40px
 
 <div style="padding: 24px 24px 0;">
   <nav class="pill-nav" style="max-width: 1140px; margin: 0 auto; display: flex; align-items: center; gap: 16px; padding: 8px 8px 8px 16px;">
-    <a href="/uae" style="display:flex; align-items:center; gap:12px; text-decoration:none;">
+    <a href="/oman" style="display:flex; align-items:center; gap:12px; text-decoration:none;">
   <span class="logo-mark"><img src="/assets/logo-mark-volt.png" alt="" /></span>
   <span style="display:flex; flex-direction:column; line-height:1;">
     <span style="display:flex; align-items:baseline;">
@@ -1007,7 +1012,7 @@ footer .divider { border: 0; border-top: 1px solid var(--line); margin: 0 0 40px
   <p class="section-sub" style="margin: 16px auto 0;" data-en="Pay monthly or yearly — whichever fits your business. Switch anytime. No hidden fees, zero commission on sales." data-ar="ادفع شهرياً أو سنوياً — اللي يناسب شغلك. غيّر في أي وقت. بدون رسوم خفية، صفر عمولة على المبيعات.">
     Pay monthly or yearly — whichever fits your business. Switch anytime. No hidden fees, zero commission on sales.
   </p>
-  <div class="country-switcher"><a href="/pricing-uae" class="active"><span style="font-size:16px;">🇦🇪</span><span data-en="UAE" data-ar="الإمارات">UAE</span></a><a href="/pricing-ksa" class=""><span style="font-size:16px;">🇸🇦</span><span data-en="KSA" data-ar="السعودية">KSA</span></a><a href="/pricing-oman" class=""><span style="font-size:16px;">🇴🇲</span><span data-en="Oman" data-ar="عُمان">Oman</span></a></div>
+  <div class="country-switcher"><a href="/pricing-uae" class=""><span style="font-size:16px;">🇦🇪</span><span data-en="UAE" data-ar="الإمارات">UAE</span></a><a href="/pricing-ksa" class=""><span style="font-size:16px;">🇸🇦</span><span data-en="KSA" data-ar="السعودية">KSA</span></a><a href="/pricing-oman" class="active"><span style="font-size:16px;">🇴🇲</span><span data-en="Oman" data-ar="عُمان">Oman</span></a></div>
   <div class="billing-toggle">
     <button type="button" data-billing="monthly" class="active" data-en="Monthly" data-ar="شهري">Monthly</button>
     <button type="button" data-billing="yearly">
@@ -1017,14 +1022,14 @@ footer .divider { border: 0; border-top: 1px solid var(--line); margin: 0 0 40px
   </div>
   <div class="price-hero-card">
     <div class="country-tag">
-      <span style="font-size:14px;">🇦🇪</span>
-      <span data-en="UAE · Subscription" data-ar="الإمارات · اشتراك">UAE · Subscription</span>
+      <span style="font-size:14px;">🇴🇲</span>
+      <span data-en="Oman · Subscription" data-ar="عُمان · اشتراك">Oman · Subscription</span>
     </div>
     <h2 data-en="Packman Subscription" data-ar="اشتراك باكمان">Packman Subscription</h2>
     <p class="blurb" data-en="Everything you need to build, sell, and ship — in one plan." data-ar="كل ما تحتاجه لتبني وتبيع وتشحن — في خطة وحدة.">Everything you need to build, sell, and ship — in one plan.</p>
     <div class="price-amount">
-      <span class="cur">AED</span>
-      <span class="num" id="price-num" data-monthly="400" data-yearly="3,600">400</span>
+      <span class="cur">OMR</span>
+      <span class="num" id="price-num" data-monthly="40" data-yearly="360">40</span>
       <span class="per" id="price-per" data-en="/ month" data-ar="/ شهر">/ month</span>
     </div>
     <ul class="price-features">
@@ -1150,7 +1155,7 @@ footer .divider { border: 0; border-top: 1px solid var(--line); margin: 0 0 40px
       <div>
         <h3 class="col-title" data-en="COUNTRIES" data-ar="الدول">COUNTRIES</h3>
         <div style="display:flex; flex-direction:column; align-items:flex-start; gap:10px;">
-          <a href="/uae" class="country-pill active"><span style="font-size:18px;">🇦🇪</span><span data-en="UAE" data-ar="الإمارات">UAE</span></a><a href="/ksa" class="country-pill"><span style="font-size:18px;">🇸🇦</span><span data-en="KSA" data-ar="السعودية">KSA</span></a><a href="/oman" class="country-pill"><span style="font-size:18px;">🇴🇲</span><span data-en="Oman" data-ar="عُمان">Oman</span></a>
+          <a href="/uae" class="country-pill"><span style="font-size:18px;">🇦🇪</span><span data-en="UAE" data-ar="الإمارات">UAE</span></a><a href="/ksa" class="country-pill"><span style="font-size:18px;">🇸🇦</span><span data-en="KSA" data-ar="السعودية">KSA</span></a><a href="/oman" class="country-pill active"><span style="font-size:18px;">🇴🇲</span><span data-en="Oman" data-ar="عُمان">Oman</span></a>
         </div>
       </div>
     </div>

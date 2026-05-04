@@ -929,6 +929,11 @@ footer .divider { border: 0; border-top: 1px solid var(--line); margin: 0 0 40px
     padding: 4px 6px;
     min-width: 20px;
   }
+  /* In English mode, push the right-side group (Launch + EN/AR) to the far right edge */
+  .pill-nav > div:last-child {
+    margin-left: auto;
+    gap: 6px !important;
+  }
   /* In Arabic mode, push the AR/EN toggle to the visual far-left with auto margin */
   [dir="rtl"] .pill-nav .lang-toggle {
     margin-left: auto;
@@ -936,10 +941,10 @@ footer .divider { border: 0; border-top: 1px solid var(--line); margin: 0 0 40px
     order: -1;
   }
   [dir="rtl"] .pill-nav > div:last-child {
+    margin-left: 0;
     flex: 1;
     justify-content: flex-end;
   }
-  .pill-nav > div:last-child { gap: 6px !important; }
 
   main { padding: 48px 20px 80px !important; }
   .hero-input { padding: 6px 6px 6px 12px; gap: 8px; }
