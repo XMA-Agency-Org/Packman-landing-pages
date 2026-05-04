@@ -9,6 +9,18 @@
 <link rel="preconnect" href="https://fonts.googleapis.com" />
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
 <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800;900&family=IBM+Plex+Mono:wght@500;600;700&family=IBM+Plex+Sans+Arabic:wght@400;500;600;700;800&display=swap" rel="stylesheet" />
+<script>
+// Set lang/dir BEFORE render to prevent FOUC and avoid wrong-direction flash on page load
+(function(){
+  try {
+    var saved = localStorage.getItem('packman.lang');
+    if (saved === 'ar') {
+      document.documentElement.setAttribute('lang', 'ar');
+      document.documentElement.setAttribute('dir', 'rtl');
+    }
+  } catch(e) {}
+})();
+</script>
 <style>
 :root {
   --ink:       #0E1820;
@@ -878,16 +890,32 @@ footer .divider { border: 0; border-top: 1px solid var(--line); margin: 0 0 40px
 
 /* ───── Mobile ───── */
 @media (max-width: 768px) {
-  .pill-nav { padding: 6px 8px 6px 12px !important; gap: 6px !important; }
+  /* Nav: logo + tagline visible, compact EN/AR + Launch */
+  .pill-nav {
+    padding: 6px 6px 6px 10px !important;
+    gap: 6px !important;
+    flex-wrap: nowrap !important;
+  }
   .pill-nav .nav-links { display: none; }
   .pill-nav .login-btn { display: none; }
-  .pill-nav .logo-tag { display: none; }
-  .pill-nav .logo-text { font-size: 1.1rem; }
-  .pill-nav .logo-mark { width: 36px; height: 36px; border-radius: 10px; }
-  .pill-nav .logo-mark img { width: 24px; height: 24px; }
-  .pill-nav a[href="#start"], .pill-nav a.btn-volt { padding: 7px 12px !important; font-size: 12px !important; }
-  .pill-nav .lang-toggle { font-size: 11px; }
-  .pill-nav .lang-toggle button { padding: 4px 7px; min-width: 22px; }
+  .pill-nav .logo-text { font-size: 1rem; }
+  .pill-nav .logo-mark { width: 32px; height: 32px; border-radius: 8px; }
+  .pill-nav .logo-mark img { width: 22px; height: 22px; }
+  .pill-nav .logo-tag { font-size: 0.55rem; }
+  .pill-nav a[href="#start"], .pill-nav a.btn-volt {
+    padding: 6px 10px !important;
+    font-size: 11px !important;
+  }
+  .pill-nav .lang-toggle {
+    font-size: 10px;
+    padding: 2px;
+  }
+  .pill-nav .lang-toggle button {
+    padding: 4px 6px;
+    min-width: 20px;
+  }
+  .pill-nav > div:last-child { gap: 4px !important; }
+
   main { padding: 48px 20px 80px !important; }
   .hero-input { padding: 6px 6px 6px 12px; gap: 8px; }
   .hero-input input { font-size: 15px; min-width: 0; }
@@ -900,12 +928,20 @@ footer .divider { border: 0; border-top: 1px solid var(--line); margin: 0 0 40px
   .cookie-banner .btns { justify-content: stretch; }
   .cookie-banner .btns button { flex: 1; }
   footer .grid-4 { grid-template-columns: 1fr !important; gap: 32px !important; }
+
+  /* SINGLE COLUMN ON MOBILE — both grid types */
   .grid-3-mobile { grid-template-columns: 1fr !important; }
-  .grid-4-mobile { grid-template-columns: repeat(2, 1fr) !important; }
+  .grid-4-mobile { grid-template-columns: 1fr !important; }
   .compare-grid { grid-template-columns: 1fr !important; }
+
   .vsl-card .play-button { width: 64px; height: 64px; }
   .math-card { padding: 32px 24px !important; }
   .final-cta { padding: 40px 24px !important; }
+  .price-cta-row { flex-direction: column; }
+
+  /* Hero CTA row: stack vertical so both buttons fit */
+  .hero-ctas { flex-direction: column !important; align-items: stretch !important; }
+  .hero-ctas a { justify-content: center; }
 }
 </style>
 </head>
@@ -954,8 +990,8 @@ footer .divider { border: 0; border-top: 1px solid var(--line); margin: 0 0 40px
   <p class="hero-sub" data-en="Most brands hitting this volume are leaking thousands a month to RTO, fragmented tools, and ops chaos. This is exactly the volume Packman was built for." data-ar="أغلب البراندات اللي تصل لهذا الحجم تخسر آلاف بالشهر بسبب المرتجعات والأدوات المتفرقة وفوضى العمليات. هذا الحجم بالضبط اللي اتبنى باكمان عشانه.">
     Most brands hitting this volume are leaking thousands a month to RTO, fragmented tools, and ops chaos. This is exactly the volume Packman was built for.
   </p>
-  <div style="margin-top: 32px;">
-    <a href="/pricing" class="btn-pill btn-volt" style="padding: 14px 28px; font-size: 15px; margin-right: 8px;">
+  <div class="hero-ctas" style="margin-top: 32px; display: inline-flex; gap: 8px; justify-content: center;">
+    <a href="/pricing" class="btn-pill btn-volt" style="padding: 14px 28px; font-size: 15px;">
       <span data-en="See pricing" data-ar="شوف الأسعار">See pricing</span>
       <svg width="14" height="14" viewBox="0 0 16 16" fill="none" style="margin-left:4px;"><path d="M3 8h10m0 0L9 4m4 4l-4 4" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"/></svg>
     </a>
@@ -1030,7 +1066,7 @@ footer .divider { border: 0; border-top: 1px solid var(--line); margin: 0 0 40px
         <li data-en="Shopify · AED 290/mo" data-ar="شوبيفاي · AED ٢٩٠/شهر">Shopify · AED 290/mo</li>
         <li data-en="Klaviyo · AED 180/mo" data-ar="كلافيو · AED ١٨٠/شهر">Klaviyo · AED 180/mo</li>
         <li data-en="Sheets + Notion · AED 75/mo" data-ar="إكسل + نوشن · AED ٧٥/شهر">Sheets + Notion · AED 75/mo</li>
-        <li data-en="Buraq portal + Aramex portal" data-ar="بوابة براق + بوابة أرامكس">Buraq portal + Aramex portal</li>
+        <li data-en="3rd-party courier portals × 2" data-ar="بوابتا شحن خارجيتان">3rd-party courier portals × 2</li>
         <li data-en="Meta + TikTok ad managers" data-ar="مدراء إعلانات ميتا وتيك توك">Meta + TikTok ad managers</li>
         <li data-en="Canva + photographer · AED 1,200/mo" data-ar="كانفا + مصور · AED ١٬٢٠٠/شهر">Canva + photographer · AED 1,200/mo</li>
         <li data-en="WhatsApp + Gmail for support" data-ar="واتساب + جيميل للدعم">WhatsApp + Gmail for support</li>
@@ -1049,7 +1085,7 @@ footer .divider { border: 0; border-top: 1px solid var(--line); margin: 0 0 40px
         <li data-en="Storefront — bilingual, mobile-first" data-ar="واجهة متجر — ثنائية اللغة، الموبايل أولاً">Storefront — bilingual, mobile-first</li>
         <li data-en="Email + WhatsApp marketing built-in" data-ar="تسويق بالإيميل والواتساب مدمج">Email + WhatsApp marketing built-in</li>
         <li data-en="Inventory + reorder automation" data-ar="مخزون + إعادة طلب تلقائية">Inventory + reorder automation</li>
-        <li data-en="Buraq + Aramex auto-routing" data-ar="توجيه تلقائي براق + أرامكس">Buraq + Aramex auto-routing</li>
+        <li data-en="Packman fleet — we deliver, end-to-end" data-ar="أسطول باكمان — نحن نوصل، من البداية للنهاية">Packman fleet — we deliver, end-to-end</li>
         <li data-en="Ad creatives auto-generated" data-ar="إبداعات إعلانية تلقائية">Ad creatives auto-generated</li>
         <li data-en="AI content + photography" data-ar="محتوى وتصوير بالذكاء الاصطناعي">AI content + photography</li>
         <li data-en="24/7 bilingual customer support" data-ar="دعم عملاء ثنائي اللغة ٢٤/٧">24/7 bilingual customer support</li>

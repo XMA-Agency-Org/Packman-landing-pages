@@ -9,6 +9,18 @@
 <link rel="preconnect" href="https://fonts.googleapis.com" />
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
 <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800;900&family=IBM+Plex+Mono:wght@500;600;700&family=IBM+Plex+Sans+Arabic:wght@400;500;600;700;800&display=swap" rel="stylesheet" />
+<script>
+// Set lang/dir BEFORE render to prevent FOUC and avoid wrong-direction flash on page load
+(function(){
+  try {
+    var saved = localStorage.getItem('packman.lang');
+    if (saved === 'ar') {
+      document.documentElement.setAttribute('lang', 'ar');
+      document.documentElement.setAttribute('dir', 'rtl');
+    }
+  } catch(e) {}
+})();
+</script>
 <style>
 :root {
   --ink:       #0E1820;
@@ -878,16 +890,32 @@ footer .divider { border: 0; border-top: 1px solid var(--line); margin: 0 0 40px
 
 /* ───── Mobile ───── */
 @media (max-width: 768px) {
-  .pill-nav { padding: 6px 8px 6px 12px !important; gap: 6px !important; }
+  /* Nav: logo + tagline visible, compact EN/AR + Launch */
+  .pill-nav {
+    padding: 6px 6px 6px 10px !important;
+    gap: 6px !important;
+    flex-wrap: nowrap !important;
+  }
   .pill-nav .nav-links { display: none; }
   .pill-nav .login-btn { display: none; }
-  .pill-nav .logo-tag { display: none; }
-  .pill-nav .logo-text { font-size: 1.1rem; }
-  .pill-nav .logo-mark { width: 36px; height: 36px; border-radius: 10px; }
-  .pill-nav .logo-mark img { width: 24px; height: 24px; }
-  .pill-nav a[href="#start"], .pill-nav a.btn-volt { padding: 7px 12px !important; font-size: 12px !important; }
-  .pill-nav .lang-toggle { font-size: 11px; }
-  .pill-nav .lang-toggle button { padding: 4px 7px; min-width: 22px; }
+  .pill-nav .logo-text { font-size: 1rem; }
+  .pill-nav .logo-mark { width: 32px; height: 32px; border-radius: 8px; }
+  .pill-nav .logo-mark img { width: 22px; height: 22px; }
+  .pill-nav .logo-tag { font-size: 0.55rem; }
+  .pill-nav a[href="#start"], .pill-nav a.btn-volt {
+    padding: 6px 10px !important;
+    font-size: 11px !important;
+  }
+  .pill-nav .lang-toggle {
+    font-size: 10px;
+    padding: 2px;
+  }
+  .pill-nav .lang-toggle button {
+    padding: 4px 6px;
+    min-width: 20px;
+  }
+  .pill-nav > div:last-child { gap: 4px !important; }
+
   main { padding: 48px 20px 80px !important; }
   .hero-input { padding: 6px 6px 6px 12px; gap: 8px; }
   .hero-input input { font-size: 15px; min-width: 0; }
@@ -900,12 +928,20 @@ footer .divider { border: 0; border-top: 1px solid var(--line); margin: 0 0 40px
   .cookie-banner .btns { justify-content: stretch; }
   .cookie-banner .btns button { flex: 1; }
   footer .grid-4 { grid-template-columns: 1fr !important; gap: 32px !important; }
+
+  /* SINGLE COLUMN ON MOBILE — both grid types */
   .grid-3-mobile { grid-template-columns: 1fr !important; }
-  .grid-4-mobile { grid-template-columns: repeat(2, 1fr) !important; }
+  .grid-4-mobile { grid-template-columns: 1fr !important; }
   .compare-grid { grid-template-columns: 1fr !important; }
+
   .vsl-card .play-button { width: 64px; height: 64px; }
   .math-card { padding: 32px 24px !important; }
   .final-cta { padding: 40px 24px !important; }
+  .price-cta-row { flex-direction: column; }
+
+  /* Hero CTA row: stack vertical so both buttons fit */
+  .hero-ctas { flex-direction: column !important; align-items: stretch !important; }
+  .hero-ctas a { justify-content: center; }
 }
 </style>
 </head>

@@ -9,6 +9,18 @@
 <link rel="preconnect" href="https://fonts.googleapis.com" />
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
 <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800;900&family=IBM+Plex+Mono:wght@500;600;700&family=IBM+Plex+Sans+Arabic:wght@400;500;600;700;800&display=swap" rel="stylesheet" />
+<script>
+// Set lang/dir BEFORE render to prevent FOUC and avoid wrong-direction flash on page load
+(function(){
+  try {
+    var saved = localStorage.getItem('packman.lang');
+    if (saved === 'ar') {
+      document.documentElement.setAttribute('lang', 'ar');
+      document.documentElement.setAttribute('dir', 'rtl');
+    }
+  } catch(e) {}
+})();
+</script>
 <style>
 :root {
   --ink:       #0E1820;
@@ -878,16 +890,32 @@ footer .divider { border: 0; border-top: 1px solid var(--line); margin: 0 0 40px
 
 /* ───── Mobile ───── */
 @media (max-width: 768px) {
-  .pill-nav { padding: 6px 8px 6px 12px !important; gap: 6px !important; }
+  /* Nav: logo + tagline visible, compact EN/AR + Launch */
+  .pill-nav {
+    padding: 6px 6px 6px 10px !important;
+    gap: 6px !important;
+    flex-wrap: nowrap !important;
+  }
   .pill-nav .nav-links { display: none; }
   .pill-nav .login-btn { display: none; }
-  .pill-nav .logo-tag { display: none; }
-  .pill-nav .logo-text { font-size: 1.1rem; }
-  .pill-nav .logo-mark { width: 36px; height: 36px; border-radius: 10px; }
-  .pill-nav .logo-mark img { width: 24px; height: 24px; }
-  .pill-nav a[href="#start"], .pill-nav a.btn-volt { padding: 7px 12px !important; font-size: 12px !important; }
-  .pill-nav .lang-toggle { font-size: 11px; }
-  .pill-nav .lang-toggle button { padding: 4px 7px; min-width: 22px; }
+  .pill-nav .logo-text { font-size: 1rem; }
+  .pill-nav .logo-mark { width: 32px; height: 32px; border-radius: 8px; }
+  .pill-nav .logo-mark img { width: 22px; height: 22px; }
+  .pill-nav .logo-tag { font-size: 0.55rem; }
+  .pill-nav a[href="#start"], .pill-nav a.btn-volt {
+    padding: 6px 10px !important;
+    font-size: 11px !important;
+  }
+  .pill-nav .lang-toggle {
+    font-size: 10px;
+    padding: 2px;
+  }
+  .pill-nav .lang-toggle button {
+    padding: 4px 6px;
+    min-width: 20px;
+  }
+  .pill-nav > div:last-child { gap: 4px !important; }
+
   main { padding: 48px 20px 80px !important; }
   .hero-input { padding: 6px 6px 6px 12px; gap: 8px; }
   .hero-input input { font-size: 15px; min-width: 0; }
@@ -900,12 +928,20 @@ footer .divider { border: 0; border-top: 1px solid var(--line); margin: 0 0 40px
   .cookie-banner .btns { justify-content: stretch; }
   .cookie-banner .btns button { flex: 1; }
   footer .grid-4 { grid-template-columns: 1fr !important; gap: 32px !important; }
+
+  /* SINGLE COLUMN ON MOBILE — both grid types */
   .grid-3-mobile { grid-template-columns: 1fr !important; }
-  .grid-4-mobile { grid-template-columns: repeat(2, 1fr) !important; }
+  .grid-4-mobile { grid-template-columns: 1fr !important; }
   .compare-grid { grid-template-columns: 1fr !important; }
+
   .vsl-card .play-button { width: 64px; height: 64px; }
   .math-card { padding: 32px 24px !important; }
   .final-cta { padding: 40px 24px !important; }
+  .price-cta-row { flex-direction: column; }
+
+  /* Hero CTA row: stack vertical so both buttons fit */
+  .hero-ctas { flex-direction: column !important; align-items: stretch !important; }
+  .hero-ctas a { justify-content: center; }
 }
 </style>
 </head>
@@ -954,8 +990,8 @@ footer .divider { border: 0; border-top: 1px solid var(--line); margin: 0 0 40px
   <p class="hero-sub" data-en="No trade licence required to start. No code, no agency, no warehouse to lease. Just one product photo and a description." data-ar="بدون رخصة تجارية للبدء. بدون كود، بدون وكالة، بدون استئجار مستودع. فقط صورة منتج ووصف قصير.">
     No trade licence required to start. No code, no agency, no warehouse to lease. Just one product photo and a description.
   </p>
-  <div style="margin-top: 32px;">
-    <a href="#start" class="btn-pill btn-volt" style="padding: 14px 28px; font-size: 15px; margin-right: 8px;">
+  <div class="hero-ctas" style="margin-top: 32px; display: inline-flex; gap: 8px; justify-content: center;">
+    <a href="/pricing" class="btn-pill btn-volt" style="padding: 14px 28px; font-size: 15px;">
       <span data-en="Start free" data-ar="ابدأ مجاناً">Start free</span>
       <svg width="14" height="14" viewBox="0 0 16 16" fill="none" style="margin-left:4px;"><path d="M3 8h10m0 0L9 4m4 4l-4 4" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"/></svg>
     </a>
@@ -1000,8 +1036,8 @@ footer .divider { border: 0; border-top: 1px solid var(--line); margin: 0 0 40px
     </div>
     <div class="timeline-item">
       <span class="time" data-en="25 MIN · SET SHIPPING" data-ar="٢٥ دقيقة · حدّد الشحن">25 MIN · SET SHIPPING</span>
-      <h4 data-en="Buraq for UAE. Aramex for cross-border." data-ar="براق للإمارات. أرامكس للشحن عبر الحدود.">Buraq for UAE. Aramex for cross-border.</h4>
-      <p data-en="Pre-set rate cards. Pick what fits. Or use the recommended defaults — most sellers do." data-ar="بطاقات أسعار جاهزة. اختر اللي يناسبك. أو استخدم الإعدادات الموصى بها — معظم البائعين يسوون كذا.">Pre-set rate cards. Pick what fits. Or use the recommended defaults — most sellers do.</p>
+      <h4 data-en="Packman handles every package." data-ar="باكمان يتولى كل طرد.">Packman handles every package.</h4>
+      <p data-en="Pre-set rate tiers by weight and zone. Our team picks, packs, and ships every order from your warehouse to your customer's door." data-ar="أسعار جاهزة حسب الوزن والمنطقة. فريقنا يلتقط ويغلّف ويشحن كل طلب من المستودع لباب العميل.">Pre-set rate tiers by weight and zone. Our team picks, packs, and ships every order from your warehouse to your customer's door.</p>
     </div>
     <div class="timeline-item">
       <span class="time" data-en="30 MIN · GO LIVE" data-ar="٣٠ دقيقة · انطلق">30 MIN · GO LIVE</span>
@@ -1051,7 +1087,7 @@ footer .divider { border: 0; border-top: 1px solid var(--line); margin: 0 0 40px
       <h3 data-en="Packman handles it all." data-ar="باكمان يتعامل مع كل شي.">Packman handles it all.</h3>
       <ul>
         <li data-en="Storefront + dashboard · included" data-ar="واجهة + لوحة تحكم · متضمنة">Storefront + dashboard · included</li>
-        <li data-en="Buraq + Aramex shipping · included" data-ar="شحن براق + أرامكس · متضمن">Buraq + Aramex shipping · included</li>
+        <li data-en="Packman warehouse + delivery · included" data-ar="مستودع باكمان + توصيل · متضمن">Packman warehouse + delivery · included</li>
         <li data-en="Payment processing · included" data-ar="معالجة دفع · متضمنة">Payment processing · included</li>
         <li data-en="Inventory + analytics · included" data-ar="مخزون + تحليلات · متضمنة">Inventory + analytics · included</li>
         <li data-en="No trade licence to start" data-ar="بدون رخصة تجارية للبدء">No trade licence to start</li>
