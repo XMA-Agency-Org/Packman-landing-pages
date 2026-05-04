@@ -934,16 +934,21 @@ footer .divider { border: 0; border-top: 1px solid var(--line); margin: 0 0 40px
     margin-left: auto;
     gap: 6px !important;
   }
-  /* In Arabic mode, push the AR/EN toggle to the visual far-left with auto margin */
-  [dir="rtl"] .pill-nav .lang-toggle {
-    margin-left: auto;
-    margin-right: 8px;
-    order: -1;
-  }
+  /* In Arabic mode: Launch button → far left (visual), AR/EN stays on the right */
   [dir="rtl"] .pill-nav > div:last-child {
     margin-left: 0;
     flex: 1;
     justify-content: flex-end;
+  }
+  [dir="rtl"] .pill-nav .lang-toggle {
+    margin-left: 0;
+    margin-right: 0;
+  }
+  /* Launch button (the volt CTA) jumps to visual far-left in RTL mobile */
+  [dir="rtl"] .pill-nav > div:last-child > a.btn-volt {
+    order: -1;
+    margin-right: auto;
+    margin-left: 8px;
   }
 
   main { padding: 48px 20px 80px !important; }
